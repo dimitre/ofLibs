@@ -53,12 +53,12 @@ jobs:
           extension: "\\.zip"
           prerelease: "true"
 
-      - name: Chalet Test / Version
-        run: |
-          chalet --version
+      # - name: Chalet Test / Version
+      #   run: |
+      #     chalet --version
 
       - name: Chalet Configure
-        if: ${{ matrix.cfg.platform }} == 'emscripten'
+        if: matrix.cfg.platform == 'emscripten'
         shell: bash
         # working-directory: ./freetype
         run: chalet configure --toolchain emscripten
