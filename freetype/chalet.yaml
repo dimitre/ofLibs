@@ -24,7 +24,6 @@ targets:
 distribution:
   freetype:
     kind: archive
-    # condition: "[:macos]"
     format: zip
     include:
       - ${external:${name}}/LICENSE**

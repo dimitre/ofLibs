@@ -28,8 +28,14 @@ distribution:
     kind: archive
     format: zip
     include:
+      - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
-    include[:macos]:
-      - ${externalBuild:${name}}**.a
-    include[:windows]:
-      - ${externalBuild:${name}}**.lib
+      - ${externalBuild:${name}}/${ar:${name}}
+    # kind: archive
+    # format: zip
+    # include:
+    #   - ${external:${name}}/include
+    # include[:macos]:
+    #   - ${externalBuild:${name}}**.a
+    # include[:windows]:
+    #   - ${externalBuild:${name}}**.lib

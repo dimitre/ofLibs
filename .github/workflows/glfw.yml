@@ -21,22 +21,18 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { os: ubuntu-24.04, platform: linux64 }
-          #- { os: ubuntu-24.04, platform: arm64 }
-          - { os: macos-latest, platform: osx }
-          - { os: windows-latest, platform: vs }
+          # - { platform: emscripten, os: ubuntu-24.04 }
+          - { platform: linux64, os: ubuntu-24.04 }
+          - { platform: osx, os: macos-latest }
+          - { platform: vs, os: windows-latest }
+          - { platform: arm64, os: ubuntu-24.04 }
 
     runs-on: ${{ matrix.cfg.os }}
-    # defaults:
-    # run:
-    # working-directory: ./${{ github.workflow }}
+    defaults:
+      run:
+        working-directory: ./${{ github.workflow }}
     steps:
       - uses: actions/checkout@v4
-
-      # - name: echo os, platform       # Linux, ubuntu-24.04 linux64
-      #   shell: bash
-      #   run: |
-      #     echo ${{ runner.os }} ${{ matrix.cfg.os }} ${{ matrix.cfg.platform }}
 
       - name: Apt
         if: runner.os == 'Linux'
@@ -62,23 +58,22 @@ jobs:
         run: |
           chalet --version
 
-      - name: Get Path
-        run: |
-          echo $GITHUB_PATH
-
       - name: Chalet Bundle
         shell: bash
         run: |
-          cd ${{ github.workflow }}
           chalet bundle
+
+      - name: LS check built lib
+        shell: bash
+        run: |
+          unzip dist/*.zip
+          ls -alfR dist
 
       - name: Rename and Publish Release
         shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          rm -rf oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
-          mv ${{ github.workflow }}/dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
+          mv dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
           ls -alF *.zip
-
           gh release upload vx *.zip --clobber
