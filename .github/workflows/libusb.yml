@@ -36,10 +36,13 @@ jobs:
         with:
           version: 3.1.74
           actions-cache-folder: "emsdk-cache"
-      # - name: echo os, platform       # Linux, ubuntu-24.04 linux64
-      #   shell: bash
-      #   run: |
-      #     echo ${{ runner.os }} ${{ matrix.cfg.os }} ${{ matrix.cfg.platform }}
+
+      - name: Apt
+        if: runner.os == 'Linux'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: libudev-dev
+          version: 1.0
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
