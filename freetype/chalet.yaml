@@ -28,8 +28,9 @@ distribution:
     # condition: "[:macos]"
     format: zip
     include:
+      - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
-      - ${externalBuild:${name}}/${ar:freetype}
+      - ${externalBuild:${name}}/${ar:${name}}
 
     # include[:macos]:
     #   - ${externalBuild:${name}}/${ar:freetype}
