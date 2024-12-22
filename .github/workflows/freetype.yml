@@ -14,11 +14,11 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { platform: linux64, os: ubuntu-24.04 }
-          #- { platform: arm64, os: ubuntu-24.04,  }
           - { platform: emscripten, os: ubuntu-24.04 }
-          - { platform: osx, os: macos-latest }
-          - { platform: vs, os: windows-latest }
+          # - { platform: linux64, os: ubuntu-24.04 }
+          # - { platform: osx, os: macos-latest }
+          # - { platform: vs, os: windows-latest }
+          #- { platform: arm64, os: ubuntu-24.04,  }
 
     runs-on: ${{ matrix.cfg.os }}
     defaults:
@@ -28,12 +28,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Apt
+      - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
-        uses: awalsh128/cache-apt-pkgs-action@latest
+
+        uses: mymindstorm/setup-emsdk@v14
         with:
-          packages: emscripten
-          version: 1.0
+          # Make sure to set a version number!
+          version: 3.1.74
+          actions-cache-folder: "emsdk-cache"
+
+      # - name: Apt
+      #   if: matrix.cfg.platform == 'emscripten'
+      #   uses: awalsh128/cache-apt-pkgs-action@latest
+      #   with:
+      #     packages: emscripten
+      #     version: 1.0
 
       # - name: echo os, platform       # Linux, ubuntu-24.04 linux64
       #   shell: bash
@@ -69,9 +78,9 @@ jobs:
           # cd freetype
           chalet bundle
 
-      - name: LS
-        shell: bash
-        run: ls -alR
+      # - name: LS
+      #   shell: bash
+      #   run: ls -alR
 
       - name: Rename and Publish Release
         shell: bash
