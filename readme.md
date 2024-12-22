@@ -6,7 +6,8 @@
 - [ ] make correct folders inside .zip in each library
 - [ ] add license to libraries .zip
 - [ ] make install scripts for all platforms (script? bash? python? c++? autodetect platform?)
-
+- [ ] add more libraries
+- [ ] add library with dependencies
 
 ## Apothecary Libs
 Other than the natural complexity of a such large project things can be tidy there. some suggestions:
