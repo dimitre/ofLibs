@@ -14,7 +14,7 @@ targets:
     defines:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
-      - CMAKE_POSITION_INDEPENDENT_CODE=on
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_INSTALL_LIBDIR=./lib
       - CMAKE_INSTALL_FULL_LIBDIR=./lib
     defines[platform:macos]:
