@@ -31,5 +31,9 @@ distribution:
       - ${external:${name}}/include
     include[:macos]:
       - ${externalBuild:${name}}**.a
+    include[:web]:
+      - ${externalBuild:${name}}**.a
+    include[:linux]:
+      - ${externalBuild:${name}}**.a
     include[:windows]:
       - ${externalBuild:${name}}**.lib
