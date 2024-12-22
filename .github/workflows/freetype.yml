@@ -30,19 +30,10 @@ jobs:
 
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
-
         uses: mymindstorm/setup-emsdk@v14
         with:
-          # Make sure to set a version number!
           version: 3.1.74
           actions-cache-folder: "emsdk-cache"
-
-      # - name: Apt
-      #   if: matrix.cfg.platform == 'emscripten'
-      #   uses: awalsh128/cache-apt-pkgs-action@latest
-      #   with:
-      #     packages: emscripten
-      #     version: 1.0
 
       # - name: echo os, platform       # Linux, ubuntu-24.04 linux64
       #   shell: bash
@@ -62,6 +53,7 @@ jobs:
           extension: "\\.zip"
           prerelease: "true"
 
+      # TODO: make another item in matrix to pass toolchain to every chalet bundle. like emscripten, llvm etc.
       - name: Chalet Configure
         if: matrix.cfg.platform == 'emscripten'
         shell: bash
@@ -72,7 +64,7 @@ jobs:
         run: |
           chalet bundle
 
-      - name: LS
+      - name: LS check built lib
         shell: bash
         run: |
           unzip dist/*.zip
@@ -85,4 +77,4 @@ jobs:
         run: |
           mv dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
           ls -alF *.zip
-          gh release upload vx *.zip --clobber
+          gh release upload v0.12.1 *.zip --clobber

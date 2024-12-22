@@ -1,11 +1,7 @@
 name: libusb
 
 on:
-  # release:
-  # types: [published]
   push:
-    # tags:
-    # - "*"
     paths:
       - libusb/**
       - .github/workflows/libusb.yml
@@ -21,10 +17,11 @@ jobs:
     strategy:
       matrix:
         cfg:
-          #- { os: ubuntu-24.04, platform: linux64 }
-          #- { os: ubuntu-24.04, platform: arm64 }
-          - { os: macos-latest, platform: osx }
-          - { os: windows-latest, platform: vs }
+          - { platform: emscripten, os: ubuntu-24.04 }
+          - { platform: linux64, os: ubuntu-24.04 }
+          - { platform: osx, os: macos-latest }
+          - { platform: vs, os: windows-latest }
+          - { platform: arm64, os: ubuntu-24.04 }
 
     runs-on: ${{ matrix.cfg.os }}
     # defaults:
@@ -33,6 +30,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Emscripten Install
+        if: matrix.cfg.platform == 'emscripten'
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 3.1.74
+          actions-cache-folder: "emsdk-cache"
       # - name: echo os, platform       # Linux, ubuntu-24.04 linux64
       #   shell: bash
       #   run: |
@@ -55,9 +58,10 @@ jobs:
         run: |
           chalet --version
 
-      # - name: Get Path
-      #   run: |
-      #     echo $GITHUB_PATH
+      - name: Chalet Configure
+        if: matrix.cfg.platform == 'emscripten'
+        shell: bash
+        run: chalet configure --toolchain emscripten
 
       - name: Chalet Bundle
         shell: bash
@@ -65,52 +69,31 @@ jobs:
           cd ${{ github.workflow }}
           chalet bundle
 
-      - name: LS
-        shell: bash
-        run: ls -alR
-
-      - name: Rename
+      - name: LS check built lib
         shell: bash
         run: |
-          mv ${{ github.workflow }}/dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
-          # ls -alR
-          ls -alF *.zip
-          # mv dist/${{ github.workflow }}.zip dist/oflib_${{ github.ref_name }}_${{ matrix.cfg.platform }}.zip
-          # mv ${{ github.workflow }}/dist/*.zip ../..
+          unzip dist/*.zip
+          ls -alfR dist
 
-          gh release upload vx *.zip --clobber
-
+      - name: Rename and Publish Release
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
+        run: |
+          mv dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
+          ls -alF *.zip
+          gh release upload v0.12.1 *.zip --clobber
 
-      # apaga outros releases tambem.
-      # - name: Release
-      #   uses: "marvinpinto/action-automatic-releases@latest"
-      #   with:
-      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
-      #     automatic_release_tag: "latest"
-      #     prerelease: false
-      #     title: "Development Build"
-      #     files: |
-      #       ./*.zip
+      # - name: Rename
+      #   shell: bash
+      #   run: |
+      #     mv ${{ github.workflow }}/dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
+      #     # ls -alR
+      #     ls -alF *.zip
+      #     # mv dist/${{ github.workflow }}.zip dist/oflib_${{ github.ref_name }}_${{ matrix.cfg.platform }}.zip
+      #     # mv ${{ github.workflow }}/dist/*.zip ../..
 
-      # OK este funciona mas so deixa um tag por release, entao so entra uma library e as outras ficam de fora.
-      # https://github.com/ncipollo/release-action
-      # - name: Release
-      #   uses: ncipollo/release-action@v1.14.0
-      #   with:
-      #     name: ofLibs
-      #     tag: v1.0
-      #     makeLatest: true
-      #     artifacts: ./*.zip
-      #     # bodyFile: "body.md"
+      #     gh release upload v0.12.1 *.zip --clobber
 
-      # - name: Release
-      #   uses: softprops/action-gh-release@v2.1.0 #2.0.8 2.2.0
-      #   if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
-      #   # if: github.event_name == 'push'
-      #   with:
-      #     files: ./*.zip
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     draft: false
-      #     prerelease: false
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.TOKEN }}

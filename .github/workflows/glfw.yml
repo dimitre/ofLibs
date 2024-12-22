@@ -1,11 +1,7 @@
 name: glfw
 
 on:
-  # release:
-  # types: [published]
   push:
-    # tags:
-    # - "*"
     paths:
       - glfw/**
       - .github/workflows/glfw.yml
@@ -33,6 +29,13 @@ jobs:
         working-directory: ./${{ github.workflow }}
     steps:
       - uses: actions/checkout@v4
+
+      # - name: Emscripten Install
+      #   if: matrix.cfg.platform == 'emscripten'
+      #   uses: mymindstorm/setup-emsdk@v14
+      #   with:
+      #     version: 3.1.74
+      #     actions-cache-folder: "emsdk-cache"
 
       - name: Apt
         if: runner.os == 'Linux'
@@ -76,4 +79,4 @@ jobs:
         run: |
           mv dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
           ls -alF *.zip
-          gh release upload vx *.zip --clobber
+          gh release upload v0.12.1 *.zip --clobber
