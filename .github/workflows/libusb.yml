@@ -24,9 +24,9 @@ jobs:
           - { platform: arm64, os: ubuntu-24.04 }
 
     runs-on: ${{ matrix.cfg.os }}
-    # defaults:
-    # run:
-    # working-directory: ./${{ github.workflow }}
+    defaults:
+      run:
+        working-directory: ./${{ github.workflow }}
     steps:
       - uses: actions/checkout@v4
 
@@ -66,7 +66,6 @@ jobs:
       - name: Chalet Bundle
         shell: bash
         run: |
-          cd ${{ github.workflow }}
           chalet bundle
 
       - name: LS check built lib
