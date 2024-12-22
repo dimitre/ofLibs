@@ -14,11 +14,11 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { os: ubuntu-24.04, platform: linux64 }
-          #- { os: ubuntu-24.04, platform: arm64 }
-          - { os: ubuntu-24.04, platform: emscripten }
-          - { os: macos-latest, platform: osx }
-          - { os: windows-latest, platform: vs }
+          - { platform: linux64, os: ubuntu-24.04 }
+          #- { platform: arm64, os: ubuntu-24.04,  }
+          - { platform: emscripten, os: ubuntu-24.04 }
+          - { platform: osx, os: macos-latest }
+          - { platform: vs, os: windows-latest }
 
     runs-on: ${{ matrix.cfg.os }}
     defaults:
@@ -27,6 +27,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Apt
+        if: matrix.cfg.platform == 'emscripten'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: emscripten
+          version: 1.0
 
       # - name: echo os, platform       # Linux, ubuntu-24.04 linux64
       #   shell: bash
