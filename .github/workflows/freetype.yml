@@ -16,13 +16,15 @@ jobs:
         cfg:
           - { os: ubuntu-24.04, platform: linux64 }
           #- { os: ubuntu-24.04, platform: arm64 }
+          - { os: ubuntu-24.04, platform: emscripten }
           - { os: macos-latest, platform: osx }
           - { os: windows-latest, platform: vs }
 
     runs-on: ${{ matrix.cfg.os }}
-    # defaults:
-    # run:
-    # working-directory: ./freetype
+    defaults:
+      run:
+        working-directory: ./freetype
+
     steps:
       - uses: actions/checkout@v4
 
@@ -48,14 +50,16 @@ jobs:
         run: |
           chalet --version
 
-      - name: Get Path
-        run: |
-          echo $GITHUB_PATH
+      - name: Chalet Configure
+        if: ${{ matrix.cfg.platform }} == 'emscripten'
+        shell: bash
+        # working-directory: ./freetype
+        run: chalet configure --toolchain emscripten
 
       - name: Chalet Bundle
         shell: bash
         run: |
-          cd freetype
+          # cd freetype
           chalet bundle
 
       - name: LS
@@ -67,11 +71,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          rm -rf oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
-          mv ${{ github.workflow }}/dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
-          # ls -alR
+          mv dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
           ls -alF *.zip
-          # mv dist/${{ github.workflow }}.zip dist/oflib_${{ github.ref_name }}_${{ matrix.cfg.platform }}.zip
-          # mv ${{ github.workflow }}/dist/*.zip ../..
-
           gh release upload vx *.zip --clobber
