@@ -23,15 +23,20 @@ targets:
 distribution:
   libusb:
     kind: archive
-    # condition: "[:macos]"
     format: zip
     include:
-      - ${external:${name}}/libusb/libusb/*.h
-    include[:macos]:
-      - ${externalBuild:${name}}**.a
-    include[:windows]:
-      - ${externalBuild:${name}}**.lib
+      - ${external:${name}}/LICENSE**
+      - ${external:${name}}/include
+      - ${externalBuild:${name}}/${ar:${name}}
+    # kind: archive
+    # format: zip
+    # include:
+    #   - ${external:${name}}/libusb/libusb/*.h
+    # include[:macos]:
+    #   - ${externalBuild:${name}}**.a
+    # include[:windows]:
+    #   - ${externalBuild:${name}}**.lib
 
-      # - ${externalBuild:${name}}${ar:libusb}
-      # - ${externalBuild:${name}}/${so:libusb}
-      # - ${so:${name}}
+    # - ${externalBuild:${name}}${ar:libusb}
+    # - ${externalBuild:${name}}/${so:libusb}
+    # - ${so:${name}}
