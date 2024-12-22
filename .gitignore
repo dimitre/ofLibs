@@ -1,7 +1,10 @@
+**/.DS_Store
+.env.macos
+.chaletrc
 build/**
 chalet_external/**
 dist/**
-**/build/**
-**/dist/**
-.chaletrc
 **/.chaletrc
+**/build/**
+**/chalet_external/**
+**/dist/**
