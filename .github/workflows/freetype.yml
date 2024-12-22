@@ -62,25 +62,21 @@ jobs:
           extension: "\\.zip"
           prerelease: "true"
 
-      # - name: Chalet Test / Version
-      #   run: |
-      #     chalet --version
-
       - name: Chalet Configure
         if: matrix.cfg.platform == 'emscripten'
         shell: bash
-        # working-directory: ./freetype
         run: chalet configure --toolchain emscripten
 
       - name: Chalet Bundle
         shell: bash
         run: |
-          # cd freetype
           chalet bundle
 
-      # - name: LS
-      #   shell: bash
-      #   run: ls -alR
+      - name: LS
+        shell: bash
+        run: |
+          unzip dist/*.zip
+          ls -alfR dist
 
       - name: Rename and Publish Release
         shell: bash
