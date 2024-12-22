@@ -1,11 +1,11 @@
 # ALTpothecary
 
 ## TODO
-- [] compile one library with emscripten
-- [] cross compile for raspberry pi
-- [] make correct folders inside .zip in each library
-- [] add license to libraries .zip
-- [] make install scripts for all platforms (script? bash? python? c++? autodetect platform?)
+- [ ] compile one library with emscripten
+- [ ] cross compile for raspberry pi
+- [ ] make correct folders inside .zip in each library
+- [ ] add license to libraries .zip
+- [ ] make install scripts for all platforms (script? bash? python? c++? autodetect platform?)
 
 
 ## Apothecary Libs
