@@ -28,6 +28,8 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+    defines[platform:web]:
+      - ASSIMP_BUILD_ZLIB=ON
 distribution:
   assimp:
     kind: archive
@@ -37,7 +39,9 @@ distribution:
       - ${external:${name}}/include
       - ${externalBuild:${name}}/include
       # - ${externalBuild:${name}}/${ar:usb}
-      - ${externalBuild:${name}}/lib/${ar:${name}}
+      # - ${externalBuild:${name}}/lib/${ar:${name}}
+    include[:windows]:
+      - ${externalBuild:${name}}/lib/**.lib
       # - ${externalBuild:${name}}/*.a
       # - ${externalBuild:${name}}/*.lib
       # - ${externalBuild:${name}}/*.pc
