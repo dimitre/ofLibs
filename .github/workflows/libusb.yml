@@ -75,9 +75,9 @@ jobs:
         shell: bash
         run: |
           echo '-------'
-          ls -alfR build/**/ext.libusb/
+          ls -alfR build/**/ext.${{ github.workflow }}/
           echo '-------'
-          ls -alfR chalet_external/libusb/
+          ls -alfR chalet_external/${{ github.workflow }}/
           echo '-------'
 
       - name: LS check built lib
@@ -91,20 +91,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
+          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber
-
-      # - name: Rename
-      #   shell: bash
-      #   run: |
-      #     mv ${{ github.workflow }}/dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
-      #     # ls -alR
-      #     ls -alF *.zip
-      #     # mv dist/${{ github.workflow }}.zip dist/oflib_${{ github.ref_name }}_${{ matrix.cfg.platform }}.zip
-      #     # mv ${{ github.workflow }}/dist/*.zip ../..
-
-      #     gh release upload v0.12.1 *.zip --clobber
-
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.TOKEN }}
