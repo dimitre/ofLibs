@@ -83,7 +83,7 @@ jobs:
         shell: bash
         run: chalet configure --toolchain ${{matrix.cfg.prefix}}
 
-      - name: rpi - chalet config
+      - name: rpi — chalet config
         if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
         shell: bash
         run: chalet configure --toolchain ${{matrix.cfg.prefix}}-gcc
