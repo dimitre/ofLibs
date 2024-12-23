@@ -3,7 +3,7 @@ version: "0.1.3"
 externalDependencies:
   opencv:
     repository: https://github.com/opencv/opencv
-    tag: "4.10.0"
+    tag: 4.10.0
     kind: git
 targets:
   opencv:
@@ -18,7 +18,6 @@ targets:
       - BUILD_DOCS=OFF
       - BUILD_EXAMPLES=OFF
       - BUILD_TESTS=OFF
-      - BUILD_SHARED_LIBS=OFF
       - BUILD_PACKAGE=OFF
       - BUILD_PERF_TESTS=OFF
       - BUILD_PNG=OFF
@@ -56,9 +55,9 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
+      # - ${external:${name}}/include
       - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/${ar:opencv}
+      - ${externalBuild:${name}}/${ar:${name}}
       # - ${externalBuild:${name}}/*.a
       # - ${externalBuild:${name}}/*.lib
       # - ${externalBuild:${name}}/*.pc
