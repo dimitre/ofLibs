@@ -12,7 +12,13 @@ targets:
     recheck: false
     rebuild: false
     defines:
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - GLM_ENABLE_FAST_MATH=ON
+      - GLM_TEST_ENABLE=OFF
+      - GLM_ENABLE_CXX_17=ON
+      # turn on only on Intel
       - GLM_ENABLE_SIMD_SSE2=ON
       - GLM_ENABLE_SIMD_SSE3=ON
       - GLM_ENABLE_SIMD_SSSE3=ON
@@ -20,9 +26,8 @@ targets:
       - GLM_ENABLE_SIMD_SSE4_2=ON
       - GLM_ENABLE_SIMD_AVX=ON
       - GLM_ENABLE_SIMD_AVX2=ON
+      # turn on only on arm.
       - GLM_TEST_ENABLE_SIMD_NEON=ON
-      - GLM_TEST_ENABLE=OFF
-      - GLM_ENABLE_CXX_17=ON
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
@@ -32,6 +37,6 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      # - ${external:${name}}/include
-      - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/${ar:${name}}
+      - ${external:${name}}/glm
+      # - ${externalBuild:${name}}/include
+      - ${externalBuild:${name}}/glm/${ar:${name}}
