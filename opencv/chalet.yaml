@@ -42,6 +42,7 @@ targets:
       - BUILD_JPEG=OFF
     defines[platform:web]:
       - WITH_JPEG=OFF
+      - WITH_PROTOBUF=OFF
     defines[platform:windows]:
       - CPU_BASELINE=""
       - CPU_DISPATCH=""
