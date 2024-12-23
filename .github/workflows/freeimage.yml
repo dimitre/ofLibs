@@ -1,4 +1,4 @@
-name: freeimage
+name: FreeImage
 
 on:
   push:
