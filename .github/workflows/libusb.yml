@@ -1,10 +1,10 @@
-name: glm
+name: libusb
 
 on:
   push:
     paths:
-      - glm/**
-      - .github/workflows/glm.yml
+      - libusb/**
+      - .github/workflows/libusb.yml
 
 permissions:
   contents: write
