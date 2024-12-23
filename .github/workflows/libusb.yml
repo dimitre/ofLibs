@@ -71,6 +71,15 @@ jobs:
         run: |
           chalet bundle
 
+      - name: LS check lib folders
+        shell: bash
+        run: |
+          echo '-------'
+          ls -alfR build/**/ext.libusb/
+          echo '-------'
+          ls -alfR chalet_external/libusb/
+          echo '-------'
+
       - name: LS check built lib
         shell: bash
         run: |
