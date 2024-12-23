@@ -51,14 +51,14 @@ targets:
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 distribution:
-  libusb:
+  opencv:
     kind: archive
     format: zip
     include:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
       - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/${ar:libusb}
+      - ${externalBuild:${name}}/${ar:opencv}
       # - ${externalBuild:${name}}/*.a
       # - ${externalBuild:${name}}/*.lib
       # - ${externalBuild:${name}}/*.pc

@@ -28,7 +28,7 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
       - ${externalBuild:${name}}/gen_include
-      - ${externalBuild:${name}}/${ar:libusb}
+      - ${externalBuild:${name}}/${ar:${name}}
       - ${externalBuild:${name}}/*.a
       - ${externalBuild:${name}}/*.lib
       - ${externalBuild:${name}}/*.pc
