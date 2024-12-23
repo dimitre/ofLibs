@@ -1,13 +1,15 @@
 # ALTpothecary
 
 ## TODO
-- [ ] compile one library with emscripten
 - [ ] cross compile for raspberry pi
-- [ ] make correct folders inside .zip in each library
-- [ ] add license to libraries .zip
 - [ ] make install scripts for all platforms (script? bash? python? c++? autodetect platform?)
+- [ ] make correct folders inside .zip in each library
 - [ ] add more libraries
 - [ ] add library with dependencies
+
+## DONE
+- [x] compile one library with emscripten
+- [x] add license to libraries .zip
 
 ## Apothecary Libs
 Other than the natural complexity of a such large project things can be tidy there. some suggestions:
@@ -41,15 +43,12 @@ freetype, macos, package, freetype
 ```
 
 
-
-etc
-
-Libraries CORE
+## Libraries CORE
 
 - [ ] cairo
 - [ ] curl
 - [x] freetype
-- [ ] glew
+- [/] glew
 - [x] glfw
 - [x] glm
 - [ ] json
