@@ -26,7 +26,8 @@ jobs:
     runs-on: ${{ matrix.cfg.os }}
     defaults:
       run:
-        working-directory: ./${{ github.workflow }}
+        # working-directory: ./${{ github.workflow }}
+        working-directory: libusb
     steps:
       - uses: actions/checkout@v4
 
