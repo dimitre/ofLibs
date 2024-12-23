@@ -17,11 +17,19 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { platform: emscripten, os: ubuntu-24.04 }
+          - { platform: emscripten, os: ubuntu-24.04, prefix: emscripten }
           - { platform: linux64, os: ubuntu-24.04 }
           - { platform: osx, os: macos-latest }
           - { platform: vs, os: windows-latest }
           # - { platform: arm64, os: ubuntu-24.04 }
+          - {
+              platform: rpi-aarch64,
+              os: ubuntu-24.04,
+              prefix: aarch64-linux-gnu,
+            }
+          # - { platform: rpi-armv6l, os: ubuntu-24.04, prefix: arm-linux-gnueabihf }
+          # - { libs: armv6l, arch: armhf, prefix: arm-linux-gnueabihf }
+          # - { libs: aarch64, arch: arm64, prefix: aarch64-linux-gnu }
 
     runs-on: ${{ matrix.cfg.os }}
     defaults:
@@ -37,12 +45,14 @@ jobs:
           version: 3.1.74
           actions-cache-folder: "emsdk-cache"
 
-      # - name: Apt
-      #   if: runner.os == 'Linux'
-      # uses: awalsh128/cache-apt-pkgs-action@latest
-      # with:
-      #   packages: libudev-dev
-      #   version: 1.0
+      - name: RPI - apt multistrap
+        if: matrix.cfg.platform == 'rpi-arm64'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: multistrap gcc-${{matrix.cfg.prefix}} g++-${{matrix.cfg.prefix}}
+          # libasound2t64 libasound2t64:${{matrix.cfg.arch}}
+          # packages: multistrap gcc-${{matrix.configuration.prefix}} g++-${{matrix.configuration.prefix}} libasound2t64 libasound2t64:${{matrix.configuration.arch}}
+          version: 1.0
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
@@ -61,10 +71,15 @@ jobs:
         run: |
           chalet --version
 
-      - name: Chalet Configure
-        if: matrix.cfg.platform == 'emscripten'
+      - name: emscripten/rpi - chalet config
+        if: matrix.cfg.platform == 'emscripten' || matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
         shell: bash
-        run: chalet configure --toolchain emscripten
+        run: chalet configure --toolchain ${{matrix.cfg.prefix}}
+
+      # - name: RPI - chalet config
+      #   if: matrix.cfg.platform == 'rpi-aarch64'
+      #   shell: bash
+      #   run: chalet configure --toolchain ${{matrix.cfg.prefix}}
 
       - name: Chalet Bundle
         shell: bash
