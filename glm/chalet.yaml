@@ -38,7 +38,7 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-    defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
+    defines[toolchain:{aarch64-linux-gnu-g++,arm-linux-gnueabihf-g++}]:
       # - GLM_ENABLE_SIMD_AVX=OFF
       # - GLM_ENABLE_SIMD_AVX2=OFF
       - ARWIL=ON
