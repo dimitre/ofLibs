@@ -39,9 +39,9 @@ targets:
       - WITH_ADE=OFF
       - WITH_OPENJPEG=OFF
       - WITH_TIFF=OFF
-      - BUILD_opencv_world=OFF
+      - BUILD_JPEG=OFF
     defines[platform:web]:
-      - DWITH_JPEG=OFF
+      - WITH_JPEG=OFF
     defines[platform:windows]:
       - CPU_BASELINE=""
       - CPU_DISPATCH=""

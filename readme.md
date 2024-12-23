@@ -44,26 +44,15 @@ freetype, macos, package, freetype
 
 etc
 
-Libraries
+Libraries CORE
 
-- [ ] brotli
 - [ ] cairo
 - [ ] curl
-- [ ] fmod
-- [x] fmt
-brew info fmt
-open /opt/homebrew/Cellar/fmt/11.0.2
-brew --cellar fmt
-/opt/homebrew/Cellar/fmt
-mkdir dist
-ls $(brew --cellar fmt)
-cp $(brew --cellar fmt)/**/*.a dist
 - [x] freetype
-- [x] glew
+- [ ] glew
 - [x] glfw
-- [x] glm
+- [ ] glm
 - [ ] json
-- [x] libpng
 - [ ] openssl
 - [ ] pixman
 - [ ] pugixml
@@ -71,10 +60,25 @@ cp $(brew --cellar fmt)/**/*.a dist
 - [ ] tess2
 - [ ] uriparser
 - [ ] utf8
-- [ ] zlib
 
-- [x] opencv
-- [ ] libusb
-- [x] assimp
+- [ ] zlib
+- [ ] libpng
+- [ ] brotli
+- [ ] fmod
+- [ ] fmt
+
+- [/] opencv
+- [x] libusb
+- [ ] assimp
 - [ ] libxml2
 - [ ] svgtiny
+
+
+
+brew info fmt
+open /opt/homebrew/Cellar/fmt/11.0.2
+brew --cellar fmt
+/opt/homebrew/Cellar/fmt
+mkdir dist
+ls $(brew --cellar fmt)
+cp $(brew --cellar fmt)/**/*.a dist
