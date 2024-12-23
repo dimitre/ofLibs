@@ -10,7 +10,7 @@ env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
-  example_matrix:
+  freetype_matrix:
     strategy:
       matrix:
         cfg:
@@ -34,11 +34,6 @@ jobs:
         with:
           version: 3.1.74
           actions-cache-folder: "emsdk-cache"
-
-      # - name: echo os, platform       # Linux, ubuntu-24.04 linux64
-      #   shell: bash
-      #   run: |
-      #     echo ${{ runner.os }} ${{ matrix.cfg.os }} ${{ matrix.cfg.platform }}
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14

@@ -43,6 +43,7 @@ targets:
     defines[platform:web]:
       - WITH_JPEG=OFF
       - WITH_PROTOBUF=OFF
+      - BUILD_IPP_IW=OFF
     defines[platform:windows]:
       - CPU_BASELINE=""
       - CPU_DISPATCH=""

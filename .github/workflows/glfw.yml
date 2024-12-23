@@ -13,7 +13,7 @@ env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
-  example_matrix:
+  glfw_matrix:
     strategy:
       matrix:
         cfg:
