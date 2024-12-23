@@ -1,12 +1,12 @@
 name: libsof
 version: "0.1.3"
 externalDependencies:
-  freeimage:
+  FreeImage:
     repository: https://github.com/danoli3/FreeImage
     tag: "3.19.7"
     kind: git
 targets:
-  freeimage:
+  FreeImage:
     kind: cmakeProject
     location: ${external:${name}}
     recheck: false
@@ -38,13 +38,13 @@ targets:
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 distribution:
-  freeimage:
+  FreeImage:
     kind: archive
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
-      - ${externalBuild:${name}}/include
+      - ${external:${name}}/Source/FreeImage.h
+      # - ${externalBuild:${name}}/include
       - ${externalBuild:${name}}/${ar:${name}}
       # - ${externalBuild:${name}}/*.a
       # - ${externalBuild:${name}}/*.lib
