@@ -40,6 +40,8 @@ targets:
       - WITH_OPENJPEG=OFF
       - WITH_TIFF=OFF
       - BUILD_opencv_world=OFF
+    defines[platform:web]:
+      - DWITH_JPEG=OFF
     defines[platform:windows]:
       - CPU_BASELINE=""
       - CPU_DISPATCH=""
