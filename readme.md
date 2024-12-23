@@ -51,7 +51,7 @@ Libraries CORE
 - [x] freetype
 - [ ] glew
 - [x] glfw
-- [ ] glm
+- [x] glm
 - [ ] json
 - [ ] openssl
 - [ ] pixman
@@ -67,7 +67,7 @@ Libraries CORE
 - [ ] fmod
 - [ ] fmt
 
-- [/] opencv
+- [x] opencv (missing emscripten)
 - [x] libusb
 - [ ] assimp
 - [ ] libxml2

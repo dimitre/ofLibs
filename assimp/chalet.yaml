@@ -1,0 +1,56 @@
+name: libsof
+version: "0.1.3"
+externalDependencies:
+  assimp:
+    repository: https://github.com/assimp/assimp
+    tag: v5.4.3
+    kind: git
+targets:
+  assimp:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    defines:
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      # - ZLIB_ROOT=${externalBuild:zlib}
+      # - ZLIB_INCLUDE_DIR=${external:zlib}
+      # - ZLIB_LIBRARY=${externalBuild:zlib}/*.a
+      - ASSIMP_NO_EXPORT=ON
+      - ASSIMP_BUILD_TESTS=OFF
+      - ASSIMP_BUILD_SAMPLES=OFF
+      - ASSIMP_INSTALL=OFF
+      - ASSIMP_BUILD_3MF_IMPORTER=OFF
+      - ASSIMP_INJECT_DEBUG_POSTFIX=OFF
+      - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+distribution:
+  assimp:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/LICENSE**
+      - ${external:${name}}/include
+      - ${externalBuild:${name}}/gen_include
+      - ${externalBuild:${name}}/${ar:usb}
+      - ${externalBuild:${name}}/${ar:${name}}
+      # - ${externalBuild:${name}}/*.a
+      # - ${externalBuild:${name}}/*.lib
+      # - ${externalBuild:${name}}/*.pc
+
+    # kind: archive
+    # format: zip
+    # include:
+    #   - ${external:${name}}/libusb/libusb/*.h
+    # include[:macos]:
+    #   - ${externalBuild:${name}}**.a
+    # include[:windows]:
+    #   - ${externalBuild:${name}}**.lib
+
+    # - ${externalBuild:${name}}${ar:libusb}
+    # - ${externalBuild:${name}}/${so:libusb}
+    # - ${so:${name}}

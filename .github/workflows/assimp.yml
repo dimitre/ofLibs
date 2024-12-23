@@ -1,0 +1,96 @@
+name: assimp
+
+on:
+  push:
+    paths:
+      - assimp/**
+      - .github/workflows/assimp.yml
+
+permissions:
+  contents: write
+
+env:
+  CMAKE_CXX_COMPILER_LAUNCHER: ccache
+
+jobs:
+  assimp_matrix:
+    strategy:
+      matrix:
+        cfg:
+          - { platform: emscripten, os: ubuntu-24.04 }
+          - { platform: linux64, os: ubuntu-24.04 }
+          - { platform: osx, os: macos-latest }
+          - { platform: vs, os: windows-latest }
+          # - { platform: arm64, os: ubuntu-24.04 }
+
+    runs-on: ${{ matrix.cfg.os }}
+    defaults:
+      run:
+        working-directory: ./${{ github.workflow }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Emscripten Install
+        if: matrix.cfg.platform == 'emscripten'
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 3.1.74
+          actions-cache-folder: "emsdk-cache"
+
+      # - name: Apt
+      #   if: runner.os == 'Linux'
+      #   uses: awalsh128/cache-apt-pkgs-action@latest
+      #   with:
+      #     packages: libudev-dev
+      #     version: 1.0
+
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.14
+        with:
+          key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
+
+      - name: Install Chalet
+        uses: jaxxstorm/action-install-gh-release@v1.14.0
+        with:
+          repo: chalet-org/chalet
+          cache: enable
+          extension: "\\.zip"
+          prerelease: "true"
+
+      - name: Chalet Test / Version
+        run: |
+          chalet --version
+
+      - name: Chalet Configure
+        if: matrix.cfg.platform == 'emscripten'
+        shell: bash
+        run: chalet configure --toolchain emscripten
+
+      - name: Chalet Bundle
+        shell: bash
+        run: |
+          chalet bundle
+
+      - name: LS check lib folders
+        shell: bash
+        run: |
+          echo '-------'
+          ls -alfR build/**/ext.${{ github.workflow }}/
+          echo '-------'
+          ls -alfR chalet_external/${{ github.workflow }}/
+          echo '-------'
+
+      - name: LS check built lib
+        shell: bash
+        run: |
+          unzip dist/*.zip
+          ls -alfR dist
+
+      - name: Rename and Publish Release
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.TOKEN }}
+        run: |
+          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
+          ls -alF *.zip
+          gh release upload v0.12.1 *.zip --clobber
