@@ -1,12 +1,12 @@
 name: libsof
 version: "0.1.3"
 externalDependencies:
-  libusb:
+  usb:
     repository: https://github.com/libusb/libusb-cmake
     tag: v1.0.27-1
     kind: git
 targets:
-  libusb:
+  usb:
     kind: cmakeProject
     location: ${external:${name}}
     recheck: false
@@ -21,14 +21,14 @@ targets:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
 distribution:
-  libusb:
+  usb:
     kind: archive
     format: zip
     include:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
       - ${externalBuild:${name}}/gen_include
-      - ${externalBuild:${name}}/${ar:usb}
+      # - ${externalBuild:${name}}/${ar:usb}
       - ${externalBuild:${name}}/${ar:${name}}
       # - ${externalBuild:${name}}/*.a
       # - ${externalBuild:${name}}/*.lib
