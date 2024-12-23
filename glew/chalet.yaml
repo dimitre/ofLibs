@@ -1,0 +1,42 @@
+name: libsof
+version: "0.1.3"
+externalDependencies:
+  glew:
+    repository: https://github.com/Perlmint/glew-cmake
+    kind: git
+targets:
+  glew:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    defines:
+      - glew-cmake_BUILD_SHARED=OFF
+    defines[platform:macos]:
+      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+distribution:
+  glew:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/LICENSE**
+      - ${external:${name}}/include
+      - ${externalBuild:${name}}/include
+      - ${externalBuild:${name}}/${ar:${name}}
+      # - ${externalBuild:${name}}/*.a
+      # - ${externalBuild:${name}}/*.lib
+      # - ${externalBuild:${name}}/*.pc
+
+    # kind: archive
+    # format: zip
+    # include:
+    #   - ${external:${name}}/libusb/libusb/*.h
+    # include[:macos]:
+    #   - ${externalBuild:${name}}**.a
+    # include[:windows]:
+    #   - ${externalBuild:${name}}**.lib
+
+    # - ${externalBuild:${name}}${ar:libusb}
+    # - ${externalBuild:${name}}/${so:libusb}
+    # - ${so:${name}}

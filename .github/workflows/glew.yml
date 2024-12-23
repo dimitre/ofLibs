@@ -1,10 +1,10 @@
-name: glm
+name: glew
 
 on:
   push:
     paths:
-      - glm/**
-      - .github/workflows/glm.yml
+      - glew/**
+      - .github/workflows/glew.yml
 
 permissions:
   contents: write
@@ -13,7 +13,7 @@ env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
-  glm_matrix:
+  freeimage_matrix:
     strategy:
       matrix:
         cfg:
@@ -26,7 +26,8 @@ jobs:
     runs-on: ${{ matrix.cfg.os }}
     defaults:
       run:
-        working-directory: ./${{ github.workflow }}
+        # working-directory: ./${{ github.workflow }}
+        working-directory: glew
     steps:
       - uses: actions/checkout@v4
 
@@ -39,10 +40,10 @@ jobs:
 
       # - name: Apt
       #   if: runner.os == 'Linux'
-      # uses: awalsh128/cache-apt-pkgs-action@latest
-      # with:
-      #   packages: libudev-dev
-      #   version: 1.0
+      #   uses: awalsh128/cache-apt-pkgs-action@latest
+      #   with:
+      #     packages: libudev-dev
+      #     version: 1.0
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
