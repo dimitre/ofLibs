@@ -19,21 +19,21 @@ targets:
       - GLM_TEST_ENABLE=OFF
       - GLM_ENABLE_CXX_17=ON
       # turn on only on Intel
-      - GLM_ENABLE_SIMD_SSE2=ON
-      - GLM_ENABLE_SIMD_SSE3=ON
-      - GLM_ENABLE_SIMD_SSSE3=ON
-      - GLM_ENABLE_SIMD_SSE4_1=ON
-      - GLM_ENABLE_SIMD_SSE4_2=ON
-      - GLM_ENABLE_SIMD_AVX=ON
-      - GLM_ENABLE_SIMD_AVX2=ON
+      # - GLM_ENABLE_SIMD_SSE2=ON
+      # - GLM_ENABLE_SIMD_SSE3=ON
+      # - GLM_ENABLE_SIMD_SSSE3=ON
+      # - GLM_ENABLE_SIMD_SSE4_1=ON
+      # - GLM_ENABLE_SIMD_SSE4_2=ON
+      # - GLM_ENABLE_SIMD_AVX=ON
+      # - GLM_ENABLE_SIMD_AVX2=ON
       # turn on only on arm.
       - GLM_TEST_ENABLE_SIMD_NEON=ON
     defines[platform:windows]:
       # this causes a clash, error: Command line error D8016 : '/Za' and '/fp:fast' command-line options are incompatible
       - GLM_ENABLE_FAST_MATH=OFF
     defines[platform:web]:
-      - GLM_ENABLE_SIMD_AVX=OFF
-      - GLM_ENABLE_SIMD_AVX2=OFF
+      # - GLM_ENABLE_SIMD_AVX=OFF
+      # - GLM_ENABLE_SIMD_AVX2=OFF
       - CMAKE_CXX_FLAGS="-msimd128"
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
