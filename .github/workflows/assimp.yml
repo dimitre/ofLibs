@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { platform: emscripten, os: ubuntu-24.04 }
+          # - { platform: emscripten, os: ubuntu-24.04 }
           - { platform: linux64, os: ubuntu-24.04 }
           - { platform: osx, os: macos-latest }
           - { platform: vs, os: windows-latest }

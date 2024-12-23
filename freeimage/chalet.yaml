@@ -38,29 +38,34 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - BUILD_TESTS=OFF
       - ZLIB_ROOT=${externalBuild:zlib}
-      - ZLIB_LIBRARY=${externalBuild:zlib}/${ar:libz}
-      # - ZLIB_INCLUDE_DIRS=${external:zlib}
+      - ZLIB_LIBRARY=${externalBuild:zlib}
+      - ZLIB_INCLUDE_DIRS=${external:zlib}
       - BUILD_JXR=OFF
       - BUILD_LIBPNG=OFF
       - BUILD_LIBRAWLITE=OFF
       - BUILD_OPENEXR=OFF
-      - BUILD_TESTS=OFF
       - BUILD_WEBP=OFF
       - BUILD_ZLIB=OFF
       - CMAKE_CXX_EXTENSIONS=OFF
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
-      - CMAKE_INSTALL_PREFIX=Release
+      # - CMAKE_INSTALL_PREFIX=Release
       - ENABLE_ARC=OFF
       - ENABLE_BITCODE=OFF
       - ENABLE_VISIBILITY=OFF
       - USE_PTHREADS=1
     defines[platform:macos]:
-      - DEPLOYMENT_TARGET=10.9
+      # - DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 distribution:
+  zlib:
+    kind: archive
+    format: zip
+    include:
+      - ${externalBuild:zlib}/${ar:libz}
   FreeImage:
     kind: archive
     format: zip
