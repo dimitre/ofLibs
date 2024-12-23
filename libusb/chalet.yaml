@@ -28,10 +28,11 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
       - ${externalBuild:${name}}/gen_include
+      - ${externalBuild:${name}}/${ar:usb}
       - ${externalBuild:${name}}/${ar:${name}}
-      - ${externalBuild:${name}}/*.a
-      - ${externalBuild:${name}}/*.lib
-      - ${externalBuild:${name}}/*.pc
+      # - ${externalBuild:${name}}/*.a
+      # - ${externalBuild:${name}}/*.lib
+      # - ${externalBuild:${name}}/*.pc
 
     # kind: archive
     # format: zip
