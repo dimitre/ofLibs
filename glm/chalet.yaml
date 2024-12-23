@@ -31,7 +31,9 @@ targets:
     defines[platform:windows]:
       # this causes a clash, error: Command line error D8016 : '/Za' and '/fp:fast' command-line options are incompatible
       - GLM_ENABLE_FAST_MATH=OFF
-
+    defines[platform:web]:
+      - GLM_ENABLE_SIMD_AVX=OFF
+      - GLM_ENABLE_SIMD_AVX2=OFF
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
