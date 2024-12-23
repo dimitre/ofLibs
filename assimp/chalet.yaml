@@ -40,7 +40,8 @@ distribution:
       - ${external:${name}}/include
       - ${externalBuild:${name}}/include
       # - ${externalBuild:${name}}/${ar:usb}
-      # - ${externalBuild:${name}}/lib/${ar:${name}}
+    include[:!windows]:
+      - ${externalBuild:${name}}/lib/${ar:${name}}
     include[:windows]:
       - ${externalBuild:${name}}/lib/**.lib
       # - ${externalBuild:${name}}/*.a
