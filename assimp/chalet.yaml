@@ -37,7 +37,7 @@ distribution:
       - ${external:${name}}/include
       - ${externalBuild:${name}}/include
       # - ${externalBuild:${name}}/${ar:usb}
-      - ${externalBuild:${name}}/${ar:${name}}
+      - ${externalBuild:${name}}/lib/${ar:${name}}
       # - ${externalBuild:${name}}/*.a
       # - ${externalBuild:${name}}/*.lib
       # - ${externalBuild:${name}}/*.pc
