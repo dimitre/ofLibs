@@ -30,6 +30,9 @@ distribution:
       - ${externalBuild:${name}}/gen_include
       - ${externalBuild:${name}}/${ar:libusb}
       - ${externalBuild:${name}}/*.a
+      - ${externalBuild:${name}}/*.lib
+      - ${externalBuild:${name}}/*.pc
+
     # kind: archive
     # format: zip
     # include:
