@@ -78,15 +78,15 @@ jobs:
         run: |
           chalet --version
 
-      - name: emscripten/rpi - chalet config
-        if: matrix.cfg.platform == 'emscripten' || matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+      - name: emscripten - chalet config
+        if: matrix.cfg.platform == 'emscripten'
         shell: bash
         run: chalet configure --toolchain ${{matrix.cfg.prefix}}
 
-      # - name: RPI - chalet config
-      #   if: matrix.cfg.platform == 'rpi-aarch64'
-      #   shell: bash
-      #   run: chalet configure --toolchain ${{matrix.cfg.prefix}}
+      - name: rpi - chalet config
+        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        shell: bash
+        run: chalet configure --toolchain ${{matrix.cfg.prefix}}-gcc
 
       - name: Chalet Bundle
         shell: bash
