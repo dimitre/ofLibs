@@ -1,4 +1,4 @@
-name: libusb
+name: usb
 
 on:
   push:
