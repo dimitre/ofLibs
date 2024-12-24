@@ -33,7 +33,7 @@ targets:
       - ASSIMP_BUILD_ZLIB=ON
     defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
       - ASSIMP_WARNINGS_AS_ERRORS=OFF
-      - ASSIMP_BUILD_ZLIB=ON
+      # - ASSIMP_BUILD_ZLIB=ON
 
 distribution:
   assimp:
