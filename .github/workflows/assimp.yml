@@ -82,6 +82,7 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
+        if: matrix.cfg.platform != 'ios'
         shell: bash
         run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
