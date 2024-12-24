@@ -63,12 +63,15 @@ targets:
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
-distribution:
-  zlib:
-    kind: archive
-    format: zip
-    include:
-      - ${externalBuild:zlib}/${ar:libz}
+# distribution:
+#   zlib:
+#     kind: archive
+#     format: zip
+#     include:
+#       # - ${externalBuild:zlib}/${ar:zlib}
+#       - ${externalBuild:zlib}/*.a
+#       - ${externalBuild:zlib}/*.lib
+#       - ${externalBuild:zlib}/*.pc
 
   FreeImage:
     kind: archive
