@@ -63,7 +63,7 @@ targets:
       # - DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-    defines[platform:web]:
+    defines[platform:{web,windows}]:
       - BUILD_ZLIB=ON
 
 distribution:
