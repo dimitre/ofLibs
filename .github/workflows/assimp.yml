@@ -17,19 +17,21 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { platform: emscripten, os: ubuntu-24.04, prefix: emscripten }
-          - { platform: linux64, os: ubuntu-24.04 }
-          - { platform: osx, os: macos-latest }
-          - { platform: vs, os: windows-latest }
+          - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
+          - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
+          - { platform: osx, os: macos-latest, toolchain: apple-llvm }
+          - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
               platform: rpi-aarch64,
               os: ubuntu-24.04,
               prefix: aarch64-linux-gnu,
+              toolchain: aarch64-linux-gnu-gcc,
             }
           - {
               platform: rpi-armv6l,
               os: ubuntu-24.04,
               prefix: arm-linux-gnueabihf,
+              toolchain: arm-linux-gnueabihf-gcc,
             }
 
     runs-on: ${{ matrix.cfg.os }}
@@ -61,13 +63,6 @@ jobs:
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
-      # - name: Apt
-      #   if: runner.os == 'Linux'
-      #   uses: awalsh128/cache-apt-pkgs-action@latest
-      #   with:
-      #     packages:
-      #     version: 1.0
-
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
         with:
@@ -85,16 +80,9 @@ jobs:
         run: |
           chalet --version
 
-      # FIXME: combine this and rpi in just one. maybe use another variable than toolchain.
-      - name: emscripten - chalet config
-        if: matrix.cfg.platform == 'emscripten'
+      - name: Chalet Configure
         shell: bash
-        run: chalet configure --toolchain ${{matrix.cfg.prefix}}
-
-      - name: rpi — chalet config
-        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
-        shell: bash
-        run: chalet configure --toolchain ${{matrix.cfg.prefix}}-gcc
+        run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
       - name: Chalet Bundle
         shell: bash

@@ -62,6 +62,7 @@ jobs:
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
+
       # - name: Apt
       #   if: runner.os == 'Linux'
       # uses: awalsh128/cache-apt-pkgs-action@latest
@@ -87,7 +88,6 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        # if: matrix.cfg.platform == 'emscripten'
         shell: bash
         run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 

@@ -17,11 +17,22 @@ jobs:
     strategy:
       matrix:
         cfg:
-          # - { platform: emscripten, os: ubuntu-24.04 }
-          - { platform: linux64, os: ubuntu-24.04 }
-          - { platform: osx, os: macos-latest }
-          - { platform: vs, os: windows-latest }
-          # - { platform: arm64, os: ubuntu-24.04 }
+          - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
+          - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
+          - { platform: osx, os: macos-latest, toolchain: apple-llvm }
+          - { platform: vs, os: windows-latest, toolchain: vs-stable }
+          - {
+              platform: rpi-aarch64,
+              os: ubuntu-24.04,
+              prefix: aarch64-linux-gnu,
+              toolchain: aarch64-linux-gnu-gcc,
+            }
+          - {
+              platform: rpi-armv6l,
+              os: ubuntu-24.04,
+              prefix: arm-linux-gnueabihf,
+              toolchain: arm-linux-gnueabihf-gcc,
+            }
 
     runs-on: ${{ matrix.cfg.os }}
     defaults:
@@ -30,15 +41,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - name: Emscripten Install
-      #   if: matrix.cfg.platform == 'emscripten'
-      #   uses: mymindstorm/setup-emsdk@v14
-      #   with:
-      #     version: 3.1.74
-      #     actions-cache-folder: "emsdk-cache"
+      - name: Emscripten Install
+        if: matrix.cfg.platform == 'emscripten'
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 3.1.74
+          actions-cache-folder: "emsdk-cache"
+
+      - name: RPI - apt multistrap
+        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: multistrap gcc-${{matrix.cfg.prefix}} g++-${{matrix.cfg.prefix}}
+          version: 1.0
+
+      - name: RPI - multistrap
+        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        shell: bash
+        run: |
+          mkdir -p raspbian/etc/apt/apt.conf.d/
+          echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
+          multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
       - name: Apt
-        if: runner.os == 'Linux'
+        if: matrix.cfg.platform == 'linux64'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: libwayland-dev libxkbcommon-dev libx11-dev xorg-dev libglu1-mesa-dev
@@ -61,10 +87,23 @@ jobs:
         run: |
           chalet --version
 
+      - name: Chalet Configure
+        shell: bash
+        run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
+
       - name: Chalet Bundle
         shell: bash
         run: |
           chalet bundle
+
+      - name: LS check lib folders
+        shell: bash
+        run: |
+          echo '-------'
+          ls -alfR build/**/ext.${{ github.workflow }}/
+          echo '-------'
+          ls -alfR chalet_external/${{ github.workflow }}/
+          echo '-------'
 
       - name: LS check built lib
         shell: bash
