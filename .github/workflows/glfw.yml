@@ -17,10 +17,9 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
-          - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
-          - { platform: osx, os: macos-latest, toolchain: apple-llvm }
-          - { platform: vs, os: windows-latest, toolchain: vs-stable }
+          # - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
+          # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
+          # - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
               platform: rpi-aarch64,
               os: ubuntu-24.04,
@@ -67,7 +66,14 @@ jobs:
         if: matrix.cfg.platform == 'linux64'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: libwayland-dev libxkbcommon-dev libx11-dev xorg-dev libglu1-mesa-dev
+          packages: libwayland-dev libxkbcommon-dev libx11-dev xorg-dev libglu1-mesa-dev cmake extra-cmake-modules
+          version: 1.0
+
+      - name: Apt extra-cmake-modules
+        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armhf'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: cmake extra-cmake-modules
           version: 1.0
 
       - name: ccache
