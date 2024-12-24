@@ -27,9 +27,9 @@ targets:
       - ENABLE_BITCODE=OFF
       - ENABLE_ARC=OFF
       - ENABLE_VISIBILITY=OFF
-    defines[platform:macos]:
-      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+    # defines[platform:macos]:
+    #   - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+    #   - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
 
   assimp:
     kind: cmakeProject
