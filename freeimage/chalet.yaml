@@ -10,6 +10,7 @@ externalDependencies:
     repository: https://github.com/danoli3/FreeImage
     tag: "3.19.7"
     kind: git
+
 targets:
   zlib:
     kind: cmakeProject
@@ -29,6 +30,7 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+
   FreeImage:
     kind: cmakeProject
     location: ${external:${name}}
@@ -60,12 +62,14 @@ targets:
       # - DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+
 distribution:
   zlib:
     kind: archive
     format: zip
     include:
       - ${externalBuild:zlib}/${ar:libz}
+
   FreeImage:
     kind: archive
     format: zip

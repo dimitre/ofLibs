@@ -17,22 +17,20 @@ jobs:
     strategy:
       matrix:
         cfg:
-          # - { platform: emscripten, os: ubuntu-24.04, prefix: emscripten }
-          # - { platform: linux64, os: ubuntu-24.04 }
-          # - { platform: osx, os: macos-latest }
-          # - { platform: vs, os: windows-latest }
+          - { platform: emscripten, os: ubuntu-24.04, prefix: emscripten }
+          - { platform: linux64, os: ubuntu-24.04 }
+          - { platform: osx, os: macos-latest }
+          - { platform: vs, os: windows-latest }
           - {
               platform: rpi-aarch64,
               os: ubuntu-24.04,
               prefix: aarch64-linux-gnu,
             }
-          # - {
-          #     platform: rpi-armv6l,
-          #     os: ubuntu-24.04,
-          #     prefix: arm-linux-gnueabihf,
-          #   }
-
-          # - { platform: arm64, os: ubuntu-24.04 }
+          - {
+              platform: rpi-armv6l,
+              os: ubuntu-24.04,
+              prefix: arm-linux-gnueabihf,
+            }
 
     runs-on: ${{ matrix.cfg.os }}
     defaults:
