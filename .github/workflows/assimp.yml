@@ -89,7 +89,11 @@ jobs:
       - name: Chalet Configure ios
         if: matrix.cfg.platform == 'ios'
         shell: bash
-        run: chalet configure --os-target-name iphoneos
+        run: |
+          #
+          chalet configure --os-target-name iphoneos -a arm64
+          # chalet configure --os-target-name iphonesimulator
+          # chalet configure --os-target-name {iphoneos,iphonesimulator}
 
       - name: Chalet Bundle
         shell: bash
