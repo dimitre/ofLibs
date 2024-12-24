@@ -69,14 +69,14 @@ targets:
 
     # this can be removed soon, if the cross compiler points architecture target, not the actual machine
     defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
-      - GLM_TEST_ENABLE_SIMD_NEON=OFF
-      - GLM_ENABLE_SIMD_AVX=ON
-      - GLM_ENABLE_SIMD_AVX2=ON
-      - GLM_ENABLE_SIMD_SSE2=ON
-      - GLM_ENABLE_SIMD_SSE3=ON
-      - GLM_ENABLE_SIMD_SSSE3=ON
-      - GLM_ENABLE_SIMD_SSE4_1=ON
-      - GLM_ENABLE_SIMD_SSE4_2=ON
+      - GLM_TEST_ENABLE_SIMD_NEON=ON
+      - GLM_ENABLE_SIMD_AVX=OFF
+      - GLM_ENABLE_SIMD_AVX2=OFF
+      - GLM_ENABLE_SIMD_SSE2=OFF
+      - GLM_ENABLE_SIMD_SSE3=OFF
+      - GLM_ENABLE_SIMD_SSSE3=OFF
+      - GLM_ENABLE_SIMD_SSE4_1=OFF
+      - GLM_ENABLE_SIMD_SSE4_2=OFF
 
 distribution:
   glm:
