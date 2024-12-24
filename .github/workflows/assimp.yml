@@ -17,10 +17,21 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { platform: emscripten, os: ubuntu-24.04 }
+          - { platform: emscripten, os: ubuntu-24.04, prefix: emscripten }
           - { platform: linux64, os: ubuntu-24.04 }
           - { platform: osx, os: macos-latest }
           - { platform: vs, os: windows-latest }
+          - {
+              platform: rpi-aarch64,
+              os: ubuntu-24.04,
+              prefix: aarch64-linux-gnu,
+            }
+          - {
+              platform: rpi-armv6l,
+              os: ubuntu-24.04,
+              prefix: arm-linux-gnueabihf,
+            }
+
           # - { platform: arm64, os: ubuntu-24.04 }
 
     runs-on: ${{ matrix.cfg.os }}
@@ -36,6 +47,21 @@ jobs:
         with:
           version: 3.1.74
           actions-cache-folder: "emsdk-cache"
+
+      - name: RPI - apt multistrap
+        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: multistrap gcc-${{matrix.cfg.prefix}} g++-${{matrix.cfg.prefix}}
+          version: 1.0
+
+      - name: RPI - multistrap
+        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        shell: bash
+        run: |
+          mkdir -p raspbian/etc/apt/apt.conf.d/
+          echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
+          multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
       # - name: Apt
       #   if: runner.os == 'Linux'
@@ -61,10 +87,16 @@ jobs:
         run: |
           chalet --version
 
-      - name: Chalet Configure
+      # FIXME: combine this and rpi in just one. maybe use another variable than toolchain.
+      - name: emscripten - chalet config
         if: matrix.cfg.platform == 'emscripten'
         shell: bash
-        run: chalet configure --toolchain emscripten
+        run: chalet configure --toolchain ${{matrix.cfg.prefix}}
+
+      - name: rpi — chalet config
+        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        shell: bash
+        run: chalet configure --toolchain ${{matrix.cfg.prefix}}-gcc
 
       - name: Chalet Bundle
         shell: bash

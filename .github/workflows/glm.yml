@@ -54,9 +54,10 @@ jobs:
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: multistrap gcc-${{matrix.cfg.prefix}} g++-${{matrix.cfg.prefix}}
+          version: 1.0
+
           # libasound2t64 libasound2t64:${{matrix.cfg.arch}}
           # packages: multistrap gcc-${{matrix.configuration.prefix}} g++-${{matrix.configuration.prefix}} libasound2t64 libasound2t64:${{matrix.configuration.arch}}
-          version: 1.0
 
       - name: RPI - multistrap
         if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
