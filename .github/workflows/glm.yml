@@ -17,23 +17,22 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { platform: emscripten, os: ubuntu-24.04, prefix: emscripten }
-          - { platform: linux64, os: ubuntu-24.04 }
-          - { platform: osx, os: macos-latest }
-          - { platform: vs, os: windows-latest }
-          - { platform: arm64, os: ubuntu-24.04 }
+          - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
+          - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
+          - { platform: osx, os: macos-latest, toolchain: apple-llvm }
+          - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
               platform: rpi-aarch64,
               os: ubuntu-24.04,
               prefix: aarch64-linux-gnu,
+              toolchain: aarch64-linux-gnu-gcc,
             }
           - {
               platform: rpi-armv6l,
               os: ubuntu-24.04,
               prefix: arm-linux-gnueabihf,
+              toolchain: arm-linux-gnueabihf-gcc,
             }
-          # - { libs: armv6l, arch: armhf, prefix: arm-linux-gnueabihf }
-          # - { libs: aarch64, arch: arm64, prefix: aarch64-linux-gnu }
 
     runs-on: ${{ matrix.cfg.os }}
     defaults:
@@ -84,10 +83,10 @@ jobs:
         run: |
           chalet --version
 
-      - name: emscripten - chalet config
-        if: matrix.cfg.platform == 'emscripten'
+      - name: Chalet Configure
+        # if: matrix.cfg.platform == 'emscripten'
         shell: bash
-        run: chalet configure --toolchain ${{matrix.cfg.prefix}}
+        run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
       - name: rpi — chalet config
         if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
