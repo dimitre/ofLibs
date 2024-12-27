@@ -38,22 +38,6 @@ targets:
 
       # - CMAKE_TOOLCHAIN_FILE=/Users/d/src/ofLibs/_ios-cmake/ios.toolchain.cmake
       # - PLATFORM=OS64COMBINED
-      # - CMAKE_SYSTEM_NAME=iOS
-      # - CMAKE_OSX_ARCHITECTURES="x86_64;arm64"
-      # - CMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=NO
-      # - CMAKE_IOS_INSTALL_COMBINED=YES
-      # - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
-      # - CMAKE_INSTALL_PREFIX=install
-      # - CMAKE_OSX_ARCHITECTURES[sdk=iphoneos*]="arm64"
-      # - CMAKE_OSX_ARCHITECTURES[sdk=iphonesimulator*]="x86_64;arm64"
-
-      # - CMAKE_XCODE_GENERATE_SCHEME=ON
-      # - ARCHS="x86_64;arm64"
-      # - CMAKE_XCODE_ATTRIBUTE_ARCHS[sdk=iphoneos*]="arm64"
-      # - CMAKE_XCODE_ATTRIBUTE_VALID_ARCHS[sdk=iphoneos*]="arm64"
-      # - CMAKE_XCODE_ATTRIBUTE_ARCHS[sdk=iphonesimulator*]="x86_64;arm64"
-      # - CMAKE_XCODE_ATTRIBUTE_VALID_ARCHS[sdk=iphonesimulator*]="x86_64;arm64"
-      # - APPLE_TARGET_TRIPLE_INT=arm64-x86_64-apple-ios11.0
 
   assimp:
     kind: cmakeProject
@@ -80,6 +64,7 @@ targets:
       - ASSIMP_BUILD_ZLIB=ON
     defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
       - ASSIMP_WARNINGS_AS_ERRORS=OFF
+      - CMAKE_C_FLAGS="-D_TIME_BITS=32"
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${external:zlib}
