@@ -70,6 +70,7 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
       - name: Install Chalet
+        if: matrix.cfg.platform != 'ios'
         uses: jaxxstorm/action-install-gh-release@v1.14.0
         with:
           repo: chalet-org/chalet
@@ -78,6 +79,7 @@ jobs:
           prerelease: "true"
 
       - name: Chalet Test / Version
+        if: matrix.cfg.platform != 'ios'
         run: |
           chalet --version
 
@@ -86,23 +88,20 @@ jobs:
         shell: bash
         run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
-      - name: Chalet Configure ios
-        if: matrix.cfg.platform == 'ios'
-        shell: bash
-        run: |
-          #
-          chalet configure --os-target-name iphoneos -a arm64e
-          # chalet configure --os-target-name iphonesimulator
-          # chalet configure --os-target-name {iphoneos,iphonesimulator}
+      # - name: Chalet Configure ios
+      #   if: matrix.cfg.platform == 'ios'
+      #   shell: bash
+      #   run: |
+      #     #
+      #     chalet configure --os-target-name iphoneos -a arm64e
+      #     # chalet configure --os-target-name iphonesimulator
+      #     # chalet configure --os-target-name {iphoneos,iphonesimulator}
 
-      - name: Chalet iOS
+      - name: iOS
         if: matrix.cfg.platform == 'ios'
         shell: bash
         run: |
-          chalet bundle
-        env:
-          CMAKE_TOOLCHAIN_FILE: ../_ios-cmake/ios.toolchain.cmake
-          PLATFORM: SIMULATORARM64
+          ./assimp.sh
 
       - name: Chalet Bundle
         if: matrix.cfg.platform != 'ios'

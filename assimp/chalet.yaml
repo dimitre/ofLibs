@@ -64,7 +64,6 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
-
       - ASSIMP_NO_EXPORT=ON
       - ASSIMP_BUILD_TESTS=OFF
       - ASSIMP_BUILD_SAMPLES=OFF
@@ -72,6 +71,7 @@ targets:
       - ASSIMP_BUILD_3MF_IMPORTER=OFF
       - ASSIMP_INJECT_DEBUG_POSTFIX=OFF
       - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
+      - ASSIMP_BUILD_ZLIB=ON
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
@@ -86,25 +86,24 @@ targets:
       # - ASSIMP_BUILD_ZLIB=ON
 
 distribution:
-  zlib:
-    kind: archive
-    format: zip
-    include:
-      - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
-      - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/${ar:z}
-    # include[:!windows]:
-    include[:windows]:
-      - ${externalBuild:${name}}/lib/**.lib
-  # assimp:
+  # zlib:
   #   kind: archive
   #   format: zip
   #   include:
   #     - ${external:${name}}/LICENSE**
   #     - ${external:${name}}/include
   #     - ${externalBuild:${name}}/include
-  #   include[:!windows]:
-  #     - ${externalBuild:${name}}/lib/${ar:${name}}
+  #     - ${externalBuild:${name}}/${ar:z}
   #   include[:windows]:
   #     - ${externalBuild:${name}}/lib/**.lib
+  assimp:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/LICENSE**
+      - ${external:${name}}/include
+      - ${externalBuild:${name}}/include
+    include[:!windows]:
+      - ${externalBuild:${name}}/lib/${ar:${name}}
+    include[:windows]:
+      - ${externalBuild:${name}}/lib/**.lib
