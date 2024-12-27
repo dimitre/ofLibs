@@ -113,7 +113,7 @@ jobs:
         if: matrix.cfg.platform == 'ios'
         shell: bash
         run: |
-          ./assimp.sh
+          ./${{ github.workflow }}.sh
 
       - name: LS check lib folders
         if: matrix.cfg.platform != 'ios'

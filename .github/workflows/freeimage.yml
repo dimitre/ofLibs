@@ -105,6 +105,12 @@ jobs:
         run: |
           chalet bundle
 
+      - name: iOS
+        if: matrix.cfg.platform == 'ios'
+        shell: bash
+        run: |
+          ./${{ github.workflow }}.sh
+
       - name: LS check lib folders
         if: matrix.cfg.platform != 'ios'
         shell: bash
