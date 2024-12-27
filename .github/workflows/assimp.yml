@@ -91,11 +91,21 @@ jobs:
         shell: bash
         run: |
           #
-          chalet configure --os-target-name iphoneos -a arm64
+          chalet configure --os-target-name iphoneos -a arm64e
           # chalet configure --os-target-name iphonesimulator
           # chalet configure --os-target-name {iphoneos,iphonesimulator}
 
+      - name: Chalet iOS
+        if: matrix.cfg.platform == 'ios'
+        shell: bash
+        run: |
+          chalet bundle
+        env:
+          CMAKE_TOOLCHAIN_FILE: ../_ios-cmake/ios.toolchain.cmake
+          PLATFORM: SIMULATORARM64
+
       - name: Chalet Bundle
+        if: matrix.cfg.platform != 'ios'
         shell: bash
         run: |
           chalet bundle
