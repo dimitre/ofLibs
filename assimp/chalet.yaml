@@ -64,7 +64,7 @@ targets:
       - ASSIMP_BUILD_ZLIB=ON
     defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
       - ASSIMP_WARNINGS_AS_ERRORS=OFF
-      - CMAKE_C_FLAGS="-D_TIME_BITS=32"
+      # - CMAKE_C_FLAGS="-D_TIME_BITS=32"
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${external:zlib}
