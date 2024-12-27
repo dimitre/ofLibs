@@ -1,13 +1,15 @@
 # ALTpothecary
 
 ## TODO
-- [ ] cross compile for raspberry pi
 - [ ] make install scripts for all platforms (script? bash? python? c++? autodetect platform?)
 - [ ] make correct folders inside .zip in each library
 - [ ] add more libraries
 - [ ] add library with dependencies
+- [ ] test ios/simulator built libs
 
 ## DONE
+- [x] build ios / simulator some lib
+- [x] cross compile for raspberry pi
 - [x] compile one library with emscripten
 - [x] add license to libraries .zip
 
