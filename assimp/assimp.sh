@@ -1,7 +1,5 @@
 #!/bin/bash
 cd "$(dirname "$0")"
-
-# rm -rf buildios
 LIB="assimp"
 # DRYRUN="echo --------->>>> echo"
 DRYRUN=""
@@ -27,19 +25,13 @@ COMMON="-DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_TOOLCHAIN_FILE=../../_ios-cmake/ios.toolchain.cmake \
 "
 
-# ${DRYRUN} cd ${FOLDERIOS}
 ${DRYRUN} cmake -S chalet_external/${LIB} -B ${FOLDERIOS} -G Xcode ${COMMON} \
     -DPLATFORM=OS64
 ${DRYRUN} cmake --build ${FOLDERIOS} --config Release
 
-
-# ${DRYRUN} cd ../${FOLDERSIM}
-# ${DRYRUN} cmake ../chalet_external/${LIB} -G Xcode ${COMMON} \
 ${DRYRUN} cmake -S chalet_external/${LIB} -B ${FOLDERSIM} -G Xcode ${COMMON} \
     -DPLATFORM=SIMULATOR64COMBINED
 ${DRYRUN} cmake --build ${FOLDERSIM} --config Release
-# ${DRYRUN} cd ..
-
 
 ${DRYRUN} rm -rf include
 ${DRYRUN} mkdir include
@@ -50,9 +42,7 @@ xcframework_flags+=" -library ${FOLDERSIM}/code/lib/Release/*.a"
 xcframework_flags+=" -library ${FOLDERIOS}/code/lib/Release/*.a"
 xcframework_flags+=" -headers include"
 
-# echo xcodebuild -create-xcframework ${xcframework_flags} -output ${LIB}.xcframework
 ${DRYRUN} xcodebuild -create-xcframework ${xcframework_flags} -output ${LIB}.xcframework
 
-mkdir dist
-zip -r dist/${LIB}.zip ${LIB}.xcframework
-# cmake --install . --prefix `pwd`/install
+${DRYRUN} mkdir dist
+${DRYRUN} zip -r dist/${LIB}.zip ${LIB}.xcframework
