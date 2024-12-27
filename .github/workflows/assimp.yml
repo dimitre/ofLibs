@@ -116,6 +116,7 @@ jobs:
           ./assimp.sh
 
       - name: LS check lib folders
+        if: matrix.cfg.platform != 'ios'
         shell: bash
         run: |
           echo '-------'
