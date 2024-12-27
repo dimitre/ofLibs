@@ -126,6 +126,7 @@ jobs:
           echo '-------'
 
       - name: LS check built lib
+        if: matrix.cfg.platform != 'ios'
         shell: bash
         run: |
           unzip dist/*.zip
