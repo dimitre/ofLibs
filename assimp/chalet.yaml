@@ -65,6 +65,7 @@ targets:
     defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
       - ASSIMP_WARNINGS_AS_ERRORS=OFF
       # - CMAKE_C_FLAGS="-D_TIME_BITS=32"
+      - CMAKE_C_FLAGS="-D_FILE_OFFSET_BITS=64"
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${external:zlib}
