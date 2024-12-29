@@ -59,14 +59,14 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
-    defines[platform:web]:
-      - ASSIMP_BUILD_ZLIB=ON
-    defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
-      - ASSIMP_BUILD_ZLIB=ON
-      # - ZLIB_ROOT=${externalBuild:zlib}
-      # - ZLIB_LIBRARY=${externalBuild:zlib}
-      # - ZLIB_INCLUDE_DIRS=${external:zlib}
-      # - ASSIMP_BUILD_ZLIB=ON
+    # defines[platform:web]:
+    # - ASSIMP_BUILD_ZLIB=ON
+    # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
+    # - ASSIMP_BUILD_ZLIB=ON
+    # - ZLIB_ROOT=${externalBuild:zlib}
+    # - ZLIB_LIBRARY=${externalBuild:zlib}
+    # - ZLIB_INCLUDE_DIRS=${external:zlib}
+    # - ASSIMP_BUILD_ZLIB=ON
     defines[toolchain:arm-linux-gnueabihf-gcc]:
       - CMAKE_C_FLAGS="-D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64"
 
