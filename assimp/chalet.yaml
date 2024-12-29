@@ -68,8 +68,8 @@ targets:
     # - ZLIB_LIBRARY=${externalBuild:zlib}
     # - ZLIB_INCLUDE_DIRS=${external:zlib}
     # - ASSIMP_BUILD_ZLIB=ON
-    defines[toolchain:arm-linux-gnueabihf-gcc]:
-      - CMAKE_C_FLAGS="-D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64"
+    # defines[toolchain:arm-linux-gnueabihf-gcc]:
+    # - CMAKE_C_FLAGS="-D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64"
 
 distribution:
   # zlib:
