@@ -47,6 +47,15 @@ jobs:
           version: 3.1.74
           actions-cache-folder: "emsdk-cache"
 
+      - name: Update emsdk
+        if: matrix.cfg.platform == 'emscripten'
+        run: |
+          emcc -v
+          emsdk update
+          emsdk install latest
+          emsdk activate latest
+          emcc -v
+
       - name: RPI - apt multistrap
         if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
@@ -63,18 +72,18 @@ jobs:
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
       - name: Apt
-        if: matrix.cfg.platform == 'linux64'
+        if: matrix.cfg.platform == 'linux64' || matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armhf'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: libwayland-dev libxkbcommon-dev libx11-dev xorg-dev libglu1-mesa-dev cmake extra-cmake-modules
           version: 1.0
 
-      - name: Apt extra-cmake-modules
-        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armhf'
-        uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: cmake extra-cmake-modules
-          version: 1.0
+      # - name: Apt extra-cmake-modules
+      #   if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armhf'
+      #   uses: awalsh128/cache-apt-pkgs-action@latest
+      #   with:
+      #     packages: cmake extra-cmake-modules
+      #     version: 1.0
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
