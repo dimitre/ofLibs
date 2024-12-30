@@ -31,6 +31,7 @@ jobs:
               os: ubuntu-24.04,
               prefix: arm-linux-gnueabihf,
               toolchain: arm-linux-gnueabihf-gcc,
+              env: [CMAKE_SYSROOT: ./raspbian],
             }
 
     runs-on: ${{ matrix.cfg.os }}
@@ -77,13 +78,6 @@ jobs:
         with:
           packages: libwayland-dev libxkbcommon-dev libx11-dev xorg-dev libglu1-mesa-dev cmake extra-cmake-modules
           version: 1.0
-
-      # - name: Apt extra-cmake-modules
-      #   if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armhf'
-      #   uses: awalsh128/cache-apt-pkgs-action@latest
-      #   with:
-      #     packages: cmake extra-cmake-modules
-      #     version: 1.0
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
