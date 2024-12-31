@@ -39,6 +39,7 @@ jobs:
     defaults:
       run:
         working-directory: ./${{ github.workflow }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -79,7 +80,6 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
       - name: Install Chalet
-        # if: matrix.cfg.platform != 'ios'
         uses: jaxxstorm/action-install-gh-release@v1.14.0
         with:
           repo: chalet-org/chalet
@@ -88,29 +88,12 @@ jobs:
           prerelease: "true"
 
       - name: Chalet Test / Version
-        # if: matrix.cfg.platform != 'ios'
         run: |
           chalet --version
 
       - name: Chalet Configure
-        # if: matrix.cfg.platform != 'ios'
         shell: bash
         run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
-
-      # - name: Chalet Configure ios
-      #   if: matrix.cfg.platform == 'ios'
-      #   shell: bash
-      #   run: |
-      #     #
-      #     chalet configure --os-target-name iphoneos -a arm64e
-      #     # chalet configure --os-target-name iphonesimulator
-      #     # chalet configure --os-target-name {iphoneos,iphonesimulator}
-
-      # - name: Chalet Configure IOS
-      #   if: matrix.cfg.platform == 'ios'
-      #   shell: bash
-      #   run: |
-      #     chalet configure
 
       - name: Chalet Bundle
         if: matrix.cfg.platform != 'ios'
@@ -118,7 +101,7 @@ jobs:
         run: |
           chalet bundle
 
-      - name: iOS
+      - name: iOS Bundle
         if: matrix.cfg.platform == 'ios'
         shell: bash
         run: |

@@ -83,3 +83,22 @@ brew --cellar fmt
 mkdir dist
 ls $(brew --cellar fmt)
 cp $(brew --cellar fmt)/**/*.a dist
+
+
+
+LEFTOVERS
+
+      # - name: Chalet Configure ios
+      #   if: matrix.cfg.platform == 'ios'
+      #   shell: bash
+      #   run: |
+      #     #
+      #     chalet configure --os-target-name iphoneos -a arm64e
+      #     # chalet configure --os-target-name iphonesimulator
+      #     # chalet configure --os-target-name {iphoneos,iphonesimulator}
+
+      # - name: Chalet Configure IOS
+      #   if: matrix.cfg.platform == 'ios'
+      #   shell: bash
+      #   run: |
+      #     chalet configure
