@@ -44,9 +44,10 @@ freetype, linux64, package, libfreetype6-dev
 freetype, macos, package, freetype
 ```
 
-
 ## Libraries CORE
 
+
+- [x] assimp
 - [ ] cairo
 - [ ] curl
 - [x] freetype
@@ -54,26 +55,24 @@ freetype, macos, package, freetype
 - [x] glfw
 - [x] glm
 - [ ] json
+- [x] libusb
+- [ ] libxml2
+- [x] opencv (missing emscripten)
 - [ ] openssl
 - [ ] pixman
 - [ ] pugixml
 - [ ] rtAudio
+- [ ] svgtiny
 - [ ] tess2
 - [ ] uriparser
 - [ ] utf8
+
 
 - [ ] zlib
 - [ ] libpng
 - [ ] brotli
 - [ ] fmod
 - [ ] fmt
-
-- [x] opencv (missing emscripten)
-- [x] libusb
-- [ ] assimp
-- [ ] libxml2
-- [ ] svgtiny
-
 
 
 brew info fmt
