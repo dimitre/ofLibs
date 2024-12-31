@@ -93,7 +93,7 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        if: matrix.cfg.platform != 'ios'
+        # if: matrix.cfg.platform != 'ios'
         shell: bash
         run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
@@ -106,11 +106,11 @@ jobs:
       #     # chalet configure --os-target-name iphonesimulator
       #     # chalet configure --os-target-name {iphoneos,iphonesimulator}
 
-      - name: Chalet Configure IOS
-        if: matrix.cfg.platform == 'ios'
-        shell: bash
-        run: |
-          chalet configure
+      # - name: Chalet Configure IOS
+      #   if: matrix.cfg.platform == 'ios'
+      #   shell: bash
+      #   run: |
+      #     chalet configure
 
       - name: Chalet Bundle
         if: matrix.cfg.platform != 'ios'
