@@ -11,7 +11,6 @@ permissions:
 
 env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
   glfw_matrix:
     strategy:
@@ -31,7 +30,11 @@ jobs:
               os: ubuntu-24.04,
               prefix: arm-linux-gnueabihf,
               toolchain: arm-linux-gnueabihf-gcc,
-              env: [CMAKE_SYSROOT: ./raspbian],
+              env: [
+                CMAKE_SYSROOT: ./raspbian
+                CMAKE_SYSTEM_NAME: Linux
+
+              ],
             }
 
     runs-on: ${{ matrix.cfg.os }}
