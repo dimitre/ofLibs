@@ -71,6 +71,7 @@ targets:
       - WITH_JPEG=OFF
       - WITH_PROTOBUF=OFF
       - BUILD_IPP_IW=OFF
+      - WITH_ITT=OFF
       # - BUILD_ZLIB=OFF
     defines[platform:windows]:
       - CPU_BASELINE=""
