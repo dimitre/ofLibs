@@ -48,6 +48,11 @@ freetype, macos, package, freetype
 
 
 - [x] assimp
+it seems to be building all platforms.
+I'm not sure emscripten is ok. ```wasm-tools validate libassimp.a``` returns
+```error: failed to parse `libassimp.a`: input bytes aren't valid utf-8```
+TODO: Check lib and headers paths. maybe add a step to put in the right folder for each platform.
+
 - [ ] cairo
 - [ ] curl
 - [x] freetype
