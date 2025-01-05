@@ -67,7 +67,7 @@ ok for macos.
 - [ ] pugixml (needed by core ofXml)
 - [ ] rtAudio
 - [ ] svgtiny (needed by addon ofxSvg, to be replaced to a new one)
-- [ ] tess2
+- [x] tess2
 - [ ] uriparser
 - [ ] utf8
 
