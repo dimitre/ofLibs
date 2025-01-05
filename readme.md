@@ -121,6 +121,8 @@ vs_assimp, vs_curl, vs_FreeImage, vs_freetype, vs_glew, vs_glfw, vs_glm, vs_json
 ```
 
 | emscripten_assimp | ios_assimp | linux64_assimp | osx_assimp | rpi-aarch64_assimp | rpi-armv6l_assimp | vs_assimp |
+|---|---|---|---|---|---|---|
+| emscripten_assimp | ios_assimp | linux64_assimp | osx_assimp | rpi-aarch64_assimp | rpi-armv6l_assimp | vs_assimp |
 | emscripten_curl | ios_curl | linux64_curl | osx_curl | rpi-aarch64_curl | rpi-armv6l_curl | vs_curl |
 | emscripten_FreeImage | ios_FreeImage | linux64_FreeImage | osx_FreeImage | rpi-aarch64_FreeImage | rpi-armv6l_FreeImage | vs_FreeImage |
 | emscripten_freetype | ios_freetype | linux64_freetype | osx_freetype | rpi-aarch64_freetype | rpi-armv6l_freetype | vs_freetype |
