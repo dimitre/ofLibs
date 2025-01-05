@@ -20,6 +20,7 @@ env:
 jobs:
   cairo_matrix:
     strategy:
+      fail-fast: false
       matrix:
         cfg:
           - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
