@@ -67,6 +67,7 @@ ok for macos.
 - [x] pugixml (needed by core ofXml)
 - [ ] rtAudio (maybe not needed anymore)
 - [ ] svgtiny (needed by addon ofxSvg, to be replaced to a new one)
+to build svgtiny additional libraries are needed libwapcaplet & libdom
 - [x] tess2
 - [x] uriparser
 - [x] utf8
