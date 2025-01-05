@@ -68,7 +68,7 @@ ok for macos.
 - [ ] rtAudio
 - [ ] svgtiny (needed by addon ofxSvg, to be replaced to a new one)
 - [x] tess2
-- [ ] uriparser
+- [x] uriparser
 - [ ] utf8
 
 - [ ] openssl (curl dependency)
