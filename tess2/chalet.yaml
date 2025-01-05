@@ -40,7 +40,8 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
       - ${externalBuild:${name}}/include
-    include[:!windows]:
-      - ${externalBuild:${name}}/lib/${ar:${name}}
-    include[:windows]:
-      - ${externalBuild:${name}}/lib/**.lib
+      - ${externalBuild:${name}}/${ar:${name}}
+    # include[:!windows]:
+    #   - ${externalBuild:${name}}/${ar:${name}}
+    # include[:windows]:
+    #   - ${externalBuild:${name}}/lib/**.lib
