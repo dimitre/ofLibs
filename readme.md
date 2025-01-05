@@ -111,7 +111,6 @@ cp $(brew --cellar fmt)/**/*.a dist
 
 ##  Test TSV
 ```csv
-2025-01-05 13:57:53
 emscripten_assimp, emscripten_curl, emscripten_FreeImage, emscripten_freetype, emscripten_glew, emscripten_glfw, emscripten_glm, emscripten_json, emscripten_libusb, emscripten_libxml2, emscripten_opencv, emscripten_pugixml, emscripten_tess2, emscripten_uriparser, emscripten_usb, emscripten_utfcpp,
 ios_assimp, ios_curl, ios_FreeImage, ios_freetype, ios_glew, ios_glfw, ios_glm, ios_json, ios_libusb, ios_libxml2, ios_opencv, ios_pugixml, ios_tess2, ios_uriparser, ios_usb, ios_utfcpp,
 linux64_assimp, linux64_curl, linux64_FreeImage, linux64_freetype, linux64_glew, linux64_glfw, linux64_glm, linux64_json, linux64_libusb, linux64_libxml2, linux64_opencv, linux64_pugixml, linux64_tess2, linux64_uriparser, linux64_usb, linux64_utfcpp,
