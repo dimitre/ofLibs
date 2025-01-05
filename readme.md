@@ -119,3 +119,20 @@ rpi-aarch64_assimp, rpi-aarch64_curl, rpi-aarch64_FreeImage, rpi-aarch64_freetyp
 rpi-armv6l_assimp, rpi-armv6l_curl, rpi-armv6l_FreeImage, rpi-armv6l_freetype, rpi-armv6l_glew, rpi-armv6l_glfw, rpi-armv6l_glm, rpi-armv6l_json, rpi-armv6l_libusb, rpi-armv6l_libxml2, rpi-armv6l_opencv, rpi-armv6l_pugixml, rpi-armv6l_tess2, rpi-armv6l_uriparser, rpi-armv6l_usb, rpi-armv6l_utfcpp,
 vs_assimp, vs_curl, vs_FreeImage, vs_freetype, vs_glew, vs_glfw, vs_glm, vs_json, vs_libusb, vs_libxml2, vs_opencv, vs_pugixml, vs_tess2, vs_uriparser, vs_usb, vs_utfcpp,
 ```
+
+| emscripten_assimp | ios_assimp | linux64_assimp | osx_assimp | rpi-aarch64_assimp | rpi-armv6l_assimp | vs_assimp |
+| emscripten_curl | ios_curl | linux64_curl | osx_curl | rpi-aarch64_curl | rpi-armv6l_curl | vs_curl |
+| emscripten_FreeImage | ios_FreeImage | linux64_FreeImage | osx_FreeImage | rpi-aarch64_FreeImage | rpi-armv6l_FreeImage | vs_FreeImage |
+| emscripten_freetype | ios_freetype | linux64_freetype | osx_freetype | rpi-aarch64_freetype | rpi-armv6l_freetype | vs_freetype |
+| emscripten_glew | ios_glew | linux64_glew | osx_glew | rpi-aarch64_glew | rpi-armv6l_glew | vs_glew |
+| emscripten_glfw | ios_glfw | linux64_glfw | osx_glfw | rpi-aarch64_glfw | rpi-armv6l_glfw | vs_glfw |
+| emscripten_glm | ios_glm | linux64_glm | osx_glm | rpi-aarch64_glm | rpi-armv6l_glm | vs_glm |
+| emscripten_json | ios_json | linux64_json | osx_json | rpi-aarch64_json | rpi-armv6l_json | vs_json |
+| emscripten_libusb | ios_libusb | linux64_libusb | osx_libusb | rpi-aarch64_libusb | rpi-armv6l_libusb | vs_libusb |
+| emscripten_libxml2 | ios_libxml2 | linux64_libxml2 | osx_libxml2 | rpi-aarch64_libxml2 | rpi-armv6l_libxml2 | vs_libxml2 |
+| emscripten_opencv | ios_opencv | linux64_opencv | osx_opencv | rpi-aarch64_opencv | rpi-armv6l_opencv | vs_opencv |
+| emscripten_pugixml | ios_pugixml | linux64_pugixml | osx_pugixml | rpi-aarch64_pugixml | rpi-armv6l_pugixml | vs_pugixml |
+| emscripten_tess2 | ios_tess2 | linux64_tess2 | osx_tess2 | rpi-aarch64_tess2 | rpi-armv6l_tess2 | vs_tess2 |
+| emscripten_uriparser | ios_uriparser | linux64_uriparser | osx_uriparser | rpi-aarch64_uriparser | rpi-armv6l_uriparser | vs_uriparser |
+| emscripten_usb | ios_usb | linux64_usb | osx_usb | rpi-aarch64_usb | rpi-armv6l_usb | vs_usb |
+| emscripten_utfcpp | ios_utfcpp | linux64_utfcpp | osx_utfcpp | rpi-aarch64_utfcpp | rpi-armv6l_utfcpp | vs_utfcpp |
