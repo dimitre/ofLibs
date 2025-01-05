@@ -110,12 +110,13 @@ cp $(brew --cellar fmt)/**/*.a dist
 
 
 ##  Test TSV
-```tsv
-emscripten_assimp	emscripten_curl	emscripten_FreeImage	emscripten_freetype	emscripten_glew	emscripten_glfw	emscripten_glm	emscripten_json	emscripten_libusb	emscripten_libxml2	emscripten_opencv	emscripten_pugixml	emscripten_tess2	emscripten_uriparser	emscripten_usb	emscripten_utfcpp
-ios_assimp	ios_curl	ios_FreeImage	ios_freetype	ios_glew	ios_glfw	ios_glm	ios_json	ios_libusb	ios_libxml2	ios_opencv	ios_pugixml	ios_tess2	ios_uriparser	ios_usb	ios_utfcpp
-linux64_assimp	linux64_curl	linux64_FreeImage	linux64_freetype	linux64_glew	linux64_glfw	linux64_glm	linux64_json	linux64_libusb	linux64_libxml2	linux64_opencv	linux64_pugixml	linux64_tess2	linux64_uriparser	linux64_usb	linux64_utfcpp
-osx_assimp	osx_curl	osx_FreeImage	osx_freetype	osx_glew	osx_glfw	osx_glm	osx_json	osx_libusb	osx_libxml2	osx_opencv	osx_pugixml	osx_tess2	osx_uriparser	osx_usb	osx_utfcpp
-rpi-aarch64_assimp	rpi-aarch64_curl	rpi-aarch64_FreeImage	rpi-aarch64_freetype	rpi-aarch64_glew	rpi-aarch64_glfw	rpi-aarch64_glm	rpi-aarch64_json	rpi-aarch64_libusb	rpi-aarch64_libxml2	rpi-aarch64_opencv	rpi-aarch64_pugixml	rpi-aarch64_tess2	rpi-aarch64_uriparser	rpi-aarch64_usb	rpi-aarch64_utfcpp
-rpi-armv6l_assimp	rpi-armv6l_curl	rpi-armv6l_FreeImage	rpi-armv6l_freetype	rpi-armv6l_glew	rpi-armv6l_glfw	rpi-armv6l_glm	rpi-armv6l_json	rpi-armv6l_libusb	rpi-armv6l_libxml2	rpi-armv6l_opencv	rpi-armv6l_pugixml	rpi-armv6l_tess2	rpi-armv6l_uriparser	rpi-armv6l_usb	rpi-armv6l_utfcpp
-vs_assimp	vs_curl	vs_FreeImage	vs_freetype	vs_glew	vs_glfw	vs_glm	vs_json	vs_libusb	vs_libxml2	vs_opencv	vs_pugixml	vs_tess2	vs_uriparser	vs_usb	vs_utfcpp
+```csv
+2025-01-05 13:57:53
+emscripten_assimp, emscripten_curl, emscripten_FreeImage, emscripten_freetype, emscripten_glew, emscripten_glfw, emscripten_glm, emscripten_json, emscripten_libusb, emscripten_libxml2, emscripten_opencv, emscripten_pugixml, emscripten_tess2, emscripten_uriparser, emscripten_usb, emscripten_utfcpp,
+ios_assimp, ios_curl, ios_FreeImage, ios_freetype, ios_glew, ios_glfw, ios_glm, ios_json, ios_libusb, ios_libxml2, ios_opencv, ios_pugixml, ios_tess2, ios_uriparser, ios_usb, ios_utfcpp,
+linux64_assimp, linux64_curl, linux64_FreeImage, linux64_freetype, linux64_glew, linux64_glfw, linux64_glm, linux64_json, linux64_libusb, linux64_libxml2, linux64_opencv, linux64_pugixml, linux64_tess2, linux64_uriparser, linux64_usb, linux64_utfcpp,
+osx_assimp, osx_curl, osx_FreeImage, osx_freetype, osx_glew, osx_glfw, osx_glm, osx_json, osx_libusb, osx_libxml2, osx_opencv, osx_pugixml, osx_tess2, osx_uriparser, osx_usb, osx_utfcpp,
+rpi-aarch64_assimp, rpi-aarch64_curl, rpi-aarch64_FreeImage, rpi-aarch64_freetype, rpi-aarch64_glew, rpi-aarch64_glfw, rpi-aarch64_glm, rpi-aarch64_json, rpi-aarch64_libusb, rpi-aarch64_libxml2, rpi-aarch64_opencv, rpi-aarch64_pugixml, rpi-aarch64_tess2, rpi-aarch64_uriparser, rpi-aarch64_usb, rpi-aarch64_utfcpp,
+rpi-armv6l_assimp, rpi-armv6l_curl, rpi-armv6l_FreeImage, rpi-armv6l_freetype, rpi-armv6l_glew, rpi-armv6l_glfw, rpi-armv6l_glm, rpi-armv6l_json, rpi-armv6l_libusb, rpi-armv6l_libxml2, rpi-armv6l_opencv, rpi-armv6l_pugixml, rpi-armv6l_tess2, rpi-armv6l_uriparser, rpi-armv6l_usb, rpi-armv6l_utfcpp,
+vs_assimp, vs_curl, vs_FreeImage, vs_freetype, vs_glew, vs_glfw, vs_glm, vs_json, vs_libusb, vs_libxml2, vs_opencv, vs_pugixml, vs_tess2, vs_uriparser, vs_usb, vs_utfcpp,
 ```
