@@ -38,7 +38,8 @@ targets:
 
       # - CMAKE_TOOLCHAIN_FILE=/Users/d/src/ofLibs/_ios-cmake/ios.toolchain.cmake
       # - PLATFORM=OS64COMBINED
-
+    # settings:Cxx:
+    # cppStandard: c++20
   assimp:
     kind: cmakeProject
     location: ${external:${name}}
@@ -60,7 +61,9 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
-    # defines[platform:web]:
+    defines[platform:web]:
+      - JS_ONLY=ON
+      - CMAKE_EXECUTABLE_SUFFIX=.js
     # - ASSIMP_BUILD_ZLIB=ON
     # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
     defines[toolchain:arm-linux-gnueabihf-gcc]:
