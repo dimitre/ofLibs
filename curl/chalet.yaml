@@ -61,11 +61,16 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+
 distribution:
   curl:
     kind: archive
-    condition: "[:macos]"
     format: zip
     include:
-      - ${externalBuild:${name}}**.a
+      - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
+      - ${externalBuild:${name}}/include
+    include[:!windows]:
+      - ${externalBuild:${name}}/lib/${ar:${name}}
+    include[:windows]:
+      - ${externalBuild:${name}}/lib/**.lib
