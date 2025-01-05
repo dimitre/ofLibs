@@ -55,6 +55,7 @@ TODO: Check lib and headers paths. maybe add a step to put in the right folder f
 
 - [ ] cairo
 - [ ] curl
+ok for macos.
 - [x] freetype
 - [/] glew
 - [x] glfw
@@ -63,14 +64,15 @@ TODO: Check lib and headers paths. maybe add a step to put in the right folder f
 - [x] libusb
 - [ ] libxml2
 - [x] opencv (missing emscripten)
-- [ ] openssl
-- [ ] pixman
-- [ ] pugixml
+- [ ] pugixml (needed by core ofXml)
 - [ ] rtAudio
-- [ ] svgtiny
+- [ ] svgtiny (needed by addon ofxSvg, to be replaced to a new one)
 - [ ] tess2
 - [ ] uriparser
 - [ ] utf8
+
+- [ ] openssl (curl dependency)
+- [ ] pixman (cairo dep?)
 
 
 - [ ] zlib

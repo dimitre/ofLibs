@@ -72,8 +72,8 @@ targets:
       - WITH_PROTOBUF=OFF
       - BUILD_IPP_IW=OFF
       - WITH_ITT=OFF
-      - CMAKE_CXX_FLAGS=-msse3 -msimd128 -fno-vectorize -s WASM=1
-      - CMAKE_C_FLAGS=-msse3 -msimd128 -fno-vectorize -s WASM=1
+      # - CMAKE_CXX_FLAGS=-msse3 -msimd128 -fno-vectorize -s WASM=1
+      # - CMAKE_C_FLAGS=-msse3 -msimd128 -fno-vectorize -s WASM=1
       # - BUILD_ZLIB=OFF
     defines[platform:windows]:
       - CPU_BASELINE=""
