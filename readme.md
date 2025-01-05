@@ -54,7 +54,7 @@ I'm not sure emscripten is ok. ```wasm-tools validate libassimp.a``` returns
 TODO: Check lib and headers paths. maybe add a step to put in the right folder for each platform.
 
 - [ ] cairo
-- [ ] curl
+- [.] curl
 ok for macos.
 - [x] freetype
 - [/] glew
@@ -69,12 +69,10 @@ ok for macos.
 - [ ] svgtiny (needed by addon ofxSvg, to be replaced to a new one)
 - [x] tess2
 - [x] uriparser
-- [ ] utf8
-
+- [x] utf8
+  
 - [ ] openssl (curl dependency)
 - [ ] pixman (cairo dep?)
-
-
 - [ ] zlib
 - [ ] libpng
 - [ ] brotli
