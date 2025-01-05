@@ -62,15 +62,15 @@ ok for macos.
 - [x] glm
 - [ ] json
 - [x] libusb
-- [ ] libxml2
+- [ ] libxml2 (addon ofxSvg)
 - [x] opencv (missing emscripten)
-- [ ] pugixml (needed by core ofXml)
+- [x] pugixml (needed by core ofXml)
 - [ ] rtAudio
 - [ ] svgtiny (needed by addon ofxSvg, to be replaced to a new one)
 - [x] tess2
 - [x] uriparser
 - [x] utf8
-  
+
 - [ ] openssl (curl dependency)
 - [ ] pixman (cairo dep?)
 - [ ] zlib
