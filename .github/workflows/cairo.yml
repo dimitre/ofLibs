@@ -69,7 +69,7 @@ jobs:
         if: matrix.cfg.platform == 'linux64'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: libpixman-1-dev
+          packages: libpixman-1-dev libpng12-dev libfreetype-dev
           version: 1.0
 
       - name: RPI - apt multistrap
