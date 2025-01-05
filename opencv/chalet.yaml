@@ -72,6 +72,12 @@ targets:
       - WITH_PROTOBUF=OFF
       - BUILD_IPP_IW=OFF
       - WITH_ITT=OFF
+      - WASM=ON
+      - CV_ENABLE_INTRINSICS=OFF
+      - BUILD_WASM_INTRIN_TESTS=OFF
+      - BUILD_PERF_TESTS=OFF
+      - BUILD_TESTS=OFF
+      # - CMAKE_POSITION_INDEPENDENT_CODE=ON
       # - CMAKE_CXX_FLAGS=-msse3 -msimd128 -fno-vectorize -s WASM=1
       # - CMAKE_C_FLAGS=-msse3 -msimd128 -fno-vectorize -s WASM=1
       # - BUILD_ZLIB=OFF
