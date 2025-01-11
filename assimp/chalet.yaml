@@ -8,7 +8,8 @@ externalDependencies:
 
   assimp:
     repository: https://github.com/assimp/assimp
-    tag: v5.4.3
+    # tag: v5.4.3
+    commit: 5aa38fe3cd9385eb10af16b9cb714eb759b886ef
     kind: git
 
 targets:
@@ -33,7 +34,7 @@ targets:
       #   - ENABLE_VISIBILITY=OFF
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=10.13
       # defines[platform:ios]:
 
       # - CMAKE_TOOLCHAIN_FILE=/Users/d/src/ofLibs/_ios-cmake/ios.toolchain.cmake
@@ -47,9 +48,12 @@ targets:
     rebuild: false
     defines:
       # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/osx1
+      - CMAKE_THREAD_PREFER_PTHREAD=ON
       - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       # - CMAKE_RUNTIME_OUTPUT_DIRECTORY=lib/osx3
       # - CMAKE_INSTALL_PREFIX=lib/osx4
+      - ENABLE_BITCODE=OFF
+      - ENABLE_ARC=OFF
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
@@ -64,7 +68,7 @@ targets:
       - ASSIMP_BUILD_ZLIB=ON
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      # - CMAKE_OSX_DEPLOYMENT_TARGET=10.13
     defines[platform:web]:
       - JS_ONLY=ON
       - CMAKE_EXECUTABLE_SUFFIX=.js
@@ -96,7 +100,6 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
       - ${externalBuild:${name}}/include
-
       - ${externalBuild:${name}}/code/lib
     # include[:!windows]:
     #   - ${externalBuild:${name}}/lib/${ar:${name}}
