@@ -36,6 +36,9 @@ targets:
     defines:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+      - CMAKE_INSTALL_PREFIX=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - BUILD_DOCS=OFF
       - BUILD_EXAMPLES=OFF
@@ -63,6 +66,7 @@ targets:
       - WITH_TIFF=OFF
       - BUILD_JPEG=OFF
       - BUILD_ZLIB=OFF
+      # - WITH_OBSENSOR=OFF
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${external:zlib}
@@ -98,7 +102,7 @@ distribution:
       - ${external:${name}}/LICENSE**
       # - ${external:${name}}/include
       - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/${ar:${name}}
+      - ${externalBuild:${name}}/lib/*.a
       # - ${externalBuild:${name}}/*.a
       # - ${externalBuild:${name}}/*.lib
       # - ${externalBuild:${name}}/*.pc

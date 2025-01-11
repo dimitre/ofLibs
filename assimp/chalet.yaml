@@ -46,6 +46,10 @@ targets:
     recheck: false
     rebuild: false
     defines:
+      # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/osx1
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/osx
+      # - CMAKE_RUNTIME_OUTPUT_DIRECTORY=lib/osx3
+      # - CMAKE_INSTALL_PREFIX=lib/osx4
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
@@ -92,7 +96,9 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
       - ${externalBuild:${name}}/include
-    include[:!windows]:
-      - ${externalBuild:${name}}/lib/${ar:${name}}
-    include[:windows]:
-      - ${externalBuild:${name}}/lib/**.lib
+
+      - ${externalBuild:${name}}/code/lib
+    # include[:!windows]:
+    #   - ${externalBuild:${name}}/lib/${ar:${name}}
+    # include[:windows]:
+    #   - ${externalBuild:${name}}/lib/**.lib
