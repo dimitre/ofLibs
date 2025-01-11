@@ -18,6 +18,8 @@ targets:
       - BUILD_EXAMPLES=OFF
       - BUILD_CURL_EXE=OFF
       - CMAKE_USE_OPENSSL=ON
+      - CMAKE_THREAD_PREFER_PTHREAD=ON
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       # - OPENSSL_IS_BORINGSSL=TRUE
       # - CMAKE_IGNORE_PATH=/opt/homebrew/Cellar/openssl@3/3.4.0/lib/
       # - OPENSSL_ROOT_DIR=${externalBuild:boringssl}
@@ -33,7 +35,8 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
       - ${externalBuild:${name}}/include
-    include[:!windows]:
-      - ${externalBuild:${name}}/lib/${ar:${name}}
-    include[:windows]:
-      - ${externalBuild:${name}}/lib/**.lib
+      - ${externalBuild:${name}}/lib/lib
+    # include[:!windows]:
+    #   - ${externalBuild:${name}}/lib/${ar:${name}}
+    # include[:windows]:
+    #   - ${externalBuild:${name}}/lib/**.lib
