@@ -72,7 +72,7 @@ jobs:
       #   version: 1.0
 
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.14
+        uses: hendrikmuhs/ccache-action@v1.2.16
         with:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 

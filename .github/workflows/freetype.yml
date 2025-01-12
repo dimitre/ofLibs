@@ -48,7 +48,7 @@ jobs:
           actions-cache-folder: "emsdk-cache"
 
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.14
+        uses: hendrikmuhs/ccache-action@v1.2.16
         with:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
