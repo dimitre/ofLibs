@@ -4,6 +4,7 @@ externalDependencies:
   zlib:
     repository: https://github.com/madler/zlib
     # tag: v1.3.1
+    commit: ef24c4c7502169f016dcd2a26923dbaf3216748c
     kind: git
 
   assimp:
@@ -32,6 +33,10 @@ targets:
       #   - ENABLE_BITCODE=OFF
       #   - ENABLE_ARC=OFF
       #   - ENABLE_VISIBILITY=OFF
+    defines[platform:web]:
+      - JS_ONLY=ON
+      - CMAKE_EXECUTABLE_SUFFIX=.js
+
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.13
