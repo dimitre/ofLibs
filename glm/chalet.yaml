@@ -3,8 +3,8 @@ version: "0.1.3"
 externalDependencies:
   glm:
     repository: https://github.com/g-truc/glm
-    # tag: "1.0.1"
-    commit: 18feaec455f8ee1f256d91f515fb02d66268ba14
+    tag: "1.0.2"
+    # commit: 18feaec455f8ee1f256d91f515fb02d66268ba14
     kind: git
 targets:
   glm:
