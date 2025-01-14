@@ -39,7 +39,12 @@ targets:
 
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.13
+      # - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - DEPLOYMENT_TARGET=11.0
+      # - MACOSX_DEPLOYMENT_TARGET=11.0
+      # - CMAKE_CXX_FLAGS=-mmacosx-version-min=11.0
+      # - CMAKE_C_FLAGS=-mmacosx-version-min=11.0
+
       # defines[platform:ios]:
 
       # - CMAKE_TOOLCHAIN_FILE=/Users/d/src/ofLibs/_ios-cmake/ios.toolchain.cmake
@@ -47,6 +52,8 @@ targets:
     # settings:Cxx:
     # cppStandard: c++20
   assimp:
+    # env:
+    #   - MACOSX_DEPLOYMENT_TARGET=11.0
     kind: cmakeProject
     location: ${external:${name}}
     recheck: false
@@ -72,7 +79,13 @@ targets:
       # - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
       - ASSIMP_BUILD_ZLIB=ON
     defines[platform:macos]:
-      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      # - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - DEPLOYMENT_TARGET=11.0
+      # - MACOSX_DEPLOYMENT_TARGET=11.0
+      # - CMAKE_CXX_FLAGS=-mmacosx-version-min=11.0
+      # - CMAKE_C_FLAGS=-mmacosx-version-min=11.0
+
       # - CMAKE_OSX_DEPLOYMENT_TARGET=10.13
     defines[platform:web]:
       - JS_ONLY=ON

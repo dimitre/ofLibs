@@ -2,6 +2,11 @@
 cd "$(dirname "$0")"
 LIB="curl"
 # DRYRUN="echo --------->>>> echo"
+executa() {
+    "$1"
+   echo "$1"
+}
+
 DRYRUN=""
 FOLDERIOS=${LIB}-ios
 FOLDERSIM=${LIB}-sim

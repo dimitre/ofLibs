@@ -26,37 +26,38 @@ targets:
       - BUILD_CURL_EXE=OFF
       - BUILD_EXAMPLES=OFF
       - BUILD_SHARED_LIBS=OFF
-      # - CMAKE_USE_OPENSSL=ON
-      # - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
 
-      # - USE_RESOLVE_ON_IPS=OFF
-      # - ENABLE_ARES=OFF
-      # - ENABLE_STRICT_TRY_COMPILE=ON
-      # - HAVE_GETPASS_R=0
-      # - CMAKE_CXX_EXTENSIONS=OFF
-      # - CMAKE_IGNORE_PATH=/opt/homebrew
-      # - CMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON
-      # - CURL_STATICLIB=ON
-      # - BUILD_STATIC_LIBS=ON
-      # - ENABLE_UNICODE=ON
-      # - CMAKE_INSTALL_PREFIX=Release
-      # - HAVE__FSEEKI64=OFF
-      # - CMAKE_USE_SYSTEM_CURL=OFF
-      # - ENABLE_ARC=ON
-      # - CMAKE_POSITION_INDEPENDENT_CODE=TRUE
-      # - ENABLE_VISIBILITY=OFF
-      # - ENABLE_UNIX_SOCKETS=OFF
-      # - HAVE_LIBSOCKET=OFF
-      # - CMAKE_MACOSX_BUNDLE=OFF
-      # - CURL_DISABLE_POP3=ON
-      # - CURL_CA_FALLBACK=ON
-      # - CURL_DISABLE_IMAP=ON
-      # - ENABLE_WEBSOCKETS=ON
-      # - ENABLE_UNIX_SOCKETS=ON
-      # - CURL_BROTLI=OFF
-      # - ENABLE_VERBOSE=ON
-      # - ENABLE_THREADED_RESOLVER=ON
+      - CMAKE_USE_OPENSSL=ON
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+
+      - USE_RESOLVE_ON_IPS=OFF
+      - ENABLE_ARES=OFF
+      - ENABLE_STRICT_TRY_COMPILE=ON
+      - HAVE_GETPASS_R=0
+      - CMAKE_CXX_EXTENSIONS=OFF
+      - CMAKE_IGNORE_PATH=/opt/homebrew
+      - CMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON
+      - CURL_STATICLIB=ON
+      - BUILD_STATIC_LIBS=ON
+      - ENABLE_UNICODE=ON
+      - CMAKE_INSTALL_PREFIX=Release
+      - HAVE__FSEEKI64=OFF
+      - CMAKE_USE_SYSTEM_CURL=OFF
+      - ENABLE_ARC=ON
+      - CMAKE_POSITION_INDEPENDENT_CODE=TRUE
+      - ENABLE_VISIBILITY=OFF
+      - ENABLE_UNIX_SOCKETS=OFF
+      - HAVE_LIBSOCKET=OFF
+      - CMAKE_MACOSX_BUNDLE=OFF
+      - CURL_DISABLE_POP3=ON
+      - CURL_CA_FALLBACK=ON
+      - CURL_DISABLE_IMAP=ON
+      - ENABLE_WEBSOCKETS=ON
+      - ENABLE_UNIX_SOCKETS=ON
+      - CURL_BROTLI=OFF
+      - ENABLE_VERBOSE=ON
+      - ENABLE_THREADED_RESOLVER=ON
       # - ENABLE_IPV6=OFF
       # - CMAKE_CXX_FLAGS="-mmacosx-version-min=11.0 -O3 -fno-omit-frame-pointer -fPIC -DOPENSSL_NO_HEARTBEATS -DUSE_PTHREADS=1 -Wno-error=implicit-function-declaration" \
       # - CMAKE_C_FLAGS="-mmacosx-version-min=11.0 -O3 -fno-omit-frame-pointer -fPIC -DOPENSSL_NO_HEARTBEATS -DUSE_PTHREADS=1 -Wno-error=implicit-function-declaration"
@@ -64,10 +65,13 @@ targets:
       # - OPENSSL_IS_BORINGSSL=TRUE
       # - CMAKE_IGNORE_PATH=/opt/homebrew/Cellar/openssl@3/3.4.0/lib/
       # - OPENSSL_ROOT_DIR=${externalBuild:boringssl}
-    defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+    # defines[platform:macos]:
+    # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+    # - DEPLOYMENT_TARGET=11.0
+    # - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
 
 distribution:
   curl:
