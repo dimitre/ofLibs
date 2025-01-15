@@ -1,5 +1,21 @@
 # ALTpothecary
 
+![title](https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/curl.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/freetype.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/glew.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/glfw.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/glm.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/json.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/libusb.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/libxml2.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/opencv.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/pugixml.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/tess2.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/uriparser.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/usb.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/utfcpp.yml/badge.svg)
 
 ## TODO
 - [ ] make install scripts for all platforms (script? bash? python? c++? autodetect platform?)
@@ -121,11 +137,7 @@ rpi-armv6l_assimp, rpi-armv6l_curl, rpi-armv6l_FreeImage, rpi-armv6l_freetype, r
 vs_assimp, vs_curl, vs_FreeImage, vs_freetype, vs_glew, vs_glfw, vs_glm, vs_json, vs_libusb, vs_libxml2, vs_opencv, vs_pugixml, vs_tess2, vs_uriparser, vs_usb, vs_utfcpp,
 ```
 
-https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg
-https://github.com/dimitre/ofLibs/actions/workflows/curl.yml/badge.svg
-https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg
-https://github.com/dimitre/ofLibs/actions/workflows/freetype.yml/badge.svg
-https://github.com/dimitre/ofLibs/actions/workflows/glew.yml/badge.svg
+assimp,curl,FreeImage,freetype,glew,glfw,glm,json,libusb,libxml2,opencv,pugixml,tess2,uriparser,usb,utfcpp
 
 | emscripten_assimp | ios_assimp | linux64_assimp | osx_assimp | rpi-aarch64_assimp | rpi-armv6l_assimp | vs_assimp |
 |---|---|---|---|---|---|---|
