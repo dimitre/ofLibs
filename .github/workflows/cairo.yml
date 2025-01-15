@@ -98,7 +98,7 @@ jobs:
           repo: chalet-org/chalet
           cache: enable
           extension: "\\.zip"
-          prerelease: "true"
+          prerelease: "false"
 
       - name: Chalet Test / Version
         run: |

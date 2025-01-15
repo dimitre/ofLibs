@@ -33,6 +33,16 @@ instala() {
     executa unzip -o ${DOWNLOAD} -d ${LIBS_FOLDER}/${LIBNAME}
 }
 
+instala2() {
+    W="wget2 "
+    LIBNAME=$1
+    FOLDERNAME=$2
+    section Installing ${LIBNAME}
+    DOWNLOAD=oflib_${LIBNAME}_osx.zip
+    executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
+    executa unzip -o ${DOWNLOAD} -d ${FOLDERNAME}
+}
+
 executa mkdir _download
 executa cd _download
 
@@ -47,6 +57,6 @@ executa cd _download
 # --no-clobber
 # # unzip -o = overwrite without prompting
 
-instala assimp
-instala glm
-instala curl
+instala2 assimp ${OF_FOLDER}/addons/ofxAssimpModelLoader/libs/assimp
+# instala glm
+# instala curl

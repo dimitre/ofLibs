@@ -58,7 +58,7 @@ jobs:
           repo: chalet-org/chalet
           cache: enable
           extension: "\\.zip"
-          prerelease: "true"
+          prerelease: "false"
 
       # TODO: make another item in matrix to pass toolchain to every chalet bundle. like emscripten, llvm etc.
       - name: Chalet Configure
