@@ -38,6 +38,7 @@ targets:
       - CMAKE_EXECUTABLE_SUFFIX=.js
 
     defines[platform:macos]:
+      # THIS IS ZLIB ONLY
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       # - DEPLOYMENT_TARGET=11.0
@@ -79,8 +80,8 @@ targets:
       # - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
       - ASSIMP_BUILD_ZLIB=ON
     defines[platform:macos]:
-      # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      # - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - DEPLOYMENT_TARGET=11.0
       # - MACOSX_DEPLOYMENT_TARGET=11.0
       # - CMAKE_CXX_FLAGS=-mmacosx-version-min=11.0
