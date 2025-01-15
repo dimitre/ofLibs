@@ -1,5 +1,6 @@
 # ALTpothecary
 
+
 ## TODO
 - [ ] make install scripts for all platforms (script? bash? python? c++? autodetect platform?)
 - [ ] make correct folders inside .zip in each library
@@ -119,6 +120,12 @@ rpi-aarch64_assimp, rpi-aarch64_curl, rpi-aarch64_FreeImage, rpi-aarch64_freetyp
 rpi-armv6l_assimp, rpi-armv6l_curl, rpi-armv6l_FreeImage, rpi-armv6l_freetype, rpi-armv6l_glew, rpi-armv6l_glfw, rpi-armv6l_glm, rpi-armv6l_json, rpi-armv6l_libusb, rpi-armv6l_libxml2, rpi-armv6l_opencv, rpi-armv6l_pugixml, rpi-armv6l_tess2, rpi-armv6l_uriparser, rpi-armv6l_usb, rpi-armv6l_utfcpp,
 vs_assimp, vs_curl, vs_FreeImage, vs_freetype, vs_glew, vs_glfw, vs_glm, vs_json, vs_libusb, vs_libxml2, vs_opencv, vs_pugixml, vs_tess2, vs_uriparser, vs_usb, vs_utfcpp,
 ```
+
+https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg
+https://github.com/dimitre/ofLibs/actions/workflows/curl.yml/badge.svg
+https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg
+https://github.com/dimitre/ofLibs/actions/workflows/freetype.yml/badge.svg
+https://github.com/dimitre/ofLibs/actions/workflows/glew.yml/badge.svg
 
 | emscripten_assimp | ios_assimp | linux64_assimp | osx_assimp | rpi-aarch64_assimp | rpi-armv6l_assimp | vs_assimp |
 |---|---|---|---|---|---|---|
