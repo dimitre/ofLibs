@@ -12,37 +12,37 @@ targets:
     recheck: false
     rebuild: false
     defines:
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      # - CMAKE_INSTALL_LIBDIR=./lib
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+      - CMAKE_INSTALL_PREFIX=Release
+      - CMAKE_INSTALL_LIBDIR=./lib
+      # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INSTALL_FULL_LIBDIR=./lib
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+  usbAdjust:
+    kind: script
+    file: libusb_folders.sh
+    arguments:
+      - ${external:usb}
+
 distribution:
   usb:
     kind: archive
     format: zip
     include:
       - ${external:${name}}/LICENSE**
+      # - ${external:${name}}/include
+      # - ${externalBuild:${name}}/gen_include
       - ${external:${name}}/include
-      - ${externalBuild:${name}}/gen_include
+      # - ${externalBuild:${name}}/include
+      - ${externalBuild:${name}}/lib
       # - ${externalBuild:${name}}/${ar:usb}
-      - ${externalBuild:${name}}/${ar:${name}}
+      # - ${externalBuild:${name}}/${ar:${name}}
       # - ${externalBuild:${name}}/*.a
       # - ${externalBuild:${name}}/*.lib
       # - ${externalBuild:${name}}/*.pc
-
-    # kind: archive
-    # format: zip
-    # include:
-    #   - ${external:${name}}/libusb/libusb/*.h
-    # include[:macos]:
-    #   - ${externalBuild:${name}}**.a
-    # include[:windows]:
-    #   - ${externalBuild:${name}}**.lib
-
-    # - ${externalBuild:${name}}${ar:libusb}
-    # - ${externalBuild:${name}}/${so:libusb}
-    # - ${so:${name}}

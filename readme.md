@@ -8,6 +8,7 @@
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glfw.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glm.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/json.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/libpng.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libusb.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libxml2.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/opencv.yml/badge.svg)
