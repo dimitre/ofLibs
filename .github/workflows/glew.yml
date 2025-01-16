@@ -72,7 +72,7 @@ jobs:
       - name: Chalet Bundle
         shell: bash
         run: |
-          chalet bundle
+          chalet bundle --compiler-cache --show-commands
 
       - name: LS check lib folders
         shell: bash

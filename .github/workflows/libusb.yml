@@ -107,7 +107,7 @@ jobs:
         if: matrix.cfg.platform != 'ios'
         shell: bash
         run: |
-          chalet bundle
+          chalet bundle --compiler-cache --show-commands
 
       - name: iOS
         if: matrix.cfg.platform == 'ios'

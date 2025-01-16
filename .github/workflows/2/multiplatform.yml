@@ -69,7 +69,7 @@ jobs:
       - name: Chalet Bundle
         shell: bash
         run: |
-          chalet bundle
+          chalet bundle --compiler-cache --show-commands
 
       - name: LS
         shell: bash

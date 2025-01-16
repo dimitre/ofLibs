@@ -63,6 +63,7 @@ rm -rf *.zip
 # --no-clobber
 # # unzip -o = overwrite without prompting
 
-instala2 assimp ${OF_FOLDER}/addons/ofxAssimpModelLoader/libs/assimp
-instala glm
-instala curl
+# instala2 assimp ${OF_FOLDER}/addons/ofxAssimpModelLoader/libs/assimp
+# instala glm
+# instala curl
+instala freeimage

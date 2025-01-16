@@ -17,14 +17,12 @@ targets:
   zlib:
     kind: cmakeProject
     location: ${external:${name}}
-
     recheck: false
     rebuild: false
     # targets: Release
     # defaultRunArguments:
     # - G Xcode
     defines:
-      # - CMAKE_TOOLCHAIN_FILE=../../../../_ios-cmake/ios.toolchain.cmake
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
