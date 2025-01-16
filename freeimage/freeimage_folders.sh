@@ -3,6 +3,6 @@ cd "$(dirname "$0")"
 LIB="FreeImage"
 
 echo $@
-mkdir $1/include
+mkdir $1/Source/include
 cp $1/Source/FreeImage.h $1/Source/include
 #printenv
