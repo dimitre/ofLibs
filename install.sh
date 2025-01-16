@@ -54,9 +54,9 @@ instalaLocal() {
     executa unzip -o ./${LIBNAME}/dist/${LIBNAME}.zip -d ${LIBS_FOLDER}/${LIBNAME}
 }
 
-# executa mkdir _download
-# executa cd _download
-# rm -rf *.zip
+executa mkdir _download
+executa cd _download
+rm -rf *.zip
 
 # if [ -d ${ADDON_FOLDER} ]; then
 #     echo "Directory exists: ${ADDON_FOLDER}"
@@ -73,6 +73,7 @@ instalaLocal() {
 # instala glm
 # instala curl
 instala FreeImage
+# instala freetype
 #
 #
 # instalaLocal FreeImage
