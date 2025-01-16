@@ -1,5 +1,5 @@
 name: libsof
-version: "0.1.3"
+version: "0.1.4"
 externalDependencies:
   libusb:
     repository: https://github.com/libusb/libusb-cmake
