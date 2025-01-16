@@ -6,12 +6,6 @@ externalDependencies:
     # tag: v1.3.1
     commit: ef24c4c7502169f016dcd2a26923dbaf3216748c
     kind: git
-
-  assimp:
-    repository: https://github.com/assimp/assimp
-    # tag: v5.4.3
-    commit: 5aa38fe3cd9385eb10af16b9cb714eb759b886ef
-    kind: git
   freetype:
     repository: https://gitlab.freedesktop.org/freetype/freetype
     tag: VER-2-13-3
@@ -53,7 +47,7 @@ targets:
       - ZLIB_INCLUDE_DIRS=${external:zlib}
       - ZLIB_INCLUDE_DIR=${external:zlib}
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
 distribution:

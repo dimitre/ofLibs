@@ -3,8 +3,8 @@ name: FreeImage
 on:
   push:
     paths:
-      - freeimage/**
-      - .github/workflows/freeimage.yml
+      - FreeImage/**
+      - .github/workflows/FreeImage.yml
 
 permissions:
   contents: write
