@@ -26,9 +26,9 @@ executa() {
     $@
 }
 
-#"axel -n 5 url"
-W="wget2 --chunk-size=1M "
-W="aria2c -x 5 " #where 16 is the number of connections
+# "axel -n 5 url"
+# W="wget2 --chunk-size=1M "
+# W="aria2c -x 5 " #where 16 is the number of connections
 W="aria2c -s 7 -x 7 -j 7 " #where 16 is the number of connections
 
 instala() {
@@ -36,7 +36,7 @@ instala() {
     section Installing ${LIBNAME}
     DOWNLOAD=oflib_${LIBNAME}_${PLATFORM}.zip
     # executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
-    executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD}
+    executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} &&
     executa unzip -o ${DOWNLOAD} -d ${LIBS_FOLDER}/${LIBNAME}
 }
 
@@ -46,7 +46,7 @@ instala2() {
     section Installing ${LIBNAME}
     DOWNLOAD=oflib_${LIBNAME}_${PLATFORM}.zip
     # executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
-    executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD}
+    executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} &&
     executa unzip -o ${DOWNLOAD} -d ${FOLDERNAME}
 }
 
@@ -56,7 +56,7 @@ instalaLocal() {
     executa unzip -o ./${LIBNAME}/dist/${LIBNAME}.zip -d ${LIBS_FOLDER}/${LIBNAME}
 }
 
-executa mkdir _download
+executa mkdir -p _download
 executa cd _download
 rm -rf *.zip
 

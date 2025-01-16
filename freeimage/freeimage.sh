@@ -1,6 +1,9 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 LIB="FreeImage"
+
+
+
 # DRYRUN="echo --------->>>> echo"
 DRYRUN=""
 FOLDERIOS=${LIB}-ios
