@@ -2,7 +2,7 @@
 
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/curl.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/freeimage.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/freetype.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glew.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glfw.yml/badge.svg)
