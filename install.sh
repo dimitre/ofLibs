@@ -76,8 +76,9 @@ rm -rf *.zip
 # instala curl
 # instala FreeImage
 # instala freetype
-instala glew
+# instala glew
 #instala glfw
+instala glm
 #
 #
 # instalaLocal FreeImage

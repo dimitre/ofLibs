@@ -15,6 +15,9 @@ targets:
     defines:
       # - CMAKE_THREAD_PREFER_PTHREAD=ON
       - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+
       # - ENABLE_BITCODE=OFF
       - CMAKE_BUILD_TYPE=Release
       # - BUILD_DEPENDENCIES=ON
@@ -28,8 +31,6 @@ targets:
       - BUILD_SHARED_LIBS=ON
 
       - CMAKE_USE_OPENSSL=ON
-      - CMAKE_INSTALL_INCLUDEDIR=include
-      - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
 
       # - USE_RESOLVE_ON_IPS=OFF
       # - ENABLE_ARES=OFF

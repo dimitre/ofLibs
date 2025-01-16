@@ -13,8 +13,9 @@ targets:
     recheck: false
     rebuild: false
     defines:
-      - CMAKE_THREAD_PREFER_PTHREAD=ON
       - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+
+      - CMAKE_THREAD_PREFER_PTHREAD=ON
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
@@ -81,6 +82,11 @@ targets:
       - GLM_ENABLE_SIMD_SSE4_1=OFF
       - GLM_ENABLE_SIMD_SSE4_2=OFF
 
+  adjust:
+    kind: script
+    file: glm_folders.sh
+    arguments:
+      - ${external:glm}
 distribution:
   glm:
     kind: archive
@@ -88,7 +94,7 @@ distribution:
     include:
       # - ${external:${name}}/LICENSE**
       - ${external:${name}}/copying**
-      - ${external:${name}}/glm
-      # - ${externalBuild:${name}}/include
+      # - ${external:${name}}/glm
+      - ${external:${name}}/include
       # - ${externalBuild:${name}}/glm/${ar:${name}}
       - ${externalBuild:${name}}/glm/lib
