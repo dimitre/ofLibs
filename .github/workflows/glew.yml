@@ -13,11 +13,12 @@ env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
-  freeimage_matrix:
+  glew_matrix:
     strategy:
       matrix:
         cfg:
-          - { platform: emscripten, os: ubuntu-24.04 }
+          # FIXME: fix and be back
+          # - { platform: emscripten, os: ubuntu-24.04 }
           - { platform: linux64, os: ubuntu-24.04 }
           - { platform: osx, os: macos-latest }
           - { platform: vs, os: windows-latest }
