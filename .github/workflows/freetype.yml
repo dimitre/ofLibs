@@ -33,6 +33,8 @@ jobs:
             }
 
     runs-on: ${{ matrix.cfg.os }}
+    env:
+      PLATFORM: ${{ matrix.cfg.platform }}
     defaults:
       run:
         working-directory: ./freetype

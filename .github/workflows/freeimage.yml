@@ -37,6 +37,8 @@ jobs:
     runs-on: ${{ matrix.cfg.os }}
     env:
       PLATFORM: ${{ matrix.cfg.platform }}
+    env:
+      PLATFORM: ${{ matrix.cfg.platform }}
     defaults:
       run:
         # working-directory: ./${{ github.workflow }}
