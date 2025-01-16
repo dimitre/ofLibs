@@ -56,8 +56,8 @@ targets:
       - ZLIB_INCLUDE_DIRS=${external:zlib}
       - BUILD_ZLIB=OFF
 
-      - BUILD_JXR=OFF
       # - BUILD_LIBPNG=ON
+      - BUILD_JXR=OFF
       - BUILD_LIBRAWLITE=OFF
       - BUILD_OPENEXR=OFF
       - BUILD_WEBP=OFF
