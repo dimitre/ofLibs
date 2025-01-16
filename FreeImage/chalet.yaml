@@ -73,51 +73,13 @@ targets:
     defines[platform:{web,windows}]:
       - BUILD_ZLIB=ON
 
-  # MKDIR:
-  #   kind: process
-  #   path: mkdir
-  #   arguments: [${external:FreeImage}/Source/include]
-
-  # freeimage_adjust:
-  #   kind: shell
-  #   shell: bash
-  #   run: |
-  #     mkdir ${external:FreeImage}/Source/include
-  #     cp ${external:FreeImage}/Source/FreeImage.h ${external:FreeImage}/Source/include
-
-  # PWD:
-  #   kind: process
-  #   path: pwd
-
-  # LIST:
-  #   kind: process
-  #   path: ls
-  #   arguments:
-  #     - ./${external:FreeImage}/Source/*.h
-
-  # copy:
-  #   kind: process
-  #   path: cp
-  #   arguments:
-  #     - ./${external:FreeImage}/Source/*.h
-  #     - ./${external:FreeImage}/Source/include
-
-  FreeImageAdjust:
+  FreeImage_folders:
     kind: script
-    file: freeimage_folders.sh
+    file: FreeImage_folders.sh
     arguments:
       - ${external:FreeImage}
 
 distribution:
-  #   zlib:
-  #     kind: archive
-  #     format: zip
-  #     include:
-  #       # - ${externalBuild:zlib}/${ar:zlib}
-  #       - ${externalBuild:zlib}/*.a
-  #       - ${externalBuild:zlib}/*.lib
-  #       - ${externalBuild:zlib}/*.pc
-
   FreeImage:
     kind: archive
     format: zip
