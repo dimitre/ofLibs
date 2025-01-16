@@ -48,9 +48,15 @@ instala2() {
     executa unzip -o ${DOWNLOAD} -d ${FOLDERNAME}
 }
 
-executa mkdir _download
-executa cd _download
-rm -rf *.zip
+instalaLocal() {
+    LIBNAME=$1
+    FOLDERNAME=$2
+    executa unzip -o ./${LIBNAME}/dist/${LIBNAME}.zip -d ${LIBS_FOLDER}/${LIBNAME}
+}
+
+# executa mkdir _download
+# executa cd _download
+# rm -rf *.zip
 
 # if [ -d ${ADDON_FOLDER} ]; then
 #     echo "Directory exists: ${ADDON_FOLDER}"
@@ -66,4 +72,7 @@ rm -rf *.zip
 # instala2 assimp ${OF_FOLDER}/addons/ofxAssimpModelLoader/libs/assimp
 # instala glm
 # instala curl
-instala FreeImage
+# instala FreeImage
+#
+#
+instalaLocal FreeImage
