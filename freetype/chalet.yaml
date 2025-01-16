@@ -42,6 +42,7 @@ targets:
       - FT_DISABLE_BZIP2=ON
       - FT_REQUIRE_HARFBUZZ=OFF
       - FT_DISABLE_HARFBUZZ=ON
+    defines[platform:!windows]:
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${external:zlib}
