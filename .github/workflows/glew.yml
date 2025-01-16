@@ -21,6 +21,7 @@ jobs:
           # - { platform: emscripten, os: ubuntu-24.04 }
           - { platform: linux64, os: ubuntu-24.04 }
           - { platform: osx, os: macos-latest }
+          - { platform: macos, os: macos-latest }
           - { platform: vs, os: windows-latest }
           # - { platform: arm64, os: ubuntu-24.04 }
 
