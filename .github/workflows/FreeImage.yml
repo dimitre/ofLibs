@@ -48,7 +48,7 @@ jobs:
     defaults:
       run:
         # working-directory: ./${{ github.workflow }}
-        working-directory: freeimage
+        working-directory: ${{ github.workflow }}
     steps:
       - uses: actions/checkout@v4
 
