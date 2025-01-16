@@ -18,6 +18,14 @@
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/utfcpp.yml/badge.svg)
 
 ## Apothecary Libs
+### Why?
+The idea behind this effort is trying to simplify the repetitive process (clone a certain repo in a tag or commit, build and package)
+in the simplest way possible, with the minimum number of lines of code to mantain.
+Each library has its own runners, so they all can complete in a few minutes and generate a lib / platform download.
+The install script for the libraries is made to be very simple
+
+
+
 Other than the natural complexity of a such large project things can be tidy there. some suggestions:
 - removing variants, like bleeding, latest, etc. to the minimum to make libraries and scripts work.
 - formulas: we now have some duplicate defines which turns hard to find and fix issues.
