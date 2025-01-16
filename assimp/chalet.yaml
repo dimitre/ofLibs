@@ -19,37 +19,20 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
-    # targets: Release
-    # defaultRunArguments:
-    # - G Xcode
     defines:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_INSTALL_PREFIX=Release
       - ZLIB_BUILD_EXAMPLES=OFF
-      #   - ENABLE_BITCODE=OFF
-      #   - ENABLE_ARC=OFF
-      #   - ENABLE_VISIBILITY=OFF
     defines[platform:web]:
       - JS_ONLY=ON
       - CMAKE_EXECUTABLE_SUFFIX=.js
 
     defines[platform:macos]:
-      # THIS IS ZLIB ONLY
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
-      # - DEPLOYMENT_TARGET=11.0
-      # - MACOSX_DEPLOYMENT_TARGET=11.0
-      # - CMAKE_CXX_FLAGS=-mmacosx-version-min=11.0
-      # - CMAKE_C_FLAGS=-mmacosx-version-min=11.0
 
-      # defines[platform:ios]:
-
-      # - CMAKE_TOOLCHAIN_FILE=/Users/d/src/ofLibs/_ios-cmake/ios.toolchain.cmake
-      # - PLATFORM=OS64COMBINED
-    # settings:Cxx:
-    # cppStandard: c++20
   assimp:
     # env:
     #   - MACOSX_DEPLOYMENT_TARGET=11.0
@@ -76,7 +59,12 @@ targets:
       - ASSIMP_BUILD_3MF_IMPORTER=OFF
       - ASSIMP_INJECT_DEBUG_POSTFIX=OFF
       # - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
-      - ASSIMP_BUILD_ZLIB=ON
+      # - ASSIMP_BUILD_ZLIB=ON
+      - ASSIMP_BUILD_ZLIB=OFF
+      - ZLIB_ROOT=${externalBuild:zlib}
+      - ZLIB_LIBRARY=${externalBuild:zlib}
+      - ZLIB_INCLUDE_DIRS=${external:zlib}
+
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
@@ -86,16 +74,13 @@ targets:
       # - CMAKE_C_FLAGS=-mmacosx-version-min=11.0
 
       # - CMAKE_OSX_DEPLOYMENT_TARGET=10.13
+      #
     defines[platform:web]:
       - JS_ONLY=ON
       - CMAKE_EXECUTABLE_SUFFIX=.js
     # - ASSIMP_BUILD_ZLIB=ON
     # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
-    defines[toolchain:arm-linux-gnueabihf-gcc]:
-      - ASSIMP_BUILD_ZLIB=OFF
-      - ZLIB_ROOT=${externalBuild:zlib}
-      - ZLIB_LIBRARY=${externalBuild:zlib}
-      - ZLIB_INCLUDE_DIRS=${external:zlib}
+    # defines[toolchain:arm-linux-gnueabihf-gcc]:
     # - ASSIMP_BUILD_ZLIB=ON
     # - CMAKE_C_FLAGS="-D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64"
 
