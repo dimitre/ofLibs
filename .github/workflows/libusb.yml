@@ -21,6 +21,7 @@ jobs:
           - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           - { platform: osx, os: macos-latest, toolchain: apple-llvm }
+          - { platform: macos, os: macos-latest, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
               platform: rpi-aarch64,

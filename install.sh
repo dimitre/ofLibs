@@ -3,6 +3,8 @@ cd "$(dirname "$0")"
 
 OF_FOLDER=/Volumes/tool/ofw
 LIBS_FOLDER=${OF_FOLDER}/libs
+# PLATFORM=osx
+PLATFORM=macos
 
 COLOR='\033[0;32m'
 COLOR2='\033[0;34m'
@@ -32,7 +34,7 @@ W="aria2c -s 7 -x 7 -j 7 " #where 16 is the number of connections
 instala() {
     LIBNAME=$@
     section Installing ${LIBNAME}
-    DOWNLOAD=oflib_${LIBNAME}_osx.zip
+    DOWNLOAD=oflib_${LIBNAME}_${PLATFORM}.zip
     # executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
     executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD}
     executa unzip -o ${DOWNLOAD} -d ${LIBS_FOLDER}/${LIBNAME}
@@ -42,7 +44,7 @@ instala2() {
     LIBNAME=$1
     FOLDERNAME=$2
     section Installing ${LIBNAME}
-    DOWNLOAD=oflib_${LIBNAME}_osx.zip
+    DOWNLOAD=oflib_${LIBNAME}_${PLATFORM}.zip
     # executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
     executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD}
     executa unzip -o ${DOWNLOAD} -d ${FOLDERNAME}
@@ -73,7 +75,9 @@ rm -rf *.zip
 # instala glm
 # instala curl
 # instala FreeImage
-instala freetype
+# instala freetype
+instala glew
+#instala glfw
 #
 #
 # instalaLocal FreeImage
