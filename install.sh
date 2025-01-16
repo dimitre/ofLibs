@@ -72,8 +72,8 @@ rm -rf *.zip
 # instala2 assimp ${OF_FOLDER}/addons/ofxAssimpModelLoader/libs/assimp
 # instala glm
 # instala curl
-instala FreeImage
-# instala freetype
+# instala FreeImage
+instala freetype
 #
 #
 # instalaLocal FreeImage

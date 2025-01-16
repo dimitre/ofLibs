@@ -20,19 +20,19 @@ jobs:
           - { platform: osx, os: macos-latest, toolchain: apple-llvm }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
           # - { platform: vs, os: windows-latest, toolchain: vs-stable }
-          - {
-              platform: rpi-aarch64,
-              os: ubuntu-24.04,
-              prefix: aarch64-linux-gnu,
-              toolchain: aarch64-linux-gnu-gcc,
-            }
-          - {
-              platform: rpi-armv6l,
-              os: ubuntu-24.04,
-              prefix: arm-linux-gnueabihf,
-              toolchain: arm-linux-gnueabihf-gcc,
-              env: [CMAKE_SYSROOT: ./raspbian],
-            }
+          # - {
+          #     platform: rpi-aarch64,
+          #     os: ubuntu-24.04,
+          #     prefix: aarch64-linux-gnu,
+          #     toolchain: aarch64-linux-gnu-gcc,
+          #   }
+          # - {
+          #     platform: rpi-armv6l,
+          #     os: ubuntu-24.04,
+          #     prefix: arm-linux-gnueabihf,
+          #     toolchain: arm-linux-gnueabihf-gcc,
+          #     env: [CMAKE_SYSROOT: ./raspbian],
+          #   }
 
     runs-on: ${{ matrix.cfg.os }}
     env:
