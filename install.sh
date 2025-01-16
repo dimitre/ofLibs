@@ -72,7 +72,7 @@ instalaLocal() {
 # instala2 assimp ${OF_FOLDER}/addons/ofxAssimpModelLoader/libs/assimp
 # instala glm
 # instala curl
-# instala FreeImage
+instala FreeImage
 #
 #
-instalaLocal FreeImage
+# instalaLocal FreeImage
