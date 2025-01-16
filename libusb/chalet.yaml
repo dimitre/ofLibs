@@ -1,12 +1,12 @@
 name: libsof
 version: "0.1.3"
 externalDependencies:
-  usb:
+  libusb:
     repository: https://github.com/libusb/libusb-cmake
     tag: v1.0.27-1
     kind: git
 targets:
-  usb:
+  libusb:
     kind: cmakeProject
     location: ${external:${name}}
     recheck: false
@@ -31,7 +31,7 @@ targets:
       - ${external:usb}
 
 distribution:
-  usb:
+  libusb:
     kind: archive
     format: zip
     include:
