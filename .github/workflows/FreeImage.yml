@@ -1,6 +1,6 @@
 name: FreeImage
 
-# comment just to trigger a new run x
+# comment just to trigger a new run
 
 on:
   push:
