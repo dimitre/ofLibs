@@ -45,6 +45,9 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - FT_DISABLE_BZIP2=ON
+      - FT_REQUIRE_HARFBUZZ=OFF
+      - FT_DISABLE_HARFBUZZ=ON
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${external:zlib}
