@@ -19,6 +19,7 @@ targets:
       - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
       - BUILD_SHARED_LIBS=OFF
       - BUILD_STATIC_LIBS=ON
+      - CURL_BROTLI=OFF
 
       # - ENABLE_BITCODE=OFF
       - CMAKE_BUILD_TYPE=Release
@@ -58,7 +59,6 @@ targets:
       # - CURL_DISABLE_IMAP=ON
       # - ENABLE_WEBSOCKETS=ON
       # - ENABLE_UNIX_SOCKETS=ON
-      # - CURL_BROTLI=OFF
       # - ENABLE_VERBOSE=ON
       # - ENABLE_THREADED_RESOLVER=ON
       # - ENABLE_IPV6=OFF
