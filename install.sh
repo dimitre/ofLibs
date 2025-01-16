@@ -79,7 +79,7 @@ rm -rf *.zip
 # instala glew
 #instala glfw
 # instala glm
-# instala libpng
+instala libpng
 instala FreeImage
 #
 #
