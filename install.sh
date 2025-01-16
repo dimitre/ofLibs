@@ -80,7 +80,13 @@ rm -rf *.zip
 #instala glfw
 # instala glm
 # instala libpng
-instala FreeImage
+#
+# instala FreeImage
 #
 #
 # instalaLocal FreeImage
+
+if [ $# -ne 0 ]
+  then
+  instala $@
+fi

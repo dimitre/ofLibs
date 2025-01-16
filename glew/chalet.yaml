@@ -17,6 +17,14 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+
+  glew_folders:
+    kind: script
+    file: glew_folders.sh
+    arguments:
+      - ${externalBuild:${name}}
+      - ${env:PLATFORM}
+
 distribution:
   glew:
     kind: archive
