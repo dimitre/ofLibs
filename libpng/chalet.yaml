@@ -1,0 +1,39 @@
+name: OF altpothecary GLFW
+version: "0.0.4"
+externalDependencies:
+  libpng:
+    repository: https://github.com/pnggroup/libpng
+    tag: "v1.6.45"
+    kind: git
+
+targets:
+  libpng:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    defines:
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+      - PNG_SHARED=OFF
+      - PNG_TESTS=OFF
+      - PNG_TOOLS=OFF
+      - PNG_EXECUTABLES=OFF
+      - PNG_HARDWARE_OPTIMIZATIONS=OFF
+
+    defines[platform:macos]:
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
+
+distribution:
+  libpng:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/LICENSE
+      - ${external:${name}}/png.framework/Headers
+      # - ${externalBuild:${name}}/${ar:${name}}
+      - ${externalBuild:${name}}/lib
