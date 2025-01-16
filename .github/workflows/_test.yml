@@ -3,7 +3,8 @@ name: _test
 on:
   push:
     paths:
-      - test/**
+      # - test/**
+      - .github/workflows/_test.yml
 
 permissions:
   contents: write
