@@ -28,7 +28,7 @@ targets:
     kind: script
     file: libusb_folders.sh
     arguments:
-      - ${external:usb}
+      - ${external:libusb}
 
 distribution:
   libusb:
