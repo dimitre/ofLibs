@@ -59,7 +59,9 @@ targets:
       - ASSIMP_BUILD_3MF_IMPORTER=OFF
       - ASSIMP_INJECT_DEBUG_POSTFIX=OFF
       # - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
-      # - ASSIMP_BUILD_ZLIB=ON
+    defines[platform:windows]:
+      - ASSIMP_BUILD_ZLIB=ON
+    defines[platform:!windows]:
       - ASSIMP_BUILD_ZLIB=OFF
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
