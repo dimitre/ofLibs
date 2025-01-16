@@ -21,14 +21,19 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      # - CMAKE_INSTALL_PREFIX=Release
+      - CMAKE_INSTALL_PREFIX=Release
       - ZLIB_BUILD_EXAMPLES=OFF
-      - SKIP_EXAMPLE=ON
-      # - ENABLE_BITCODE=OFF
-      # - ENABLE_VISIBILITY=OFF
+      #   - ENABLE_BITCODE=OFF
+      #   - ENABLE_ARC=OFF
+      #   - ENABLE_VISIBILITY=OFF
+    defines[platform:web]:
+      - JS_ONLY=ON
+      - CMAKE_EXECUTABLE_SUFFIX=.js
+
     defines[platform:macos]:
+      # THIS IS ZLIB ONLY
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
 
   FreeImage:
     kind: cmakeProject
@@ -36,6 +41,10 @@ targets:
     recheck: false
     rebuild: false
     defines:
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
@@ -66,6 +75,41 @@ targets:
     defines[platform:{web,windows}]:
       - BUILD_ZLIB=ON
 
+  # MKDIR:
+  #   kind: process
+  #   path: mkdir
+  #   arguments: [${external:FreeImage}/Source/include]
+
+  # freeimage_adjust:
+  #   kind: shell
+  #   shell: bash
+  #   run: |
+  #     mkdir ${external:FreeImage}/Source/include
+  #     cp ${external:FreeImage}/Source/FreeImage.h ${external:FreeImage}/Source/include
+
+  # PWD:
+  #   kind: process
+  #   path: pwd
+
+  # LIST:
+  #   kind: process
+  #   path: ls
+  #   arguments:
+  #     - ./${external:FreeImage}/Source/*.h
+
+  # copy:
+  #   kind: process
+  #   path: cp
+  #   arguments:
+  #     - ./${external:FreeImage}/Source/*.h
+  #     - ./${external:FreeImage}/Source/include
+
+  FreeImageAdjust:
+    kind: script
+    file: freeimage_folders.sh
+    arguments:
+      - ${external:FreeImage}
+
 distribution:
   #   zlib:
   #     kind: archive
@@ -80,10 +124,13 @@ distribution:
     kind: archive
     format: zip
     include:
-      - ${external:${name}}/LICENSE**
-      - ${external:${name}}/Source/FreeImage.h
+      - ${external:${name}}/license**
+      # - ${external:${name}}/Source/FreeImage.h
+      - ${external:${name}}/Source/include
       # - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/${ar:${name}}
-      # - ${externalBuild:${name}}/*.a
-      # - ${externalBuild:${name}}/*.lib
-      # - ${externalBuild:${name}}/*.pc
+      - ${externalBuild:${name}}/lib
+#
+# - ${externalBuild:${name}}/${ar:${name}}
+# - ${externalBuild:${name}}/*.a
+# - ${externalBuild:${name}}/*.lib
+# - ${externalBuild:${name}}/*.pc

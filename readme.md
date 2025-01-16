@@ -16,19 +16,6 @@
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/uriparser.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/utfcpp.yml/badge.svg)
 
-## TODO
-- [ ] make install scripts for all platforms (script? bash? python? c++? autodetect platform?)
-- [ ] make correct folders inside .zip in each library
-- [ ] add more libraries
-- [ ] add library with dependencies
-- [ ] test ios/simulator built libs
-
-## DONE
-- [x] build ios / simulator some lib
-- [x] cross compile for raspberry pi
-- [x] compile one library with emscripten
-- [x] add license to libraries .zip
-
 ## Apothecary Libs
 Other than the natural complexity of a such large project things can be tidy there. some suggestions:
 - removing variants, like bleeding, latest, etc. to the minimum to make libraries and scripts work.

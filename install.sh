@@ -15,7 +15,7 @@ section() {
     printf "${NC}"
 }
 
-executa () {
+executa() {
     printf ${COLOR2}
     echo "✅ --> " $@
     printf ${NC}
@@ -24,27 +24,33 @@ executa () {
     $@
 }
 
+#"axel -n 5 url"
+W="wget2 --chunk-size=1M "
+W="aria2c -x 5 " #where 16 is the number of connections
+W="aria2c -s 7 -x 7 -j 7 " #where 16 is the number of connections
+
 instala() {
-    W="wget2 "
     LIBNAME=$@
     section Installing ${LIBNAME}
     DOWNLOAD=oflib_${LIBNAME}_osx.zip
-    executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
+    # executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
+    executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD}
     executa unzip -o ${DOWNLOAD} -d ${LIBS_FOLDER}/${LIBNAME}
 }
 
 instala2() {
-    W="wget2 "
     LIBNAME=$1
     FOLDERNAME=$2
     section Installing ${LIBNAME}
     DOWNLOAD=oflib_${LIBNAME}_osx.zip
-    executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
+    # executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
+    executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD}
     executa unzip -o ${DOWNLOAD} -d ${FOLDERNAME}
 }
 
 executa mkdir _download
 executa cd _download
+rm -rf *.zip
 
 # if [ -d ${ADDON_FOLDER} ]; then
 #     echo "Directory exists: ${ADDON_FOLDER}"
@@ -58,5 +64,5 @@ executa cd _download
 # # unzip -o = overwrite without prompting
 
 instala2 assimp ${OF_FOLDER}/addons/ofxAssimpModelLoader/libs/assimp
-# instala glm
-# instala curl
+instala glm
+instala curl

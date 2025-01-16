@@ -61,8 +61,8 @@ targets:
     rebuild: false
     defines:
       # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/osx1
-      - CMAKE_THREAD_PREFER_PTHREAD=ON
       - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - CMAKE_THREAD_PREFER_PTHREAD=ON
       # - CMAKE_RUNTIME_OUTPUT_DIRECTORY=lib/osx3
       # - CMAKE_INSTALL_PREFIX=lib/osx4
       - ENABLE_BITCODE=OFF
