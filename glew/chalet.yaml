@@ -22,7 +22,7 @@ targets:
     kind: script
     file: glew_folders.sh
     arguments:
-      - ${externalBuild:${name}}
+      - ${externalBuild:glew}
       - ${env:PLATFORM}
 
 distribution:
