@@ -1,23 +1,25 @@
-name: freetype
+name: libpng
 
 on:
   push:
     paths:
-      - freetype/**
-      - .github/workflows/freetype.yml
+      - libpng/**
+      - .github/workflows/libpng.yml
 
 env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
-  freetype_matrix:
+  libpng_matrix:
     strategy:
       matrix:
         cfg:
-          - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
+          # removed. zlib failing
+          # - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
           - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           - { platform: osx, os: macos-latest, toolchain: apple-llvm }
+          - { platform: macos, os: macos-latest, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
               platform: rpi-aarch64,
@@ -33,9 +35,11 @@ jobs:
             }
 
     runs-on: ${{ matrix.cfg.os }}
+    env:
+      PLATFORM: ${{ matrix.cfg.platform }}
     defaults:
       run:
-        working-directory: ./freetype
+        working-directory: ./libpng
 
     steps:
       - uses: actions/checkout@v4

@@ -19,7 +19,7 @@ targets:
 
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
 
 distribution:
   json:
@@ -28,8 +28,8 @@ distribution:
     include:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
-      - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/${ar:${name}}
+      # - ${externalBuild:${name}}/include
+      # - ${externalBuild:${name}}/${ar:${name}}
     # include[:!windows]:
     #   - ${externalBuild:${name}}/${ar:${name}}
     # include[:windows]:
