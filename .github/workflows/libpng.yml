@@ -6,6 +6,9 @@ on:
       - libpng/**
       - .github/workflows/libpng.yml
 
+permissions:
+  contents: write
+
 env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
@@ -14,32 +17,31 @@ jobs:
     strategy:
       matrix:
         cfg:
-          # removed. zlib failing
           # - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
-          - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
-          - { platform: ios, os: macos-latest, toolchain: apple-llvm }
-          - { platform: osx, os: macos-latest, toolchain: apple-llvm }
+          # - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
+          # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
+          # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
-          - { platform: vs, os: windows-latest, toolchain: vs-stable }
-          - {
-              platform: rpi-aarch64,
-              os: ubuntu-24.04,
-              prefix: aarch64-linux-gnu,
-              toolchain: aarch64-linux-gnu-gcc,
-            }
-          - {
-              platform: rpi-armv6l,
-              os: ubuntu-24.04,
-              prefix: arm-linux-gnueabihf,
-              toolchain: arm-linux-gnueabihf-gcc,
-            }
+          # - { platform: vs, os: windows-latest, toolchain: vs-stable }
+          # - {
+          #     platform: rpi-aarch64,
+          #     os: ubuntu-24.04,
+          #     prefix: aarch64-linux-gnu,
+          #     toolchain: aarch64-linux-gnu-gcc,
+          #   }
+          # - {
+          #     platform: rpi-armv6l,
+          #     os: ubuntu-24.04,
+          #     prefix: arm-linux-gnueabihf,
+          #     toolchain: arm-linux-gnueabihf-gcc,
+          #   }
 
     runs-on: ${{ matrix.cfg.os }}
     env:
       PLATFORM: ${{ matrix.cfg.platform }}
     defaults:
       run:
-        working-directory: ./libpng
+        working-directory: ./${{ github.workflow }}
 
     steps:
       - uses: actions/checkout@v4
@@ -51,8 +53,32 @@ jobs:
           version: 3.1.74
           actions-cache-folder: "emsdk-cache"
 
+      - name: Verify emsdk
+        if: matrix.cfg.platform == 'emscripten'
+        run: |
+          emcc -v
+          emsdk update
+          emsdk install latest
+          emsdk activate latest
+          emcc -v
+
+      - name: RPI - apt multistrap
+        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: multistrap gcc-${{matrix.cfg.prefix}} g++-${{matrix.cfg.prefix}}
+          version: 1.0
+
+      - name: RPI - multistrap
+        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        shell: bash
+        run: |
+          mkdir -p raspbian/etc/apt/apt.conf.d/
+          echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
+          multistrap -a arm64 -d raspbian -f ../multistrap.conf
+
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.16
+        uses: hendrikmuhs/ccache-action@v1.2.14
         with:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
@@ -64,18 +90,38 @@ jobs:
           extension: "\\.zip"
           prerelease: "false"
 
-      # TODO: make another item in matrix to pass toolchain to every chalet bundle. like emscripten, llvm etc.
+      - name: Chalet Test / Version
+        run: |
+          chalet --version
+
       - name: Chalet Configure
-        if: matrix.cfg.platform == 'emscripten'
         shell: bash
-        run: chalet configure --toolchain emscripten
+        run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
       - name: Chalet Bundle
+        if: matrix.cfg.platform != 'ios'
         shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
 
+      - name: iOS Bundle
+        if: matrix.cfg.platform == 'ios'
+        shell: bash
+        run: |
+          ./${{ github.workflow }}.sh
+
+      - name: LS check lib folders
+        if: matrix.cfg.platform != 'ios'
+        shell: bash
+        run: |
+          echo '-------'
+          ls -alfR build/**/ext.${{ github.workflow }}/
+          echo '-------'
+          ls -alfR chalet_external/${{ github.workflow }}/
+          echo '-------'
+
       - name: LS check built lib
+        if: matrix.cfg.platform != 'ios'
         shell: bash
         run: |
           unzip dist/*.zip
@@ -86,7 +132,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          # mv dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
           mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber

@@ -78,7 +78,8 @@ rm -rf *.zip
 # instala freetype
 # instala glew
 #instala glfw
-instala glm
+# instala glm
+instala libpng
 #
 #
 # instalaLocal FreeImage
