@@ -27,6 +27,9 @@ in the simplest way possible, with the minimum number of lines of code to mantai
 Each library has its own runners, so they all can complete in a few minutes and generate a lib / platform download.
 The install script for the libraries is made to be very simple
 
+### TODO
+- [ ] json (nlohmann) remve unused hpp files
+- [ ]
 
 
 Other than the natural complexity of a such large project things can be tidy there. some suggestions:
