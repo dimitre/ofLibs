@@ -13,18 +13,16 @@ targets:
     recheck: false
     rebuild: false
     defines:
-      # - CMAKE_USE_OPENSSL=ON
-      # - BUILD_CURL_EXE=OFF
-      # - OPENSSL_IS_BORINGSSL=TRUE
-      # - CMAKE_IGNORE_PATH=/opt/homebrew/Cellar/openssl@3/3.4.0/lib/
-      # - OPENSSL_ROOT_DIR=${externalBuild:boringssl}
-      # - BUILD_EXAMPLES=OFF
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
-    defines[platform:macos]:
-      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
-
+    # defines[platform:macos]:
+    # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+    # - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+  utfcpp_folders:
+    kind: script
+    file: utfcpp_folders.sh
+    arguments:
+      - ${external:utfcpp}
 distribution:
   utfcpp:
     kind: archive
@@ -32,9 +30,3 @@ distribution:
     include:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
-      - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/${ar:${name}}
-    # include[:!windows]:
-    #   - ${externalBuild:${name}}/${ar:${name}}
-    # include[:windows]:
-    #   - ${externalBuild:${name}}/lib/**.lib
