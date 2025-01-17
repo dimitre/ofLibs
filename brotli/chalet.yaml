@@ -1,0 +1,45 @@
+name: libsof
+version: "0.1.3"
+externalDependencies:
+  brotli:
+    repository: https://github.com/google/brotli
+    # commit: ef24c4c7502169f016dcd2a26923dbaf3216748c
+    tag: v1.1.0
+    kind: git
+
+targets:
+  brotli:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    defines:
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+      - BUILD_SHARED_LIBS=OFF
+      # - BUILD_STATIC_LIBS=ON
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - CMAKE_INSTALL_PREFIX=Release
+    # defines[platform:web]:
+    #   - JS_ONLY=ON
+    #   - CMAKE_EXECUTABLE_SUFFIX=.js
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+
+  # brotli_folders:
+  #   kind: script
+  #   file: brotli_folders.sh
+  #   arguments:
+  #     - ${external:brotli}
+
+distribution:
+  brotli:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/LICENSE**
+      - ${external:${name}}/c/include
+      - ${externalBuild:${name}}/lib

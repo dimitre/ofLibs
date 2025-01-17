@@ -1,10 +1,10 @@
-name: zlib
+name: brotli
 
 on:
   push:
     paths:
-      - zlib/**
-      - .github/workflows/zlib.yml
+      - brotli/**
+      - .github/workflows/brotli.yml
 
 permissions:
   contents: write
@@ -13,7 +13,7 @@ env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
-  zlib_matrix:
+  brotli_matrix:
     strategy:
       matrix:
         cfg:
