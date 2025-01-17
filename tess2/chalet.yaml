@@ -20,6 +20,7 @@ targets:
     recheck: false
     rebuild: false
     defines:
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       # - CMAKE_USE_OPENSSL=ON
       # - BUILD_CURL_EXE=OFF
       # - OPENSSL_IS_BORINGSSL=TRUE
@@ -39,8 +40,8 @@ distribution:
     include:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
-      - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/${ar:${name}}
+      - ${externalBuild:${name}}/lib
+      # - ${externalBuild:${name}}/${ar:${name}}
     # include[:!windows]:
     #   - ${externalBuild:${name}}/${ar:${name}}
     # include[:windows]:
