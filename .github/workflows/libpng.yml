@@ -112,16 +112,6 @@ jobs:
         run: |
           ./${{ github.workflow }}.sh
 
-      - name: LS check lib folders
-        if: matrix.cfg.platform != 'ios'
-        shell: bash
-        run: |
-          echo '-------'
-          ls -alfR build/**/ext.${{ github.workflow }}/
-          echo '-------'
-          ls -alfR chalet_external/${{ github.workflow }}/
-          echo '-------'
-
       - name: LS check built lib
         if: matrix.cfg.platform != 'ios'
         shell: bash

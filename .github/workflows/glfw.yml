@@ -17,7 +17,7 @@ jobs:
       matrix:
         cfg:
           # - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
-          - { platform: osx, os: macos-latest, toolchain: apple-llvm }
+          # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
           # - { platform: vs, os: windows-latest, toolchain: vs-stable }
           # - {
@@ -107,15 +107,6 @@ jobs:
         shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
-
-      - name: LS check lib folders
-        shell: bash
-        run: |
-          echo '-------'
-          ls -alfR build/**/ext.${{ github.workflow }}/
-          echo '-------'
-          ls -alfR chalet_external/${{ github.workflow }}/
-          echo '-------'
 
       - name: LS check built lib
         shell: bash

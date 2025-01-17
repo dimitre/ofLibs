@@ -25,7 +25,7 @@ jobs:
       matrix:
         cfg:
           # - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
-          - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
+          # - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
           # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
@@ -120,16 +120,6 @@ jobs:
         shell: bash
         run: |
           ./${{ github.workflow }}.sh
-
-      - name: LS check lib folders
-        if: matrix.cfg.platform != 'ios'
-        shell: bash
-        run: |
-          echo '-------'
-          ls -alfR build/**/ext.${{ github.workflow }}/
-          echo '-------'
-          ls -alfR chalet_external/${{ github.workflow }}/
-          echo '-------'
 
       - name: LS check built lib
         if: matrix.cfg.platform != 'ios'
