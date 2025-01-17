@@ -1,154 +1,150 @@
 {
-	"name": "libsof",
-	"version": "0.1.3",
+  "name": "libsof",
+  "version": "0.1.3",
 
-	"externalDependencies": {
-		"zlib": {
-			"repository" : "https://github.com/madler/zlib",
-			"tag" : "v1.3.1",
-			"kind": "git"
-		},
+  "externalDependencies": {
+    "zlib": {
+      "repository": "https://github.com/madler/zlib",
+      "tag": "v1.3.1",
+      "kind": "git"
+    },
 
-		"libpng": {
-			"repository" : "https://github.com/pnggroup/libpng",
-			"tag" : "v1.6.44",
-			"kind": "git"
-		},
+    "libpng": {
+      "repository": "https://github.com/pnggroup/libpng",
+      "tag": "v1.6.44",
+      "kind": "git"
+    },
 
-		"freeimage": {
-			"repository" : "https://github.com/danoli3/FreeImage",
-			"tag" : "3.19.7",
-			"kind": "git"
-		}
-		
-		// ,
+    "freeimage": {
+      "repository": "https://github.com/danoli3/FreeImage",
+      "tag": "3.19.7",
+      "kind": "git"
+    }
 
-		// "freetype": {
-		// 	"repository" : "https://gitlab.freedesktop.org/freetype/freetype",
-		// 	"tag" : "VER-2-13-3",
-		// 	"kind": "git"
-		// }
-		// ,
+    // ,
 
-		// "libpng": {
-		// 	"repository" : "https://github.com/pnggroup/libpng",
-		// 	"tag" : "v1.6.44",
-		// 	"kind": "git"
-		// }
+    // "freetype": {
+    // 	"repository" : "https://gitlab.freedesktop.org/freetype/freetype",
+    // 	"tag" : "VER-2-13-3",
+    // 	"kind": "git"
+    // }
+    // ,
 
-	},
+    // "libpng": {
+    // 	"repository" : "https://github.com/pnggroup/libpng",
+    // 	"tag" : "v1.6.44",
+    // 	"kind": "git"
+    // }
+  },
 
-	"targets": {
-		"zlib" : {
-			"kind": "cmakeProject",
-			"location": "${external:${name}}",
-			"recheck": false,
-			"rebuild": false,
-			"defines" : [
-				"CMAKE_INSTALL_PREFIX=Release",
-				// "CMAKE_VERBOSE_MAKEFILE=${VERBOSE_MAKEFILE}",
-				" BUILD_SHARED_LIBS=OFF",
-				// "CMAKE_PREFIX_PATH="${LIBS_ROOT}"",
-				"ZLIB_BUILD_EXAMPLES=OFF",
-				"SKIP_EXAMPLE=ON",
-				// "CMAKE_C_STANDARD=${C_STANDARD}",
-				// "CMAKE_CXX_STANDARD=${CPP_STANDARD}",
-				"CMAKE_CXX_STANDARD_REQUIRED=ON",
-				// "DEPLOYMENT_TARGET=${MIN_SDK_VER}",
-				"CMAKE_CXX_EXTENSIONS=OFF",
-				// "CMAKE_TOOLCHAIN_FILE=$APOTHECARY_DIR/toolchains/ios.toolchain.cmake",
-				// "CMAKE_CXX_FLAGS_RELEASE=""USE_PTHREADS=1 ${FLAG_RELEASE} "",
-				// "CMAKE_C_FLAGS_RELEASE=""USE_PTHREADS=1 ${FLAG_RELEASE} "",
-				"CMAKE_INCLUDE_OUTPUT_DIRECTORY=include",
-				"CMAKE_INSTALL_INCLUDEDIR=include",
-				"PLATFORM=$PLATFORM",
-				"ENABLE_BITCODE=OFF",
-				"ENABLE_ARC=OFF",
-				"CMAKE_POSITION_INDEPENDENT_CODE=TRUE",
-				"ENABLE_VISIBILITY=OF",
+  "targets": {
+    "zlib": {
+      "kind": "cmakeProject",
+      "location": "${external:${name}}",
+      "recheck": false,
+      "rebuild": false,
+      "defines": [
+        "CMAKE_INSTALL_PREFIX=Release",
+        // "CMAKE_VERBOSE_MAKEFILE=${VERBOSE_MAKEFILE}",
+        " BUILD_SHARED_LIBS=OFF",
+        // "CMAKE_PREFIX_PATH="${LIBS_ROOT}"",
+        "ZLIB_BUILD_EXAMPLES=OFF",
+        "SKIP_EXAMPLE=ON",
+        // "CMAKE_C_STANDARD=${C_STANDARD}",
+        // "CMAKE_CXX_STANDARD=${CPP_STANDARD}",
+        "CMAKE_CXX_STANDARD_REQUIRED=ON",
+        // "DEPLOYMENT_TARGET=${MIN_SDK_VER}",
+        "CMAKE_CXX_EXTENSIONS=OFF",
+        // "CMAKE_TOOLCHAIN_FILE=$APOTHECARY_DIR/toolchains/ios.toolchain.cmake",
+        // "CMAKE_CXX_FLAGS_RELEASE=""USE_PTHREADS=1 ${FLAG_RELEASE} "",
+        // "CMAKE_C_FLAGS_RELEASE=""USE_PTHREADS=1 ${FLAG_RELEASE} "",
+        "CMAKE_INCLUDE_OUTPUT_DIRECTORY=include",
+        "CMAKE_INSTALL_INCLUDEDIR=include",
+        "PLATFORM=$PLATFORM",
+        "ENABLE_BITCODE=OFF",
+        "ENABLE_ARC=OFF",
+        "CMAKE_POSITION_INDEPENDENT_CODE=TRUE",
+        "ENABLE_VISIBILITY=OF",
 
-				"CMAKE_OSX_ARCHITECTURES=x86_64;arm64",
-				"CMAKE_OSX_DEPLOYMENT_TARGET=10.9"
-			]
-		},
+        "CMAKE_OSX_ARCHITECTURES=x86_64;arm64",
+        "CMAKE_OSX_DEPLOYMENT_TARGET=11.0"
+      ]
+    },
 
-		"libpng" : {
-			"kind": "cmakeProject",
-			"location": "${external:${name}}",
-			"recheck": false,
-			"rebuild": false,
-			"defines" : [
-				// temporary fix for neon issues in universal
-				// we can remove once this is fixed: https://github.com/pnggroup/libpng/issues/372
-				"CMAKE_C_FLAGS=\"-DPNG_ARM_NEON_OPT=0\"",
+    "libpng": {
+      "kind": "cmakeProject",
+      "location": "${external:${name}}",
+      "recheck": false,
+      "rebuild": false,
+      "defines": [
+        // temporary fix for neon issues in universal
+        // we can remove once this is fixed: https://github.com/pnggroup/libpng/issues/372
+        "CMAKE_C_FLAGS=\"-DPNG_ARM_NEON_OPT=0\"",
 
-				"CMAKE_OSX_ARCHITECTURES=x86_64;arm64",
-				"CMAKE_OSX_DEPLOYMENT_TARGET=10.9"
-			]
-		},
+        "CMAKE_OSX_ARCHITECTURES=x86_64;arm64",
+        "CMAKE_OSX_DEPLOYMENT_TARGET=11.0"
+      ]
+    },
 
-		"freeimage": {
-			// "extends": "cmake_default",
-			"kind": "cmakeProject",
-			// "dependsOn" : "libpng",
-			"defines": [
-				"BUILD_JXR=OFF",
-				"BUILD_LIBPNG=ON",
-				"BUILD_LIBRAWLITE=OFF",
-				"BUILD_OPENEXR=OFF",
-				"BUILD_SHARED_LIBS=OFF",
-				"BUILD_TESTS=OFF",
-				"BUILD_WEBP=ON",
-				"BUILD_ZLIB=ON",
-				"CMAKE_BUILD_TYPE=Release",
-				"CMAKE_CXX_EXTENSIONS=OFF",
-				
-				// "CMAKE_CXX_STANDARD=${CPP_STANDARD}",
-				// "CMAKE_CXX_STANDARD_REQUIRED=ON",
-				"CMAKE_CXX_FLAGS=-fPIC", // ${FLAG_RELEASE}
-				"CMAKE_C_FLAGS=-fPIC",
-				// "CMAKE_C_STANDARD=${C_STANDARD}",
-				"CMAKE_INCLUDE_OUTPUT_DIRECTORY=include",
-				"CMAKE_INSTALL_INCLUDEDIR=include",
-				"CMAKE_INSTALL_PREFIX=Release",
-				"CMAKE_POSITION_INDEPENDENT_CODE=ON",
-				// "CMAKE_PREFIX_PATH=${LIBS_ROOT}",
+    "freeimage": {
+      // "extends": "cmake_default",
+      "kind": "cmakeProject",
+      // "dependsOn" : "libpng",
+      "defines": [
+        "BUILD_JXR=OFF",
+        "BUILD_LIBPNG=ON",
+        "BUILD_LIBRAWLITE=OFF",
+        "BUILD_OPENEXR=OFF",
+        "BUILD_SHARED_LIBS=OFF",
+        "BUILD_TESTS=OFF",
+        "BUILD_WEBP=ON",
+        "BUILD_ZLIB=ON",
+        "CMAKE_BUILD_TYPE=Release",
+        "CMAKE_CXX_EXTENSIONS=OFF",
 
-				"ENABLE_ARC=OFF",
-				"ENABLE_BITCODE=OFF",
-				"ENABLE_VISIBILITY=OFF",
-				"PLATFORM=$PLATFO",
-				"PNG_INCLUDE_DIR=${external:libpng}",
-				"PNG_LIBRARY=${buildDir}/${ar:libpng}",
-				"PNG_ROOT=${external:libpng}",
+        // "CMAKE_CXX_STANDARD=${CPP_STANDARD}",
+        // "CMAKE_CXX_STANDARD_REQUIRED=ON",
+        "CMAKE_CXX_FLAGS=-fPIC", // ${FLAG_RELEASE}
+        "CMAKE_C_FLAGS=-fPIC",
+        // "CMAKE_C_STANDARD=${C_STANDARD}",
+        "CMAKE_INCLUDE_OUTPUT_DIRECTORY=include",
+        "CMAKE_INSTALL_INCLUDEDIR=include",
+        "CMAKE_INSTALL_PREFIX=Release",
+        "CMAKE_POSITION_INDEPENDENT_CODE=ON",
+        // "CMAKE_PREFIX_PATH=${LIBS_ROOT}",
 
-				"ZLIB_INCLUDE_DIRS=${external:zlib}",
-				"ZLIB_LIBRARY=${buildDir}/${ar:zlib}",
-				"ZLIB_ROOT=${external:zlib}",
+        "ENABLE_ARC=OFF",
+        "ENABLE_BITCODE=OFF",
+        "ENABLE_VISIBILITY=OFF",
+        "PLATFORM=$PLATFO",
+        "PNG_INCLUDE_DIR=${external:libpng}",
+        "PNG_LIBRARY=${buildDir}/${ar:libpng}",
+        "PNG_ROOT=${external:libpng}",
 
-				"USE_PTHREADS=1",
-				"DEPLOYMENT_TARGET=10.9",
-				// "CMAKE_TOOLCHAIN_FILE=$APOTHECARY_DIR/toolchains/ios.toolchain.cmake",
-				// -GXcode \
+        "ZLIB_INCLUDE_DIRS=${external:zlib}",
+        "ZLIB_LIBRARY=${buildDir}/${ar:zlib}",
+        "ZLIB_ROOT=${external:zlib}",
 
-				"CMAKE_OSX_ARCHITECTURES=x86_64;arm64",
-				"CMAKE_OSX_DEPLOYMENT_TARGET=10.9"
+        "USE_PTHREADS=1",
+        "DEPLOYMENT_TARGET=10.9",
+        // "CMAKE_TOOLCHAIN_FILE=$APOTHECARY_DIR/toolchains/ios.toolchain.cmake",
+        // -GXcode \
 
-
-			],
-			"location": "${external:${name}}"
-		}
-	}
-,
-	"distribution": {
-		"freeimage": {
-			"kind": "archive",
-			"condition": "[:macos]",
-			"format": "zip",
-			"include": [
-				"${externalBuild:${name}}/*.a",
-				"${external:${name}}/Source/FreeImage.h"
-			]
-		}
-	}
+        "CMAKE_OSX_ARCHITECTURES=x86_64;arm64",
+        "CMAKE_OSX_DEPLOYMENT_TARGET=11.0"
+      ],
+      "location": "${external:${name}}"
+    }
+  },
+  "distribution": {
+    "freeimage": {
+      "kind": "archive",
+      "condition": "[:macos]",
+      "format": "zip",
+      "include": [
+        "${externalBuild:${name}}/*.a",
+        "${external:${name}}/Source/FreeImage.h"
+      ]
+    }
+  }
 }

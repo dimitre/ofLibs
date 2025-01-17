@@ -1,44 +1,44 @@
 {
-	"name": "OF altpothecary",
-	"version": "0.0.3",
-	"externalDependencies": {
-		"glfw": {
-			"repository": "https://github.com/glfw/glfw",
-			"tag" : "3.4",
-			"kind" : "git"
-		}
-	},
+  "name": "OF altpothecary",
+  "version": "0.0.3",
+  "externalDependencies": {
+    "glfw": {
+      "repository": "https://github.com/glfw/glfw",
+      "tag": "3.4",
+      "kind": "git"
+    }
+  },
 
-	"targets": {
-		"glfw": {
-			"kind": "cmakeProject",
-			"location": "${external:${name}}",
-			"recheck": false,
-			"rebuild": false,
-			"defines" : [
-				"GLFW_BUILD_DOCS=OFF",
-				"GLFW_BUILD_TESTS=OFF",
-				"GLFW_BUILD_EXAMPLES=OFF",
-				"BUILD_SHARED_LIBS=OFF",
-				"CMAKE_BUILD_TYPE=Release"
-			],
-			"defines[platform:macos]" : [
-				"CMAKE_OSX_DEPLOYMENT_TARGET=10.9",
-				"CMAKE_OSX_ARCHITECTURES=x86_64;arm64"
-			]
-		}
-	},
+  "targets": {
+    "glfw": {
+      "kind": "cmakeProject",
+      "location": "${external:${name}}",
+      "recheck": false,
+      "rebuild": false,
+      "defines": [
+        "GLFW_BUILD_DOCS=OFF",
+        "GLFW_BUILD_TESTS=OFF",
+        "GLFW_BUILD_EXAMPLES=OFF",
+        "BUILD_SHARED_LIBS=OFF",
+        "CMAKE_BUILD_TYPE=Release"
+      ],
+      "defines[platform:macos]": [
+        "CMAKE_OSX_DEPLOYMENT_TARGET=11.0",
+        "CMAKE_OSX_ARCHITECTURES=x86_64;arm64"
+      ]
+    }
+  },
 
-	"distribution": {
-		"glfw": {
-			"kind": "archive",
-			"condition": "[:macos]",
-			"format": "zip",
-			"include": [
-				// "${externalBuild:${name}}/src/*.a",
-				"${externalBuild:${name}}**.a",
-				"${external:${name}}/include"
-			]
-		}
-	}
+  "distribution": {
+    "glfw": {
+      "kind": "archive",
+      "condition": "[:macos]",
+      "format": "zip",
+      "include": [
+        // "${externalBuild:${name}}/src/*.a",
+        "${externalBuild:${name}}**.a",
+        "${external:${name}}/include"
+      ]
+    }
+  }
 }
