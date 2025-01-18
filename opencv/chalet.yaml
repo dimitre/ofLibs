@@ -26,7 +26,7 @@ targets:
       - ZLIB_BUILD_EXAMPLES=OFF
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
 
   opencv:
     kind: cmakeProject
@@ -92,7 +92,7 @@ targets:
     defines[platform:macos]:
       - APPLE_FRAMEWORK=ON
       - CPU_BASELINE=NATIVE
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 distribution:
   opencv:

@@ -66,7 +66,7 @@ targets:
       - ENABLE_VISIBILITY=OFF
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
   opencv:
     kind: cmakeProject
     location: ${external:${name}}
@@ -106,7 +106,7 @@ targets:
     defines[platform:macos]:
       - APPLE_FRAMEWORK=ON
       - CPU_BASELINE=NATIVE
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
   assimp:
     kind: cmakeProject
@@ -125,7 +125,7 @@ targets:
       - ASSIMP_INJECT_DEBUG_POSTFIX=OFF
       - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
   glfw:
     kind: cmakeProject
@@ -139,7 +139,7 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
   freetype:
     kind: cmakeProject
@@ -147,7 +147,7 @@ targets:
     recheck: false
     rebuild: false
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
   libpng:
     kind: cmakeProject
@@ -159,7 +159,7 @@ targets:
       - CMAKE_C_FLAGS=-DPNG_ARM_NEON_OPT=0
       - PNG_HARDWARE_OPTIMIZATIONS=ON
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
   libusb:
     kind: cmakeProject
@@ -175,7 +175,7 @@ targets:
       - LIBUSB_ENABLE_UDEV=OFF
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
   freeimage:
     kind: cmakeProject
     location: ${external:${name}}
@@ -205,7 +205,7 @@ targets:
       - USE_PTHREADS=1
     defines[platform:macos]:
       - DEPLOYMENT_TARGET=10.9
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
   glew:
     kind: cmakeProject
@@ -215,7 +215,7 @@ targets:
     defines:
       - glew-cmake_BUILD_SHARED=OFF
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
   glm:
     kind: cmakeProject
@@ -235,7 +235,7 @@ targets:
       - GLM_TEST_ENABLE=OFF
       - GLM_ENABLE_CXX_17=ON
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
   fmt:
     kind: cmakeProject
@@ -250,7 +250,7 @@ targets:
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 distribution:
   opencv:
@@ -314,4 +314,3 @@ distribution:
     include:
       - ${externalBuild:${name}}/*.a
       - ${external:${name}}/include
-

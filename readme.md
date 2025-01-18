@@ -15,6 +15,7 @@
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libxml2.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/opencv.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/pugixml.yml/badge.svg)
+<!-- ![title](https://github.com/dimitre/ofLibs/actions/workflows/svgtiny.yml/badge.svg) -->
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/tess2.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/uriparser.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/utfcpp.yml/badge.svg)

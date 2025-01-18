@@ -31,7 +31,7 @@ targets:
       - CMAKE_BUILD_TYPE=Release
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=10.9
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
 
 distribution:
   tess2:
