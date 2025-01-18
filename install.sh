@@ -31,14 +31,51 @@ executa() {
 # W="aria2c -x 5 " #where 16 is the number of connections
 W="aria2c -s 7 -x 7 -j 7 " #where 16 is the number of connections
 
+LIBADDONS=( "assimp:ofxAssimpModelLoader"
+        "opencv:ofxOpenCv"
+        "libxml2:ofxSvg"
+        "svgtiny:ofxSvg"
+        "libusb:ofxKinect"
+)
+
+
 instala() {
     LIBNAME=$@
     section Installing ${LIBNAME}
     DOWNLOAD=oflib_${LIBNAME}_${PLATFORM}.zip
     # executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
     executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} &&
-    executa unzip -o ${DOWNLOAD} -d ${LIBS_FOLDER}/${LIBNAME}
+    OUTFOLDER=${LIBS_FOLDER}/${LIBNAME}
+
+    for libaddon in "${LIBADDONS[@]}" ; do
+        LIB=${libaddon%%:*}
+        ADDON=${libaddon#*:}
+        if [[ ${LIBNAME} == ${LIB} ]]
+        then
+            printf "%s likes to %s.\n" "$LIB" "$ADDON"
+            OUTFOLDER=${OF_FOLDER}/addons/${ADDON}/libs/${LIB}
+        fi
+    done
+
+    # if [[ ${LIBNAME} == "assimp" ]]
+    # then
+    #     OUTFOLDER=${OF_FOLDER}/addons/ofxAssimpModelLoader/libs/assimp
+    # fi
+
+    # if [[ ${LIBNAME} == "opencv" ]]
+    # then
+    #     OUTFOLDER=${OF_FOLDER}/addons/ofxOpenCv/libs/opencv
+    # fi
+    rm -rf ${OUTFOLDER}
+    executa unzip -o ${DOWNLOAD} -d ${OUTFOLDER}
 }
+
+
+if [ $# -ne 0 ]
+  then
+  instala $@
+fi
+
 
 instala2() {
     LIBNAME=$1
@@ -85,8 +122,3 @@ rm -rf *.zip
 #
 #
 # instalaLocal FreeImage
-
-if [ $# -ne 0 ]
-  then
-  instala $@
-fi
