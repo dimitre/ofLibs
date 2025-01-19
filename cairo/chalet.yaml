@@ -7,39 +7,9 @@ externalDependencies:
     commit: 727966dfca933d4a8fc6e65a428e1a9ce1a2fec2
     kind: git
 targets:
-  cairo:
-    kind: cmakeProject
-    location: "cairo"
-
-    recheck: false
-    rebuild: false
-    # targets: Release
-    # defaultRunArguments:
-    # - G Xcode
-    defines:
-      # - CMAKE_TOOLCHAIN_FILE=../../../../_ios-cmake/ios.toolchain.cmake
-      - CMAKE_SOURCE_DIR=${external:cairo}
-      - BUILD_SHARED_LIBS=OFF
-      - BUILD_STATIC_LIBS=ON
-      - CMAKE_BUILD_TYPE=Release
-      # - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      - CMAKE_INSTALL_PREFIX=Release
-      - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
-      - CMAKE_INSTALL_INCLUDEDIR=include
-  # cairo-script:
-  #   kind: script
-  #   file: build.sh
-  # arguments:
-  #   - xyz
-distribution:
-  cairo:
-    kind: archive
-    format: zip
-    include:
-      - ${external:${name}}/**.h
-# - ${external:${name}}/Source/FreeImage.h
-# - ${externalBuild:${name}}/include
-# - ${externalBuild:${name}}/${ar:${name}}
-# - ${externalBuild:${name}}/*.a
-# - ${externalBuild:${name}}/*.lib
-# - ${externalBuild:${name}}/*.pc
+# distribution:
+#   cairo:
+#     kind: archive
+#     format: zip
+#     include:
+#       - ${external:${name}}/**.h

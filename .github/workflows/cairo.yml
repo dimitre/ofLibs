@@ -52,6 +52,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Meson test
+        if: matrix.cfg.platform == 'emscripten'
+        run: |
+          meson -v
+
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
