@@ -4,7 +4,7 @@ git clone https://gitlab.freedesktop.org/cairo/cairo --depth 1 cairogit
 cd cairogit
 git fetch --depth 1 origin 727966dfca933d4a8fc6e65a428e1a9ce1a2fec2
 
-meson setup build -Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release -Dxcb=disabled -Dxlib=disabled -Dlzo=disabled --reconfigure
+meson setup build -Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release -Dxcb=disabled -Dxlib=disabled -Dlzo=disabled
 # --buildtype=release
 ninja -C build
 
