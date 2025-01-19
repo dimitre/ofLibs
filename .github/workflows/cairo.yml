@@ -52,15 +52,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-
-      - uses: BSFishy/meson-build@v1.0.3
+      - name: Brew Meson
+        uses: tecolicom/actions-use-homebrew-tools@v1
         with:
-          action: test
-
-      - name: Meson test
-        run: |
-          meson -v
+          tools: meson
+      # - uses: actions/setup-python@v5
+      # - uses: BSFishy/meson-build@v1.0.3
+      # - name: Meson test
+      #   run: |
+      #     meson -v
 
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
