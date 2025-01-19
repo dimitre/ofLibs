@@ -62,6 +62,10 @@ jobs:
       #   run: |
       #     meson -v
 
+      - name: Cairo Build
+        run: |
+          ./cairo.sh
+
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
