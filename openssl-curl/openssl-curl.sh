@@ -5,9 +5,23 @@ cd Build-OpenSSL-cURL
 
 cd ..
 mkdir curl
-cp -r Build-OpenSSL-cURL/curl/include curl
-cp -r Build-OpenSSL-cURL/curl/lib curl
-mkdir curl/lib/${PLATFORM}
-mv curl/lib/*.a curl/lib/${PLATFORM}
+cd curl
+cp -r Build-OpenSSL-cURL/curl/include .
+cp -r Build-OpenSSL-cURL/curl/lib .
+cp Build-OpenSSL-cURL/curl/curl*/COPYING .
+mkdir lib/${PLATFORM}
+mv lib/*.a lib/${PLATFORM}
+zip -r ../oflib_curl_${PLATFORM}.zip lib include
+cd ..
 
-zip -r oflib_cairo_${PLATFORM}.zip lib include
+mkdir openssl
+cd openssl
+cp -r Build-OpenSSL-cURL/openssl/Mac/include .
+cp -r Build-OpenSSL-cURL/openssl/Mac/lib .
+cp Build-OpenSSL-cURL/openssl/openssl*/LICENSE .
+
+mkdir lib/${PLATFORM}
+mv lib/*.a lib/${PLATFORM}
+
+zip -r ../oflib_openssl_${PLATFORM}.zip lib include
+cd ..
