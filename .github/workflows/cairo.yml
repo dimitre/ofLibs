@@ -14,8 +14,8 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
 
-# env:
-# CMAKE_CXX_COMPILER_LAUNCHER: ccache
+env:
+  CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   cairo_matrix:
@@ -104,10 +104,10 @@ jobs:
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
-      # - name: ccache
-      #   uses: hendrikmuhs/ccache-action@v1.2.16
-      #   with:
-      #     key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.16
+        with:
+          key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
       # - name: Install Chalet
       #   uses: jaxxstorm/action-install-gh-release@v1.14.0

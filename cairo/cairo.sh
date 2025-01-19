@@ -2,7 +2,7 @@
 cd "$(dirname "$0")"
 pwd
 # brew install meson
-export CCACHE_DISABLE=1
+# export CCACHE_DISABLE=1
 
 git clone https://gitlab.freedesktop.org/cairo/cairo --depth 1
 cd cairo
@@ -17,7 +17,7 @@ cp cairo/build/src/*.a output/lib/${PLATFORM}
 mkdir -p output/include/
 cp -R cairo/src/*.h output/include
 
-zip -r of_cairo_macos.zip output/lib output/include
+zip -r oflib_cairo_macos.zip output/lib output/include
 
 # --buildtype=release
 
