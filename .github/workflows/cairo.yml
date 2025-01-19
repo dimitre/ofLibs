@@ -14,8 +14,8 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
 
-env:
-  CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# env:
+# CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   cairo_matrix:
