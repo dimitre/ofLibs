@@ -12,12 +12,12 @@ meson setup build -Ddefault_library=static -Ddefault_both_libraries=static -Dbui
 ninja -C build
 
 cd ..
-mkdir -p output/lib/${PLATFORM}
-cp cairo/build/src/*.a output/lib/${PLATFORM}
-mkdir -p output/include/
-cp -R cairo/src/*.h output/include
+mkdir -p lib/${PLATFORM}
+cp cairo/build/src/*.a lib/${PLATFORM}
+mkdir -p include/
+cp -R cairo/src/*.h include
 
-zip -r oflib_cairo_macos.zip output/lib output/include
+zip -r oflib_cairo_macos.zip lib include
 
 # --buildtype=release
 
