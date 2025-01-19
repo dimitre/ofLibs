@@ -7,9 +7,18 @@ externalDependencies:
     commit: 727966dfca933d4a8fc6e65a428e1a9ce1a2fec2
     kind: git
 targets:
-# distribution:
-#   cairo:
-#     kind: archive
-#     format: zip
-#     include:
-#       - ${external:${name}}/**.h
+  cairo-script:
+    kind: script
+    file: cairo.sh
+distribution:
+  cairo:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/**.h
+# - ${external:${name}}/Source/FreeImage.h
+# - ${externalBuild:${name}}/include
+# - ${externalBuild:${name}}/${ar:${name}}
+# - ${externalBuild:${name}}/*.a
+# - ${externalBuild:${name}}/*.lib
+# - ${externalBuild:${name}}/*.pc
