@@ -52,6 +52,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v1
+
       - uses: BSFishy/meson-build@v1.0.3
         with:
           action: test
