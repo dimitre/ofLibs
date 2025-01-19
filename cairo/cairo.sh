@@ -1,3 +1,6 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+pwd
 # brew install meson
 export CCACHE_DISABLE=1
 
@@ -7,6 +10,14 @@ git fetch --depth 1 origin 727966dfca933d4a8fc6e65a428e1a9ce1a2fec2
 
 meson setup build -Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release -Dxcb=disabled -Dxlib=disabled -Dlzo=disabled --reconfigure
 ninja -C build
+
+cd ..
+mkdir -p output/lib/${PLATFORM}
+cp cairo/build/src/*.a output/lib/${PLATFORM}
+mkdir -p output/include/
+cp -R cairo/src/*.h output/include
+
+zip -r of_cairo_macos.zip output/lib output/include
 
 # --buildtype=release
 

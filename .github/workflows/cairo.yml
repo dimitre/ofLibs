@@ -109,27 +109,27 @@ jobs:
       #   with:
       #     key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
-      - name: Install Chalet
-        uses: jaxxstorm/action-install-gh-release@v1.14.0
-        with:
-          repo: chalet-org/chalet
-          cache: enable
-          extension: "\\.zip"
-          prerelease: "false"
+      # - name: Install Chalet
+      #   uses: jaxxstorm/action-install-gh-release@v1.14.0
+      #   with:
+      #     repo: chalet-org/chalet
+      #     cache: enable
+      #     extension: "\\.zip"
+      #     prerelease: "false"
 
-      - name: Chalet Test / Version
-        run: |
-          chalet --version
+      # - name: Chalet Test / Version
+      #   run: |
+      #     chalet --version
 
-      - name: Chalet Configure
-        shell: bash
-        run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
+      # - name: Chalet Configure
+      #   shell: bash
+      #   run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
-      - name: Chalet Bundle
-        if: matrix.cfg.platform != 'ios'
-        shell: bash
-        run: |
-          chalet bundle --show-commands
+      # - name: Chalet Bundle
+      #   if: matrix.cfg.platform != 'ios'
+      #   shell: bash
+      #   run: |
+      #     chalet bundle --show-commands
 
       - name: iOS Bundle
         if: matrix.cfg.platform == 'ios'
@@ -137,18 +137,18 @@ jobs:
         run: |
           ./${{ github.workflow }}.sh
 
-      - name: LS check built lib
-        if: matrix.cfg.platform != 'ios'
-        shell: bash
-        run: |
-          unzip dist/*.zip
-          ls -alfR dist
+      # - name: LS check built lib
+      #   if: matrix.cfg.platform != 'ios'
+      #   shell: bash
+      #   run: |
+      #     unzip dist/*.zip
+      #     ls -alfR dist
 
       - name: Rename and Publish Release
         shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
+          # mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber
