@@ -14,8 +14,8 @@ ninja -C build
 cd ..
 mkdir -p lib/${PLATFORM}
 cp cairo/build/src/*.a lib/${PLATFORM}
-mkdir -p include/
-cp -R cairo/src/*.h include
+mkdir -p include/cairo
+cp -R cairo/src/*.h include/cairo
 
 zip -r oflib_cairo_macos.zip lib include
 
