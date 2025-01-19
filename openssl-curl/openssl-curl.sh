@@ -3,7 +3,7 @@ cd "$(dirname "$0")"
 cd Build-OpenSSL-cURL
 ./build.sh -o 3.0.15 -c 8.11.1 -d -i 11.0 -a 11.0
 
-mkdir dist
+# mkdir dist
 
 cd ..
 mkdir curl
@@ -13,7 +13,7 @@ cp -r Build-OpenSSL-cURL/curl/lib .
 cp Build-OpenSSL-cURL/curl/curl*/COPYING .
 mkdir lib/${PLATFORM}
 mv lib/*.a lib/${PLATFORM}
-zip -r ../dist/oflib_curl_${PLATFORM}.zip lib include
+zip -r ../oflib_curl_${PLATFORM}.zip lib include
 cd ..
 
 mkdir openssl
@@ -25,5 +25,5 @@ cp Build-OpenSSL-cURL/openssl/openssl*/LICENSE .
 mkdir lib/${PLATFORM}
 mv lib/*.a lib/${PLATFORM}
 
-zip -r ../dist/oflib_openssl_${PLATFORM}.zip lib include
+zip -r ../oflib_openssl_${PLATFORM}.zip lib include
 cd ..

@@ -131,6 +131,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
+          # mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber
