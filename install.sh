@@ -39,6 +39,7 @@ LIBADDONS=( "assimp:ofxAssimpModelLoader"
 )
 
 
+
 instala() {
     LIBNAME=$@
     section Installing ${LIBNAME}
@@ -122,3 +123,16 @@ rm -rf *.zip
 #
 #
 # instalaLocal FreeImage
+
+getlink() {
+for LIBNAME in "$@"
+do
+    # echo "$var"
+    DOWNLOAD=oflib_${LIBNAME}_${PLATFORM}.zip
+    PARAMS+=" "https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD}
+done
+wget2 ${PARAMS}
+}
+
+
+getlink assimp brotli cairo curl FreeImage freetype glew glfw glm json libpng libusb libxml2 opencv pugixml svgtiny tess2 uriparser utfcpp zlib
