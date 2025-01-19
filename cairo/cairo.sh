@@ -18,7 +18,7 @@ mkdir -p include/cairo
 cp -R cairo/src/*.h include/cairo
 cp -R cairo/build/src/*.h include/cairo
 
-zip -r oflib_cairo_macos.zip lib include
+zip -r oflib_cairo_${PLATFORM}.zip lib include
 
 # --buildtype=release
 
