@@ -47,6 +47,7 @@ instala() {
     # executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} -O ${DOWNLOAD}
     executa ${W} https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD} &&
     OUTFOLDER=${LIBS_FOLDER}/${LIBNAME}
+    # OUTFOLDER=${LIBS_FOLDER}/macos
 
     for libaddon in "${LIBADDONS[@]}" ; do
         LIB=${libaddon%%:*}
@@ -58,15 +59,6 @@ instala() {
         fi
     done
 
-    # if [[ ${LIBNAME} == "assimp" ]]
-    # then
-    #     OUTFOLDER=${OF_FOLDER}/addons/ofxAssimpModelLoader/libs/assimp
-    # fi
-
-    # if [[ ${LIBNAME} == "opencv" ]]
-    # then
-    #     OUTFOLDER=${OF_FOLDER}/addons/ofxOpenCv/libs/opencv
-    # fi
     rm -rf ${OUTFOLDER}
     executa unzip -o ${DOWNLOAD} -d ${OUTFOLDER}
 }
@@ -89,8 +81,7 @@ instalaLocal() {
 }
 
 executa mkdir -p _download
-executa cd _download
-rm -rf *.zip
+# rm -rf _download/*.zip
 
 # if [ -d ${ADDON_FOLDER} ]; then
 #     echo "Directory exists: ${ADDON_FOLDER}"
@@ -119,17 +110,37 @@ rm -rf *.zip
 # instalaLocal FreeImage
 
 getlink() {
-    for LIBNAME in "$@"
+    # for LIBNAME in "$@"
+    LIBS=( assimp brotli cairo FreeImage freetype glew glfw glm json libpng libusb libxml2 opencv pugixml svgtiny tess2 uriparser utfcpp zlib openssl curl )
+    for LIBNAME in ${LIBS[@]}
     do
         # echo "$var"
         DOWNLOAD=oflib_${LIBNAME}_${PLATFORM}.zip
         PARAMS+=" "https://github.com/dimitre/ofLibs/releases/download/v0.12.1/${DOWNLOAD}
     done
-    wget2 ${PARAMS}
+    executa wget2 ${PARAMS} -P _download
+
+
+    # executa wget2 ${PARAMS} -P _download
+    # wget2 ${PARAMS}
 }
 
 if [ $# -ne 0 ]
     then
     instala $@
 fi
+
+
+unzipall() {
+    for filename in _download/*.zip; do
+        echo ${filename}
+        executa unzip -o ${filename} -d _download/macos
+    done
+}
+
+# getlink
+unzipall
+mv _download/macos/lib/macos/*.a _download/macos/lib/
+
+
 # getlink assimp brotli cairo curl FreeImage freetype glew glfw glm json libpng libusb libxml2 opencv pugixml svgtiny tess2 uriparser utfcpp zlib

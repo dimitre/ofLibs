@@ -36,6 +36,8 @@ targets:
     rebuild: false
     defines:
       - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # FIXME: Temporary
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/macos
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
