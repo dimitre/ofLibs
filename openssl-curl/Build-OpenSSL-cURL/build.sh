@@ -184,29 +184,35 @@ if [[ "$OPENSSL" = "3.0"* ]]; then
 fi
 
 ## OpenSSL Build
-echo
-cd openssl
-echo -e "${bold}Building OpenSSL${normal}"
-./openssl-build.sh -v "$OPENSSL" $engine $colorflag $catalyst $sslv3 $OSARGS
-cd ..
+BUILDLIBS=1
+if [ "$BUILDLIBS" != "" ]; then
+    echo
+    cd openssl
+    echo -e "${bold}Building OpenSSL${normal}"
+    ./openssl-build.sh -v "$OPENSSL" $engine $colorflag $catalyst $sslv3 $OSARGS
+    cd ..
 
-## Nghttp2 Build
-if [ "$buildnghttp2" == "" ]; then
-	NGHTTP2="NONE"
-else
-	echo
-	echo -e "${bold}Building nghttp2 for HTTP2 support${normal}"
-	cd nghttp2
-	./nghttp2-build.sh -v "$NGHTTP2" $colorflag $catalyst $OSARGS
-	cd ..
+    ## Nghttp2 Build
+    if [ "$buildnghttp2" == "" ]; then
+    	NGHTTP2="NONE"
+    else
+    	echo
+    	echo -e "${bold}Building nghttp2 for HTTP2 support${normal}"
+    	cd nghttp2
+    	./nghttp2-build.sh -v "$NGHTTP2" $colorflag $catalyst $OSARGS
+    	cd ..
+    fi
+
+    ## Curl Build
+    echo
+    echo -e "${bold}Building Curl${normal}"
+    cd curl
+    ./libcurl-build.sh -v "$LIBCURL" $disablebitcode $colorflag $buildnghttp2 $catalyst $sslv3 $OSARGS
+    cd ..
 fi
 
-## Curl Build
-echo
-echo -e "${bold}Building Curl${normal}"
-cd curl
-./libcurl-build.sh -v "$LIBCURL" $disablebitcode $colorflag $buildnghttp2 $catalyst $sslv3 $OSARGS
-cd ..
+
+exit 0
 
 ## Archive Libraries and Clean Up
 echo

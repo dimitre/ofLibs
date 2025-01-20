@@ -8,7 +8,7 @@ cd Build-OpenSSL-cURL
 # mkdir dist
 
 cd ..
-mkdir curl
+mkdir -p curl
 cd curl
 cp -r Build-OpenSSL-cURL/curl/include .
 cp -r Build-OpenSSL-cURL/curl/lib .
@@ -18,7 +18,7 @@ mv lib/*.a lib/${PLATFORM}
 zip -r ../oflib_curl_${PLATFORM}.zip lib include
 cd ..
 
-mkdir openssl
+mkdir -p openssl
 cd openssl
 cp -r Build-OpenSSL-cURL/openssl/Mac/include .
 cp -r Build-OpenSSL-cURL/openssl/Mac/lib .
