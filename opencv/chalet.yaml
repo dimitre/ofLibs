@@ -76,7 +76,7 @@ targets:
 
     defines[platform:web]:
       - WITH_JPEG=OFF
-      - WITH_PROTOBUF=OFF
+      # - WITH_PROTOBUF=OFF
       - BUILD_IPP_IW=OFF
       - WITH_ITT=OFF
       - WASM=ON
@@ -103,11 +103,13 @@ targets:
     arguments:
       - ${external:opencv}
 distribution:
-  opencv:
+  oflib_opencv_macos:
     kind: archive
     format: zip
     include:
-      - ./Release
+      - ./Release/lib
+      - ./Release/include
+      - ./Release/share
       # - ${external:${name}}/LICENSE**
       # - ${external:${name}}/include
       # - ${externalBuild:${name}}/include
