@@ -13,7 +13,12 @@ targets:
     recheck: false
     rebuild: false
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/macos/${env:PLATFORM}
+      - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/macos/${env:PLATFORM}
+      - CMAKE_INSTALL_PREFIX=Release
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=atsenaru
+
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       # - LIBXML2_WITH_DEBUG=OFF
@@ -36,15 +41,23 @@ targets:
       - LIBXML2_WITH_DOC=OFF
       - LIBXML2_WITH_SCHEMATRON=OFF
 
+      - LIBXML2_WITH_WRITER=OFF
+
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
+
+  libxml2_install:
+    kind: script
+    file: libxml2_install.sh
+    arguments:
+      - ${external:libxml2}
 
 distribution:
   libxml2:
+    # filename: oflib_opencv_${env:PLATFORM}
     kind: archive
     format: zip
     include:
-      - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
-      - ${externalBuild:${name}}/lib
+      - ./Release/lib
+      - ./Release/include
