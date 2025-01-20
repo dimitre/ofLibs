@@ -28,6 +28,9 @@ cp -r ../Build-OpenSSL-cURL/openssl/Mac/include .
 cp -r ../Build-OpenSSL-cURL/openssl/Mac/lib .
 cp ../Build-OpenSSL-cURL/openssl/openssl*/LICENSE.* .
 
+tree -h
+exit 1
+
 mkdir -p lib/${PLATFORM}
 mv lib/*.a lib/${PLATFORM}
 
