@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# BUILDLIBS=1
+BUILDLIBS=1
 
 # This script builds openssl+libcurl libraries for MacOS, iOS and tvOS
 #
