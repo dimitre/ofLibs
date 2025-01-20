@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# BUILDLIBS=1
+
 # This script builds openssl+libcurl libraries for MacOS, iOS and tvOS
 #
 # Jason Cox, @jasonacox
@@ -184,7 +186,7 @@ if [[ "$OPENSSL" = "3.0"* ]]; then
 fi
 
 ## OpenSSL Build
-BUILDLIBS=1
+
 if [ "$BUILDLIBS" != "" ]; then
     echo
     cd openssl
