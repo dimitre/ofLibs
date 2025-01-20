@@ -370,7 +370,7 @@ cp curl/include/curl/* "$ARCHIVE/include/curl"
 curl -sL https://curl.se/ca/cacert.pem > $ARCHIVE/cacert.pem
 
 # create README for archive
-sed -e "s/ZZZCMDS/$BUILD_CMD/g" -e "s/ZZZLIBCURL/$LIBCURL/g" -e "s/ZZZOPENSSL/$OPENSSL/g" -e "s/ZZZNGHTTP2/$NGHTTP2/g" archive/release-template.md > $ARCHIVE/README.md
+# sed -e "s/ZZZCMDS/$BUILD_CMD/g" -e "s/ZZZLIBCURL/$LIBCURL/g" -e "s/ZZZOPENSSL/$OPENSSL/g" -e "s/ZZZNGHTTP2/$NGHTTP2/g" archive/release-template.md > $ARCHIVE/README.md
 echo
 
 # EXAMPLE App - update test app with latest includes and XCFrameworks
