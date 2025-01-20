@@ -363,7 +363,7 @@ if [ "$buildnghttp2" != "" ]; then
 fi
 
 # archive header files
-cp openssl/iOS/include/openssl/* "$ARCHIVE/include/openssl"
+# cp openssl/iOS/include/openssl/* "$ARCHIVE/include/openssl"
 cp curl/include/curl/* "$ARCHIVE/include/curl"
 
 # grab root certs
