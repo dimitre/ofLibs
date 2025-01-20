@@ -103,7 +103,7 @@ targets:
     arguments:
       - ${external:opencv}
 distribution:
-  oflib_opencv_macos:
+  opencv:
     kind: archive
     format: zip
     include:
