@@ -67,7 +67,7 @@
         "ENABLE_VISIBILITY=OF",
 
         "CMAKE_OSX_ARCHITECTURES=x86_64;arm64",
-        "CMAKE_OSX_DEPLOYMENT_TARGET=11.0"
+        "CMAKE_OSX_DEPLOYMENT_TARGET=11.5"
       ]
     },
 
@@ -82,7 +82,7 @@
         "CMAKE_C_FLAGS=\"-DPNG_ARM_NEON_OPT=0\"",
 
         "CMAKE_OSX_ARCHITECTURES=x86_64;arm64",
-        "CMAKE_OSX_DEPLOYMENT_TARGET=11.0"
+        "CMAKE_OSX_DEPLOYMENT_TARGET=11.5"
       ]
     },
 
@@ -131,7 +131,7 @@
         // -GXcode \
 
         "CMAKE_OSX_ARCHITECTURES=x86_64;arm64",
-        "CMAKE_OSX_DEPLOYMENT_TARGET=11.0"
+        "CMAKE_OSX_DEPLOYMENT_TARGET=11.5"
       ],
       "location": "${external:${name}}"
     }
