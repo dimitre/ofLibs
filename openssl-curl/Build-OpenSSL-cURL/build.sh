@@ -252,7 +252,7 @@ mkdir -p "$ARCHIVE/xcframework"
 # cp curl/lib/libcurl_iOS-fat.a $ARCHIVE/lib/iOS-fat/libcurl.a
 # cp curl/lib/libcurl_tvOS.a $ARCHIVE/lib/tvOS/libcurl.a
 # cp curl/lib/libcurl_tvOS-simulator.a $ARCHIVE/lib/tvOS-simulator/libcurl.a
-cp curl/lib/libcurl_Mac.a $ARCHIVE/lib/MacOS/libcurl.a
+cp curl/lib/libcurl.a $ARCHIVE/lib/MacOS/libcurl.a
 
 # cp openssl/iOS/lib/libcrypto.a $ARCHIVE/lib/iOS/libcrypto.a
 # cp openssl/iOS-simulator/lib/libcrypto.a $ARCHIVE/lib/iOS-simulator/libcrypto.a
