@@ -187,7 +187,7 @@ fi
 echo
 cd openssl
 echo -e "${bold}Building OpenSSL${normal}"
-# ./openssl-build.sh -v "$OPENSSL" $engine $colorflag $catalyst $sslv3 $OSARGS
+./openssl-build.sh -v "$OPENSSL" $engine $colorflag $catalyst $sslv3 $OSARGS
 cd ..
 
 ## Nghttp2 Build
