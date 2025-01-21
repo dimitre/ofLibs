@@ -4,9 +4,7 @@ To test and use ofLibs now you need to clone a specific OpenFrameworks fork.
 This is a stripped down version of OpenFrameworks, only works with macOS now, and if you use projectGenerator use macos template option.
 
 ```bash
-time git clone --branch tuningfork https://github.com/dimitre/openframeworks --depth 1 ofvision
-cd ofvision
-time ./libs.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dimitre/openFrameworks/refs/heads/tuningfork/install_of.sh)" pwd
 ```
 
 As a proof of concept it is building libraries for multiple platforms.
