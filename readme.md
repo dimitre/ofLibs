@@ -9,6 +9,9 @@ cd ofvision
 time ./libs.sh
 ```
 
+As a proof of concept it is building libraries for multiple platforms.
+You are welcome to jump in and help building and testing more libraries.
+
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/cairo.yml/badge.svg)
