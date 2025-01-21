@@ -1,4 +1,13 @@
-# ALTpothecary
+# ofLibs
+
+To test and use ofLibs now you need to clone a specific OpenFrameworks fork.
+This fork only works with macOS now, and if you use projectGenerator use macos template option.
+
+```bash
+time git clone --branch tuningfork https://github.com/dimitre/openframeworks --depth 1 ofvision
+cd ofvision
+time ./libs.sh
+```
 
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)
@@ -14,7 +23,6 @@
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libxml2.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/opencv.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/pugixml.yml/badge.svg)
-<!-- ![title](https://github.com/dimitre/ofLibs/actions/workflows/svgtiny.yml/badge.svg) -->
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/tess2.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/uriparser.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/utfcpp.yml/badge.svg)
