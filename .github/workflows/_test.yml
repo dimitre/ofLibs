@@ -89,18 +89,18 @@ jobs:
       #     packages: libudev-dev
       #     version: 1.0
 
-      # - name: ccache
-      #   uses: hendrikmuhs/ccache-action@v1.2.16
-      #   with:
-      #     key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.16
+        with:
+          key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
-      # - name: Install Chalet
-      #   uses: jaxxstorm/action-install-gh-release@v1.14.0
-      #   with:
-      #     repo: chalet-org/chalet
-      #     cache: enable
-      #     extension: "\\.zip"
-      #     prerelease: "false"
+      - name: Install Chalet
+        uses: jaxxstorm/action-install-gh-release@v1.14.0
+        with:
+          repo: chalet-org/chalet
+          cache: enable
+          extension: "\\.zip"
+          prerelease: "false"
 
       # - name: Chalet Test / Version
       #   run: |
