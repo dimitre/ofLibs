@@ -22,7 +22,7 @@ jobs:
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
-          # - { platform: vs, os: windows-latest, toolchain: vs-stable }
+          - { platform: vs, os: windows-latest, toolchain: vs-stable }
           # - {
           #     platform: rpi-aarch64,
           #     os: ubuntu-24.04,
@@ -108,7 +108,7 @@ jobs:
 
       - name: Chalet Bundle
         if: matrix.cfg.platform != 'ios'
-        shell: bash
+        # shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
 
