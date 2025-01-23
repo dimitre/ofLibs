@@ -46,6 +46,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: git-for-windows/setup-git-for-windows-sdk@v1
+        if: runner.os == 'Windows'
+        with:
+          flavor: minimal
+
       - name: Test Shell
         run: |
           # ps -p $$
