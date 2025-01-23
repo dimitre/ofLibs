@@ -47,7 +47,8 @@ jobs:
         run: |
           # ps -p $$
           echo $SHELL
-          ls -alF
+          # ls -alF
+          ls
           tree -h
 
       # - name: Emscripten Install
