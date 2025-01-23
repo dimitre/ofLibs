@@ -44,6 +44,8 @@ jobs:
         # working-directory: ./${{ github.workflow }}
         working-directory: libusb
     steps:
+      - uses: actions/checkout@v4
+
       - name: Test Shell
         run: |
           # ps -p $$
@@ -51,8 +53,6 @@ jobs:
           # ls -alF
           ls
           tree -h
-
-      - uses: actions/checkout@v4
 
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
