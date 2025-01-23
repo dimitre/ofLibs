@@ -41,6 +41,7 @@ jobs:
       PLATFORM: ${{ matrix.cfg.platform }}
     defaults:
       run:
+        shell: bash
         # working-directory: ./${{ github.workflow }}
         working-directory: libusb
     steps:
