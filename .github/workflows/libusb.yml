@@ -44,6 +44,14 @@ jobs:
         # working-directory: ./${{ github.workflow }}
         working-directory: libusb
     steps:
+      - name: Test Shell
+        run: |
+          # ps -p $$
+          echo $SHELL
+          # ls -alF
+          ls
+          tree -h
+
       - uses: actions/checkout@v4
 
       - name: Emscripten Install
