@@ -45,7 +45,7 @@ jobs:
 
       - name: Test Shell
         run: |
-          ps -p $$
+          # ps -p $$
           echo $SHELL
           ls -alF
           tree -h
