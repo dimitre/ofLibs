@@ -52,7 +52,7 @@ jobs:
           echo $SHELL
           # ls -alF
           ls
-          tree -h
+          # tree -h
 
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
