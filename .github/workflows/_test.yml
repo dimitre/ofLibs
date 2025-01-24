@@ -94,14 +94,14 @@ jobs:
           extension: "\\.zip"
           prerelease: "false"
 
-      # - name: Chalet Test / Version
-      #   run: |
-      #     chalet --version
+      - name: Chalet Test / Version
+        run: |
+          chalet --version
 
-      # - name: Chalet Configure
-      #   if: matrix.cfg.platform == 'emscripten'
-      #   shell: bash
-      #   run: chalet configure --toolchain emscripten
+      - name: Chalet Configure
+        if: matrix.cfg.platform == 'emscripten'
+        shell: bash
+        run: chalet configure --toolchain emscripten
 
       # - name: Chalet Bundle
       #   if: matrix.cfg.platform != 'ios'
