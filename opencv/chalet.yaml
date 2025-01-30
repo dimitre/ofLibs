@@ -73,6 +73,10 @@ targets:
       # - ZLIB_ROOT=${externalBuild:zlib}
       # - ZLIB_LIBRARY=${externalBuild:zlib}
       # - ZLIB_INCLUDE_DIRS=${external:zlib}
+      # - CV_DISABLE_OPTIMIZATION=ON
+      - WITH_OPENCL=OFF
+      - WITH_OPENCLAMDBLAS=OFF
+      - WITH_OPENCLAMDFFT=OFF
 
     defines[platform:web]:
       - WITH_JPEG=OFF
