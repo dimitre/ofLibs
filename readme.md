@@ -9,33 +9,33 @@ This script will bootstrap installation, clone this fork and install libs, insta
 
 This fork have some small differences from OF.
 ### Differences
-- Examples are not present, but you can copy them from OF git or download
+- Examples are not present, but you can copy them from OF git or download  
 - It install libraries from https://github.com/dimitre/ofLibs instead of apothecary
 - Classic math (ofVecXf, ofMatrix4x4, etc) are removed. They can be added back as an addon if needed.
 - there is no ofxSvg addon in this fork, mostly because the libs are old, hard to build and there is a great substitute out there https://github.com/NickHardeman/ofxSvgParser
 ### ofGen
-substitute of projectGenerator here
-it will compile and install ofgen, a tool to build OF projects.
-it can be invoked without parameters if your project uses ofPath as ../../..
+substitute of projectGenerator here  
+it will compile and install ofgen, a tool to build OF projects.  
+it can be invoked without parameters if your project uses ofPath as ```../../..```  
 ```bash
 cd $ofw/examples/templates/allAddonsExample
 ofGen
 ```
-or with parameters for a more complete control
+or with parameters for a more complete control   
 ```bash
 ofGen templates=zed,macos,make platform=macos addons=ofxMidi,ofxOpencv ofpath=../../.. path=/Volumes/tool/Transcend
 ```
 
 ### Zed editor, alternative to VSCode
-one of the templates is Zed. after generating it you can open the folder with Zed by changing to your project folder and invoking ```zed .```
-The shortcut to build and run the project is COMMAND+SHIFT+R
-if there are no commands there you can click in your "src" folder and try again.
-ZED still doesn't save project files so addons and OF core won't be availabe between sessions, this will be addressed by the editor soon.
+one of the templates is Zed. after generating it you can open the folder with Zed by changing to your project folder and invoking ```zed .```  
+The shortcut to build and run the project is COMMAND+SHIFT+R  
+if there are no commands there you can click in your "src" folder and try again.  
+ZED still doesn't save project files so addons and OF core won't be availabe between sessions, this will be addressed by the editor soon.  
 
 # ofLibs
 
-As a proof of concept it is building libraries for multiple platforms.
-You are welcome to jump in and help building and testing more libraries.
+As a proof of concept it is building libraries for multiple platforms.  
+You are welcome to jump in and help building and testing more libraries.  
 
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)
