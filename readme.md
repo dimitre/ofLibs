@@ -1,11 +1,19 @@
-# ofLibs
+# OF Vision
 
-To test and use ofLibs now you need to clone a specific OpenFrameworks fork.
-This is a stripped down version of OpenFrameworks, only works with macOS now, and if you use projectGenerator use macos template option.
+You can use the following script to test OFVision fork (macOS only now).
+This script will bootstrap installation, clone this fork and install libs, install ofgen tool (projectGenerator substitute here) to your path.
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dimitre/openFrameworks/refs/heads/tuningfork/install_of.sh)" pwd
 ```
+
+This fork have some small differences from OF.
+- Examples are not present, but you can copy them from OF git or download
+- It install libraries from https://github.com/dimitre/ofLibs instead of apothecary
+- It uses ofGen instead of projectGenerator
+
+
+# ofLibs
 
 As a proof of concept it is building libraries for multiple platforms.
 You are welcome to jump in and help building and testing more libraries.
