@@ -8,9 +8,23 @@ This script will bootstrap installation, clone this fork and install libs, insta
 ```
 
 This fork have some small differences from OF.
+### Differences
 - Examples are not present, but you can copy them from OF git or download
 - It install libraries from https://github.com/dimitre/ofLibs instead of apothecary
-- It uses ofGen instead of projectGenerator
+- Classic math (ofVecXf, ofMatrix4x4, etc) are removed. They can be added back as an addon if needed.
+- there is no ofxSvg addon in this fork, mostly because the libs are old, hard to build and there is a great substitute out there https://github.com/NickHardeman/ofxSvgParser
+### ofGen
+substitute of projectGenerator here
+it will compile and install ofgen, a tool to build OF projects.
+it can be invoked without parameters if your project uses ofPath as ../../..
+```bash
+cd $ofw/examples/templates/allAddonsExample
+ofGen
+```
+or with parameters for a more complete control
+```bash
+ofGen templates=zed,macos,make platform=macos addons=ofxMidi,ofxOpencv ofpath=../../.. path=/Volumes/tool/Transcend
+```
 
 
 # ofLibs
