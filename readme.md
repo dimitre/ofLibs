@@ -26,6 +26,11 @@ or with parameters for a more complete control
 ofGen templates=zed,macos,make platform=macos addons=ofxMidi,ofxOpencv ofpath=../../.. path=/Volumes/tool/Transcend
 ```
 
+### Zed editor, alternative to VSCode
+one of the templates is Zed. after generating it you can open the folder with Zed by changing to your project folder and invoking ```zed .```
+The shortcut to build and run the project is COMMAND+SHIFT+R
+if there are no commands there you can click in your "src" folder and try again.
+ZED still doesn't save project files so addons and OF core won't be availabe between sessions, this will be addressed by the editor soon.
 
 # ofLibs
 
