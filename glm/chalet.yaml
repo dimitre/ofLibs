@@ -3,7 +3,8 @@ version: "0.1.3"
 externalDependencies:
   glm:
     repository: https://github.com/g-truc/glm
-    tag: "1.0.1"
+    # tag: "1.0.1"
+    commit: 2d4c4b4
     # commit: 18feaec455f8ee1f256d91f515fb02d66268ba14
     kind: git
 targets:
@@ -22,16 +23,7 @@ targets:
       - GLM_ENABLE_FAST_MATH=ON
       - GLM_TEST_ENABLE=OFF
       - GLM_ENABLE_CXX_17=ON
-      # turn on only on Intel
-      - GLM_ENABLE_SIMD_SSE2=ON
-      - GLM_ENABLE_SIMD_SSE3=ON
-      - GLM_ENABLE_SIMD_SSSE3=ON
-      - GLM_ENABLE_SIMD_SSE4_1=ON
-      - GLM_ENABLE_SIMD_SSE4_2=ON
-      - GLM_ENABLE_SIMD_AVX=ON
-      - GLM_ENABLE_SIMD_AVX2=ON
-      # turn on only on arm.
-      - GLM_TEST_ENABLE_SIMD_NEON=ON
+
     defines[platform:windows]:
       # this causes a clash, error: Command line error D8016 : '/Za' and '/fp:fast' command-line options are incompatible
       - GLM_ENABLE_FAST_MATH=OFF
@@ -40,17 +32,8 @@ targets:
       - GLM_ENABLE_SIMD_AVX2=OFF
       - CMAKE_CXX_FLAGS="-msimd128"
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-    #   - GLM_ENABLE_SIMD_AVX=OFF
-    #   - GLM_ENABLE_SIMD_AVX2=OFF
-    #   - GLM_ENABLE_SIMD_SSE2=OFF
-    #   - GLM_ENABLE_SIMD_SSE3=OFF
-    #   - GLM_ENABLE_SIMD_SSSE3=OFF
-    #   - GLM_ENABLE_SIMD_SSE4_1=OFF
-    #   - GLM_ENABLE_SIMD_SSE4_2=OFF
-    # defines[platform:!macos]:
-    #   - GLM_ENABLE_SIMD_SSE4_2=OFF
 
     defines[architecture:arm]:
       - GLM_TEST_ENABLE_SIMD_NEON=ON
@@ -72,15 +55,15 @@ targets:
       - GLM_ENABLE_SIMD_SSE4_2=ON
 
     # this can be removed soon, if the cross compiler points architecture target, not the actual machine
-    defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
-      - GLM_TEST_ENABLE_SIMD_NEON=ON
-      - GLM_ENABLE_SIMD_AVX=OFF
-      - GLM_ENABLE_SIMD_AVX2=OFF
-      - GLM_ENABLE_SIMD_SSE2=OFF
-      - GLM_ENABLE_SIMD_SSE3=OFF
-      - GLM_ENABLE_SIMD_SSSE3=OFF
-      - GLM_ENABLE_SIMD_SSE4_1=OFF
-      - GLM_ENABLE_SIMD_SSE4_2=OFF
+    # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
+    #   - GLM_TEST_ENABLE_SIMD_NEON=ON
+    #   - GLM_ENABLE_SIMD_AVX=OFF
+    #   - GLM_ENABLE_SIMD_AVX2=OFF
+    #   - GLM_ENABLE_SIMD_SSE2=OFF
+    #   - GLM_ENABLE_SIMD_SSE3=OFF
+    #   - GLM_ENABLE_SIMD_SSSE3=OFF
+    #   - GLM_ENABLE_SIMD_SSE4_1=OFF
+    #   - GLM_ENABLE_SIMD_SSE4_2=OFF
 
   adjust:
     kind: script
@@ -92,9 +75,6 @@ distribution:
     kind: archive
     format: zip
     include:
-      # - ${external:${name}}/LICENSE**
       - ${external:${name}}/copying**
-      # - ${external:${name}}/glm
       - ${external:${name}}/include
-      # - ${externalBuild:${name}}/glm/${ar:${name}}
       - ${externalBuild:${name}}/glm/lib
