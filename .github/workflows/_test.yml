@@ -36,12 +36,25 @@ jobs:
     runs-on: ${{ matrix.cfg.os }}
     env:
       PLATFORM: ${{ matrix.cfg.platform }}
-    defaults:
-      run:
-        working-directory: libusb
-        # working-directory: ./${{ github.workflow }}
+    # defaults:
+    # run:
+    # working-directory: libusb
+    # working-directory: ./${{ github.workflow }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Bash test
+        shell: bash
+        run: |
+          pwd
+          ls -alF
+          mkdir arwil
+          touch arwil/test.txt
+          ls -alF > arwil/test.txt
+          cat arwil/test.txt
+          rm -rf arwil
+          ls
+          echo "OK"
 
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
