@@ -1,0 +1,45 @@
+name: libsof
+version: "0.1.4"
+externalDependencies:
+  yaml-cpp:
+    repository: https://github.com/jbeder/yaml-cpp/
+    tag: 0.8.0
+    kind: git
+targets:
+  yaml-cpp:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    defines:
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+      - CMAKE_INSTALL_PREFIX=Release
+      - CMAKE_INSTALL_LIBDIR=./lib
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_INSTALL_FULL_LIBDIR=./lib
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
+  # test:
+  #   kind: script
+  #   file: test.sh
+  #   arguments:
+  #     - ${external:yaml-cpp}
+  # usbAdjust:
+  #   kind: script
+  #   file: yaml-cpp_folders.sh
+  #   arguments:
+  #     - ${external:yaml-cpp}
+
+distribution:
+  yaml-cpp:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/LICENSE**
+      - ${external:${name}}/include
+      - ${externalBuild:${name}}/lib
