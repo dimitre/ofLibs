@@ -112,6 +112,10 @@ distribution:
     kind: archive
     format: zip
     include:
-      - ./Release/lib
-      - ./Release/include
-      - ./Release/share
+      - ${externalBuild:${name}}/install
+      # - ${externalBuild:${name}}/include
+      # - ${externalBuild:${name}}/share
+      # - ${externalBuild:${name}}/code/lib
+      # - ./Release/lib
+      # - ./Release/include
+      # - ./Release/share
