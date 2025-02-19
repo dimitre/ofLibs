@@ -22,6 +22,8 @@ env:
 jobs:
   freeimage_matrix:
     strategy:
+      # this way macos completes if windows fails
+      fail-fast: false
       matrix:
         cfg:
           # - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
