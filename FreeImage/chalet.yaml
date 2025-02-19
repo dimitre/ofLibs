@@ -42,7 +42,7 @@ targets:
     recheck: false
     rebuild: false
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=libx/${env:PLATFORM}
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/y/${env:PLATFORM}
       # - CMAKE_INSTALL_INCLUDEDIR=Source
       # - CMAKE_CURRENT_BINARY_DIR=XXX
