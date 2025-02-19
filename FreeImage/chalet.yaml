@@ -8,7 +8,7 @@ externalDependencies:
 
   FreeImage:
     repository: https://github.com/danoli3/FreeImage
-    tag: "3.19.7"
+    tag: "3.19.10"
     kind: git
 
 targets:
@@ -33,15 +33,22 @@ targets:
     defines[platform:macos]:
       # THIS IS ZLIB ONLY
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
 
   FreeImage:
     kind: cmakeProject
+    install: true
     location: ${external:${name}}
     recheck: false
     rebuild: false
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=libx/${env:PLATFORM}
+      # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/y/${env:PLATFORM}
+      # - CMAKE_INSTALL_INCLUDEDIR=Source
+      # - CMAKE_CURRENT_BINARY_DIR=XXX
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+      # - CMAKE_INSTALL_PREFIX=Release
+
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
       # - CMAKE_INSTALL_PREFIX=Release
@@ -68,7 +75,7 @@ targets:
       # - USE_PTHREADS=1
     defines[platform:macos]:
       # - DEPLOYMENT_TARGET=10.9
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
     defines[platform:{web,windows}]:
       - BUILD_ZLIB=ON
