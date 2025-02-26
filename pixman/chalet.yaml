@@ -1,0 +1,21 @@
+name: OF altpothecary GLFW
+version: "0.0.4"
+externalDependencies:
+  pixman:
+    repository: https://gitlab.freedesktop.org/pixman/pixman.git
+    # http://anongit.freedesktop.org/git/pixman.git
+    tag: "pixman-0.44.2"
+    kind: git
+
+targets:
+  pixman-script:
+    kind: script
+    file: pixman.sh
+
+distribution:
+  pixman:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/lib
+      - ${external:${name}}/include
