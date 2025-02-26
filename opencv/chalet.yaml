@@ -89,33 +89,21 @@ targets:
       - BUILD_WASM_INTRIN_TESTS=OFF
       - BUILD_PERF_TESTS=OFF
       - BUILD_TESTS=OFF
-      # - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      # - CMAKE_CXX_FLAGS=-msse3 -msimd128 -fno-vectorize -s WASM=1
-      # - CMAKE_C_FLAGS=-msse3 -msimd128 -fno-vectorize -s WASM=1
-      # - BUILD_ZLIB=OFF
+
     defines[platform:windows]:
       - CPU_BASELINE=""
       - CPU_DISPATCH=""
       - CV_DISABLE_OPTIMIZATION=ON
+
     defines[platform:macos]:
       - APPLE_FRAMEWORK=ON
       - CPU_BASELINE=NATIVE
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-  # opencv_install:
-  #   kind: script
-  #   file: opencv_install.sh
-  #   arguments:
-  #     - ${external:opencv}
+
 distribution:
   opencv:
     kind: archive
     format: zip
     include:
       - ${externalBuild:${name}}/install
-      # - ${externalBuild:${name}}/include
-      # - ${externalBuild:${name}}/share
-      # - ${externalBuild:${name}}/code/lib
-      # - ./Release/lib
-      # - ./Release/include
-      # - ./Release/share
