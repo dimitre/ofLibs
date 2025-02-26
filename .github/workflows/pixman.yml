@@ -66,36 +66,36 @@ jobs:
         with:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
-      - name: Install Chalet
-        uses: jaxxstorm/action-install-gh-release@v1.14.0
-        with:
-          repo: chalet-org/chalet
-          cache: enable
-          extension: "\\.zip"
-          prerelease: "false"
+      # - name: Install Chalet
+      #   uses: jaxxstorm/action-install-gh-release@v1.14.0
+      #   with:
+      #     repo: chalet-org/chalet
+      #     cache: enable
+      #     extension: "\\.zip"
+      #     prerelease: "false"
 
       # - name: Chalet Test / Version
       # run: |
       # chalet --version
 
-      - name: Chalet Configure
-        shell: bash
-        run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
+      # - name: Chalet Configure
+      #   shell: bash
+      #   run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
-      - name: ENV VARS
-        shell: bash
-        run: export
+      # - name: ENV VARS
+      #   shell: bash
+      #   run: export
 
-      - name: Chalet Bundle
-        if: matrix.cfg.platform != 'ios'
-        shell: bash
-        run: |
-          chalet bundle --show-commands
-          # chalet bundle --compiler-cache --show-commands
-
-      # - name: Pixman Build
+      # - name: Chalet Bundle
+      #   if: matrix.cfg.platform != 'ios'
+      #   shell: bash
       #   run: |
-      #     ./pixman.sh
+      #     chalet bundle --show-commands
+      #     # chalet bundle --compiler-cache --show-commands
+
+      - name: Pixman Build
+        run: |
+          ./pixman.sh
 
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
