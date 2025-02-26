@@ -70,9 +70,9 @@ jobs:
           extension: "\\.zip"
           prerelease: "false"
 
-      - name: Chalet Test / Version
-        run: |
-          chalet --version
+      # - name: Chalet Test / Version
+      # run: |
+      # chalet --version
 
       - name: Chalet Configure
         shell: bash
