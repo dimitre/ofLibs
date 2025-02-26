@@ -1,6 +1,8 @@
 #!/bin/sh
 cd "$(dirname "$0")"
 # pwd
+#
+export
 
 cd chalet_external/pixman
 meson setup build -Ddefault_library=static -Dbuildtype=release --reconfigure -Ddemos=disabled -Dtests=disabled
