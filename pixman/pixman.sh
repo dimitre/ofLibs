@@ -18,7 +18,7 @@ cp build/pixman/*.a lib/${PLATFORM}
 mkdir -p include/pixman
 cp -R build/pixman/*.h include/pixman
 zip -r oflib_pixman_${PLATFORM}.zip lib include
-mv *.zip ../..
+mv *.zip ..
 
 # cd ..
 # mkdir -p lib/${PLATFORM}
