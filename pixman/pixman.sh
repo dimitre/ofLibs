@@ -3,6 +3,12 @@ cd "$(dirname "$0")"
 # pwd
 #
 # export
+# export MACOSX_DEPLOYMENT_TARGET=11.5
+unset MACOSX_DEPLOYMENT_TARGET
+export MIN_SUPPORTED_MACOSX_DEPLOYMENT_TARGET=11.5
+export LDFLAGS='-mmacosx-version-min=11.5'
+export CFLAGS='-stdlib=libc++ -mmacosx-version-min=11.5'
+export CXXFLAGS='-stdlib=libc++ -mmacosx-version-min=11.5'
 
 git clone https://gitlab.freedesktop.org/pixman/pixman.git --depth 1
 cd pixman
