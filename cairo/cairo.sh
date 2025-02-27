@@ -17,7 +17,7 @@ git fetch --depth 1 origin 727966dfca933d4a8fc6e65a428e1a9ce1a2fec2
 meson setup --cross-file ../macos-x86_64.txt ../intel \
 -Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release \
 -Dxcb=disabled -Dxlib=disabled -Dlzo=disabled \
--Dpng=disabled -Dzlib=disabled  \
+# -Dpng=disabled -Dzlib=disabled  \
 --reconfigure
 ninja -C ../intel
 # lipo -info ../intel/src/*.a
