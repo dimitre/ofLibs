@@ -4,7 +4,7 @@ pwd
 # brew install meson
 # export CCACHE_DISABLE=1
 
-git clone https://gitlab.freedesktop.org/cairo/cairo --depth 1
+git clone https://gitlab.freedesktop.org/cairo/cairo.git --depth 1
 cd cairo
 git fetch --depth 1 origin 727966dfca933d4a8fc6e65a428e1a9ce1a2fec2
 
@@ -41,7 +41,7 @@ lipo -info ./lib/${PLATFORM}/libcairo.a
 # cp cairo/build/src/*.a lib/${PLATFORM}
 mkdir -p include/cairo
 cp -R ./intel/src/*.h include/cairo
-# cp -R cairo/build/src/*.h include/cairo
+cp -R cairo/src/*.h include/cairo
 
 zip -r oflib_cairo_${PLATFORM}.zip lib include
 
