@@ -4,9 +4,9 @@ pwd
 # brew install meson
 # export CCACHE_DISABLE=1
 
-# git clone https://gitlab.freedesktop.org/cairo/cairo --depth 1
+git clone https://gitlab.freedesktop.org/cairo/cairo --depth 1
 cd cairo
-# git fetch --depth 1 origin 727966dfca933d4a8fc6e65a428e1a9ce1a2fec2
+git fetch --depth 1 origin 727966dfca933d4a8fc6e65a428e1a9ce1a2fec2
 
 #
 #
