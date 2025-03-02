@@ -4,6 +4,7 @@ externalDependencies:
   glfw:
     repository: https://github.com/glfw/glfw
     # tag: "3.4"
+    commit: e7ea71be039836da3a98cea55ae5569cb5eb885c
     kind: git
 
 targets:
