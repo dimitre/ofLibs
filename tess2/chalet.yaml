@@ -8,7 +8,8 @@ externalDependencies:
 targets:
   tess2:
     kind: cmakeProject
-    location: ${external:${name}}
+    # location: ${external:${name}}
+    location: ${external:tess2}
     recheck: false
     rebuild: false
     install: true
