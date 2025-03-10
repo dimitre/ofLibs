@@ -50,7 +50,7 @@ targets:
       - BUILD_PNG=OFF
       - BUILD_TIFF=OFF
       - BUILD_opencv_apps=OFF
-      - BUILD_opencv_highgui=OFF
+      - BUILD_opencv_highgui=ON
       - BUILD_opencv_imgcodecs=OFF
       - BUILD_opencv_java=OFF
       - BUILD_opencv_python2=OFF
@@ -106,4 +106,6 @@ distribution:
     kind: archive
     format: zip
     include:
-      - ${externalBuild:${name}}/install
+      - ${externalBuild:${name}}/install/lib
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/share
