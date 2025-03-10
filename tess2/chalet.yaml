@@ -27,33 +27,31 @@ targets:
     file: tess2_folders.sh
     arguments:
       - ${external:FreeImage}
-  tess2_folders:
-    kind: script
-    shell: bash
-    run: |
-      if [ -f ${external:tess2}/include ]; then
-        rm -rf ${external:tess2}/include
-      fi
-      cp -r ${external:tess2}/Include ${external:tess2}/include
+  # tess2_folders:
+  #   kind: script
+  #   shell: bash
+  #   run: |
+  #     if [ -f ${external:tess2}/include ]; then
+  #       rm -rf ${external:tess2}/include
+  #     fi
+  #     cp -r ${external:tess2}/Include ${external:tess2}/include
 
+  #   arguments:
+  #     - ${external:FreeImage}
+
+  tess2_rm:
+    kind: process
+    path: rm
     arguments:
-      - ${external:FreeImage}
-
-
-
-  # tess2_rm:
-  #   kind: process
-  #   path: rm
-  #   arguments:
-  #     - -rf
-  #     - ${external:tess2}/include
-  # tess2_mv:
-  #   kind: process
-  #   path: cp
-  #   arguments:
-  #     - -r
-  #     - ${external:tess2}/Include
-  #     - ${external:tess2}/include
+      - -rf
+      - ${external:tess2}/include
+  tess2_mv:
+    kind: process
+    path: cp
+    arguments:
+      - -r
+      - ${external:tess2}/Include
+      - ${external:tess2}/include
 distribution:
   tess2:
     kind: archive
