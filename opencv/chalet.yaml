@@ -35,7 +35,7 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_INSTALL_LIBDIR=./libx
+      - CMAKE_INSTALL_LIBDIR=./lib/${env:PLATFORM}
       # - CMAKE_LIBRARY_OUTPUT_PATH=lib01/${env:PLATFORM}
       # - CMAKE_LIBRARY_OUTPUT_PATH=lib01
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib02
@@ -118,7 +118,7 @@ distribution:
     kind: archive
     format: zip
     include:
-      - ${externalBuild:${name}}/install/
+      - ${externalBuild:${name}}/install/lib
       # - ${externalBuild:${name}}/install/lib
-      # - ${externalBuild:${name}}/install/include
-      # - ${externalBuild:${name}}/install/share
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/share
