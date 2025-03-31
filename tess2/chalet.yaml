@@ -40,12 +40,14 @@ targets:
   #     - ${external:FreeImage}
 
   tess2_rm:
+    condition: [:!macos]
     kind: process
     path: rm
     arguments:
       - -rf
       - ${external:tess2}/include
   tess2_mv:
+    condition: [:!macos]
     kind: process
     path: cp
     arguments:

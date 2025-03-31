@@ -35,12 +35,17 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_LIBRARY_OUTPUT_PATH=lib01/${env:PLATFORM}
+      # - CMAKE_LIBRARY_OUTPUT_PATH=lib01
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib02
+      # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib03
+      # - CMAKE_RUNTIME_OUTPUT_DIRECTORY=lib04
+      # ARCHIVE_OUTPUT_DIRECTORY, LIBRARY_OUTPUT_DIRECTORY, and RUNTIME_OUTPUT_DIRECTORY
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
-      - CMAKE_INSTALL_INCLUDEDIR=include
-      - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
-      - CMAKE_INSTALL_PREFIX=Release
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+      # - CMAKE_INSTALL_PREFIX=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - BUILD_DOCS=OFF
       - BUILD_EXAMPLES=OFF
@@ -101,11 +106,18 @@ targets:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
+  opencv_folders:
+    kind: script
+    file: opencv_folders.sh
+    arguments:
+      - ${externalBuild:opencv}/install/
+      - ${env:PLATFORM}
 distribution:
   opencv:
     kind: archive
     format: zip
     include:
-      - ${externalBuild:${name}}/install/lib
-      - ${externalBuild:${name}}/install/include
-      - ${externalBuild:${name}}/install/share
+      - ${externalBuild:${name}}/install/
+      # - ${externalBuild:${name}}/install/lib
+      # - ${externalBuild:${name}}/install/include
+      # - ${externalBuild:${name}}/install/share
