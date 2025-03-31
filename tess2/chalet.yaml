@@ -22,11 +22,12 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
-  # tess2_folders:
-  #   kind: script
-  #   file: tess2_folders.sh
-  #   arguments:
-  #     - ${external:tess2}
+  tess2_folders:
+    kind: script
+    file: tess2_folders.sh
+    arguments:
+      - ${external:tess2}
+
   # tess2_folders:
   #   kind: script
   #   shell: bash
@@ -39,21 +40,21 @@ targets:
   #   arguments:
   #     - ${external:FreeImage}
 
-  tess2_rm:
-    condition: [:!macos]
-    kind: process
-    path: rm
-    arguments:
-      - -rf
-      - ${external:tess2}/include
-  tess2_mv:
-    condition: [:!macos]
-    kind: process
-    path: cp
-    arguments:
-      - -r
-      - ${external:tess2}/Include
-      - ${external:tess2}/include
+  # tess2_rm:
+  #   condition: [:!macos]
+  #   kind: process
+  #   path: rm
+  #   arguments:
+  #     - -rf
+  #     - ${external:tess2}/include
+  # tess2_mv:
+  #   # condition: [:!macos]
+  #   kind: process
+  #   path: cp
+  #   arguments:
+  #     - -r
+  #     - ${external:tess2}/Include
+  #     - ${external:tess2}/include
 distribution:
   tess2:
     kind: archive

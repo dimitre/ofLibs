@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 cd "$(dirname "$0")"
 LIB="tess2"
 # DRYRUN="echo --------->>>> echo"
