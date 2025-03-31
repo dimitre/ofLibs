@@ -30,12 +30,12 @@ targets:
   #   file: test.sh
   #   arguments:
   #     - ${external:libusb}
-  libusb_folders:
-    kind: script
-    # condition: "[:macos]"
-    file: libusb_folders.sh
-    arguments:
-      - ${external:libusb}
+  # libusb_folders:
+  #   kind: script
+  #   # condition: "[:macos]"
+  #   file: libusb_folders.sh
+  #   arguments:
+  #     - ${external:libusb}
 
 distribution:
   libusb:
