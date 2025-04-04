@@ -36,4 +36,5 @@ distribution:
     include:
       - ${externalBuild:${name}}/install/lib
       - ${externalBuild:${name}}/install/include
-      - ${externalBuild:${name}}/install/share
+      - ${external:${name}}/COPYING
+      - ${external:${name}}/LICENSES
