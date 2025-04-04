@@ -28,7 +28,7 @@ targets:
 
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
   freetype:
     kind: cmakeProject
     location: ${external:${name}}
@@ -50,7 +50,7 @@ targets:
       - ZLIB_INCLUDE_DIRS=${external:zlib}
       - ZLIB_INCLUDE_DIR=${external:zlib}
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
 distribution:

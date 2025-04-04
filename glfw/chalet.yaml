@@ -28,7 +28,7 @@ targets:
       - GLFW_BUILD_TESTS=OFF
       - GLFW_BUILD_EXAMPLES=OFF
     defines[platform:macos]:
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
 distribution:

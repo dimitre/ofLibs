@@ -4,6 +4,7 @@ externalDependencies:
   tess2:
     repository: https://github.com/dimitre/libtess2
     # tag: v1.0.2
+    # commit: 672cadc
     kind: git
 targets:
   tess2:
@@ -14,19 +15,27 @@ targets:
     rebuild: false
     install: true
     defines:
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include2
+
+      # - CMAKE_INSTALL_LIBDIR=./lib/${env:PLATFORM}
+
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
-      - CMAKE_INSTALL_INCLUDEDIR=include
-      - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
-  tess2_folders:
-    kind: script
-    file: tess2_folders.sh
-    arguments:
-      - ${external:tess2}
+
+  # tess2_folders:
+  #   kind: script
+  #   file: tess2_folders.sh
+  #   arguments:
+  #     - ${external:tess2}
 
   # tess2_folders:
   #   kind: script
@@ -61,5 +70,7 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
-      - ${externalBuild:${name}}/lib
+      # - ${external:${name}}/include
+      # - ${externalBuild:${name}}/lib
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib
