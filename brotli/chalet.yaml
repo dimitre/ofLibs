@@ -13,8 +13,9 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
+    install: true
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
       - BUILD_SHARED_LIBS=OFF
@@ -27,7 +28,7 @@ targets:
     #   - CMAKE_EXECUTABLE_SUFFIX=.js
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.0
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
 
   # brotli_folders:
   #   kind: script
@@ -41,5 +42,6 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      - ${external:${name}}/c/include
-      - ${externalBuild:${name}}/lib
+      # - ${external:${name}}/c/include
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib
