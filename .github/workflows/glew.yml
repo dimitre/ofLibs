@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
