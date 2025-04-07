@@ -102,7 +102,7 @@ jobs:
       #   uses: seanmiddleditch/gha-setup-ninja@master
 
       - name: Install Chalet
-        uses: jaxxstorm/action-install-gh-release@v1.14.0
+        uses: jaxxstorm/action-install-gh-release@v2.0.0
         with:
           repo: chalet-org/chalet
           cache: enable

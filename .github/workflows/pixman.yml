@@ -67,7 +67,7 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
       # - name: Install Chalet
-      #   uses: jaxxstorm/action-install-gh-release@v1.14.0
+      #   uses: jaxxstorm/action-install-gh-release@v2.0.0
       #   with:
       #     repo: chalet-org/chalet
       #     cache: enable
@@ -136,7 +136,7 @@ jobs:
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
       # - name: Install Chalet
-      #   uses: jaxxstorm/action-install-gh-release@v1.14.0
+      #   uses: jaxxstorm/action-install-gh-release@v2.0.0
       #   with:
       #     repo: chalet-org/chalet
       #     cache: enable
