@@ -12,9 +12,11 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
+    install: true
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
-      - PUGIXML_INSTALL=OFF
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - PUGIXML_INSTALL=ON
+      # - PUGIXML_INSTALL=OFF
       # - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
     defines[platform:macos]:
@@ -33,6 +35,6 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
-      - ${externalBuild:${name}}/lib
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib
       # - ${externalBuild:${name}}/${ar:${name}}

@@ -88,11 +88,6 @@ targets:
     defines[platform:{web,windows}]:
       - BUILD_ZLIB=ON
 
-  # FreeImage_folders:
-  #   kind: script
-  #   file: FreeImage_folders.sh
-  #   arguments:
-  #     - ${external:FreeImage}
 
 distribution:
   FreeImage:

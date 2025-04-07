@@ -25,17 +25,6 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
-  # test:
-  #   kind: script
-  #   file: test.sh
-  #   arguments:
-  #     - ${external:libusb}
-  # libusb_folders:
-  #   kind: script
-  #   # condition: "[:macos]"
-  #   file: libusb_folders.sh
-  #   arguments:
-  #     - ${external:libusb}
 
 distribution:
   libusb:

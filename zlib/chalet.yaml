@@ -29,11 +29,7 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
-  # zlib_folders:
-  #   kind: script
-  #   file: zlib_folders.sh
-  #   arguments:
-  #     - ${external:zlib}
+
 distribution:
   zlib:
     kind: archive
