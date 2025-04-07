@@ -51,7 +51,7 @@ jobs:
           actions-cache-folder: "emsdk-cache"
 
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.16
+        uses: hendrikmuhs/ccache-action@v1.2.17
         with:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
@@ -60,7 +60,7 @@ jobs:
         with:
           repo: chalet-org/chalet
           cache: enable
-          extension: "\\.zip"
+          extension: .zip
           prerelease: "false"
 
       # TODO: make another item in matrix to pass toolchain to every chalet bundle. like emscripten, llvm etc.

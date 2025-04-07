@@ -100,7 +100,7 @@ jobs:
       #     version: 1.0
 
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.16
+        uses: hendrikmuhs/ccache-action@v2.0.0
         with:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
@@ -110,7 +110,7 @@ jobs:
         with:
           repo: chalet-org/chalet
           cache: enable
-          extension: "\\.zip"
+          extension: .zip
           prerelease: "false"
 
       - name: Chalet Test / Version

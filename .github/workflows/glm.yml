@@ -70,7 +70,7 @@ jobs:
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.16
+        uses: hendrikmuhs/ccache-action@v1.2.17
         with:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
@@ -79,7 +79,7 @@ jobs:
         with:
           repo: chalet-org/chalet
           cache: enable
-          extension: "\\.zip"
+          extension: .zip
           prerelease: "false"
 
       - name: Chalet Test / Version
