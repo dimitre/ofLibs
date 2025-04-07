@@ -35,6 +35,7 @@ targets:
     rebuild: false
     install: true
     defines:
+      - CMAKE_CXX_STANDARD=17
       - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
       # - CMAKE_LIBRARY_OUTPUT_PATH=lib01/${env:PLATFORM}
       # - CMAKE_LIBRARY_OUTPUT_PATH=lib01
