@@ -35,7 +35,7 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_INSTALL_LIBDIR=./lib/${env:PLATFORM}
+      - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
       # - CMAKE_LIBRARY_OUTPUT_PATH=lib01/${env:PLATFORM}
       # - CMAKE_LIBRARY_OUTPUT_PATH=lib01
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib02
@@ -56,6 +56,7 @@ targets:
       - BUILD_PNG=OFF
       - BUILD_TIFF=OFF
       - BUILD_opencv_apps=OFF
+      - BUILD_opencv_calib3d=ON
       - BUILD_opencv_highgui=ON
       - BUILD_opencv_imgcodecs=OFF
       - BUILD_opencv_java=OFF
