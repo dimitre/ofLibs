@@ -17,7 +17,8 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          # there is trouble to build in emscripten. ninja: error: build.ninja:394: multiple rules generate libz.a
+          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
