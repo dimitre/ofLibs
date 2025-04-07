@@ -10,20 +10,14 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
+    install: true
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - glew-cmake_BUILD_SHARED=OFF
       - ONLY_LIBS=ON
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-
-  glew_folders:
-    kind: script
-    file: glew_folders.sh
-    arguments:
-      - ${externalBuild:glew}
-      - ${env:PLATFORM}
 
 distribution:
   glew:
@@ -31,13 +25,10 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
-      - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/lib
+      # - ${external:${name}}/include
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib
       # - ${externalBuild:${name}}/${ar:${name}}
-      # - ${externalBuild:${name}}/*.a
-      # - ${externalBuild:${name}}/*.lib
-      # - ${externalBuild:${name}}/*.pc
 
     # kind: archive
     # format: zip
