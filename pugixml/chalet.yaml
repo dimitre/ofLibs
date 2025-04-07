@@ -24,12 +24,6 @@ targets:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
 
-  # pugixml_folders:
-  #   kind: script
-  #   file: pugixml_folders.sh
-  #   arguments:
-  #     - ${external:pugixml}
-
 distribution:
   pugixml:
     kind: archive
