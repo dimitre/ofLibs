@@ -17,18 +17,21 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
+    install: true
     defines:
-      - BUILD_SHARED_LIBS=OFF
+      - ZLIB_BUILD_TESTING=OFF
+      - ZLIB_BUILD_SHARED=OFF
+      - ZLIB_BUILD_EXAMPLES=OFF
+      - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_INSTALL_PREFIX=Release
-      - ZLIB_BUILD_EXAMPLES=OFF
-      #   - ENABLE_BITCODE=OFF
-      #   - ENABLE_ARC=OFF
-      #   - ENABLE_VISIBILITY=OFF
     defines[platform:web]:
       - JS_ONLY=ON
       - CMAKE_EXECUTABLE_SUFFIX=.js
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
 
     defines[platform:macos]:
       # THIS IS ZLIB ONLY
@@ -42,7 +45,12 @@ targets:
     recheck: false
     rebuild: false
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_INSTALL_INCLUDEDIR=include
+
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/y/${env:PLATFORM}
       # - CMAKE_INSTALL_INCLUDEDIR=Source
       # - CMAKE_CURRENT_BINARY_DIR=XXX
@@ -80,11 +88,11 @@ targets:
     defines[platform:{web,windows}]:
       - BUILD_ZLIB=ON
 
-  FreeImage_folders:
-    kind: script
-    file: FreeImage_folders.sh
-    arguments:
-      - ${external:FreeImage}
+  # FreeImage_folders:
+  #   kind: script
+  #   file: FreeImage_folders.sh
+  #   arguments:
+  #     - ${external:FreeImage}
 
 distribution:
   FreeImage:
@@ -92,12 +100,5 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/license**
-      # - ${external:${name}}/Source/FreeImage.h
-      - ${external:${name}}/Source/include
-      # - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/lib
-#
-# - ${externalBuild:${name}}/${ar:${name}}
-# - ${externalBuild:${name}}/*.a
-# - ${externalBuild:${name}}/*.lib
-# - ${externalBuild:${name}}/*.pc
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib

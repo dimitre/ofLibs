@@ -14,21 +14,21 @@ jobs:
     strategy:
       matrix:
         cfg:
-          # - { platform: emscripten, os: ubuntu-24.04, toolchain: emscripten }
-          # - { platform: linux64, os: ubuntu-24.04, toolchain: llvm }
+          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
           # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
           # - { platform: vs, os: windows-latest, toolchain: vs-stable }
           # - {
           #     platform: rpi-aarch64,
-          #     os: ubuntu-24.04,
+          #     os: ubuntu-latest,
           #     prefix: aarch64-linux-gnu,
           #     toolchain: aarch64-linux-gnu-gcc,
           #   }
           # - {
           #     platform: rpi-armv6l,
-          #     os: ubuntu-24.04,
+          #     os: ubuntu-latest,
           #     prefix: arm-linux-gnueabihf,
           #     toolchain: arm-linux-gnueabihf-gcc,
           #   }
