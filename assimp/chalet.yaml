@@ -44,14 +44,13 @@ targets:
     install: true
     defines:
       - CMAKE_INSTALL_PREFIX=install
-      - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
       - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
-      # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/osx1
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib5/${env:PLATFORM}
+      # - CMAKE_INSTALL_LIBDIR=libx/${env:PLATFORM}
+      # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=libx
+      # - CMAKE_RUNTIME_OUTPUT_DIRECTORY=lib3
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - CMAKE_THREAD_PREFER_PTHREAD=ON
-      # - CMAKE_RUNTIME_OUTPUT_DIRECTORY=lib/osx3
-      # - CMAKE_INSTALL_PREFIX=lib/osx4
       - ENABLE_BITCODE=OFF
       - ENABLE_ARC=OFF
       - BUILD_SHARED_LIBS=OFF
@@ -103,4 +102,5 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
       - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/lib
+      # - ${externalBuild:${name}}/lib
+      - ${externalBuild:${name}}/code/lib
