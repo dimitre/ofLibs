@@ -4,13 +4,13 @@ externalDependencies:
   zlib:
     repository: https://github.com/madler/zlib
     # tag: v1.3.1
-    commit: ef24c4c7502169f016dcd2a26923dbaf3216748c
+    commit: 5a82f71
     kind: git
 
   assimp:
     repository: https://github.com/assimp/assimp
     # tag: v5.4.3
-    commit: c1ffbfec06aa27fd6909d3f2b011a73d8d7a2d0d
+    commit: e27204c
     kind: git
 
 targets:
@@ -28,7 +28,6 @@ targets:
     defines[platform:web]:
       - JS_ONLY=ON
       - CMAKE_EXECUTABLE_SUFFIX=.js
-
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
@@ -40,9 +39,14 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
+    install: true
     defines:
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/osx1
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - CMAKE_THREAD_PREFER_PTHREAD=ON
       # - CMAKE_RUNTIME_OUTPUT_DIRECTORY=lib/osx3
       # - CMAKE_INSTALL_PREFIX=lib/osx4
@@ -70,7 +74,7 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
-      - DEPLOYMENT_TARGET=11.0
+      - DEPLOYMENT_TARGET=11.5
       # - MACOSX_DEPLOYMENT_TARGET=11.0
       # - CMAKE_CXX_FLAGS=-mmacosx-version-min=11.0
       # - CMAKE_C_FLAGS=-mmacosx-version-min=11.0
@@ -104,8 +108,4 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${external:${name}}/include
       - ${externalBuild:${name}}/include
-      - ${externalBuild:${name}}/code/lib
-    # include[:!windows]:
-    #   - ${externalBuild:${name}}/lib/${ar:${name}}
-    # include[:windows]:
-    #   - ${externalBuild:${name}}/lib/**.lib
+      - ${externalBuild:${name}}/lib
