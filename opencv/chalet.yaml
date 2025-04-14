@@ -1,3 +1,4 @@
+---
 name: libsof
 version: 0.1.4
 externalDependencies:
@@ -5,7 +6,6 @@ externalDependencies:
     repository: https://github.com/opencv/opencv
     tag: 4.11.0
     kind: git
-
 targets:
   opencv:
     kind: cmakeProject
@@ -46,18 +46,12 @@ targets:
       - WITH_TIFF=OFF
       - BUILD_JPEG=OFF
       - BUILD_ZLIB=OFF
-      # disable orbbec libs
       - WITH_OBSENSOR=OFF
       - WITH_PROTOBUF=OFF
-      # - ZLIB_ROOT=${externalBuild:zlib}
-      # - ZLIB_LIBRARY=${externalBuild:zlib}
-      # - ZLIB_INCLUDE_DIRS=${external:zlib}
-      # - CV_DISABLE_OPTIMIZATION=ON
       - WITH_OPENCL=OFF
       - WITH_OPENCLAMDBLAS=OFF
       - WITH_OPENCLAMDFFT=OFF
-
-    defines[platform:web]:
+    "defines[platform:web]":
       - WITH_JPEG=OFF
       - BUILD_IPP_IW=OFF
       - WITH_ITT=OFF
@@ -66,18 +60,15 @@ targets:
       - BUILD_WASM_INTRIN_TESTS=OFF
       - BUILD_PERF_TESTS=OFF
       - BUILD_TESTS=OFF
-
-    defines[platform:windows]:
+    "defines[platform:windows]":
       - CPU_BASELINE=""
       - CPU_DISPATCH=""
       - CV_DISABLE_OPTIMIZATION=ON
-
-    defines[platform:macos]:
+    "defines[platform:macos]":
       - APPLE_FRAMEWORK=ON
       - CPU_BASELINE=NATIVE
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-
 distribution:
   opencv:
     kind: archive
