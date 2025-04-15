@@ -1,37 +1,22 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 pwd
-# brew install meson
 # export CCACHE_DISABLE=1
 
 git clone https://gitlab.freedesktop.org/cairo/cairo.git --depth 1
 cd cairo
-git fetch --depth 1 origin 727966dfca933d4a8fc6e65a428e1a9ce1a2fec2
+git fetch --depth 1 origin 7fd0cd0a9c0278c2b3d4c78087ca8481087b588b
 
-#
-#
-# meson setup build -Dc_args="-arch x86_64" -Dcpp_args="-arch x86_64" -Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release -Dxcb=disabled -Dxlib=disabled -Dlzo=disabled --reconfigure
-# meson setup build -Dc_args="-march=x86-64 -march=arm64" -Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release -Dxcb=disabled -Dxlib=disabled -Dlzo=disabled --reconfigure
-# ninja -C build
 
-meson setup --cross-file ../macos-x86_64.txt ../intel \
--Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release \
--Dxcb=disabled -Dxlib=disabled -Dlzo=disabled \
-# -Dpng=disabled -Dzlib=disabled  \
---reconfigure
+meson setup --cross-file ../macos-x86_64.txt ../intel -Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release -Dxcb=disabled -Dxlib=disabled -Dlzo=disabled --reconfigure
 ninja -C ../intel
-# lipo -info ../intel/src/*.a
 
 meson setup ../silicon -Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release -Dxcb=disabled -Dxlib=disabled -Dlzo=disabled --reconfigure
 ninja -C ../silicon
-# lipo -info ../silicon/src/*.a
 
 cd ..
-
 lipo -info ./intel/src/*.a
 lipo -info ./silicon/src/*.a
-
-
 
 # cd ..
 mkdir -p lib/${PLATFORM}
@@ -59,3 +44,12 @@ zip -r oflib_cairo_${PLATFORM}.zip lib include
 # meson build
 # echo meson compile -C build --xlib=false
 # meson compile -C build --xlib=false
+
+
+#
+#
+# meson setup build -Dc_args="-arch x86_64" -Dcpp_args="-arch x86_64" -Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release -Dxcb=disabled -Dxlib=disabled -Dlzo=disabled --reconfigure
+# meson setup build -Dc_args="-march=x86-64 -march=arm64" -Ddefault_library=static -Ddefault_both_libraries=static -Dbuildtype=release -Dxcb=disabled -Dxlib=disabled -Dlzo=disabled --reconfigure
+# ninja -C build
+
+# -Dpng=disabled -Dzlib=disabled  \

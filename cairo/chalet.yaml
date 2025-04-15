@@ -1,11 +1,11 @@
 # UNUSED YET
 
 name: libsof
-version: "0.1.3"
+version: 0.1.3
 externalDependencies:
   cairo:
     repository: https://gitlab.freedesktop.org/cairo/cairo
-    tag: "1.18.4"
+    tag: 1.18.4
     # commit: bdd12408a72f1825818fba141b45987389ddfc0c
     kind: git
 targets:
