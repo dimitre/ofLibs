@@ -1,0 +1,42 @@
+name: libsof
+version: "0.1.4"
+externalDependencies:
+  rtAudio:
+    repository: https://github.com/thestk/rtaudio
+    # tag: 6.0.1
+    kind: git
+targets:
+  rtAudio:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+      - CMAKE_INSTALL_PREFIX=Release
+      - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
+
+distribution:
+  rtAudio:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/LICENSE**
+      # - ${external:${name}}/include
+      # - ${externalBuild:${name}}/gen_include
+      # - ${external:${name}}/include
+      # - ${externalBuild:${name}}/include
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib
+      # - ${externalBuild:${name}}/${ar:usb}
+      # - ${externalBuild:${name}}/${ar:${name}}
+      # - ${externalBuild:${name}}/*.a
+      # - ${externalBuild:${name}}/*.lib
+      # - ${externalBuild:${name}}/*.pc
