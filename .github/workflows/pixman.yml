@@ -60,6 +60,8 @@ jobs:
       #   uses: tecolicom/actions-use-homebrew-tools@v1
       #   with:
       #     tools: meson
+      #
+      - uses: actions/setup-python@v5.5.0
 
       - uses: BSFishy/meson-build@v1.0.3
         with:
