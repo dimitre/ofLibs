@@ -4,18 +4,31 @@ externalDependencies:
   pixman:
     repository: https://gitlab.freedesktop.org/pixman/pixman.git
     # http://anongit.freedesktop.org/git/pixman.git
-    tag: "pixman-0.44.2"
+    # tag: "pixman-0.44.2"
+    commit: 106323bc15c7eb89a033cf8ff38f52bca8a4b53c
     kind: git
 
 targets:
-  pixman-script:
-    kind: script
-    file: pixman.sh
+  pixman:
+    kind: mesonProject
+    location: ${external:${name}}
+    install: true
+    defines:
+      - default_library=static
+      - buildtype=release
+      - demos=disabled
+      - tests=disabled
+      # - default_both_libraries=static
+      # - prefer_static=true
+  # pixman-script:
+  #   kind: script
+  #   file: pixman.sh
 
 distribution:
   pixman:
     kind: archive
     format: zip
     include:
-      - ${external:${name}}/lib
-      - ${external:${name}}/include
+      - ${externalBuild:${name}}/install/opt/homebrew/include
+      - ${externalBuild:${name}}/install/opt/homebrew/lib
+      - ${external:${name}}/COPYING
