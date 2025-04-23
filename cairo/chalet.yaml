@@ -15,7 +15,8 @@ targets:
     install: true
     defines:
       - default_library=static
-      # - default_both_libraries=static
+      # if disabled meson fails with  ERROR: C prefer_static library 'gdi32' not found
+      - default_both_libraries=static
       - buildtype=release
       - xcb=disabled
       - xlib=disabled
