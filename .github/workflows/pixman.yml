@@ -56,10 +56,14 @@ jobs:
         shell: bash
         run: export
 
-      - name: Brew Meson
-        uses: tecolicom/actions-use-homebrew-tools@v1
+      # - name: Brew Meson
+      #   uses: tecolicom/actions-use-homebrew-tools@v1
+      #   with:
+      #     tools: meson
+
+      - uses: BSFishy/meson-build@v1.0.3
         with:
-          tools: meson
+          action: test
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.17
