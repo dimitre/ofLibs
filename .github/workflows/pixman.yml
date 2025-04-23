@@ -65,8 +65,8 @@ jobs:
         with:
           python-version: "3.13"
       - uses: BSFishy/meson-build@v1.0.3
-        # with:
-        action: --version
+        with:
+          action: --version
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.17
