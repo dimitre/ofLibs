@@ -1,5 +1,5 @@
-name: OF altpothecary GLFW
-version: "0.0.4"
+name: Pixman
+version: 0.0.5
 externalDependencies:
   pixman:
     repository: https://gitlab.freedesktop.org/pixman/pixman.git

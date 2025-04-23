@@ -66,36 +66,9 @@ jobs:
         with:
           key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
-      # - name: Install Chalet
-      #   uses: jaxxstorm/action-install-gh-release@v2.0.0
-      #   with:
-      #     repo: chalet-org/chalet
-      #     cache: enable
-      #     extension: .zip
-      #     prerelease: "false"
-
-      # - name: Chalet Test / Version
-      # run: |
-      # chalet --version
-
-      # - name: Chalet Configure
-      #   shell: bash
-      #   run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
-
-      # - name: ENV VARS
-      #   shell: bash
-      #   run: export
-
-      # - name: Chalet Bundle
-      #   if: matrix.cfg.platform != 'ios'
-      #   shell: bash
+      # - name: Pixman Build
       #   run: |
-      #     chalet bundle --show-commands
-      #     # chalet bundle --compiler-cache --show-commands
-
-      - name: Pixman Build
-        run: |
-          ./pixman.sh
+      #     ./pixman.sh
 
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
@@ -135,27 +108,32 @@ jobs:
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
-      # - name: Install Chalet
-      #   uses: jaxxstorm/action-install-gh-release@v2.0.0
-      #   with:
-      #     repo: chalet-org/chalet
-      #     cache: enable
-      #     extension: .zip
-      #     prerelease: "false"
+      - name: Install Chalet
+        uses: jaxxstorm/action-install-gh-release@v2.0.0
+        with:
+          repo: chalet-org/chalet
+          cache: enable
+          extension: .zip
+          prerelease: "false"
 
-      # - name: Chalet Test / Version
-      #   run: |
-      #     chalet --version
+      - name: Chalet Test / Version
+        run: |
+          chalet --version
 
-      # - name: Chalet Configure
+      - name: Chalet Configure
+        shell: bash
+        run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
+
+      # - name: ENV VARS
       #   shell: bash
-      #   run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
+      #   run: export
 
-      # - name: Chalet Bundle
-      #   if: matrix.cfg.platform != 'ios'
-      #   shell: bash
-      #   run: |
-      #     chalet bundle --show-commands
+      - name: Chalet Bundle
+        if: matrix.cfg.platform != 'ios'
+        shell: bash
+        run: |
+          chalet bundle --show-commands
+          # chalet bundle --compiler-cache --show-commands
 
       - name: iOS Bundle
         if: matrix.cfg.platform == 'ios'
