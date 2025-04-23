@@ -15,7 +15,7 @@ targets:
     install: true
     defines:
       - default_library=static
-      - default_both_libraries=static
+      # - default_both_libraries=static
       - buildtype=release
       - xcb=disabled
       - xlib=disabled
