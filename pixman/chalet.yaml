@@ -4,8 +4,8 @@ externalDependencies:
   pixman:
     repository: https://gitlab.freedesktop.org/pixman/pixman.git
     # http://anongit.freedesktop.org/git/pixman.git
-    # tag: "pixman-0.44.2"
-    commit: 106323bc15c7eb89a033cf8ff38f52bca8a4b53c
+    tag: "pixman-0.44.2"
+    # commit: 106323bc15c7eb89a033cf8ff38f52bca8a4b53c
     kind: git
 
 targets:
@@ -15,7 +15,7 @@ targets:
     install: true
     defines:
       - default_library=static
-      - buildtype=release
+      # - buildtype=release
       - demos=disabled
       - tests=disabled
       # - default_both_libraries=static
