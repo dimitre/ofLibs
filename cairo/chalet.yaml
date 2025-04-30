@@ -28,5 +28,8 @@ distribution:
     kind: archive
     format: zip
     include:
-      - ${externalBuild:${name}}/src/*.a
-      - ${externalBuild:${name}}/src/*.h
+      - ${externalBuild:${name}}/install/opt/homebrew/include
+      - ${externalBuild:${name}}/install/opt/homebrew/lib
+      - ${external:${name}}/COPYING*
+      # - ${externalBuild:${name}}/src/*.a
+      # - ${externalBuild:${name}}/src/*.h

@@ -4,7 +4,7 @@ externalDependencies:
   opencv:
     repository: https://github.com/opencv/opencv
     # tag: 4.11.0
-    commit: 6ef574639152049e01b884c67b36122df37cac6e
+    commit: 4ad4bd5
     kind: git
 
 targets:
@@ -20,6 +20,7 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - ENABLE_NEON=ON
       - BUILD_DOCS=OFF
       - BUILD_EXAMPLES=OFF
       - BUILD_TESTS=OFF
