@@ -37,7 +37,8 @@ distribution:
     kind: archive
     format: zip
     include:
-      - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
+      # - ${external:${name}}/LICENSE**
+      # - ${external:${name}}/include
       # - ${externalBuild:${name}}/${ar:${name}}
-      - ${externalBuild:${name}}/src/lib
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib
