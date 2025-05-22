@@ -18,6 +18,9 @@ targets:
       # - buildtype=release
       - demos=disabled
       - tests=disabled
+      # - prefix=./${externalBuild:${name}}
+      # - libdir=lib
+
       # - default_both_libraries=static
       # - prefer_static=true
   # pixman-script:

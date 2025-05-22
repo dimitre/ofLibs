@@ -146,6 +146,9 @@ jobs:
           chalet bundle --show-commands
           # chalet bundle --compiler-cache --show-commands
 
+      - name: TREE build
+        run: tree -h pixman/build
+
       - name: iOS Bundle
         if: matrix.cfg.platform == 'ios'
         shell: bash
