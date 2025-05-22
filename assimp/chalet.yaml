@@ -43,6 +43,9 @@ targets:
     rebuild: false
     install: true
     defines:
+      - ASSIMP_BUILD_USD_IMPORTER=on
+      - ASSIMP_BUILD_USD_VERBOSE_LOGS=on
+
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib5/${env:PLATFORM}
