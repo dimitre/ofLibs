@@ -34,4 +34,7 @@ distribution:
     include:
       - ${externalBuild:${name}}/install/opt/homebrew/include
       - ${externalBuild:${name}}/install/opt/homebrew/lib
+      - ${externalBuild:${name}}/install/usr/local/lib/include
+      - ${externalBuild:${name}}/install/usr/local/lib/lib
+
       - ${external:${name}}/COPYING
