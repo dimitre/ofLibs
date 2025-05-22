@@ -56,11 +56,6 @@ jobs:
         shell: bash
         run: export
 
-      # - name: Brew Meson
-      #   uses: tecolicom/actions-use-homebrew-tools@v1
-      #   with:
-      #     tools: meson
-      #
       - uses: actions/setup-python@v5.5.0
         with:
           python-version: "3.x"
@@ -146,8 +141,11 @@ jobs:
           chalet bundle --show-commands
           # chalet bundle --compiler-cache --show-commands
 
-      - name: TREE build
-        run: tree -h pixman/build
+      - name: LS Build
+        run: ls -alfR pixman/build
+
+      # - name: TREE build
+      # run: tree -h pixman/build
 
       - name: iOS Bundle
         if: matrix.cfg.platform == 'ios'
