@@ -142,7 +142,7 @@ jobs:
           # chalet bundle --compiler-cache --show-commands
 
       - name: LS Build
-        run: ls -alfR pixman/build
+        run: ls -alfR build
 
       # - name: TREE build
       # run: tree -h pixman/build
