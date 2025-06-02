@@ -3,7 +3,8 @@ version: "0.1.4"
 externalDependencies:
   yaml-cpp:
     repository: https://github.com/jbeder/yaml-cpp/
-    tag: 0.8.0
+    # tag: 0.8.0
+    commit: 2f86d13775d119edbb69af52e5f566fd65c6953b
     kind: git
 targets:
   yaml-cpp:
@@ -11,6 +12,7 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
+    install: true
     defines:
       - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - BUILD_SHARED_LIBS=OFF
@@ -41,5 +43,5 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
-      - ${externalBuild:${name}}/lib
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib
