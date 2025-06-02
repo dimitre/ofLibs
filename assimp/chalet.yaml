@@ -10,7 +10,8 @@ externalDependencies:
   assimp:
     repository: https://github.com/assimp/assimp
     # tag: v5.4.3
-    commit: e27204c
+    tag: v6.0.1
+    # commit: e27204c
     kind: git
 
 targets:
