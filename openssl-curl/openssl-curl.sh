@@ -7,7 +7,8 @@ PLATFORM=macos
 fi
 cd "$(dirname "$0")"
 cd Build-OpenSSL-cURL
-./build.sh -o 3.0.15 -c 8.11.1 -d -i 11.0 -a 11.0
+# ./build.sh -o 3.0.15 -c 8.14.1 -d -i 11.0 -a 11.0
+./build.sh -o 3.5.0 -c 8.14.1 -d -i 11.0 -a 11.0
 
 # mkdir dist
 
