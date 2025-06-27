@@ -31,7 +31,9 @@ targets:
       - BUILD_opencv_apps=OFF
       - BUILD_opencv_calib3d=ON
       - BUILD_opencv_highgui=ON
-      - BUILD_opencv_imgcodecs=OFF
+      # - BUILD_opencv_imgcodecs=OFF
+      # changed today because of CopperTag cv::imwrite
+      - BUILD_opencv_imgcodecs=ON
       - BUILD_opencv_java=OFF
       - BUILD_opencv_python2=OFF
       - BUILD_opencv_python3=OFF
@@ -48,6 +50,7 @@ targets:
       - WITH_TIFF=OFF
       - BUILD_JPEG=OFF
       - BUILD_ZLIB=OFF
+      - BUILD_JASPER=OFF
       # disable orbbec libs
       - WITH_OBSENSOR=OFF
       - WITH_PROTOBUF=OFF
