@@ -34,9 +34,9 @@ targets:
       - BUILD_opencv_apps=OFF
       - BUILD_opencv_calib3d=ON
       - BUILD_opencv_highgui=ON
-      - BUILD_opencv_imgcodecs=OFF
+      # - BUILD_opencv_imgcodecs=OFF
       # changed today because of CopperTag cv::imwrite
-      # - BUILD_opencv_imgcodecs=ON
+      - BUILD_opencv_imgcodecs=ON
       - BUILD_opencv_java=OFF
       - BUILD_opencv_python2=OFF
       - BUILD_opencv_python3=OFF
@@ -45,8 +45,8 @@ targets:
       - BUILD_opencv_stitching=OFF
       - BUILD_opencv_superres=OFF
       - BUILD_opencv_ts=OFF
-      - BUILD_opencv_videoio=OFF
-      # - BUILD_opencv_videoio=ON
+      # - BUILD_opencv_videoio=OFF
+      - BUILD_opencv_videoio=ON
       - BUILD_opencv_videostab=OFF
       - BUILD_opencv_world=ON
       - WITH_ADE=OFF
@@ -66,8 +66,8 @@ targets:
       # - ZLIB_INCLUDE_DIRS=${external:zlib}
       # - CV_DISABLE_OPTIMIZATION=ON
       - WITH_OPENCL=OFF
-      # - WITH_OPENCLAMDBLAS=OFF
-      # - WITH_OPENCLAMDFFT=OFF
+      - WITH_OPENCLAMDBLAS=OFF
+      - WITH_OPENCLAMDFFT=OFF
 
     # "defines[platform:web]":
     defines[platform:web]:
