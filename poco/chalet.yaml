@@ -1,10 +1,8 @@
 name: libsof
-version: "0.1.4"
+version: "0.0.1"
 externalDependencies:
   poco:
     repository: https://github.com/pocoproject/poco
-    # tag: v1.0.27-1
-    # v1.0.29 already exists, not only on libusb-cmake
     tag: poco-1.14.2-release
     kind: git
 targets:
@@ -34,14 +32,5 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      # - ${external:${name}}/include
-      # - ${externalBuild:${name}}/gen_include
-      # - ${external:${name}}/include
-      # - ${externalBuild:${name}}/include
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
-      # - ${externalBuild:${name}}/${ar:usb}
-      # - ${externalBuild:${name}}/${ar:${name}}
-      # - ${externalBuild:${name}}/*.a
-      # - ${externalBuild:${name}}/*.lib
-      # - ${externalBuild:${name}}/*.pc
