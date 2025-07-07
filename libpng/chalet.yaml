@@ -3,7 +3,7 @@ version: "0.0.4"
 externalDependencies:
   libpng:
     repository: https://github.com/pnggroup/libpng
-    tag: "v1.6.49"
+    tag: "v1.6.50"
     kind: git
 
 targets:
