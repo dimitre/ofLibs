@@ -12,6 +12,7 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
+    install: true
     defines:
       - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - CMAKE_BUILD_TYPE=Release
@@ -23,6 +24,7 @@ targets:
       - PNG_TOOLS=OFF
       - PNG_EXECUTABLES=OFF
       - PNG_HARDWARE_OPTIMIZATIONS=OFF
+      - PNG_FRAMEWORK=OFF
 
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
@@ -34,6 +36,6 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE
-      - ${external:${name}}/png.framework/Headers
-      # - ${externalBuild:${name}}/${ar:${name}}
-      - ${externalBuild:${name}}/lib
+      # - ${external:${name}}/png.framework/Headers
+      - ${externalBuild:${name}}/install/lib
+      - ${externalBuild:${name}}/install/include
