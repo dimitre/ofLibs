@@ -28,7 +28,6 @@ targets:
       - SKIP_INSTALL_CONFIG_FILE=ON
       - SKIP_INSTALL_EXPORT=ON
       - SKIP_INSTALL_FILES=ON
-
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
       - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
