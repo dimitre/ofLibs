@@ -17,7 +17,7 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
-    install: true
+    # install: true
     defines:
       - ZLIB_BUILD_TESTING=OFF
       - ZLIB_BUILD_SHARED=OFF
@@ -25,7 +25,10 @@ targets:
       - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      - CMAKE_INSTALL_PREFIX=Release
+      # - CMAKE_INSTALL_PREFIX=install
+      # - CMAKE_INSTALL_LIBDIR=lib
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
     defines[platform:web]:
       - JS_ONLY=ON
       - CMAKE_EXECUTABLE_SUFFIX=.js
@@ -48,6 +51,8 @@ targets:
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_LIBDIR=lib
       - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+
 
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}

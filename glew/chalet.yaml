@@ -15,6 +15,8 @@ targets:
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - glew-cmake_BUILD_SHARED=OFF
       - ONLY_LIBS=ON
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
