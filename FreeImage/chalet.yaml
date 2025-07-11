@@ -71,10 +71,13 @@ targets:
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
 
       - BUILD_TESTS=OFF
-      - ZLIB_ROOT=${externalBuild:zlib}
-      - ZLIB_LIBRARY=${externalBuild:zlib}
-      - ZLIB_INCLUDE_DIRS=${external:zlib}
-      - BUILD_ZLIB=OFF
+
+      # - ZLIB_ROOT=${externalBuild:zlib}
+      # - ZLIB_LIBRARY=${externalBuild:zlib}
+      # - ZLIB_INCLUDE_DIRS=${external:zlib}
+      # - BUILD_ZLIB=OFF
+
+      - BUILD_ZLIB=ON
 
       - BUILD_LIBPNG=OFF
       - BUILD_JXR=OFF
