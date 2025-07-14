@@ -14,8 +14,9 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
 
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
+env:
+  # CMAKE_CXX_COMPILER_LAUNCHER: ccache
+  MACOSX_DEPLOYMENT_TARGET: 11.5
 
 jobs:
   pixman_matrix:
