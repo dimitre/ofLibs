@@ -34,7 +34,11 @@ targets:
     # https://github.com/glfw/glfw/issues/1957#issuecomment-1891056066
     defines[toolchain:aarch64-linux-gnu-gcc]:
       - X11_X11_LIB=who_cares
-      - GLFW_USE_WAYLAND=OFF
+      - GLFW_BUILD_WAYLAND=OFF
+    defines[platform:linux]:
+      - GLFW_BUILD_WAYLAND=ON
+      - GLFW_BUILD_X11=ON
+      - X11_X11_LIB=who_cares
 
 distribution:
   glfw:
