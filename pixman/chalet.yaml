@@ -20,7 +20,7 @@ targets:
       - tests=disabled
       # - prefix=./${externalBuild:${name}}
       # - libdir=lib
-
+      - skip_sanity_check=true
       # - default_both_libraries=static
       # - prefer_static=true
   # pixman-script:
