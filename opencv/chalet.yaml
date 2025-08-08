@@ -31,6 +31,9 @@ targets:
       - BUILD_WEBP=OFF
       - BUILD_JASPER=OFF
 
+      # test for ofxOpenCvDnnObjectDetection
+      - BUILD_opencv_dnn=ON
+
       - BUILD_opencv_apps=OFF
       - BUILD_opencv_calib3d=ON
       - BUILD_opencv_highgui=ON
