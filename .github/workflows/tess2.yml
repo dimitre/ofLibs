@@ -92,6 +92,7 @@ jobs:
             # unzip
             # pkgconf
             # ccache
+            #
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
@@ -118,7 +119,6 @@ jobs:
 
       - name: RPI - multistrap
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
-        shell: bash
         run: |
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
@@ -137,35 +137,35 @@ jobs:
           extension: .zip
           prerelease: "false"
 
+      - name: Add Chalet to Path in Msys2
+        if: matrix.platform == 'msys2'
+        run: |
+          export PATH=$PATH:'/c/Program Files/Chalet/bin'
+
       - name: Chalet Test / Version
         run: |
           chalet --version
 
       - name: Chalet Configure
-        shell: bash
         run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
-        shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
 
       - name: iOS Bundle
         if: matrix.platform == 'ios'
-        shell: bash
         run: |
           ./${{ github.workflow }}.sh
 
       - name: LS check built lib
         if: matrix.platform != 'ios'
-        shell: bash
         run: |
           unzip dist/*.zip
           ls -alfR dist
 
       - name: Rename and Publish Release
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
