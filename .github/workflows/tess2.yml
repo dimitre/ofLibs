@@ -88,11 +88,6 @@ jobs:
           update: true
           install: >-
             base-devel
-            # git
-            # unzip
-            # pkgconf
-            # ccache
-            #
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
