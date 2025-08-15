@@ -21,18 +21,46 @@ jobs:
   tess2_matrix:
     strategy:
       matrix:
-        cfg:
-          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
-          - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
+        include:
+          - {
+              platform: emscripten,
+              os: ubuntu-latest,
+              toolchain: emscripten,
+              shell: bash,
+            }
+          - {
+              platform: linux64,
+              os: ubuntu-latest,
+              toolchain: llvm,
+              shell: bash,
+            }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
-          - { platform: macos, os: macos-latest, toolchain: apple-llvm }
+          - {
+              platform: macos,
+              os: macos-latest,
+              toolchain: apple-llvm,
+              shell: bash,
+            }
           # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
-          - { platform: vs, os: windows-latest, toolchain: vs-stable }
+          - {
+              platform: msys2,
+              os: windows-latest,
+              toolchain: gcc,
+              shell: msys2,
+            }
+          #
+          - {
+              platform: vs,
+              os: windows-latest,
+              toolchain: vs-stable,
+              shell: bash,
+            }
           - {
               platform: rpi-aarch64,
               os: ubuntu-latest,
               prefix: aarch64-linux-gnu,
               toolchain: aarch64-linux-gnu-gcc,
+              shell: bash,
             }
           # - {
           #     platform: rpi-armv6l,
@@ -41,25 +69,39 @@ jobs:
           #     toolchain: arm-linux-gnueabihf-gcc,
           #   }
 
-    runs-on: ${{ matrix.cfg.os }}
-    env:
-      PLATFORM: ${{ matrix.cfg.platform }}
+    runs-on: ${{ matrix.os }}
     defaults:
       run:
+        shell: ${{ matrix.shell }} {0}
         working-directory: ./${{ github.workflow }}
+    env:
+      PLATFORM: ${{ matrix.platform }}
 
     steps:
       - uses: actions/checkout@v4
 
+      - name: MSYS2
+        if: matrix.platform == 'msys2'
+        uses: msys2/setup-msys2@v2.28.0
+        with:
+          pacboy: wget2:p yaml-cpp:p pugixml:p nlohmann-json:p fmt:p toolchain:p openssl:p python:p assimp:p cairo:p curl:p freeglut:p FreeImage:p glew:p glfw:p glm:p libsndfile:p libusb:p libxml2:p mpg123:p openal:p opencv:p rtaudio:p uriparser:p utf8cpp:p
+          update: true
+          install: >-
+            git
+            unzip
+            pkgconf
+            ccache
+            base-devel
+
       - name: Emscripten Install
-        if: matrix.cfg.platform == 'emscripten'
+        if: matrix.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
         with:
           version: 4.0.6
           actions-cache-folder: "emsdk-cache"
 
       - name: Verify emsdk
-        if: matrix.cfg.platform == 'emscripten'
+        if: matrix.platform == 'emscripten'
         run: |
           emcc -v
           emsdk update
@@ -68,14 +110,14 @@ jobs:
           emcc -v
 
       - name: RPI - apt multistrap
-        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: multistrap gcc-${{matrix.cfg.prefix}} g++-${{matrix.cfg.prefix}}
+          packages: multistrap gcc-${{matrix.prefix}} g++-${{matrix.prefix}}
           version: 1.0
 
       - name: RPI - multistrap
-        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         shell: bash
         run: |
           mkdir -p raspbian/etc/apt/apt.conf.d/
@@ -85,7 +127,7 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.17
         with:
-          key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
+          key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.0.0
@@ -101,22 +143,22 @@ jobs:
 
       - name: Chalet Configure
         shell: bash
-        run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
+        run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
-        if: matrix.cfg.platform != 'ios'
+        if: matrix.platform != 'ios'
         shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
 
       - name: iOS Bundle
-        if: matrix.cfg.platform == 'ios'
+        if: matrix.platform == 'ios'
         shell: bash
         run: |
           ./${{ github.workflow }}.sh
 
       - name: LS check built lib
-        if: matrix.cfg.platform != 'ios'
+        if: matrix.platform != 'ios'
         shell: bash
         run: |
           unzip dist/*.zip
@@ -127,6 +169,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
+          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber

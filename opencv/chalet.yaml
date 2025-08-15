@@ -1,10 +1,10 @@
 name: opencv
-version: 0.1.5
+version: 0.1.6
 externalDependencies:
   opencv:
     repository: https://github.com/opencv/opencv
-    tag: 4.12.0
-    # commit: d75323f
+    # tag: 4.12.0
+    commit: a8afdee
     kind: git
 
 targets:
@@ -30,6 +30,7 @@ targets:
       - BUILD_TIFF=OFF
       - BUILD_WEBP=OFF
       - BUILD_JASPER=OFF
+      - BUILD_JAVA=OFF
 
       # test for ofxOpenCvDnnObjectDetection
       - BUILD_opencv_dnn=ON
