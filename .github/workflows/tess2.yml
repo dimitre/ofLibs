@@ -136,7 +136,9 @@ jobs:
       - name: Add Chalet to Path in Msys2
         if: matrix.platform == 'msys2'
         run: |
-          export PATH=$PATH:/c/hostedtoolcache/windows/chalet-org/chalet/latest/windows-x64
+          export PATH=$PATH:'/c/hostedtoolcache/windows/chalet-org/chalet/latest/windows-x64'
+          chalet --version
+          chalet.exe --version
 
       - name: Chalet Test / Version
         run: |
