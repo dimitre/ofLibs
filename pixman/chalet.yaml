@@ -4,7 +4,7 @@ externalDependencies:
   pixman:
     repository: https://gitlab.freedesktop.org/pixman/pixman.git
     # http://anongit.freedesktop.org/git/pixman.git
-    tag: "pixman-0.46.4"
+    tag: pixman-0.46.4
     # commit: 106323bc15c7eb89a033cf8ff38f52bca8a4b53c
     kind: git
 
