@@ -5,7 +5,7 @@ externalDependencies:
     repository: https://github.com/libusb/libusb-cmake
     # tag: v1.0.27-1
     # v1.0.29 already exists, not only on libusb-cmake
-    tag: v1.0.29
+    tag: v1.0.29-0
     kind: git
 targets:
   libusb:
@@ -26,7 +26,7 @@ targets:
       # - CMAKE_INSTALL_FULL_LIBDIR=./lib
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.5
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
 
 distribution:
   libusb:
