@@ -18,6 +18,7 @@ targets:
       # - buildtype=release
       - demos=disabled
       - tests=disabled
+      # FIXME: only for platform RPI
       - mmx=disabled
       - sse2=disabled
       # - prefix=./${externalBuild:${name}}

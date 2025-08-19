@@ -57,25 +57,9 @@ jobs:
         shell: bash
         run: export
 
-      - uses: actions/setup-python@v5.5.0
+      - uses: actions/setup-python@v5.6.0
         with:
           python-version: "3.x"
-
-      - name: Install Meson
-        run: pip install meson ninja
-
-      # - uses: BSFishy/meson-build@v1.0.3
-      #   with:
-      #     action: --version
-
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.17
-        with:
-          key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
-
-      # - name: Pixman Build
-      #   run: |
-      #     ./pixman.sh
 
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
@@ -89,10 +73,26 @@ jobs:
         if: matrix.cfg.platform == 'emscripten'
         run: |
           emcc -v
-          emsdk update
-          emsdk install latest
-          emsdk activate latest
-          emcc -v
+        # emsdk update
+        #  emsdk install latest
+        #  emsdk activate latest
+        #  emcc -v
+
+      - name: Install Meson
+        run: pip install meson ninja
+
+      # - uses: BSFishy/meson-build@v1.0.3
+      #   with:
+      #     action: --version
+
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.18
+        with:
+          key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
+
+      # - name: Pixman Build
+      #   run: |
+      #     ./pixman.sh
 
       - name: Linux Apt
         if: matrix.cfg.platform == 'linux64'
@@ -117,7 +117,7 @@ jobs:
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
       - name: Install Chalet
-        uses: jaxxstorm/action-install-gh-release@v2.0.0
+        uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
           repo: chalet-org/chalet
           cache: enable
