@@ -18,6 +18,8 @@ targets:
       # - buildtype=release
       - demos=disabled
       - tests=disabled
+      - mmx=disabled
+      - sse2=disabled
       # - prefix=./${externalBuild:${name}}
       # - libdir=lib
       # - skip_sanity_checks=true
