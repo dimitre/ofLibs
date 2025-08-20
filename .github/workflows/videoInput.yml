@@ -95,6 +95,11 @@ jobs:
         run: |
           ./${{ github.workflow }}.sh
 
+      - name: LS BUILD
+        shell: bash
+        run: |
+          ls -alfR build
+
       - name: LS check built lib
         shell: bash
         run: |

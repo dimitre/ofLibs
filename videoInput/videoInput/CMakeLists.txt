@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.16)
 project(VideoInputLibrary VERSION 1.0)
 
 
@@ -18,3 +18,7 @@ target_compile_options(videoInput PRIVATE -O3)
 
 # Set include directories for the library
 target_include_directories(videoInput PUBLIC ./)
+
+
+install(FILES videoInput.h
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
