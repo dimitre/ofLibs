@@ -22,7 +22,7 @@ jobs:
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: libwayland-dev libxkbcommon-dev xorg-dev
-          # packages: multistrap unzip gcc-${{matrix.cfg.suffix}} g++-${{matrix.cfg.suffix}}
+          # packages: multistrap unzip gcc-${{matrix.suffix}} g++-${{matrix.suffix}}
           # version: 1.0
 
       - name: echo runner.os, matrix.os

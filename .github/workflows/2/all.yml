@@ -52,7 +52,7 @@ jobs:
       #   uses: actions/cache@v4
       #   with:
       #     path: '~/projectGenerator'
-      #     key: ${{ runner.os }}-pg-${{matrix.cfg.gradle_target}}
+      #     key: ${{ runner.os }}-pg-${{matrix.gradle_target}}
 
       - name: Chalet Bundle
         run: |

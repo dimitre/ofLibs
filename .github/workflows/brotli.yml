@@ -16,7 +16,7 @@ jobs:
   brotli_matrix:
     strategy:
       matrix:
-        cfg:
+        include:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
@@ -36,9 +36,9 @@ jobs:
           #     toolchain: arm-linux-gnueabihf-gcc,
           #   }
 
-    runs-on: ${{ matrix.cfg.os }}
+    runs-on: ${{ matrix.os }}
     env:
-      PLATFORM: ${{ matrix.cfg.platform }}
+      PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         working-directory: ./${{ github.workflow }}
@@ -47,14 +47,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Emscripten Install
-        if: matrix.cfg.platform == 'emscripten'
+        if: matrix.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
         with:
           version: 4.0.13
           actions-cache-folder: "emsdk-cache"
 
       - name: Verify emsdk
-        if: matrix.cfg.platform == 'emscripten'
+        if: matrix.platform == 'emscripten'
         run: |
           emcc -v
           emsdk update
@@ -63,14 +63,14 @@ jobs:
           emcc -v
 
       - name: RPI - apt multistrap
-        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: multistrap gcc-${{matrix.cfg.prefix}} g++-${{matrix.cfg.prefix}}
+          packages: multistrap gcc-${{matrix.prefix}} g++-${{matrix.prefix}}
           version: 1.0
 
       - name: RPI - multistrap
-        if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         run: |
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
@@ -79,7 +79,7 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.18
         with:
-          key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
+          key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
@@ -94,20 +94,20 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
+        run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
-        if: matrix.cfg.platform != 'ios'
+        if: matrix.platform != 'ios'
         run: |
           chalet bundle --compiler-cache --show-commands
 
       - name: iOS Bundle
-        if: matrix.cfg.platform == 'ios'
+        if: matrix.platform == 'ios'
         run: |
           ./${{ github.workflow }}.sh
 
       - name: LS check built lib
-        if: matrix.cfg.platform != 'ios'
+        if: matrix.platform != 'ios'
         run: |
           unzip dist/*.zip
           ls -alfR dist
@@ -116,6 +116,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
+          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber

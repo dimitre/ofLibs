@@ -13,7 +13,7 @@ jobs:
   freetype_matrix:
     strategy:
       matrix:
-        cfg:
+        include:
           # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
@@ -33,9 +33,9 @@ jobs:
           #     toolchain: arm-linux-gnueabihf-gcc,
           #   }
 
-    runs-on: ${{ matrix.cfg.os }}
+    runs-on: ${{ matrix.os }}
     env:
-      PLATFORM: ${{ matrix.cfg.platform }}
+      PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         working-directory: ${{ github.workflow }}
@@ -44,7 +44,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Emscripten Install
-        if: matrix.cfg.platform == 'emscripten'
+        if: matrix.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
         with:
           version: 4.0.13
@@ -53,7 +53,7 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.18
         with:
-          key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
+          key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
@@ -65,7 +65,7 @@ jobs:
 
       # TODO: make another item in matrix to pass toolchain to every chalet bundle. like emscripten, llvm etc.
       - name: Chalet Configure
-        if: matrix.cfg.platform == 'emscripten'
+        if: matrix.platform == 'emscripten'
         run: chalet configure --toolchain emscripten
 
       - name: Chalet Bundle
@@ -81,7 +81,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          # mv dist/${{ github.workflow }}.zip oflib_${{ matrix.cfg.platform }}_${{ github.workflow }}.zip
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
+          # mv dist/${{ github.workflow }}.zip oflib_${{ matrix.platform }}_${{ github.workflow }}.zip
+          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber
