@@ -18,7 +18,7 @@ set(HEADERS
 add_library(videoInput STATIC ${SOURCES} ${HEADERS})
 
 # Set compiler options
-target_compile_options(videoInput PRIVATE -O3)
+# target_compile_options(videoInput PRIVATE -O3)
 
 # Set include directories for the library
 target_include_directories(videoInput PUBLIC ./)
