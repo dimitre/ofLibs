@@ -3,7 +3,7 @@ project(videoInput VERSION 1.0)
 #LANGUAGES CXX
 
 install(FILES videoInput.h
-        DESTINATION include ${CMAKE_INSTALL_INCLUDEDIR})
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 
 set(SOURCES
