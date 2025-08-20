@@ -54,7 +54,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: ENV VARS
-        shell: bash
         run: export
 
       - uses: actions/setup-python@v5.6.0
@@ -110,7 +109,6 @@ jobs:
 
       - name: RPI - multistrap
         if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
-        shell: bash
         run: |
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
@@ -129,16 +127,13 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        shell: bash
         run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
       # - name: ENV VARS
-      #   shell: bash
       #   run: export
 
       - name: Chalet Bundle
         if: matrix.cfg.platform != 'ios'
-        shell: bash
         run: |
           chalet bundle --show-commands
           # chalet bundle --compiler-cache --show-commands
@@ -151,19 +146,16 @@ jobs:
 
       - name: iOS Bundle
         if: matrix.cfg.platform == 'ios'
-        shell: bash
         run: |
           ./${{ github.workflow }}.sh
 
       # - name: LS check built lib
       #   if: matrix.cfg.platform != 'ios'
-      #   shell: bash
       #   run: |
       #     unzip dist/*.zip
       #     ls -alfR dist
 
       - name: Rename and Publish Release
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |

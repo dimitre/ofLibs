@@ -67,7 +67,6 @@ jobs:
 
       - name: RPI - multistrap
         if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
-        shell: bash
         run: |
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
@@ -99,22 +98,18 @@ jobs:
           chalet check
 
       - name: Chalet Configure
-        shell: bash
         run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
       - name: Chalet Bundle
-        shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
 
       - name: LS check built lib
-        shell: bash
         run: |
           unzip dist/*.zip
           ls -alfR dist
 
       - name: Rename and Publish Release
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |

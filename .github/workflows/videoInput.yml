@@ -73,7 +73,6 @@ jobs:
 
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
-        # shell: bash
         # # chalet bundle --compiler-cache --show-commands
         run: |
 

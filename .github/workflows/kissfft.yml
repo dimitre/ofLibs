@@ -93,7 +93,6 @@ jobs:
 
       - name: RPI - multistrap
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
-        shell: bash
         run: |
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure

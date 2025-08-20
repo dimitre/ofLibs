@@ -81,22 +81,18 @@ jobs:
 
       - name: Chalet Configure
         if: matrix.cfg.platform == 'emscripten'
-        shell: bash
         run: chalet configure --toolchain emscripten
 
       - name: Chalet Bundle
-        shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
 
       - name: LS check built lib
-        shell: bash
         run: |
           unzip dist/*.zip
           ls -alfR dist
 
       - name: Rename and Publish Release
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
