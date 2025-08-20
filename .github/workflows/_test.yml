@@ -36,6 +36,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       PLATFORM: ${{ matrix.platform }}
+    defaults:
+      run:
+        shell: bash
+        # working-directory: ${{ github.workflow }}
     # defaults:
     # run:
     # working-directory: libusb
