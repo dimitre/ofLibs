@@ -17,13 +17,10 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
-      - CMAKE_INSTALL_PREFIX=Release
+      - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_LIBDIR=./lib/${env:PLATFORM}
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INSTALL_FULL_LIBDIR=./lib
-    defines[platform:macos]:
-      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
 
 distribution:
   videoInput:
@@ -33,3 +30,5 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
+
+      - ${externalBuild:${name}}/* # fixme, remove
