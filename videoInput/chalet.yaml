@@ -12,7 +12,8 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+      # - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+      - CMAKE_INSTALL_LIBDIR=lib
       - CMAKE_INSTALL_INCLUDEDIR=include
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
