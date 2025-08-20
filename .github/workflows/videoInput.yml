@@ -84,18 +84,18 @@ jobs:
         run: |
           chalet --version
 
-      - name: Chalet Configure
-        run: chalet configure --toolchain ${{ matrix.toolchain }}
+      # - name: Chalet Configure
+      #   run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
-        if: matrix.platform != 'ios'
+        # if: matrix.platform != 'ios'
         # # chalet bundle --compiler-cache --show-commands
         run: |
           chalet bundle --show-commands
 
-      - name: LS BUILD
-        run: |
-          ls -alfR build
+      # - name: LS BUILD
+      #   run: |
+      #     ls -alfR build
 
       - name: LS check built lib
         run: |
