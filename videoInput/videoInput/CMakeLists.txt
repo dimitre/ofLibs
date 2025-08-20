@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
-project(videoInput VERSION 1.0 LANGUAGES CXX)
+project(videoInput VERSION 1.0)
+#LANGUAGES CXX
 
 install(FILES videoInput.h
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
