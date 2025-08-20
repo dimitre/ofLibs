@@ -110,25 +110,21 @@ jobs:
 
       - name: Chalet Bundle
         if: matrix.cfg.platform != 'ios'
-        shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
 
       - name: iOS
         if: matrix.cfg.platform == 'ios'
-        shell: bash
         run: |
           ./${{ github.workflow }}.sh
 
       - name: LS check built lib
         if: matrix.cfg.platform != 'ios'
-        shell: bash
         run: |
           unzip dist/*.zip
           ls -alfR dist
 
       - name: Rename and Publish Release
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
