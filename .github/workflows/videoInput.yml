@@ -23,7 +23,7 @@ jobs:
               platform: msys2,
               os: ubuntu-latest,
               prefix: mingw-w64-x86-64,
-              toolchain: w64-mingw32,
+              toolchain: mingw-w64,
               # x86_64-w64-windows-gnu
               shell: bash,
             }
@@ -38,11 +38,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: APT Cache Packages
-        if: matrix.platform == 'msys2'
+      - name: MSYS2 Apt Cross Compile
+        if: matrix.platform == 'msys2' && matrix.os == 'ubuntu-latest'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64
+          packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
+          version: 1.0
+
       # - uses: git-for-windows/setup-git-for-windows-sdk@v1
       #   if: runner.os == 'Windows'
       #   with:

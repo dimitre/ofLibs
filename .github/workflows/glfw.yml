@@ -73,7 +73,7 @@ jobs:
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
-      - name: Apt
+      - name: Apt Cache Packages
         if: matrix.platform == 'linux64' || matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armhf'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:

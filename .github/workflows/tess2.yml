@@ -123,7 +123,7 @@ jobs:
           packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
           version: 1.0
 
-      - name: MSYS2 Cross Compile
+      - name: MSYS2 Apt Cross Compile
         if: matrix.platform == 'msys2' && matrix.os == 'ubuntu-latest'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:

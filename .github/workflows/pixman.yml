@@ -94,7 +94,7 @@ jobs:
       #   run: |
       #     ./pixman.sh
 
-      - name: Linux Apt
+      - name: Apt Cache Packages
         if: matrix.platform == 'linux64'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
