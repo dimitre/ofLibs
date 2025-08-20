@@ -19,13 +19,22 @@ jobs:
         include:
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
 
+          # - {
+          #     platform: msys2,
+          #     os: ubuntu-latest,
+          #     prefix: mingw-w64-x86-64,
+          #     toolchain: mingw-w64,
+          #     # x86_64-w64-windows-gnu
+          #     shell: bash,
+          #   }
+
           - {
               platform: msys2,
-              os: ubuntu-latest,
-              prefix: mingw-w64-x86-64,
-              toolchain: mingw-w64,
-              # x86_64-w64-windows-gnu
-              shell: bash,
+              os: windows-latest,
+              toolchain: gcc,
+              shell: msys2 -c 'export PATH=$PATH:/c/hostedtoolcache/windows/chalet-org/chalet/latest/windows-x64',
+              # shell: msys2 -c 'source $GITHUB_ENV; export $(cut -d= -f1 $GITHUB_ENV); {0}'
+
             }
 
     runs-on: ${{ matrix.os }}
@@ -64,7 +73,6 @@ jobs:
       #     key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
-        # uses: jaxxstorm/action-install-gh-release@v2.1.0
         uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
           repo: chalet-org/chalet
@@ -83,7 +91,6 @@ jobs:
         if: matrix.platform != 'ios'
         # # chalet bundle --compiler-cache --show-commands
         run: |
-
           chalet bundle --show-commands
 
       - name: LS BUILD
