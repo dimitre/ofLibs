@@ -84,7 +84,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        shell: ${{ matrix.shell }} {0}
+        # shell: ${{ matrix.shell }} {0}
+        shell: bash
         working-directory: ./${{ github.workflow }}
     env:
       PLATFORM: ${{ matrix.platform }}
