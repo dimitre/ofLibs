@@ -40,7 +40,6 @@ jobs:
 
     steps:
       - name: Shell info
-        shell: bash
         run: |
           cmake --version
           pwd
@@ -63,14 +62,12 @@ jobs:
           # version: 1.0
 
       - name: compiler version
-        shell: bash
         run: |
           ${CMAKE_CXX_COMPILER} --version
 
       - uses: actions/checkout@v4
 
       - name: Install Multistrap
-        shell: bash
         run: |
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
@@ -83,13 +80,11 @@ jobs:
           # multistrap -a aarch64-linux-gnu -d ./raspbian -f ./multistrap.conf
 
       - name: LS
-        shell: bash
         run: |
           ls -alFR raspbian/usr/lib/X11
           ls -alFR raspbian/usr/include/X11
 
       - name: List Folders Raspbian
-        shell: bash
         run: |
           find ./raspbian -type d
 
@@ -110,7 +105,6 @@ jobs:
           prerelease: "false"
 
       - name: chalet version
-        shell: bash
         run: |
           chalet --version
 
@@ -125,17 +119,14 @@ jobs:
       #     key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('*.json') }}
 
       - name: Get Path
-        shell: bash
         run: |
           echo $GITHUB_PATH
 
       - name: Chalet Bundle
-        shell: bash
         run: |
           chalet bundle -t ${TOOLCHAIN}
 
       - name: LS
-        shell: bash
         run: ls -alR
 
       - name: Release

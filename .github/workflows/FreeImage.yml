@@ -70,7 +70,6 @@ jobs:
 
       - name: RPI - multistrap
         if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
-        shell: bash
         run: |
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
@@ -102,12 +101,10 @@ jobs:
 
       - name: Chalet Configure
         if: matrix.cfg.platform != 'ios'
-        shell: bash
         run: chalet configure --toolchain ${{ matrix.cfg.toolchain }}
 
       - name: Chalet Configure IOS
         if: matrix.cfg.platform == 'ios'
-        shell: bash
         run: |
           chalet configure
 

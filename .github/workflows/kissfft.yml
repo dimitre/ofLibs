@@ -20,7 +20,12 @@ jobs:
       matrix:
         include:
           # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
-          - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
+          - {
+              platform: linux64,
+              os: ubuntu-latest,
+              toolchain: llvm,
+              shell: bash,
+            }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
           # - { platform: macos, os: macos-latest, toolchain: apple-llvm }
@@ -30,12 +35,14 @@ jobs:
               os: ubuntu-latest,
               prefix: aarch64-linux-gnu,
               toolchain: aarch64-linux-gnu-gcc,
+              shell: bash,
             }
           - {
               platform: rpi-armv6l,
               os: ubuntu-latest,
               prefix: arm-linux-gnueabihf,
               toolchain: arm-linux-gnueabihf-gcc,
+              shell: bash,
             }
           - {
               platform: msys2,
@@ -50,8 +57,8 @@ jobs:
       PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
+        shell: ${{ matrix.shell }} {0}
         working-directory: ./${{ github.workflow }}
-
     steps:
       - uses: actions/checkout@v4
 
@@ -104,30 +111,25 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        shell: bash
         run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
-        shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
 
       - name: iOS Bundle
         if: matrix.platform == 'ios'
-        shell: bash
         run: |
           ./${{ github.workflow }}.sh
 
       - name: LS check built lib
         if: matrix.platform != 'ios'
-        shell: bash
         run: |
           unzip dist/*.zip
           ls -alfR dist
 
       - name: Rename and Publish Release
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |

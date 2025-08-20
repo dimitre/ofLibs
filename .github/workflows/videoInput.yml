@@ -19,15 +19,21 @@ jobs:
         include:
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
 
+          - {
+              platform: msys2,
+              os: ubuntu-latest,
+              prefix: mingw-w64-x86-64,
+              toolchain: x86_64-linux-gnu-gcc,
+              shell: bash,
+            }
+
     runs-on: ${{ matrix.os }}
     env:
       PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         shell: bash
-        # working-directory: ./${{ github.workflow }}
-        #
-        working-directory: videoInput
+        working-directory: ${{ github.workflow }}
     steps:
       - uses: actions/checkout@v4
 
@@ -64,7 +70,6 @@ jobs:
 
       - name: Chalet Configure
         if: matrix.platform == 'emscripten'
-        shell: bash
         run: chalet configure --toolchain emscripten
 
       - name: Chalet Bundle
@@ -76,18 +81,15 @@ jobs:
           chalet bundle --show-commands
 
       - name: LS BUILD
-        shell: bash
         run: |
           ls -alfR build
 
       - name: LS check built lib
-        shell: bash
         run: |
           unzip dist/*.zip
           ls -alfR dist
 
       - name: Rename and Publish Release
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |

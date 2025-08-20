@@ -26,7 +26,6 @@ jobs:
           # version: 1.0
 
       - name: echo runner.os, matrix.os
-        shell: bash
         run: |
           echo ${{ runner.os }} ${{ matrix.os }}
 
@@ -67,12 +66,10 @@ jobs:
           # key: ${{ runner.os }}-${{ hashFiles('./build/**/*.txt') }}
 
       - name: Chalet Bundle
-        shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
 
       - name: LS
-        shell: bash
         run: ls -alR
 
       - name: Release
