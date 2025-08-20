@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: APT Cache Packages
-        if: ${{ matrix.platform }} == 'msys2'
+        if: matrix.platform == 'msys2'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64

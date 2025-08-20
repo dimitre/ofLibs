@@ -66,7 +66,7 @@ jobs:
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: multistrap gcc-${{matrix.prefix}} g++-${{matrix.prefix}}
+          packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
           version: 1.0
 
       - name: RPI - multistrap

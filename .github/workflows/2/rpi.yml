@@ -56,7 +56,7 @@ jobs:
       - name: Cache Packages
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: multistrap gcc-${{matrix.configuration.prefix}} g++-${{matrix.configuration.prefix}}
+          packages: multistrap gcc-${{ matrix.prefix}} g++-${{ matrix.prefix }}
           # libx11-dev libwayland-dev libxkbcommon-dev xorg-dev
           #packages: multistrap unzip gcc-${{matrix.configuration.prefix}} g++-${{matrix.configuration.prefix}}
           # version: 1.0

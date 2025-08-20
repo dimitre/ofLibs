@@ -55,11 +55,11 @@ jobs:
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: multistrap gcc-${{matrix.prefix}} g++-${{matrix.prefix}}
+          packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
           version: 1.0
 
           # libasound2t64 libasound2t64:${{matrix.arch}}
-          # packages: multistrap gcc-${{matrix.configuration.prefix}} g++-${{matrix.configuration.prefix}} libasound2t64 libasound2t64:${{matrix.configuration.arch}}
+          # packages: multistrap gcc-${{ matrix.prefix}} g++-${{ matrix.prefix}} libasound2t64 libasound2t64:${{matrix.configuration.arch }}
 
       - name: RPI - multistrap
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
@@ -91,7 +91,7 @@ jobs:
 
       - name: rpi — chalet config
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
-        run: chalet configure --toolchain ${{matrix.prefix}}-gcc
+        run: chalet configure --toolchain ${{ matrix.prefix }}-gcc
 
       - name: Chalet Bundle
         run: |
