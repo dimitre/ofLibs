@@ -16,12 +16,12 @@ jobs:
   videoInput_matrix:
     strategy:
       matrix:
-        cfg:
+        include:
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
 
-    runs-on: ${{ matrix.cfg.os }}
+    runs-on: ${{ matrix.os }}
     env:
-      PLATFORM: ${{ matrix.cfg.platform }}
+      PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         shell: bash
@@ -31,39 +31,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: git-for-windows/setup-git-for-windows-sdk@v1
-        if: runner.os == 'Windows'
-        with:
-          flavor: minimal
-
-      - name: Test Shell
-        run: |
-          # ps -p $$
-          echo $SHELL
-          # ls -alF
-          ls
-          # tree -h
-
-      # - name: Emscripten Install
-      #   if: matrix.cfg.platform == 'emscripten'
-      #   uses: mymindstorm/setup-emsdk@v14
+      # - uses: git-for-windows/setup-git-for-windows-sdk@v1
+      #   if: runner.os == 'Windows'
       #   with:
-      #     version: 4.0.13
-      #     actions-cache-folder: "emsdk-cache"
+      #     flavor: minimal
 
-      # - name: Verify emsdk
-      #   if: matrix.cfg.platform == 'emscripten'
+      # - name: Test Shell
       #   run: |
-      #     emcc -v
-      #     emsdk update
-      #     emsdk install latest
-      #     emsdk activate latest
-      #     emcc -v
+      #     # ps -p $$
+      #     echo $SHELL
+      #     # ls -alF
+      #     ls
+      #     # tree -h
 
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.18
-        with:
-          key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.18
+      #   with:
+      #     key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
         # uses: jaxxstorm/action-install-gh-release@v2.1.0
@@ -79,21 +63,15 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        if: matrix.cfg.platform == 'emscripten'
+        if: matrix.platform == 'emscripten'
         shell: bash
         run: chalet configure --toolchain emscripten
 
       - name: Chalet Bundle
-        if: matrix.cfg.platform != 'ios'
+        if: matrix.platform != 'ios'
         # shell: bash
         run: |
           chalet bundle --compiler-cache --show-commands
-
-      - name: iOS
-        if: matrix.cfg.platform == 'ios'
-        shell: bash
-        run: |
-          ./${{ github.workflow }}.sh
 
       - name: LS BUILD
         shell: bash
@@ -111,6 +89,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
+          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber
