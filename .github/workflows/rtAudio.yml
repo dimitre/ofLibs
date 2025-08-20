@@ -41,9 +41,9 @@ jobs:
       PLATFORM: ${{ matrix.cfg.platform }}
     defaults:
       run:
-        # working-directory: ./${{ github.workflow }}
-        #
-        working-directory: rtAudio
+        # working-directory: rtAudio
+        working-directory: ${{ github.workflow }}
+        shell: bash
     steps:
       - uses: actions/checkout@v4
 
