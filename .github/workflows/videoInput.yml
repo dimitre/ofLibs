@@ -38,6 +38,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: APT Cache Packages
+        if: ${{ matrix.platform }} == 'msys2'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64
       # - uses: git-for-windows/setup-git-for-windows-sdk@v1
       #   if: runner.os == 'Windows'
       #   with:

@@ -62,7 +62,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache Packages
+      - name: APT Cache Packages
         if: ${{ matrix.platform }} == 'msys2'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
