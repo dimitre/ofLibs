@@ -69,8 +69,7 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        if: matrix.platform == 'emscripten'
-        run: chalet configure --toolchain emscripten
+        run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
