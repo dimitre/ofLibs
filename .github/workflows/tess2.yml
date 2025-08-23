@@ -97,11 +97,12 @@ jobs:
         if: matrix.platform == 'msys2' && matrix.os == 'windows-latest'
         uses: msys2/setup-msys2@v2.28.0
         with:
-          # pacboy: wget2:p yaml-cpp:p pugixml:p nlohmann-json:p fmt:p toolchain:p openssl:p python:p assimp:p cairo:p curl:p freeglut:p FreeImage:p glew:p glfw:p glm:p libsndfile:p libusb:p libxml2:p mpg123:p openal:p opencv:p rtaudio:p uriparser:p utf8cpp:p
+          pacboy: gcc:p cmake:p
+          pacboy: wget2:p yaml-cpp:p pugixml:p nlohmann-json:p fmt:p toolchain:p openssl:p python:p assimp:p cairo:p curl:p freeglut:p FreeImage:p glew:p glfw:p glm:p libsndfile:p libusb:p libxml2:p mpg123:p openal:p opencv:p rtaudio:p uriparser:p utf8cpp:p
           update: true
           install: >-
             base-devel
-            cmake
+          # cmake
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
