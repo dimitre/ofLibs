@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
@@ -53,10 +53,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Brew Meson
-        uses: tecolicom/actions-use-homebrew-tools@v1
-        with:
-          tools: meson
+      # - name: Brew Meson
+      #   uses: tecolicom/actions-use-homebrew-tools@v1
+      #   with:
+      #     tools: meson
+
+      - name: Install Meson
+        run: pip install meson ninja
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.18
