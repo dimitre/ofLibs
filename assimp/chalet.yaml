@@ -9,9 +9,7 @@ externalDependencies:
 
   assimp:
     repository: https://github.com/assimp/assimp
-    # tag: v5.4.3
     tag: v6.0.2
-    # commit: e27204c
     kind: git
 
 targets:
@@ -36,8 +34,6 @@ targets:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
 
   assimp:
-    # env:
-    #   - MACOSX_DEPLOYMENT_TARGET=11.0
     kind: cmakeProject
     location: ${external:${name}}
     recheck: false
@@ -49,10 +45,6 @@ targets:
       - CMAKE_INSTALL_INCLUDEDIR=include
       - ASSIMP_BUILD_USD_IMPORTER=on
       - ASSIMP_BUILD_USD_VERBOSE_LOGS=on
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib5/${env:PLATFORM}
-      # - CMAKE_INSTALL_LIBDIR=libx/${env:PLATFORM}
-      # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=libx
-      # - CMAKE_RUNTIME_OUTPUT_DIRECTORY=lib3
       - CMAKE_THREAD_PREFER_PTHREAD=ON
       - ENABLE_BITCODE=OFF
       - ENABLE_ARC=OFF
@@ -61,11 +53,11 @@ targets:
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - ASSIMP_WARNINGS_AS_ERRORS=OFF
       - ASSIMP_NO_EXPORT=ON
-      # - ASSIMP_BUILD_USD_IMPORTER=ON
       - ASSIMP_BUILD_TESTS=OFF
       - ASSIMP_INSTALL=OFF
       - ASSIMP_BUILD_3MF_IMPORTER=OFF
       - ASSIMP_INJECT_DEBUG_POSTFIX=OFF
+      # - ASSIMP_BUILD_USD_IMPORTER=ON
       # - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
     defines[platform:web]:
       - ASSIMP_BUILD_ZLIB=ON
@@ -78,23 +70,15 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
-      - DEPLOYMENT_TARGET=11.5
+      - DEPLOYMENT_TARGET=11.6
 
       - ASSIMP_BUILD_ZLIB=OFF
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${external:zlib}
-      # - MACOSX_DEPLOYMENT_TARGET=11.0
-      # - CMAKE_CXX_FLAGS=-mmacosx-version-min=11.0
-      # - CMAKE_C_FLAGS=-mmacosx-version-min=11.0
 
-      # - CMAKE_OSX_DEPLOYMENT_TARGET=10.13
-      #
-    # defines[platform:web]:
-    # - ASSIMP_BUILD_ZLIB=ON
     # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
     # defines[toolchain:arm-linux-gnueabihf-gcc]:
-    # - ASSIMP_BUILD_ZLIB=ON
     # - CMAKE_C_FLAGS="-D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64"
 
 distribution:
