@@ -53,13 +53,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install Meson
+        run: pip install meson ninja
+
       # - name: Brew Meson
       #   uses: tecolicom/actions-use-homebrew-tools@v1
       #   with:
       #     tools: meson
-
-      - name: Install Meson
-        run: pip install meson ninja
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.18
