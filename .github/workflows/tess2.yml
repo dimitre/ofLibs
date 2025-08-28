@@ -155,7 +155,7 @@ jobs:
           prerelease: "false"
 
       - name: Add Chalet to Path in Msys2
-        if: matrix.platform == 'msys2'
+        if: matrix.platform == 'msys2' && matrix.os == 'windows-latest'
         run: |
           export PATH=$PATH:/c/hostedtoolcache/windows/chalet-org/chalet/latest/windows-x64
           chalet --version
