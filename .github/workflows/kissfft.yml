@@ -48,7 +48,7 @@ jobs:
               platform: msys2,
               os: ubuntu-latest,
               prefix: mingw-w64-x86-64,
-              toolchain: mingw-w64-x86-64,
+              toolchain: mingw64,
               shell: bash,
             }
 
