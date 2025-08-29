@@ -48,9 +48,17 @@ jobs:
           #     toolchain: gcc,
           #     shell: msys2 -c 'export PATH=$PATH:/c/hostedtoolcache/windows/chalet-org/chalet/latest/windows-x64',
           #     # shell: msys2 -c 'source $GITHUB_ENV; export $(cut -d= -f1 $GITHUB_ENV); {0}'
-
           #   }
-          #
+
+          - {
+              platform: msys2,
+              os: ubuntu-latest,
+              prefix: mingw-w64,
+              toolchain: x86_64-w64-mingw32-gcc,
+              # params: -t gcc -a x86_64-w64-mingw32,
+              shell: bash,
+            }
+
           - {
               platform: vs,
               os: windows-latest,
@@ -65,21 +73,20 @@ jobs:
               shell: bash,
             }
 
-          # - {
-          #     platform: msys2,
-          #     os: ubuntu-latest,
-          #     prefix: mingw-w64-x86-64,
-          #     toolchain: x86_64-linux-gnu-gcc,
-          #     shell: bash,
-          #   }
-          #
           - {
               platform: msys2,
-              os: windows-latest,
-              toolchain: gcc,
-              shell: msys2 -c 'export PATH=$PATH:/c/hostedtoolcache/windows/chalet-org/chalet/latest/windows-x64',
-              # shell: msys2 -c 'source $GITHUB_ENV; export $(cut -d= -f1 $GITHUB_ENV); {0}'
+              os: ubuntu-latest,
+              prefix: mingw-w64,
+              toolchain: x86_64-w64-mingw32-gcc,
+              shell: bash,
             }
+          # - {
+          #     platform: msys2,
+          #     os: windows-latest,
+          #     toolchain: gcc,
+          #     shell: msys2 -c 'export PATH=$PATH:/c/hostedtoolcache/windows/chalet-org/chalet/latest/windows-x64',
+          #     # shell: msys2 -c 'source $GITHUB_ENV; export $(cut -d= -f1 $GITHUB_ENV); {0}'
+          #   }
 
     runs-on: ${{ matrix.os }}
     defaults:
@@ -93,7 +100,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: MSYS2
+      - name: MSYS2 Windows
         if: matrix.platform == 'msys2' && matrix.os == 'windows-latest'
         uses: msys2/setup-msys2@v2.28.0
         with:
@@ -103,6 +110,12 @@ jobs:
           install: >-
             base-devel
           # cmake
+      - name: MSYS2 Apt Cross Compile
+        if: matrix.platform == 'msys2' && matrix.os == 'ubuntu-latest'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
+          version: 1.0
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
