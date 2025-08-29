@@ -41,15 +41,16 @@ jobs:
               platform: rpi-armv6l,
               os: ubuntu-latest,
               prefix: arm-linux-gnueabihf,
-              toolchain: arm-linux-gnueabihf-gcc,
+              toolchain: gcc,
               shell: bash,
             }
           - {
               platform: msys2,
               os: ubuntu-latest,
               prefix: mingw-w64-x86-64,
-              toolchain: mingw64,
+              # toolchain: mingw64,
               shell: bash,
+              params: -t gcc -a x86_64-w64-mingw32,
             }
 
           # - {
@@ -132,7 +133,7 @@ jobs:
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
         run: |
-          chalet bundle --compiler-cache --show-commands
+          chalet ${{ matrix.params }} bundle --compiler-cache --show-commands
 
       - name: iOS Bundle
         if: matrix.platform == 'ios'
