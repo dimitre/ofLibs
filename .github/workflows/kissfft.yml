@@ -23,7 +23,7 @@ jobs:
           - {
               platform: linux64,
               os: ubuntu-latest,
-              toolchain: llvm,
+              # toolchain: llvm,
               shell: bash,
             }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
