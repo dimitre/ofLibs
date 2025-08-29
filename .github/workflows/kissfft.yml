@@ -72,12 +72,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # - name: MSYS2 Cache Apt Cross Compile
+      #   if: matrix.platform == 'msys2' && matrix.os == 'ubuntu-latest'
+      #   uses: awalsh128/cache-apt-pkgs-action@latest
+      #   with:
+      #     packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
+      #     version: 1.0
+
       - name: MSYS2 Apt Cross Compile
         if: matrix.platform == 'msys2' && matrix.os == 'ubuntu-latest'
-        uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
-          version: 1.0
+        run: |
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
