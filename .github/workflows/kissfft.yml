@@ -47,10 +47,11 @@ jobs:
           - {
               platform: msys2,
               os: ubuntu-latest,
-              prefix: mingw-w64-x86-64,
-              # toolchain: mingw64,
+              # prefix: mingw-w64-x86-64,
+              prefix: mingw-w64,
+              toolchain: x86_64-w64-mingw32-gcc,
+              # params: -t gcc -a x86_64-w64-mingw32,
               shell: bash,
-              params: -t gcc -a x86_64-w64-mingw32,
             }
 
           # - {
@@ -76,7 +77,7 @@ jobs:
         if: matrix.platform == 'msys2' && matrix.os == 'ubuntu-latest'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
+          packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
           version: 1.0
 
       - name: Emscripten Install
@@ -128,7 +129,7 @@ jobs:
 
       - name: Chalet Configure
         if: matrix.toolchain != ''
-        run: chalet configure --toolchain ${{ matrix.toolchain }}
+        run: chalet configure --toolchain ${{ matrix.toolchain }} -a auto
 
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
