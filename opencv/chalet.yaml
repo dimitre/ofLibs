@@ -1,10 +1,10 @@
 name: opencv
-version: 0.1.6
+version: 0.1.7
 externalDependencies:
   opencv:
     repository: https://github.com/opencv/opencv
     # tag: 4.12.0
-    commit: a8afdee
+    commit: 6d889ee74c94124f6492eb8f0d50946d9c31d8e9
     kind: git
 
 targets:
