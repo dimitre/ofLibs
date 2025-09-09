@@ -8,7 +8,7 @@ externalDependencies:
     kind: git
   freetype:
     repository: https://gitlab.freedesktop.org/freetype/freetype
-    tag: VER-2-13-3
+    tag: VER-2-14-0
     kind: git
 targets:
   zlib:
