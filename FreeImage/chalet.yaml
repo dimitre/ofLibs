@@ -71,7 +71,7 @@ targets:
 
       - BUILD_TESTS=OFF
 
-      - BUILD_ZLIB=ON
+      # - BUILD_ZLIB=ON
 
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
@@ -92,6 +92,11 @@ targets:
       # - DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+    # defines[platform:{!web,windows}]:
+    #   - BUILD_ZLIB=OFF
+    #   - ZLIB_ROOT=${externalBuild:zlib}
+    #   - ZLIB_LIBRARY=${externalBuild:zlib}
+    #   - ZLIB_INCLUDE_DIRS=${external:zlib}
     defines[platform:{web,windows}]:
       - BUILD_ZLIB=ON
 
