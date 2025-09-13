@@ -29,7 +29,8 @@ jobs:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
-          - { platform: macos, os: macos-latest, toolchain: apple-llvm }
+          # - { platform: macos, os: macos-latest, toolchain: apple-llvm }
+          - { platform: macos, os: macos-14, toolchain: apple-llvm }
           # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
           # - {
