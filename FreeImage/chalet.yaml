@@ -29,9 +29,9 @@ targets:
       # - CMAKE_INSTALL_LIBDIR=lib
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
-    defines[platform:web]:
-      - JS_ONLY=ON
-      - CMAKE_EXECUTABLE_SUFFIX=.js
+    # defines[platform:web]:
+    # - JS_ONLY=ON
+    # - CMAKE_EXECUTABLE_SUFFIX=.js
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
@@ -92,11 +92,11 @@ targets:
       # - DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-    # defines[platform:{!web,windows}]:
-    #   - BUILD_ZLIB=OFF
-    #   - ZLIB_ROOT=${externalBuild:zlib}
-    #   - ZLIB_LIBRARY=${externalBuild:zlib}
-    #   - ZLIB_INCLUDE_DIRS=${external:zlib}
+    defines[platform:{!web,!windows}]:
+      - BUILD_ZLIB=OFF
+      - ZLIB_ROOT=${externalBuild:zlib}
+      - ZLIB_LIBRARY=${externalBuild:zlib}
+      - ZLIB_INCLUDE_DIRS=${external:zlib}
     defines[platform:{web,windows}]:
       - BUILD_ZLIB=ON
 
