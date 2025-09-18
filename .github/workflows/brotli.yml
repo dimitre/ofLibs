@@ -78,7 +78,7 @@ jobs:
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.18
+        uses: hendrikmuhs/ccache-action@v1.2.19
         with:
           key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
