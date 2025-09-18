@@ -13,6 +13,7 @@ externalDependencies:
 
 targets:
   zlib:
+    build:[platform:macos]
     kind: cmakeProject
     location: ${external:${name}}
     recheck: false
