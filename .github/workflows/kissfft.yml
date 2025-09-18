@@ -11,8 +11,8 @@ on:
 permissions:
   contents: write
 
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
+env:
+  CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   kissfft_matrix:
@@ -78,6 +78,11 @@ jobs:
       #   with:
       #     packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
       #     version: 1.0
+      #
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.19
+        with:
+          key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: MSYS2 Apt Cross Compile
         if: matrix.platform == 'msys2' && runner.os == 'Linux'
@@ -113,11 +118,6 @@ jobs:
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
-
-      # - name: ccache
-      #   uses: hendrikmuhs/ccache-action@v1.2.19
-      #   with:
-      #     key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0

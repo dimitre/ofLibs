@@ -80,16 +80,21 @@ jobs:
           #   }
 
     runs-on: ${{ matrix.os }}
+    env:
+      PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         # shell: ${{ matrix.shell }} {0}
         shell: bash
         working-directory: ./${{ github.workflow }}
-    env:
-      PLATFORM: ${{ matrix.platform }}
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.19
+        with:
+          key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: MSYS2 Windows
         if: matrix.platform == 'msys2' && runner.os == 'Windows'
@@ -131,24 +136,12 @@ jobs:
           packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
           version: 1.0
 
-      - name: MSYS2 Apt Cross Compile
-        if: matrix.platform == 'msys2' && runner.os == 'Linux'
-        uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
-          version: 1.0
-
       - name: RPI - multistrap
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         run: |
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
-
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
