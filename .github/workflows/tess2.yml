@@ -110,6 +110,8 @@ jobs:
         if: matrix.platform == 'msys2' && runner.os == 'Linux'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
+          # x86_64-w64-mingw32-gcc
+          # x86_64-w64-mingw32-gcc
           packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
           version: 1.0
 
@@ -163,7 +165,7 @@ jobs:
 
       - name: Chalet Configure
         if: matrix.toolchain != ''
-        run: chalet configure --toolchain ${{ matrix.toolchain }}
+        run: chalet configure --toolchain ${{ matrix.toolchain }} -a auto
 
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
