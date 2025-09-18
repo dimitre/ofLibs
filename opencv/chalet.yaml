@@ -20,6 +20,8 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
+
+      - CV_ENABLE_INTRINSICS=ON
       # - ENABLE_NEON=ON
       - BUILD_DOCS=OFF
       - BUILD_EXAMPLES=OFF
@@ -49,8 +51,9 @@ targets:
       - BUILD_opencv_stitching=OFF
       - BUILD_opencv_superres=OFF
       - BUILD_opencv_ts=OFF
-      - BUILD_opencv_videoio=OFF
-      # - BUILD_opencv_videoio=ON
+      # - BUILD_opencv_videoio=OFF
+
+      - BUILD_opencv_videoio=ON
       - BUILD_opencv_videostab=OFF
       - BUILD_opencv_world=ON
       - WITH_ADE=OFF
