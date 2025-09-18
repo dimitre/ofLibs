@@ -106,14 +106,16 @@ jobs:
           install: >-
             base-devel
           # cmake
+      # - name: MSYS2 Apt Cross Compile
+      #   if: matrix.platform == 'msys2' && runner.os == 'Linux'
+      #   uses: awalsh128/cache-apt-pkgs-action@latest
+      #   with:
+      #     packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
+      #     version: 1.0
       - name: MSYS2 Apt Cross Compile
         if: matrix.platform == 'msys2' && runner.os == 'Linux'
-        uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          # x86_64-w64-mingw32-gcc
-          # x86_64-w64-mingw32-gcc
-          packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
-          version: 1.0
+        run: |
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
