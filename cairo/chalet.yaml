@@ -33,7 +33,7 @@ targets:
       - freetype=disabled
       # - png=disabled
 
-      - quartz=disabled
+      # - quartz=disabled
       - tee=disabled
       - xcb=disabled
       - xlib=disabled
