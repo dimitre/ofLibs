@@ -45,7 +45,7 @@ jobs:
         run: |
           echo $GITHUB_PATH
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.19

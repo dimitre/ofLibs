@@ -46,7 +46,7 @@ jobs:
         #
         working-directory: libusb
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: git-for-windows/setup-git-for-windows-sdk@v1
         if: runner.os == 'Windows'

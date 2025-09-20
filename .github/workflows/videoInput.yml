@@ -43,7 +43,7 @@ jobs:
         shell: bash
         working-directory: ${{ github.workflow }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # - name: MSYS2 Apt Cross Compile
       #   if: matrix.platform == 'msys2' && runner.os == 'Linux'

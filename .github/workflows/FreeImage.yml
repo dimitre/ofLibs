@@ -54,7 +54,7 @@ jobs:
         shell: bash
         working-directory: ${{ github.workflow }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'

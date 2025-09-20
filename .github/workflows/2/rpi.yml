@@ -65,7 +65,7 @@ jobs:
         run: |
           ${CMAKE_CXX_COMPILER} --version
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install Multistrap
         run: |

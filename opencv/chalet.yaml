@@ -4,7 +4,7 @@ externalDependencies:
   opencv:
     repository: https://github.com/opencv/opencv
     # tag: 4.12.0
-    commit: 5b1d3255300af6293c0a9a89e8e0cfeab0df0f03
+    commit: 5c1c39afc18d9a9a0007c576e5e8411d29cbece0
     kind: git
 
 targets:
@@ -40,7 +40,6 @@ targets:
       - BUILD_opencv_apps=OFF
       - BUILD_opencv_calib3d=ON
       - BUILD_opencv_highgui=ON
-      - BUILD_opencv_imgcodecs=OFF
       # changed today because of CopperTag cv::imwrite
       # - BUILD_opencv_imgcodecs=ON
       - BUILD_opencv_java=OFF
@@ -52,8 +51,10 @@ targets:
       - BUILD_opencv_superres=OFF
       - BUILD_opencv_ts=OFF
       # - BUILD_opencv_videoio=OFF
+      # - BUILD_opencv_imgcodecs=OFF
 
-      - BUILD_opencv_videoio=ON
+      - BUILD_opencv_imgcodecs=OM
+      - BUILD_opencv_videoio=ON # videoio needs imsgcodecs enabled.
       - BUILD_opencv_videostab=OFF
       - BUILD_opencv_world=ON
       - WITH_ADE=OFF

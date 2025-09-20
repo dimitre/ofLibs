@@ -1,0 +1,73 @@
+# To make it work as a fat lib (intel/arm) we should pass libusb path correctly. I'm trying to use CMAKE_PREFIX_PATH
+# but no luck yet.
+
+name: libsof
+version: "0.1.3"
+externalDependencies:
+  libusb:
+    repository: https://github.com/libusb/libusb-cmake
+    # tag: v1.0.29-0
+    commit: 000e06eb241927db0f34e6867637d39b849ab989
+    kind: git
+  libuvc:
+    repository: https://github.com/dimitre/libuvc
+    # tag: v1.0.2
+    # commit: 672cadc
+    kind: git
+targets:
+  libusb:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - CMAKE_BUILD_TYPE=Release
+      - BUILD_SHARED_LIBS=OFF
+      - BUILD_STATIC_LIBS=ON
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      # - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+      # optional really
+      - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_INSTALL_INCLUDEDIR=include
+
+      # - CMAKE_INSTALL_PREFIX=Release
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=libx/${env:PLATFORM}
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
+      # - CMAKE_INSTALL_FULL_LIBDIR=./lib
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+  libuvc:
+    kind: cmakeProject
+    location: ${external:${name}}
+    # location: ${external:libuvc}
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - CMAKE_BUILD_TYPE=Release
+      - BUILD_STATIC_LIBS=ON
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - CMAKE_INSTALL_PREFIX=install
+
+      - CMAKE_PREFIX_PATH=${externalBuild:libusb}/install
+
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_BUILD_TARGET=Static
+    defines[platform:macos]:
+      # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+
+distribution:
+  libuvc:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/LICENSE**
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib

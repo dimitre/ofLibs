@@ -3,9 +3,8 @@ version: "0.1.4"
 externalDependencies:
   libusb:
     repository: https://github.com/libusb/libusb-cmake
-    # tag: v1.0.27-1
-    # v1.0.29 already exists, not only on libusb-cmake
-    tag: v1.0.29-0
+    # tag: v1.0.29-0
+    commit: 000e06eb241927db0f34e6867637d39b849ab989
     kind: git
 targets:
   libusb:
@@ -15,13 +14,13 @@ targets:
     rebuild: false
     install: true
     defines:
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=libx/${env:PLATFORM}
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
       - CMAKE_INSTALL_PREFIX=Release
-      - CMAKE_INSTALL_LIBDIR=./lib/${env:PLATFORM}
+      - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=libx/${env:PLATFORM}
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INSTALL_FULL_LIBDIR=./lib
     defines[platform:macos]:
