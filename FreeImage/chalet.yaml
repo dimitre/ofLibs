@@ -14,20 +14,20 @@ externalDependencies:
 
 targets:
   zlib:
-    condition: "[platform:macos]"
+    # condition: "[platform:macos]"
     kind: cmakeProject
     location: ${external:${name}}
     recheck: false
     rebuild: false
-    # install: true
+    install: true
     defines:
-      - ZLIB_BUILD_TESTING=OFF
-      - ZLIB_BUILD_SHARED=OFF
-      - ZLIB_BUILD_EXAMPLES=OFF
       - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      # - CMAKE_INSTALL_PREFIX=install
+      - ZLIB_BUILD_TESTING=OFF
+      - ZLIB_BUILD_SHARED=OFF
+      - ZLIB_BUILD_EXAMPLES=OFF
+      - CMAKE_INSTALL_PREFIX=install
       # - CMAKE_INSTALL_LIBDIR=lib
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
@@ -80,22 +80,24 @@ targets:
       - BUILD_LIBRAWLITE=OFF
       - BUILD_OPENEXR=OFF
       - BUILD_WEBP=OFF
-      - CMAKE_CXX_EXTENSIONS=OFF
+      # - CMAKE_CXX_EXTENSIONS=OFF
       # - ENABLE_ARC=OFF
       # - ENABLE_BITCODE=OFF
       # - ENABLE_VISIBILITY=OFF
       # - USE_PTHREADS=1
-    defines[platform:macos]:
-      # - DEPLOYMENT_TARGET=11.6
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
-      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-    defines[platform:!web+platform:!windows]:
+      # defines[platform:!web+platform:!windows]:
       - BUILD_ZLIB=OFF
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${external:zlib}
-    defines[platform:{web,windows}]:
-      - BUILD_ZLIB=ON
+
+    defines[platform:macos]:
+      # - DEPLOYMENT_TARGET=11.6
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+
+    # defines[platform:{web,windows}]:
+    #   - BUILD_ZLIB=ON
 
 distribution:
   FreeImage:
