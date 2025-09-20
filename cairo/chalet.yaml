@@ -29,9 +29,13 @@ distribution:
   cairo:
     kind: archive
     format: zip
-    include:
+    include[platform:macos]:
       - ${externalBuild:${name}}/install/opt/homebrew/include
       - ${externalBuild:${name}}/install/opt/homebrew/lib
+      - ${external:${name}}/COPYING*
+    include[platform:windows]:
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib
       - ${external:${name}}/COPYING*
       # - ${externalBuild:${name}}/src/*.a
       # - ${externalBuild:${name}}/src/*.h
