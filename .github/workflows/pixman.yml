@@ -16,7 +16,11 @@ concurrency:
 
 env:
   # CMAKE_CXX_COMPILER_LAUNCHER: ccache
+  CMAKE_CXX_COMPILER_LAUNCHER: ccache
   MACOSX_DEPLOYMENT_TARGET: 11.6
+  # MACOS_DEPLOYMENT_TARGET: 11.6
+  MIN_SUPPORTED_MACOSX_DEPLOYMENT_TARGET: 11.6
+  CFLAGS: -mmacosx-version-min=11.6
 
 jobs:
   pixman_matrix:
