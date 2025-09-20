@@ -31,14 +31,14 @@ targets:
       - dwrite=disabled
       - fontconfig=disabled
       - freetype=disabled
-      - png=disabled
+      # - png=disabled
 
       - quartz=disabled
       - tee=disabled
       - xcb=disabled
       - xlib=disabled
       - xlib-xcb=disabled
-      - zlib=disabled
+      # - zlib=disabled
 
       - lzo=disabled
       - gtk2-utils=disabled
