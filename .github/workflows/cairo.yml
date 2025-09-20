@@ -29,7 +29,7 @@ jobs:
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
-          # - { platform: vs, os: windows-2025, toolchain: vs-stable }
+          - { platform: vs, os: windows-2025, toolchain: vs-stable }
           # - {
           #     platform: rpi-aarch64,
           #     os: ubuntu-latest,
@@ -48,6 +48,7 @@ jobs:
       PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
+        shell: bash
         working-directory: ./${{ github.workflow }}
 
     steps:
@@ -132,11 +133,11 @@ jobs:
         run: |
           ./${{ github.workflow }}.sh
 
-      # - name: LS check built lib
-      #   if: matrix.platform != 'ios'
-      #   run: |
-      #     unzip dist/*.zip
-      #     ls -alfR dist
+      - name: LS check built lib
+        if: matrix.platform != 'ios'
+        run: |
+          unzip dist/*.zip
+          ls -alfR dist
 
       - name: Rename and Publish Release
         env:
