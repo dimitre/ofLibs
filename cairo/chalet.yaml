@@ -43,7 +43,7 @@ targets:
       - lzo=disabled
       - gtk2-utils=disabled
       - glib=disabled
-      - spectre=disabled
+      # - spectre=disabled
       - symbol-lookup=disabled
 
 distribution:
