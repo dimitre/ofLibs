@@ -43,7 +43,8 @@ jobs:
       PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
-        working-directory: ./${{ github.workflow }}
+        shell: bash
+        working-directory: ${{ github.workflow }}
 
     steps:
       - uses: actions/checkout@v5
