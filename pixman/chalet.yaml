@@ -21,6 +21,8 @@ targets:
       # FIXME: only for platform RPI
       - mmx=disabled
       - sse2=disabled
+      - darwin_version_min=11.6
+
       # - prefix=./${externalBuild:${name}}
       # - libdir=lib
       # - skip_sanity_checks=true
