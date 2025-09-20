@@ -17,7 +17,7 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
-    # install: true
+    install: true
     defines:
       - ZLIB_BUILD_TESTING=OFF
       - ZLIB_BUILD_SHARED=OFF
@@ -25,7 +25,7 @@ targets:
       - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      # - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_PREFIX=install
       # - CMAKE_INSTALL_LIBDIR=lib
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
@@ -60,7 +60,7 @@ targets:
       - ZLIB_ROOT=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}/install/lib
-      - ZLIB_INCLUDE_DIR=${external:zlib}/install/include
+      - ZLIB_INCLUDE_DIR=${externalBuild:zlib}/install/include
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
