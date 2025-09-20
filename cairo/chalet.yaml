@@ -21,10 +21,31 @@ targets:
       # - default_both_libraries=static
       # - prefer_static=true
       - buildtype=release
+
+      - tests=disabled
+
+      # - xcb=disabled
+      # - xlib=disabled
+      # - lzo=disabled
+
+      - dwrite=disabled
+      - fontconfig=disabled
+      - freetype=disabled
+      - png=disabled
+
+      - quartz=disabled
+      - tee=disabled
       - xcb=disabled
       - xlib=disabled
+      - xlib-xcb=disabled
+      - zlib=disabled
+
       - lzo=disabled
-      - tests=disabled
+      - gtk2-utils=disabled
+      - glib=disabled
+      - spectre=disabled
+      - symbol-lookup=disabled
+
 distribution:
   cairo:
     kind: archive
