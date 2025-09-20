@@ -16,9 +16,9 @@ targets:
     # env:
     defines:
       # - export MACOSX_DEPLOYMENT_TARGET=11.6
-      - default_library=static
+      # - default_library=static
       # if disabled meson fails with  ERROR: C prefer_static library 'gdi32' not found
-      - default_both_libraries=static
+      # - default_both_libraries=static
       - buildtype=release
       - xcb=disabled
       - xlib=disabled
