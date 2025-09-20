@@ -3,7 +3,8 @@ version: "0.0.3"
 externalDependencies:
   zlib:
     repository: https://github.com/madler/zlib
-    tag: v1.3.1
+    # tag: v1.3.1
+    commit: 5a82f71
     kind: git
   opencv:
     repository: https://github.com/opencv/opencv

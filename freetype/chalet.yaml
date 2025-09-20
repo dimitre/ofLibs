@@ -4,7 +4,7 @@ externalDependencies:
   zlib:
     repository: https://github.com/madler/zlib
     # tag: v1.3.1
-    commit: ef24c4c7502169f016dcd2a26923dbaf3216748c
+    commit: 5a82f71
     kind: git
   freetype:
     repository: https://gitlab.freedesktop.org/freetype/freetype

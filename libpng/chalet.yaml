@@ -1,12 +1,40 @@
 name: OF altpothecary GLFW
 version: "0.0.4"
 externalDependencies:
+  zlib:
+    repository: https://github.com/madler/zlib
+    # tag: v1.3.1
+    commit: 5a82f71
+    kind: git
   libpng:
     repository: https://github.com/pnggroup/libpng
     tag: "v1.6.50"
     kind: git
 
 targets:
+  zlib:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    # install: true
+    defines:
+      - ZLIB_BUILD_TESTING=OFF
+      - ZLIB_BUILD_SHARED=OFF
+      - ZLIB_BUILD_EXAMPLES=OFF
+      - BUILD_SHARED_LIBS=OFF # not working on zlib
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      # - CMAKE_INSTALL_PREFIX=install
+      # - CMAKE_INSTALL_LIBDIR=lib
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+    # defines[platform:web]:
+    # - JS_ONLY=ON
+    # - CMAKE_EXECUTABLE_SUFFIX=.js
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
   libpng:
     kind: cmakeProject
     location: ${external:${name}}
@@ -28,6 +56,7 @@ targets:
       - SKIP_INSTALL_CONFIG_FILE=ON
       - SKIP_INSTALL_EXPORT=ON
       - SKIP_INSTALL_FILES=ON
+      - ZLIB_ROOT=${externalBuild:zlib}/install
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
