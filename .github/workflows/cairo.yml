@@ -28,7 +28,7 @@ jobs:
           # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
-          - { platform: macos, os: macos-latest, toolchain: apple-llvm }
+          # - { platform: macos, os: macos-latest, toolchain: apple-llvm }
           # - { platform: vs, os: windows-2025, toolchain: vs-stable }
           - { platform: vs, os: windows-2025, toolchain: vs-stable }
           # - {
@@ -58,13 +58,13 @@ jobs:
       - name: Install Meson
         run: pip install meson ninja
 
-      - name: Test Meson
-        if: Runner.os == 'Windows'
-        run: |
-          git clone https://gitlab.freedesktop.org/cairo/cairo --depth 1
-          cd cairo
-          meson setup builddir --buildtype=release
-          meson compile -C builddir
+      # - name: Test Meson
+      #   if: Runner.os == 'Windows'
+      #   run: |
+      #     git clone https://gitlab.freedesktop.org/cairo/cairo --depth 1
+      #     cd cairo
+      #     meson setup builddir --buildtype=release
+      #     meson compile -C builddir
       # - name: Brew Meson
       #   uses: tecolicom/actions-use-homebrew-tools@v1
       #   with:
