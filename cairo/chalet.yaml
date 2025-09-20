@@ -45,7 +45,6 @@ targets:
       - glib=disabled
       # - spectre=disabled
       - symbol-lookup=disabled
-      - darwin_version_min=11.6
 
 distribution:
   cairo:
