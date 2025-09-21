@@ -147,6 +147,16 @@ jobs:
           unzip dist/*.zip
           ls -alfR dist
 
+      - name: Remove unused files
+        if: runner.os == 'macOS'
+        run: |
+          cd dist
+          rm -rf libcairo-*.a
+          rm -rf pkgconfig
+          rm -rf cairo
+          cd ..
+          zip dist oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
+
       - name: Check Static Lib minos / MACOSX_DEPLOYMENT_TARGET
         if: runner.os == 'macOS'
         run: |
@@ -156,6 +166,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
+          #mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber
