@@ -150,7 +150,7 @@ jobs:
       - name: Remove unused files
         if: runner.os == 'macOS'
         run: |
-          zip -d dist/${{ github.workflow }}.zip "libcairo-*.a" "pkgconfig" "cairo"
+          zip -d dist/${{ github.workflow }}.zip "lib/libcairo-*.a" "lib/pkgconfig" "lib/cairo"
           # cd dist
           # rm -rf libcairo-*.a
           # rm -rf pkgconfig
