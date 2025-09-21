@@ -24,27 +24,29 @@ targets:
 
       - tests=disabled
 
-      # - xcb=disabled
-      # - xlib=disabled
-      # - lzo=disabled
-
-      - dwrite=disabled
-      - fontconfig=disabled
-      - freetype=disabled
-      # - png=disabled
-
-      # - quartz=disabled
-      - tee=disabled
       - xcb=disabled
       - xlib=disabled
-      - xlib-xcb=disabled
-      # - zlib=disabled
-
       - lzo=disabled
-      - gtk2-utils=disabled
-      - glib=disabled
+
+      # I had to reenable those 4 to make it work
+      # - png=disabled
+      # - quartz=disabled
+      # - zlib=disabled
       # - spectre=disabled
-      - symbol-lookup=disabled
+
+      # - dwrite=disabled
+      # - fontconfig=disabled
+      # - freetype=disabled
+
+      # - tee=disabled
+      # - xcb=disabled
+      # - xlib=disabled
+      # - xlib-xcb=disabled
+
+      # - lzo=disabled
+      # - gtk2-utils=disabled
+      # - glib=disabled
+      # - symbol-lookup=disabled
 
 distribution:
   cairo:
