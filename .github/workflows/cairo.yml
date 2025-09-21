@@ -150,12 +150,12 @@ jobs:
       - name: Remove unused files
         if: runner.os == 'macOS'
         run: |
-          cd dist
+          cd dist/cairo
           rm -rf libcairo-*.a
           rm -rf pkgconfig
           rm -rf cairo
           cd ..
-          zip dist oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
+          zip -r oflib_${{ github.workflow }}_${{ matrix.platform }}.zip cairo/*
 
       - name: Check Static Lib minos / MACOSX_DEPLOYMENT_TARGET
         if: runner.os == 'macOS'
