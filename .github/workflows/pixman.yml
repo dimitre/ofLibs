@@ -144,6 +144,17 @@ jobs:
           chalet bundle --show-commands
           # chalet bundle --compiler-cache --show-commands
 
+      - name: LS check built lib
+        if: matrix.platform != 'ios'
+        run: |
+          unzip dist/*.zip
+          ls -alfR dist
+
+      - name: Check Static Lib minos / MACOSX_DEPLOYMENT_TARGET
+        if: runner.os == 'macOS'
+        run: |
+          otool -l **/*.a | grep minos
+
       # - name: LS Build
       # run: ls -alfR build
 
