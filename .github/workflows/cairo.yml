@@ -147,6 +147,11 @@ jobs:
           unzip dist/*.zip
           ls -alfR dist
 
+      - name: Check Static Lib minos / MACOSX_DEPLOYMENT_TARGET
+        if: runner.os == 'macOS'
+        run: |
+          otool -l **/*.a | grep minos
+
       - name: Rename and Publish Release
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
