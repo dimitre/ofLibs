@@ -14,8 +14,8 @@ targets:
     location: ${external:${name}}
     install: true
     defines:
-      - c_args='-mmacosx-version-min=11 -mmacos-version-min=11'
-      - cpp_args='-mmacosx-version-min=11 -mmacos-version-min=11'
+      - c_args=-mmacos-version-min=11.6
+      - cpp_args=-mmacos-version-min=11.6
 
       - default_library=static
       # - buildtype=release
