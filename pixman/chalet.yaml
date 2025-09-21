@@ -21,6 +21,8 @@ targets:
       # FIXME: only for platform RPI
       - mmx=disabled
       - sse2=disabled
+      - c_args='-mmacosx-version-min=11.6 -mmacos-version-min=11.6'
+      - cpp_args='-mmacosx-version-min=11.6 -mmacos-version-min=11.6'
 
       # - prefix=./${externalBuild:${name}}
       # - libdir=lib

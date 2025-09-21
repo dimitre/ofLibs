@@ -17,7 +17,7 @@ concurrency:
 env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
   MACOSX_DEPLOYMENT_TARGET: 11.6
-  CFLAGS: -mmacosx-version-min=11.6
+  CXXFLAGS: -mmacosx-version-min=11.6
 
 jobs:
   cairo_matrix:
