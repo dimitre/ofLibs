@@ -14,6 +14,9 @@ targets:
     location: ${external:${name}}
     install: true
     defines:
+      - c_args='-mmacosx-version-min=11.6 -mmacos-version-min=11.6'
+      - cpp_args='-mmacosx-version-min=11.6 -mmacos-version-min=11.6'
+
       - default_library=static
       # - buildtype=release
       - demos=disabled
@@ -21,8 +24,6 @@ targets:
       # FIXME: only for platform RPI
       - mmx=disabled
       - sse2=disabled
-      - c_args='-mmacosx-version-min=11.6 -mmacos-version-min=11.6'
-      - cpp_args='-mmacosx-version-min=11.6 -mmacos-version-min=11.6'
 
       # - prefix=./${externalBuild:${name}}
       # - libdir=lib
