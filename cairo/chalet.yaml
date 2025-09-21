@@ -55,9 +55,9 @@ distribution:
     format: zip
     include[platform:macos]:
       - ${externalBuild:${name}}/install/opt/homebrew/include
-      - ${externalBuild:${name}}/install/opt/homebrew/lib
+      - ${externalBuild:${name}}/install/opt/homebrew/lib/libcairo.a
       - ${externalBuild:${name}}/install/usr/local/include
-      - ${externalBuild:${name}}/install/usr/local/lib
+      - ${externalBuild:${name}}/install/usr/local/lib/libcairo.a
       - ${external:${name}}/COPYING*
     include[platform:windows]:
       - ${externalBuild:${name}}/install/include
