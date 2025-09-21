@@ -13,7 +13,7 @@ targets:
     kind: mesonProject
     location: ${external:${name}}
     install: true
-    # env:
+    env: MACOSX_DEPLOYMENT_TARGET=11.6
     defines:
       # - export MACOSX_DEPLOYMENT_TARGET=11.6
       - buildtype=release
