@@ -21,6 +21,13 @@ targets:
       # - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_INSTALL_LIBDIR=lib
+      # needed as it complains missing -- libuhdr pybind11
+      - OpenImageIO_BUILD_MISSING_DEPS=all
+      - BUILD_DOCS=OFF
+      - INSTALL_DOCS=OFF
+      - INSTALL_FONTS=OFF
+      - EMBEDPLUGINS=OFF
+
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
