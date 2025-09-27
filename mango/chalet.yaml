@@ -1,6 +1,11 @@
 name: oflibs
 version: "1.0"
 externalDependencies:
+  lcms2:
+    repository: https://github.com/mm2/Little-CMS
+    commit: 8e8a8c4
+    kind: git
+
   deflate:
     repository: https://github.com/ebiggers/libdeflate
     commit: 095bcab
@@ -12,6 +17,16 @@ externalDependencies:
     kind: git
 
 targets:
+  lcms2:
+    kind: mesonProject
+    location: ${external:${name}}
+    install: true
+    defines:
+      - c_args=-mmacos-version-min=11.6
+      - cpp_args=-mmacos-version-min=11.6
+      - buildtype=release
+      - default_library=static
+
   deflate:
     kind: cmakeProject
     location: ${external:${name}}
@@ -37,7 +52,8 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
+      # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
+      - CMAKE_PREFIX_PATH=${externalBuild:deflate}/install;${externalBuild:lcms2}/install
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_INSTALL_PREFIX=${externalBuild:mango}/install
