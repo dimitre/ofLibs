@@ -13,7 +13,8 @@ externalDependencies:
     kind: git
 
   FreeImage:
-    repository: https://github.com/danoli3/FreeImage
+    # repository: https://github.com/danoli3/FreeImage
+    repository: https://github.com/dimitre/FreeImage
     # tag: 3.19.10
     kind: git
 
@@ -44,10 +45,10 @@ targets:
       - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - CMAKE_INSTALL_PREFIX=install
       - ZLIB_BUILD_TESTING=OFF
       - ZLIB_BUILD_SHARED=OFF
       - ZLIB_BUILD_EXAMPLES=OFF
-      - CMAKE_INSTALL_PREFIX=install
       # - CMAKE_INSTALL_LIBDIR=lib
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
@@ -110,6 +111,9 @@ targets:
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${external:zlib}
+
+      # new tests in dimitre repo
+      - LIBTIFF_ROOT=${externalBuild:libtiff}
 
       - BUILD_LIBTIFF=OFF
       # - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/install
