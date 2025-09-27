@@ -11,8 +11,8 @@ on:
 permissions:
   contents: write
 
-env:
-  CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# env:
+#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   mango_matrix:
@@ -59,10 +59,10 @@ jobs:
       - name: Install Meson
         run: pip install meson ninja
 
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
 
       # - name: MSYS2 Cache Apt Cross Compile
       #   if: matrix.platform == 'msys2' && runner.os == 'Linux'
