@@ -56,6 +56,11 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: macOS brew remove libjpeg
+        if: runner.os == 'macOS'
+        run: |
+          brew uninstall libjpeg
+
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
