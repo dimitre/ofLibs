@@ -14,13 +14,13 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
-      - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - BUILD_SHARED_LIBS=OFF
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
-      - CMAKE_INSTALL_PREFIX=Release
-      - CMAKE_INSTALL_LIBDIR=./lib/${env:PLATFORM}
+      # - CMAKE_INSTALL_PREFIX=Release
+      # - CMAKE_INSTALL_LIBDIR=./lib/${env:PLATFORM}
 
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INSTALL_FULL_LIBDIR=./lib
@@ -46,3 +46,6 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
+
+    # exclude: -${externalBuild:${name}}/install/lib/cmake
+    # -${externalBuild:${name}}/install/lib/pkgconfig

@@ -66,9 +66,9 @@ targets:
     rebuild: false
     defines:
       - CMAKE_INSTALL_PREFIX=install
-      - CMAKE_INSTALL_LIBDIR=lib
-      - CMAKE_INSTALL_INCLUDEDIR=include
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_INSTALL_LIBDIR=lib
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
 
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
