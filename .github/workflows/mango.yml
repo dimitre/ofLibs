@@ -19,14 +19,9 @@ jobs:
     strategy:
       matrix:
         include:
-          # - {
-          #     platform: linux64,
-          #     os: ubuntu-latest,
-          #     # toolchain: llvm,
-          #     shell: bash,
-          #   }
+          - { platform: linux64, os: ubuntu-latest }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
-          # - { platform: vs, os: windows-2025, toolchain: vs-stable }
+          - { platform: vs, os: windows-2025, toolchain: vs-stable }
           # - {
           #     platform: rpi-aarch64,
           #     os: ubuntu-latest,
