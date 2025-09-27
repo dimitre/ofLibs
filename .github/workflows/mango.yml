@@ -61,6 +61,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Install Meson
+        run: pip install meson ninja
+
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.19
         with:
