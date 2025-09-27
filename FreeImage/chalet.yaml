@@ -1,6 +1,14 @@
 name: oflibs
 version: "1.0"
 externalDependencies:
+  libjpeg:
+    # repository: https://github.com/winlibs/libjpeg
+    # commit: "1177955"
+
+    repository: https://github.com/libjpeg-turbo/libjpeg-turbo
+    tag: 3.1.2
+    kind: git
+
   libtiff:
     repository: https://gitlab.com/libtiff/libtiff
     tag: v4.7.1
@@ -19,6 +27,20 @@ externalDependencies:
     # tag: 3.19.10
 
 targets:
+  libjpeg:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - BUILD_SHARED_LIBS=OFF # not working on zlib
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - CMAKE_INSTALL_PREFIX=install
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
   libtiff:
     kind: cmakeProject
     location: ${external:${name}}
@@ -113,9 +135,12 @@ targets:
       - ZLIB_INCLUDE_DIRS=${external:zlib}
 
       # new tests in dimitre repo
+      - BUILD_LIBTIFF=OFF
       - LIBTIFF_ROOT=${externalBuild:libtiff}
 
-      - BUILD_LIBTIFF=OFF
+      - BUILD_LIBJPEG=OFF
+      - LIBJPEG_ROOT=${externalBuild:libjpeg}
+
       # - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/install
 
     defines[platform:macos]:

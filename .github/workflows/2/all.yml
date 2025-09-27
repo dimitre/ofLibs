@@ -41,8 +41,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            ./chalet_external/**
-            ./build/**
+            chalet_external/**
+            build/**
             # chalet_external
             # build
           # key: ${ matrix.os }-chaletcache
@@ -65,7 +65,7 @@ jobs:
         uses: softprops/action-gh-release@v2.0.8
         if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
         with:
-          files: ./dist/*.zip
+          files: dist/*.zip
           token: ${{ secrets.GITHUB_TOKEN }}
           draft: false
           prerelease: false

@@ -1,0 +1,59 @@
+name: oflibs
+version: "1.0"
+externalDependencies:
+  deflate:
+    repository: https://github.com/ebiggers/libdeflate
+    commit: 095bcab
+    kind: git
+
+  mango:
+    repository: https://github.com/t0rakka/mango
+    commit: 977b257
+    kind: git
+
+targets:
+  deflate:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - CMAKE_INSTALL_LINK_MODE=COPY
+      - CMAKE_BUILD_TYPE=Release
+      - BUILD_SHARED_LIBS=OFF
+      - LIBDEFLATE_BUILD_SHARED_LIB=OFF
+      - CMAKE_INSTALL_PREFIX=${externalBuild:deflate}/install
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INSTALL_LIBDIR=lib
+
+    defines[platform:macos]:
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+  mango:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
+      - CMAKE_BUILD_TYPE=Release
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_INSTALL_PREFIX=${externalBuild:mango}/install
+
+      # - CMAKE_INSTALL_PREFIX=install
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_INSTALL_LIBDIR=lib
+    defines[platform:macos]:
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+# distribution:
+#   mango:
+#     kind: archive
+#     format: zip
+#     include:
+#       - ${externalBuild:${name}}/install/lib
+#       - ${externalBuild:${name}}/install/include
+#       - ${external:${name}}/COPYING
+#       - ${external:${name}}/LICENSES

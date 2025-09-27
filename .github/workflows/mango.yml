@@ -1,59 +1,82 @@
-name: FreeImage
+name: mango
 
 # comment just to trigger a new run
 
 on:
   push:
     paths:
-      - FreeImage/**
-      - .github/workflows/FreeImage.yml
+      - mango/**
+      - .github/workflows/mango.yml
 
 permissions:
   contents: write
-
-concurrency:
-  # group: ${{ github.workflow }}-${{ github.ref }}
-  group: ${{ github.workflow }}
-  cancel-in-progress: false
 
 env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
-  FreeImage_matrix:
+  mango_matrix:
     strategy:
-      # this way macos completes if windows fails
-      fail-fast: false
       matrix:
         include:
-          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
-          # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
-          # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
+          # - {
+          #     platform: linux64,
+          #     os: ubuntu-latest,
+          #     # toolchain: llvm,
+          #     shell: bash,
+          #   }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
-          # - { platform: macos, os: macos-14, toolchain: apple-llvm }
-          # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
-          - { platform: vs, os: windows-2025, toolchain: vs-stable }
+          # - { platform: vs, os: windows-2025, toolchain: vs-stable }
           # - {
           #     platform: rpi-aarch64,
           #     os: ubuntu-latest,
           #     prefix: aarch64-linux-gnu,
           #     toolchain: aarch64-linux-gnu-gcc,
+          #     shell: bash,
           #   }
           # - {
           #     platform: rpi-armv6l,
           #     os: ubuntu-latest,
           #     prefix: arm-linux-gnueabihf,
-          #     toolchain: arm-linux-gnueabihf-gcc,
+          #     toolchain: gcc,
+          #     shell: bash,
           #   }
+          # - {
+          #     platform: msys2,
+          #     os: ubuntu-latest,
+          #     prefix: mingw-w64,
+          #     toolchain: x86_64-w64-mingw32-gcc,
+          #     # params: -t gcc -a x86_64-w64-mingw32,
+          #     shell: bash,
+          #   }
+
     runs-on: ${{ matrix.os }}
     env:
       PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
+        # shell: ${{ matrix.shell }} {0}
         shell: bash
-        working-directory: ${{ github.workflow }}
+        working-directory: ./${{ github.workflow }}
     steps:
       - uses: actions/checkout@v5
+
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.19
+        with:
+          key: ${{ runner.os }}-${{ matrix.platform }}-ccache
+
+      # - name: MSYS2 Cache Apt Cross Compile
+      #   if: matrix.platform == 'msys2' && runner.os == 'Linux'
+      #   uses: awalsh128/cache-apt-pkgs-action@latest
+      #   with:
+      #     packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
+      #     version: 1.0
+
+      - name: MSYS2 Apt Cross Compile
+        if: matrix.platform == 'msys2' && runner.os == 'Linux'
+        run: |
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
@@ -61,6 +84,15 @@ jobs:
         with:
           version: 4.0.15
           actions-cache-folder: "emsdk-cache"
+
+      - name: Verify emsdk
+        if: matrix.platform == 'emscripten'
+        run: |
+          emcc -v
+          emsdk update
+          emsdk install latest
+          emsdk activate latest
+          emcc -v
 
       - name: RPI - apt multistrap
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
@@ -76,18 +108,6 @@ jobs:
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
-      # - name: Apt
-      #   if: runner.os == 'Linux'
-      # uses: awalsh128/cache-apt-pkgs-action@latest
-      # with:
-      #   packages: libudev-dev
-      #   version: 1.0
-
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ runner.os }}-${{ matrix.platform }}-ccache
-
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
@@ -101,20 +121,15 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        if: matrix.platform != 'ios'
-        run: chalet configure --toolchain ${{ matrix.toolchain }}
-
-      - name: Chalet Configure IOS
-        if: matrix.platform == 'ios'
-        run: |
-          chalet configure
+        if: matrix.toolchain != ''
+        run: chalet configure --toolchain ${{ matrix.toolchain }} -a auto
 
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
         run: |
-          chalet bundle --compiler-cache --show-commands
+          chalet ${{ matrix.params }} bundle --compiler-cache --show-commands
 
-      - name: iOS
+      - name: iOS Bundle
         if: matrix.platform == 'ios'
         run: |
           ./${{ github.workflow }}.sh
