@@ -29,7 +29,7 @@ distribution:
     kind: archive
     format: zip
     include:
-      # - ${external:${name}}/LICENSE**
+      - ${external:${name}}/LICENSE**
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
       # - ${externalBuild:${name}}/${ar:${name}}
