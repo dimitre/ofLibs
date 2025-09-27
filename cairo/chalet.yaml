@@ -1,7 +1,7 @@
 # UNUSED YET
 
 name: oflibs
-version: 1.0
+version: "1.0"
 externalDependencies:
   cairo:
     repository: https://gitlab.freedesktop.org/cairo/cairo
