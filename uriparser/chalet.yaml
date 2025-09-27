@@ -1,5 +1,5 @@
-name: libsof
-version: "0.1.3"
+name: oflibs
+version: "1.0"
 externalDependencies:
   uriparser:
     repository: https://github.com/uriparser/uriparser

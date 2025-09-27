@@ -1,5 +1,5 @@
-name: libsof
-version: "0.1.4"
+name: oflibs
+version: "1.0"
 externalDependencies:
   opencv:
     repository: https://github.com/opencv/opencv

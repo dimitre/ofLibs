@@ -1,8 +1,8 @@
 # To make it work as a fat lib (intel/arm) we should pass libusb path correctly. I'm trying to use CMAKE_PREFIX_PATH
 # but no luck yet.
 
-name: libsof
-version: "0.1.3"
+name: oflibs
+version: "1.0"
 externalDependencies:
   libusb:
     repository: https://github.com/libusb/libusb-cmake

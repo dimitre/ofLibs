@@ -1,4 +1,4 @@
-name: libsof
+name: oflibs
 version: "0.0.1"
 externalDependencies:
   poco:

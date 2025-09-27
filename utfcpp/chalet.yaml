@@ -1,5 +1,5 @@
-name: libsof
-version: "0.1.3"
+name: oflibs
+version: "1.0"
 externalDependencies:
   utfcpp:
     repository: https://github.com/nemtrif/utfcpp
