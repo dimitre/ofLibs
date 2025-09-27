@@ -59,6 +59,10 @@ jobs:
       - name: Install Meson
         run: pip install meson ninja
 
+      - name: Install build-essential
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y build-essential
+
       # - name: ccache
       #   uses: hendrikmuhs/ccache-action@v1.2.19
       #   with:
