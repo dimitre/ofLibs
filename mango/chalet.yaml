@@ -48,12 +48,13 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-# distribution:
-#   mango:
-#     kind: archive
-#     format: zip
-#     include:
-#       - ${externalBuild:${name}}/install/lib
-#       - ${externalBuild:${name}}/install/include
-#       - ${external:${name}}/COPYING
-#       - ${external:${name}}/LICENSES
+
+distribution:
+  mango:
+    kind: archive
+    format: zip
+    include:
+      - ${externalBuild:${name}}/install/lib
+      - ${externalBuild:${name}}/install/include
+      - ${external:${name}}/COPYING
+      - ${external:${name}}/LICENSES

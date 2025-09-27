@@ -99,7 +99,7 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.19
         with:
-          key: ${{ runner.os }}-${{ matrix.platform }}-ccache
+          key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
