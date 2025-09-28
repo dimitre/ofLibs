@@ -61,6 +61,12 @@ jobs:
       - name: Install Meson
         run: pip install meson ninja
 
+      - name: Install Xcode Command Line Tools
+        if: runner.os == 'macOS'
+        run: |
+          xcode-select --install || true # Installs if not already present
+          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+
       - name: Install build-essential
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y build-essential
