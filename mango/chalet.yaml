@@ -17,6 +17,11 @@ externalDependencies:
     kind: git
 
 targets:
+  fmt:
+    kind: chaletProject
+    location: ../fmt/
+    rebuild: false
+    # clean: false
   lcms2:
     kind: mesonProject
     location: ${external:${name}}
@@ -53,7 +58,7 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_PREFIX_PATH=${externalBuild:deflate}/install
+      - CMAKE_PREFIX_PATH=${externalBuild:deflate}/install;${cwd}/../fmt/${externalBuild:fmt}/install
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
       # - CMAKE_INCLUDE_PATH=${externalBuild:deflate}/install/include
       # - CMAKE_SYSTEM_INCLUDE_PATH=${externalBuild:deflate}/install/include
@@ -70,6 +75,9 @@ targets:
       # - LIBDEFLATE_ROOT=../../${externalBuild:deflate}/install
       - LIBDEFLATE_INCLUDE_DIRS=../../${externalBuild:deflate}/install/include
       - LIBDEFLATE_LIBRARIES=${cwd}/${externalBuild:deflate}/install/lib/libdeflate.a
+      # - FMT_ROOT=${cwd}/../fmt/${externalBui  ld:fmt}/install
+      # - FMT_INCLUDE_DIRS=${cwd}/../fmt/${externalBuild:fmt}/install/include
+      # - FMT_LIBRARIES=${cwd}/../fmt/${externalBuild:fmt}/install/lib/libfmt.a
 
       # - CMAKE_INSTALL_PREFIX=install
       # - CMAKE_INSTALL_INCLUDEDIR=include
