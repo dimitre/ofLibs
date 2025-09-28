@@ -5,8 +5,9 @@ externalDependencies:
     # repository: https://github.com/winlibs/libjpeg
     # commit: "1177955"
 
-    repository: https://github.com/libjpeg-turbo/libjpeg-turbo
-    tag: 3.1.2
+    # repository: https://github.com/libjpeg-turbo/libjpeg-turbo
+    repository: https://github.com/dimitre/libjpeg-turbo
+    # tag: 3.1.2
     kind: git
 
   libtiff:
@@ -136,7 +137,7 @@ targets:
 
       # new tests in dimitre repo
       - BUILD_LIBTIFF=OFF
-      - LIBTIFF_ROOT=${externalBuild:libtiff}
+      - LIBTIFF_ROOT=${externalBuild:libtiff}/install
 
       - BUILD_LIBJPEG=OFF
       - LIBJPEG_ROOT=${externalBuild:libjpeg}
