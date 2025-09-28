@@ -55,12 +55,12 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Brew List
-        if: runner.os == 'macOS'
-        run: |
-          brew list
-          brew remove jpeg-turbo
-          brew remove jpeg
+      # - name: Brew List
+      #   if: runner.os == 'macOS'
+      #   run: |
+      #     brew list
+      #     brew remove jpeg-turbo
+      #     brew remove jpeg
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
