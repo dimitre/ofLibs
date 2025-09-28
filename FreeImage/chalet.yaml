@@ -140,7 +140,7 @@ targets:
       - LIBTIFF_ROOT=${externalBuild:libtiff}/install
 
       - BUILD_LIBJPEG=OFF
-      - LIBJPEG_ROOT=${externalBuild:libjpeg}
+      - LIBJPEG_ROOT=${externalBuild:libjpeg}/install
 
       # - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/install
 
