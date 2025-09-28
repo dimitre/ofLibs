@@ -138,7 +138,8 @@ jobs:
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
         run: |
-          chalet ${{ matrix.params }} bundle --compiler-cache --show-commands
+          chalet ${{ matrix.params }} bundle --show-commands
+        # chalet ${{ matrix.params }} bundle --compiler-cache --show-commands
 
       - name: iOS Bundle
         if: matrix.platform == 'ios'
