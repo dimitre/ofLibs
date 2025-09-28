@@ -49,13 +49,17 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_PREFIX_PATH=${externalBuild:libjpeg}/install
+      # - CMAKE_PREFIX_PATH=${externalBuild:libjpeg}/install
       - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libjpeg}/install
 
       - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+
       - tiff-tools=OFF
       - tiff-tests=OFF
       - tiff-contrib=OFF
@@ -140,19 +144,22 @@ targets:
       # - USE_PTHREADS=1
       # defines[platform:!web+platform:!windows]:
       - BUILD_ZLIB=OFF
-      - ZLIB_ROOT=${externalBuild:zlib}
-      - ZLIB_LIBRARY=${externalBuild:zlib}
-      - ZLIB_INCLUDE_DIRS=${external:zlib}
+      - ZLIB_ROOT=${externalBuild:zlib}/install
+      # - ZLIB_LIBRARY=${externalBuild:zlib}
+      # - ZLIB_INCLUDE_DIRS=${external:zlib}
 
-      - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/install;${externalBuild:libjpeg}/install
-      - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libtiff}/install;${externalBuild:libjpeg}/install
+      # - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/install;${externalBuild:libjpeg}/install
+      # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libtiff}/install;${externalBuild:libjpeg}/install
 
       # new tests in dimitre repo
       - BUILD_LIBTIFF=OFF
-      - LIBTIFF_ROOT=${externalBuild:libtiff}/install
+      # - LIBTIFF_ROOT=../../${externalBuild:libtiff}/install
+      - LIBTIFF_ROOT=../../${externalBuild:libtiff}/libtiff
+      - LIBTIFF_LIBRARY=../../${externalBuild:libtiff}/libtiff
+      - LIBTIFF_INCLUDE_DIRS=../../${externalBuild:libtiff}/libtiff
 
       - BUILD_LIBJPEG=OFF
-      - LIBJPEG_ROOT=${externalBuild:libjpeg}/install
+      - LIBJPEG_ROOT=../../${externalBuild:libjpeg}/install
 
       # - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/install
 
