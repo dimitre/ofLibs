@@ -17,7 +17,6 @@ targets:
     defines:
       - CMAKE_INSTALL_PREFIX=${externalBuild:${name}}/install
       # - CMAKE_INSTALL_PREFIX=install
-
       - ZLIB_BUILD_TESTING=OFF
       - ZLIB_BUILD_SHARED=OFF
       - ZLIB_BUILD_EXAMPLES=OFF
