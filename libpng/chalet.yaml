@@ -62,7 +62,8 @@ targets:
       - SKIP_INSTALL_EXPORT=ON
       - SKIP_INSTALL_FILES=ON
       # defines[platform:!web+platform:!windows]:
-      - CMAKE_PREFIX_PATH=${cwd}/../zlib/${externalBuild:zlib}/install
+      # - CMAKE_PREFIX_PATH=${cwd}/../zlib/${externalBuild:zlib}/install
+      - CMAKE_PREFIX_PATH=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}
       # - ZLIB_LIBRARY=${externalBuild:zlib}/install/lib
