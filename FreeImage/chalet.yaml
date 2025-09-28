@@ -49,10 +49,19 @@ targets:
     rebuild: false
     install: true
     defines:
+      - CMAKE_PREFIX_PATH=${externalBuild:libjpeg}/install
+      - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libjpeg}/install
+
       - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_INSTALL_PREFIX=install
+      - tiff-tools=OFF
+      - tiff-tests=OFF
+      - tiff-contrib=OFF
+      - tiff-docs=OFF
+      - tiff-install=OFF
+
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
