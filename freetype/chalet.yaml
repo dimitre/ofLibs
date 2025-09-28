@@ -47,6 +47,7 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
+    install: true
     defines:
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       # FIXME: Temporary
@@ -78,6 +79,6 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
+      - ${externalBuild:${name}}/include
+      - ${externalBuild:${name}}/install/lib
       # - ${externalBuild:${name}}/${ar:${name}}
-      - ${externalBuild:${name}}/lib
