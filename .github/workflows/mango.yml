@@ -17,6 +17,8 @@ permissions:
 jobs:
   mango_matrix:
     strategy:
+      # FIXME: remove - temporary, only to debug meson troubles
+      fail-fast: false
       matrix:
         include:
           - { platform: linux64, os: ubuntu-latest }
