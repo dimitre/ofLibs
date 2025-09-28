@@ -135,6 +135,8 @@ targets:
       - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${external:zlib}
 
+      - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libtiff}/install;${externalBuild:libjpeg}/install
+
       # new tests in dimitre repo
       - BUILD_LIBTIFF=OFF
       - LIBTIFF_ROOT=${externalBuild:libtiff}/install

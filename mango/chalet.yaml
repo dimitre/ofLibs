@@ -38,7 +38,8 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
       - LIBDEFLATE_BUILD_SHARED_LIB=OFF
-      - CMAKE_INSTALL_PREFIX=${externalBuild:deflate}/install
+
+      - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:deflate}/install
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_INSTALL_LIBDIR=lib
 
