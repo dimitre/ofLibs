@@ -1,42 +1,54 @@
 name: oflibs
 version: "1.0"
 externalDependencies:
-  zlib:
-    repository: https://github.com/madler/zlib
-    # tag: v1.3.1
-    commit: 5a82f71
-    kind: git
+  # zlib:
+  #   repository: https://github.com/madler/zlib
+  #   # tag: v1.3.1
+  #   commit: 5a82f71
+  #   kind: git
   freetype:
     repository: https://gitlab.freedesktop.org/freetype/freetype
     tag: VER-2-14-1
     kind: git
 targets:
   zlib:
-    kind: cmakeProject
-    location: ${external:${name}}
-    recheck: false
+    kind: chaletProject
+    location: ../zlib
     rebuild: false
-    defines:
-      - ZLIB_BUILD_TESTING=OFF
-      - ZLIB_BUILD_SHARED=OFF
-      - ZLIB_BUILD_EXAMPLES=OFF
-      - BUILD_SHARED_LIBS=OFF # not working on zlib
-      - CMAKE_BUILD_TYPE=Release
-      - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      - CMAKE_INSTALL_PREFIX=Release
-    defines[platform:web]:
-      - JS_ONLY=ON
-      - CMAKE_EXECUTABLE_SUFFIX=.js
-    defines[platform:macos]:
-      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+  libpng:
+    kind: chaletProject
+    location: ../libpng
+    rebuild: false
+  brotli:
+    kind: chaletProject
+    location: ../brotli
+    rebuild: false
+  # zlib:
+  #   kind: cmakeProject
+  #   location: ${external:${name}}
+  #   recheck: false
+  #   rebuild: false
+  #   defines:
+  #     - ZLIB_BUILD_TESTING=OFF
+  #     - ZLIB_BUILD_SHARED=OFF
+  #     - ZLIB_BUILD_EXAMPLES=OFF
+  #     - BUILD_SHARED_LIBS=OFF # not working on zlib
+  #     - CMAKE_BUILD_TYPE=Release
+  #     - CMAKE_POSITION_INDEPENDENT_CODE=ON
+  #     - CMAKE_INSTALL_PREFIX=Release
+  #   defines[platform:web]:
+  #     - JS_ONLY=ON
+  #     - CMAKE_EXECUTABLE_SUFFIX=.js
+  #   defines[platform:macos]:
+  #     - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+  #     - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
   freetype:
     kind: cmakeProject
     location: ${external:${name}}
     recheck: false
     rebuild: false
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       # FIXME: Temporary
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/macos
       - BUILD_SHARED_LIBS=OFF
@@ -45,11 +57,17 @@ targets:
       - FT_DISABLE_BZIP2=ON
       - FT_REQUIRE_HARFBUZZ=OFF
       - FT_DISABLE_HARFBUZZ=ON
-    defines[platform:!windows]:
       - ZLIB_ROOT=${externalBuild:zlib}
       - ZLIB_LIBRARY=${externalBuild:zlib}
-      - ZLIB_INCLUDE_DIRS=${external:zlib}
-      - ZLIB_INCLUDE_DIR=${external:zlib}
+      - BROTLI_ROOT=${externalBuild:brotli}
+      - BROTLI_LIBRARY=${externalBuild:brotli}
+      - PNG_ROOT=${externalBuild:libpng}
+      - PNG_LIBRARY=${externalBuild:libpng}
+      - PNG_INCLUDE_DIR=${externalBuild:libpng}/install/include
+
+    # defines[platform:!windows]:
+    # - ZLIB_INCLUDE_DIRS=${external:zlib}
+    # - ZLIB_INCLUDE_DIR=${external:zlib}
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
