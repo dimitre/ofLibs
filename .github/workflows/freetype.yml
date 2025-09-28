@@ -63,10 +63,10 @@ jobs:
           extension: .zip
           prerelease: "false"
 
-      # TODO: make another item in matrix to pass toolchain to every chalet bundle. like emscripten, llvm etc.
       - name: Chalet Configure
-        if: matrix.platform == 'emscripten'
-        run: chalet configure --toolchain emscripten
+        if: matrix.toolchain != ''
+        # run: chalet configure --toolchain ${{ matrix.toolchain }} -a auto
+        run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
         run: |
