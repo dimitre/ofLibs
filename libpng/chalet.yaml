@@ -55,19 +55,19 @@ targets:
       - PNG_SHARED=OFF
       - PNG_TESTS=OFF
       - PNG_TOOLS=OFF
-      - PNG_EXECUTABLES=OFF
+      # - PNG_EXECUTABLES=OFF
       - PNG_HARDWARE_OPTIMIZATIONS=OFF
       - PNG_FRAMEWORK=OFF
       - SKIP_INSTALL_CONFIG_FILE=ON
       - SKIP_INSTALL_EXPORT=ON
       - SKIP_INSTALL_FILES=ON
       # defines[platform:!web+platform:!windows]:
-      # - CMAKE_PREFIX_PATH=${cwd}/../zlib/${externalBuild:zlib}/install
-      - CMAKE_PREFIX_PATH=${externalBuild:zlib}/install
+      - CMAKE_PREFIX_PATH=${externalBuild:zlib}/ext.zlib/install
+      # - CMAKE_PREFIX_PATH=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}
-      # - ZLIB_LIBRARY=${externalBuild:zlib}/install/lib
-      # - ZLIB_INCLUDE_DIR=${externalBuild:zlib}/install/include
+      - ZLIB_LIBRARY=${externalBuild:zlib}/ext.zlib/install/lib
+      - ZLIB_INCLUDE_DIR=${externalBuild:zlib}/ext.zlib/install/include
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
