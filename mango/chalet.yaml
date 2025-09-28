@@ -38,8 +38,8 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
       - LIBDEFLATE_BUILD_SHARED_LIB=OFF
-
-      - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:deflate}/install
+      - LIBDEFLATE_BUILD_GZIP=OFF
+      # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:deflate}/install
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_INSTALL_LIBDIR=lib
 
@@ -53,11 +53,23 @@ targets:
     rebuild: false
     install: true
     defines:
+      - CMAKE_PREFIX_PATH=${externalBuild:deflate}/install
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
-      - CMAKE_PREFIX_PATH=${externalBuild:deflate}/install;${externalBuild:lcms2}/install
+      # - CMAKE_INCLUDE_PATH=${externalBuild:deflate}/install/include
+      # - CMAKE_SYSTEM_INCLUDE_PATH=${externalBuild:deflate}/install/include
+      # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:deflate}/install;${externalBuild:lcms2}/install/opt/homebrew/lib;../../${externalBuild:lcms2}/install/opt/homebrew/
+      # - CMAKE_PREFIX_PATH=${externalBuild:deflate}/install;${externalBuild:lcms2}/install/opt/homebrew/lib
+      # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:deflate}/install;${externalBuild:lcms2}/install/opt/homebrew/lib;../../${externalBuild:lcms2}/install/opt/homebrew/
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_INSTALL_PREFIX=${externalBuild:mango}/install
+      # - CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES=${externalBuild:deflate}/install/include
+      # - TARGET_SPECIFIC_INCLUDES=${externalBuild:deflate}/install/include
+      #
+
+      # - LIBDEFLATE_ROOT=../../${externalBuild:deflate}/install
+      - LIBDEFLATE_INCLUDE_DIRS=../../${externalBuild:deflate}/install/include
+      - LIBDEFLATE_LIBRARIES=${cwd}/${externalBuild:deflate}/install/lib/libdeflate.a
 
       # - CMAKE_INSTALL_PREFIX=install
       # - CMAKE_INSTALL_INCLUDEDIR=include

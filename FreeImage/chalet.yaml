@@ -155,8 +155,8 @@ targets:
       - BUILD_LIBTIFF=OFF
       # - LIBTIFF_ROOT=../../${externalBuild:libtiff}/install
       - LIBTIFF_ROOT=../../${externalBuild:libtiff}/libtiff
-      - LIBTIFF_LIBRARY=../../${externalBuild:libtiff}/libtiff
-      - LIBTIFF_INCLUDE_DIRS=../../${externalBuild:libtiff}/libtiff
+      # - LIBTIFF_LIBRARY=../../${externalBuild:libtiff}/libtiff
+      # - LIBTIFF_INCLUDE_DIRS=../../${externalBuild:libtiff}/libtiff
 
       - BUILD_LIBJPEG=OFF
       - LIBJPEG_ROOT=../../${externalBuild:libjpeg}/install
