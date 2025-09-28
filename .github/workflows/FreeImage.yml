@@ -26,8 +26,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
-          # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
+          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
           # - { platform: macos, os: macos-14, toolchain: apple-llvm }
@@ -55,9 +55,14 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      # - name: Brew List
-      #   if: runner.os == 'macOS'
-      #   run: |
+      - name: macOS Checks
+        if: runner.os == 'macOS'
+        run: |
+          whereis cmake
+          cmake --version
+          brew install cmake
+          whereis cmake
+          cmake --version
       #     brew list
       #     brew remove jpeg-turbo
       #     brew remove jpeg
