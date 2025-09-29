@@ -87,6 +87,6 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      - ${externalBuild:${name}}/include
+      - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
       # - ${externalBuild:${name}}/${ar:${name}}
