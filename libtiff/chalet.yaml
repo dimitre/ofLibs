@@ -1,0 +1,50 @@
+name: ofLibs
+version: "1.0"
+externalDependencies:
+  libtiff:
+    repository: https://gitlab.com/libtiff/libtiff
+    tag: v4.7.1
+    kind: git
+
+targets:
+  libjpeg:
+    kind: chaletProject
+    location: ../libjpeg
+    rebuild: false
+  libtiff:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - CMAKE_PREFIX_PATH=${externalBuild:libjpeg}/ext.libjpeg/install
+      # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libjpeg}/install
+      - BUILD_SHARED_LIBS=OFF # not working on zlib
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - JPEG_ROOT=${externalBuild:libjpeg}/ext.libjpeg/install
+      - JPEG_INCLUDE_DIR=${externalBuild:libjpeg}/ext.libjpeg/install/include
+      # - JPEG_INCLUDE_DIRS=${externalBuild:libjpeg}/ext.libjpeg/install/include
+      - JPEG_LIBRARY=${externalBuild:libjpeg}/ext.libjpeg/install/lib
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - tiff-tools=OFF
+      - tiff-tests=OFF
+      - tiff-contrib=OFF
+      - tiff-docs=OFF
+      - tiff-install=ON
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+
+distribution:
+  libtiff:
+    kind: archive
+    format: zip
+    include:
+      - ${external:${name}}/LICENSE*
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib
