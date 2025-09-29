@@ -1,19 +1,8 @@
 name: ofLibs
 version: "1.0"
 externalDependencies:
-  # zlib:
-  #   repository: https://github.com/madler/zlib
-  #   # tag: v1.3.1
-  #   commit: 5a82f71
-  #   kind: git
-
   libjpeg:
-    # repository: https://github.com/winlibs/libjpeg
-    # commit: "1177955"
-
-    # repository: https://github.com/libjpeg-turbo/libjpeg-turbo
     repository: https://github.com/dimitre/libjpeg-turbo
-    # tag: 3.1.2
     kind: git
 
 targets:
