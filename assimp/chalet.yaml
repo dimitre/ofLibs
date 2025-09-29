@@ -1,39 +1,43 @@
 name: oflibs
 version: "1.0"
 externalDependencies:
-  zlib:
-    repository: https://github.com/madler/zlib
-    # tag: v1.3.1
-    commit: 5a82f71
-    kind: git
+  # zlib:
+  #   repository: https://github.com/madler/zlib
+  #   # tag: v1.3.1
+  #   commit: 5a82f71
+  #   kind: git
 
   assimp:
     repository: https://github.com/assimp/assimp
     # tag: v6.0.2
     # This fixes Anisor bug https://github.com/assimp/assimp/issues/5635#
-    commit: 709fe3c
+    commit: 1894bfb22ca7aef72202a2d1e47a72118f482c65
     kind: git
 
 targets:
   zlib:
-    kind: cmakeProject
-    location: ${external:${name}}
-    recheck: false
+    kind: chaletProject
+    location: ../zlib
     rebuild: false
-    defines:
-      - ZLIB_BUILD_TESTING=OFF
-      - ZLIB_BUILD_SHARED=OFF
-      - ZLIB_BUILD_EXAMPLES=OFF
-      - BUILD_SHARED_LIBS=OFF # not working on zlib
-      - CMAKE_BUILD_TYPE=Release
-      - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      - CMAKE_INSTALL_PREFIX=Release
-    defines[platform:web]:
-      - JS_ONLY=ON
-      - CMAKE_EXECUTABLE_SUFFIX=.js
-    defines[platform:macos]:
-      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+  # zlib:
+  #   kind: cmakeProject
+  #   location: ${external:${name}}
+  #   recheck: false
+  #   rebuild: false
+  #   defines:
+  #     - ZLIB_BUILD_TESTING=OFF
+  #     - ZLIB_BUILD_SHARED=OFF
+  #     - ZLIB_BUILD_EXAMPLES=OFF
+  #     - BUILD_SHARED_LIBS=OFF # not working on zlib
+  #     - CMAKE_BUILD_TYPE=Release
+  #     - CMAKE_POSITION_INDEPENDENT_CODE=ON
+  #     - CMAKE_INSTALL_PREFIX=Release
+  #   defines[platform:web]:
+  #     - JS_ONLY=ON
+  #     - CMAKE_EXECUTABLE_SUFFIX=.js
+  #   defines[platform:macos]:
+  #     - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+  #     - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
 
   assimp:
     kind: cmakeProject
@@ -45,6 +49,8 @@ targets:
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INSTALL_LIBDIR=lib
+
       - ASSIMP_BUILD_USD_IMPORTER=on
       - ASSIMP_BUILD_USD_VERBOSE_LOGS=on
       - CMAKE_THREAD_PREFER_PTHREAD=ON
@@ -75,9 +81,9 @@ targets:
       - DEPLOYMENT_TARGET=11.6
 
       - ASSIMP_BUILD_ZLIB=OFF
-      - ZLIB_ROOT=${externalBuild:zlib}
-      - ZLIB_LIBRARY=${externalBuild:zlib}
-      - ZLIB_INCLUDE_DIRS=${external:zlib}
+      - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
+      - ZLIB_LIBRARY=${externalBuild:zlib}/ext.zlib/lib
+      - ZLIB_INCLUDE_DIRS=${externalBuild:zlib}/ext.zlib/include
 
     # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
     # defines[toolchain:arm-linux-gnueabihf-gcc]:
@@ -89,7 +95,7 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      - ${external:${name}}/include
+      # - ${external:${name}}/include
       - ${externalBuild:${name}}/include
       # - ${externalBuild:${name}}/lib
-      - ${externalBuild:${name}}/code/lib
+      - ${externalBuild:${name}}/lib
