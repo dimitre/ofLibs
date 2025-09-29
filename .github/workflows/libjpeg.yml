@@ -1,12 +1,12 @@
-name: fmt
+name: libjpeg
 
 # comment just to trigger a new run
 
 on:
   push:
     paths:
-      - fmt/**
-      - .github/workflows/fmt.yml
+      - libjpeg/**
+      - .github/workflows/libjpeg.yml
 
 permissions:
   contents: write
@@ -15,7 +15,7 @@ env:
   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
-  fmt_matrix:
+  libjpeg_matrix:
     strategy:
       matrix:
         include:
