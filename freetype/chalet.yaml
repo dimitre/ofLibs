@@ -58,9 +58,9 @@ targets:
       - FT_DISABLE_BZIP2=ON
       - FT_REQUIRE_HARFBUZZ=OFF
       - FT_DISABLE_HARFBUZZ=ON
-      - ZLIB_ROOT=${externalBuild:zlib}/install
-      - ZLIB_LIBRARY=${externalBuild:zlib}/install/lib
-      - ZLIB_INCLUDE_DIR=${externalBuild:zlib}/install/include
+      - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
+      - ZLIB_LIBRARY=${externalBuild:zlib}/ext.zlib/install/lib
+      - ZLIB_INCLUDE_DIR=${externalBuild:zlib}/ext.zlib/install/include
       - BROTLI_ROOT=${externalBuild:brotli}/ext.brotli/install
       - BROTLI_LIBRARY=${externalBuild:brotli}/ext.brotli/install/lib
       - PNG_ROOT=${externalBuild:libpng}/ext.libpng/install
