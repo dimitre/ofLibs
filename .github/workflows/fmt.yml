@@ -1,13 +1,12 @@
 name: fmt
 
-# comment just to trigger a new run
-
 on:
   push:
     paths:
       - fmt/**
       - .github/workflows/fmt.yml
 
+# not needed really
 permissions:
   contents: write
 
@@ -17,6 +16,7 @@ env:
 jobs:
   fmt_matrix:
     strategy:
+      # fail-fast: false
       matrix:
         include:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
@@ -42,7 +42,7 @@ jobs:
               prefix: mingw-w64,
               toolchain: x86_64-w64-mingw32-gcc,
               # params: -t gcc -a x86_64-w64-mingw32,
-              shell: bash,
+              # shell: bash,
             }
 
           # - {
@@ -54,8 +54,8 @@ jobs:
           #   }
 
     runs-on: ${{ matrix.os }}
-    env:
-      PLATFORM: ${{ matrix.platform }}
+    # env:
+    # PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         # shell: ${{ matrix.shell }} {0}
@@ -119,13 +119,11 @@ jobs:
           extension: .zip
           prerelease: "false"
 
-      - name: Chalet Test / Version
+      - name: Chalet Test and Configure
+        if: matrix.toolchain != ''
         run: |
           chalet --version
-
-      - name: Chalet Configure
-        if: matrix.toolchain != ''
-        run: chalet configure --toolchain ${{ matrix.toolchain }} -a auto
+          chalet configure --toolchain ${{ matrix.toolchain }} -a auto
 
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
@@ -148,5 +146,4 @@ jobs:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
           mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
-          ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber
