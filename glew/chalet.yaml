@@ -3,6 +3,7 @@ version: "1.0"
 externalDependencies:
   glew:
     repository: https://github.com/Perlmint/glew-cmake
+    commit: e399b15
     kind: git
 targets:
   glew:
@@ -15,7 +16,7 @@ targets:
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - glew-cmake_BUILD_SHARED=OFF
       - ONLY_LIBS=ON
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
 
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
