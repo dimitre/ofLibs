@@ -20,12 +20,7 @@ jobs:
       matrix:
         include:
           # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
-          - {
-              platform: linux64,
-              os: ubuntu-latest,
-              # toolchain: llvm,
-              shell: bash,
-            }
+          - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
@@ -34,14 +29,12 @@ jobs:
               os: ubuntu-latest,
               prefix: aarch64-linux-gnu,
               toolchain: aarch64-linux-gnu-gcc,
-              shell: bash,
             }
           - {
               platform: rpi-armv6l,
               os: ubuntu-latest,
               prefix: arm-linux-gnueabihf,
               toolchain: gcc,
-              shell: bash,
             }
           - {
               platform: msys2,
