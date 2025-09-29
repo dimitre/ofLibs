@@ -34,11 +34,11 @@ jobs:
           #   }
 
     runs-on: ${{ matrix.os }}
-    env:
-      PLATFORM: ${{ matrix.platform }}
+    # env:
+    # PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
-        shell: bash
+        # shell: bash
         working-directory: ${{ github.workflow }}
 
     steps:
@@ -74,6 +74,7 @@ jobs:
           chalet bundle --compiler-cache --show-commands
 
       - name: LS check built lib
+        shell: bash
         run: |
           unzip dist/*.zip
           ls -alfR dist
