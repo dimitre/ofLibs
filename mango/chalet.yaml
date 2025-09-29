@@ -58,7 +58,7 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_PREFIX_PATH=${externalBuild:deflate}/install;${cwd}/../fmt/${externalBuild:fmt}/install
+      - CMAKE_PREFIX_PATH=${externalBuild:deflate}/ext.deflate/install;${externalBuild:fmt}/ext.fmt/install
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
       # - CMAKE_INCLUDE_PATH=${externalBuild:deflate}/install/include
       # - CMAKE_SYSTEM_INCLUDE_PATH=${externalBuild:deflate}/install/include
@@ -67,7 +67,7 @@ targets:
       # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:deflate}/install;${externalBuild:lcms2}/install/opt/homebrew/lib;../../${externalBuild:lcms2}/install/opt/homebrew/
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
-      - CMAKE_INSTALL_PREFIX=${externalBuild:mango}/install
+      - CMAKE_INSTALL_PREFIX=install
       # - CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES=${externalBuild:deflate}/install/include
       # - TARGET_SPECIFIC_INCLUDES=${externalBuild:deflate}/install/include
       #
