@@ -3,7 +3,7 @@ version: "1.0"
 externalDependencies:
   uriparser:
     repository: https://github.com/uriparser/uriparser
-    tag: uriparser-0.9.8
+    tag: uriparser-0.9.9
     kind: git
 targets:
   uriparser:
@@ -11,14 +11,21 @@ targets:
     location: ${external:${name}}
     recheck: false
     rebuild: false
+    install: true
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_BUILD_TYPE=Release
+
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_INSTALL_INCLUDEDIR=include
+
       - URIPARSER_BUILD_DOCS=OFF
       - URIPARSER_BUILD_TESTS=OFF
       - URIPARSER_BUILD_TOOLS=OFF
-      - URIPARSER_ENABLE_INSTALL=OFF
-      - BUILD_SHARED_LIBS=OFF
-      - CMAKE_BUILD_TYPE=Release
+      - URIPARSER_ENABLE_INSTALL=ON
+
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
@@ -29,5 +36,6 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/COPYING**
-      - ${external:${name}}/include
-      - ${externalBuild:${name}}/lib
+      # - ${external:${name}}/include
+      - ${externalBuild:${name}}/install/include
+      - ${externalBuild:${name}}/install/lib
