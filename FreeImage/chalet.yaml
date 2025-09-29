@@ -106,26 +106,17 @@ targets:
     recheck: false
     rebuild: false
     defines:
-      - CMAKE_INSTALL_PREFIX=install
-      # - CMAKE_INSTALL_LIBDIR=lib
-      # - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
-
-      # - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
-      # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/y/${env:PLATFORM}
-      # - CMAKE_INSTALL_INCLUDEDIR=Source
-      # - CMAKE_CURRENT_BINARY_DIR=XXX
-      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
-      # - CMAKE_INSTALL_PREFIX=Release
-
-      # - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
-      # - CMAKE_INSTALL_PREFIX=Release
-
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
+
+      - CMAKE_INSTALL_PREFIX=install
+      # - CMAKE_INSTALL_LIBDIR=lib
+      # - CMAKE_INSTALL_INCLUDEDIR=include
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
+      # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/y
+      # - CMAKE_CURRENT_BINARY_DIR=XXX
+      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
 
       - BUILD_TESTS=OFF
 
@@ -162,8 +153,8 @@ targets:
       # - LIBTIFF_LIBRARY=../../${externalBuild:libtiff}/libtiff
       # - LIBTIFF_INCLUDE_DIRS=../../${externalBuild:libtiff}/libtiff
 
-      - BUILD_LIBJPEG=OFF
-      - LIBJPEG_ROOT=${externalBuild:libjpeg}/ext.libjpeg/install
+      # - BUILD_LIBJPEG=OFF
+      # - LIBJPEG_ROOT=${externalBuild:libjpeg}/ext.libjpeg/install
 
       # - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/install
 

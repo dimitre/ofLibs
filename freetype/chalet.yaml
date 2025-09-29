@@ -19,6 +19,10 @@ targets:
     kind: chaletProject
     location: ../libpng
     rebuild: false
+  libjpeg:
+    kind: chaletProject
+    location: ../libjpeg
+    rebuild: false
   brotli:
     kind: chaletProject
     location: ../brotli
@@ -58,6 +62,7 @@ targets:
       - FT_DISABLE_BZIP2=ON
       - FT_REQUIRE_HARFBUZZ=OFF
       - FT_DISABLE_HARFBUZZ=ON
+      - LibJPEG_ROOT=../../${externalBuild:libjpeg}/ext.libjpeg/install
       - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
       - ZLIB_LIBRARY=${externalBuild:zlib}/ext.zlib/install/lib
       - ZLIB_INCLUDE_DIR=${externalBuild:zlib}/ext.zlib/install/include

@@ -18,7 +18,7 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_PREFIX_PATH=${externalBuild:libjpeg}/ext.libjpeg/install
+      # - CMAKE_PREFIX_PATH=${externalBuild:libjpeg}/ext.libjpeg/install
       # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libjpeg}/install
       - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
@@ -26,10 +26,10 @@ targets:
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_LIBDIR=lib
       - CMAKE_INSTALL_INCLUDEDIR=include
-      - JPEG_ROOT=${externalBuild:libjpeg}/ext.libjpeg/install
-      - JPEG_INCLUDE_DIR=${externalBuild:libjpeg}/ext.libjpeg/install/include
+      - JPEG_ROOT=${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
+      - JPEG_INCLUDE_DIR=${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install/include
       # - JPEG_INCLUDE_DIRS=${externalBuild:libjpeg}/ext.libjpeg/install/include
-      - JPEG_LIBRARY=${externalBuild:libjpeg}/ext.libjpeg/install/lib
+      - JPEG_LIBRARY=${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install/lib
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       - tiff-tools=OFF
       - tiff-tests=OFF
