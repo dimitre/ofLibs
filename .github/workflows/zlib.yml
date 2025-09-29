@@ -20,10 +20,9 @@ jobs:
           # there is trouble to build in emscripten. ninja: error: build.ninja:394: multiple rules generate libz.a
           # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
-          # - { platform: ios, os: macos-latest, toolchain: apple-llvm }
-          # - { platform: osx, os: macos-latest, toolchain: apple-llvm }
-          - { platform: macos, os: macos-latest, toolchain: apple-llvm }
-          - { platform: vs, os: windows-2025, toolchain: vs-stable }
+          # - { platform: ios, os: macos-26, toolchain: apple-llvm }
+          - { platform: macos, os: macos-26, toolchain: apple-llvm }
+          - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
               platform: rpi-aarch64,
               os: ubuntu-latest,
