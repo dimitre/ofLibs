@@ -35,9 +35,9 @@ targets:
       # - zlib=disabled
       # - spectre=disabled
 
-      # - dwrite=disabled
-      # - fontconfig=disabled
-      # - freetype=disabled
+      - dwrite=disabled
+      - fontconfig=disabled
+      - freetype=disabled
 
       # - tee=disabled
       # - xcb=disabled
