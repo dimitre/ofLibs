@@ -65,6 +65,12 @@ targets:
       - ASSIMP_BUILD_3MF_IMPORTER=OFF
       - ASSIMP_INJECT_DEBUG_POSTFIX=OFF
       - ASSIMP_INSTALL=ON
+
+      - ASSIMP_BUILD_ZLIB=OFF
+      - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
+      - ZLIB_LIBRARY=${externalBuild:zlib}/ext.zlib/lib
+      - ZLIB_INCLUDE_DIRS=${externalBuild:zlib}/ext.zlib/include
+
       # - ASSIMP_BUILD_USD_IMPORTER=ON
       # - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
     defines[platform:web]:
@@ -79,11 +85,6 @@ targets:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - DEPLOYMENT_TARGET=11.6
-
-      - ASSIMP_BUILD_ZLIB=OFF
-      - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
-      - ZLIB_LIBRARY=${externalBuild:zlib}/ext.zlib/lib
-      - ZLIB_INCLUDE_DIRS=${externalBuild:zlib}/ext.zlib/include
 
     # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
     # defines[toolchain:arm-linux-gnueabihf-gcc]:
