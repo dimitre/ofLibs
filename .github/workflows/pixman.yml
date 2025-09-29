@@ -146,8 +146,8 @@ jobs:
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
         run: |
-          # chalet bundle --show-commands
-          chalet bundle --compiler-cache --show-commands
+          chalet bundle --show-commands
+          # chalet bundle --compiler-cache --show-commands
 
       - name: LS check built lib
         if: matrix.platform != 'ios'
