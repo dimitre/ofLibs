@@ -1,13 +1,12 @@
 name: libpng
 
-# comment just to trigger a new run
-
 on:
   push:
     paths:
       - libpng/**
       - .github/workflows/libpng.yml
 
+# not needed really
 permissions:
   contents: write
 
@@ -19,17 +18,25 @@ jobs:
     strategy:
       matrix:
         include:
-          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
-          # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
+          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
-          # - {
-          #     platform: rpi-aarch64,
-          #     os: ubuntu-latest,
-          #     prefix: aarch64-linux-gnu,
-          #     toolchain: aarch64-linux-gnu-gcc,
-          #   }
+          - {
+              platform: rpi-aarch64,
+              os: ubuntu-latest,
+              prefix: aarch64-linux-gnu,
+              toolchain: aarch64-linux-gnu-gcc,
+            }
+          - {
+              platform: msys2,
+              os: ubuntu-latest,
+              prefix: mingw-w64,
+              toolchain: x86_64-w64-mingw32-gcc,
+              # params: -t gcc -a x86_64-w64-mingw32,
+              # shell: bash,
+            }
           # - {
           #     platform: rpi-armv6l,
           #     os: ubuntu-latest,
@@ -38,8 +45,8 @@ jobs:
           #   }
 
     runs-on: ${{ matrix.os }}
-    env:
-      PLATFORM: ${{ matrix.platform }}
+    # env:
+    # PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         shell: bash
@@ -47,6 +54,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.19
+        with:
+          key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+
+      - name: MSYS2 Apt Cross Compile
+        if: matrix.platform == 'msys2' && runner.os == 'Linux'
+        run: |
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
@@ -78,11 +95,6 @@ jobs:
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
-
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
@@ -91,12 +103,11 @@ jobs:
           extension: .zip
           prerelease: "false"
 
-      - name: Chalet Test / Version
+      - name: Chalet Test and Configure
+        if: matrix.toolchain != ''
         run: |
           chalet --version
-
-      - name: Chalet Configure
-        run: chalet configure --toolchain ${{ matrix.toolchain }}
+          chalet configure --toolchain ${{ matrix.toolchain }} -a auto
 
       - name: Chalet Bundle
         if: matrix.platform != 'ios'

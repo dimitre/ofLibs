@@ -60,7 +60,7 @@ jobs:
       run:
         # shell: ${{ matrix.shell }} {0}
         shell: bash
-        working-directory: ./${{ github.workflow }}
+        working-directory: ${{ github.workflow }}
     steps:
       - uses: actions/checkout@v5
 
@@ -146,4 +146,5 @@ jobs:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
           mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
+          ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber
