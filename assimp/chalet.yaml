@@ -62,9 +62,9 @@ targets:
       - ASSIMP_WARNINGS_AS_ERRORS=OFF
       - ASSIMP_NO_EXPORT=ON
       - ASSIMP_BUILD_TESTS=OFF
-      - ASSIMP_INSTALL=OFF
       - ASSIMP_BUILD_3MF_IMPORTER=OFF
       - ASSIMP_INJECT_DEBUG_POSTFIX=OFF
+      - ASSIMP_INSTALL=ON
       # - ASSIMP_BUILD_USD_IMPORTER=ON
       # - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
     defines[platform:web]:
@@ -96,6 +96,6 @@ distribution:
     include:
       - ${external:${name}}/LICENSE**
       # - ${external:${name}}/include
-      - ${externalBuild:${name}}/include
+      - ${externalBuild:${name}}/install/include
       # - ${externalBuild:${name}}/lib
-      - ${externalBuild:${name}}/lib
+      - ${externalBuild:${name}}/install/lib
