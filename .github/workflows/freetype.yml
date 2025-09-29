@@ -38,6 +38,7 @@ jobs:
       PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
+        shell: bash
         working-directory: ${{ github.workflow }}
 
     steps:

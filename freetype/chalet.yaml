@@ -58,13 +58,13 @@ targets:
       - FT_DISABLE_BZIP2=ON
       - FT_REQUIRE_HARFBUZZ=OFF
       - FT_DISABLE_HARFBUZZ=ON
-      - ZLIB_ROOT=${externalBuild:zlib}
-      - ZLIB_LIBRARY=${externalBuild:zlib}
-      - BROTLI_ROOT=${externalBuild:brotli}
-      - BROTLI_LIBRARY=${externalBuild:brotli}
-      - PNG_ROOT=${externalBuild:libpng}
-      - PNG_LIBRARY=${externalBuild:libpng}
-      - PNG_INCLUDE_DIR=${externalBuild:libpng}/install/include
+      - ZLIB_ROOT=${externalBuild:zlib}/install
+      - ZLIB_LIBRARY=${externalBuild:zlib}/install/lib
+      - BROTLI_ROOT=${externalBuild:brotli}/ext.brotli/install
+      - BROTLI_LIBRARY=${externalBuild:brotli}/ext.brotli/install/lib
+      - PNG_ROOT=${externalBuild:libpng}/ext.libpng/install
+      - PNG_LIBRARY=${externalBuild:libpng}/ext.libpng/install/lib
+      - PNG_PNG_INCLUDE_DIR=${externalBuild:libpng}/ext.libpng/install/include
 
     # defines[platform:!windows]:
     # - ZLIB_INCLUDE_DIRS=${external:zlib}
