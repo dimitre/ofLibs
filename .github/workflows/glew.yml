@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          #- { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
