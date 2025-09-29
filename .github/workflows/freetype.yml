@@ -12,6 +12,8 @@ env:
 jobs:
   freetype_matrix:
     strategy:
+      # this way macos completes if windows fails
+      fail-fast: false
       matrix:
         include:
           # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }

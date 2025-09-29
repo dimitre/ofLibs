@@ -1,7 +1,5 @@
 name: FreeImage
 
-# comment just to trigger a new run
-
 on:
   push:
     paths:
@@ -12,7 +10,6 @@ permissions:
   contents: write
 
 concurrency:
-  # group: ${{ github.workflow }}-${{ github.ref }}
   group: ${{ github.workflow }}
   cancel-in-progress: false
 

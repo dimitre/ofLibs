@@ -60,11 +60,19 @@ targets:
       - FT_DISABLE_HARFBUZZ=ON
       - ZLIB_ROOT=${externalBuild:zlib}/install
       - ZLIB_LIBRARY=${externalBuild:zlib}/install/lib
+      - ZLIB_INCLUDE_DIR=${externalBuild:zlib}/install/include
       - BROTLI_ROOT=${externalBuild:brotli}/ext.brotli/install
       - BROTLI_LIBRARY=${externalBuild:brotli}/ext.brotli/install/lib
       - PNG_ROOT=${externalBuild:libpng}/ext.libpng/install
       - PNG_LIBRARY=${externalBuild:libpng}/ext.libpng/install/lib
       - PNG_PNG_INCLUDE_DIR=${externalBuild:libpng}/ext.libpng/install/include
+      - BROTLIDEC_INCLUDE_DIRS=${externalBuild:brotli}/ext.brotli/install/include
+      - BROTLIDEC_LIBRARIES=${externalBuild:brotli}/ext.brotli/install/lib
+
+    # -- Could NOT find ZLIB (missing: ZLIB_INCLUDE_DIR)
+    # -- Found PNG: build/x86_64-pc-windows-msvc_Release/ext.libpng/ext.libpng/install/lib
+    # -- Could NOT find ZLIB (missing: ZLIB_INCLUDE_DIR)
+    # -- Could NOT find BrotliDec (missing: BROTLIDEC_INCLUDE_DIRS BROTLIDEC_LIBRARIES)
 
     # defines[platform:!windows]:
     # - ZLIB_INCLUDE_DIRS=${external:zlib}
