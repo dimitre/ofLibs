@@ -79,7 +79,8 @@ jobs:
           sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: Apt Additional Packages
-        if: matrix.platform == 'linux64' || matrix.platform == 'rpi-aarch64'
+        if: matrix.platform == 'linux64'
+        # || matrix.platform == 'rpi-aarch64'
         run: |
           sudo apt install jackd libpulse-dev libasound2-dev
 
@@ -106,6 +107,10 @@ jobs:
           packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
           #libpulse-dev jackd libasound2-dev
           version: 1.0
+
+      - name: RPI - Check Alsa
+        run: |
+          find raspbian -name version.h
 
       # - name: RPI - apt complementary 🎺
       #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
