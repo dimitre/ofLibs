@@ -23,9 +23,9 @@ targets:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
     # FIXME: remove - only a test to see if it works as a parameter
     defines[toolchain:aarch64-linux-gnu-gcc]:
-      - CMAKE_SYSROOT=raspbian
-      - CMAKE_LIBRARY_PATH=raspbian/usr/lib
-      - CMAKE_INCLUDE_PATH=raspbian/usr/include
+      - CMAKE_SYSROOT=${cwd}/raspbian
+      - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
+      - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
 
 distribution:
   glew:
