@@ -79,7 +79,7 @@ jobs:
           sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: Apt Additional Packages
-        if: matrix.platform == 'linux64'
+        if: matrix.platform == 'linux64' || matrix.platform == 'rpi-aarch64'
         run: |
           sudo apt install jackd libpulse-dev libasound2-dev
 
@@ -103,7 +103,8 @@ jobs:
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} libpulse-dev-${{ matrix.prefix }} jackd-${{ matrix.prefix }} libasound2-dev-${{ matrix.prefix }}
+          packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
+          #libpulse-dev jackd libasound2-dev
           version: 1.0
 
       # - name: RPI - apt complementary 🎺
