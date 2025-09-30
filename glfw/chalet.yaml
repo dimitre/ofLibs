@@ -32,7 +32,8 @@ targets:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
     # teste workaround...
     # https://github.com/glfw/glfw/issues/1957#issuecomment-1891056066
-    defines[toolchain:aarch64-linux-gnu-gcc]:
+    # defines[toolchain:aarch64-linux-gnu-gcc]:
+    defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
       - X11_X11_LIB=who_cares
       - GLFW_BUILD_WAYLAND=OFF
     defines[platform:linux]:

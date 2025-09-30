@@ -27,6 +27,10 @@ targets:
       - CMAKE_SYSROOT=${cwd}/raspbian
       - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
       - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
+    defines[toolchain:arm-linux-gnueabihf-gcc]:
+      - CMAKE_SYSROOT=${cwd}/raspbian
+      - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
+      - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
 
 distribution:
   glew:
