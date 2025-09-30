@@ -5,7 +5,7 @@ You are welcome to jump in and help building and testing more libraries.
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/cairo.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/fmt.yml/fmt.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/fmt.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/freetype.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glew.yml/badge.svg)
@@ -27,6 +27,7 @@ You are welcome to jump in and help building and testing more libraries.
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/uriparser.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/utfcpp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/videoInput.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/yaml-cpp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/zlib.yml/badge.svg)
 
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/openssl-curl.yml/badge.svg)
