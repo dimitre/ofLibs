@@ -3,8 +3,7 @@ version: "1.0"
 externalDependencies:
   yaml-cpp:
     repository: https://github.com/jbeder/yaml-cpp/
-    # tag: 0.8.0
-    commit: 2f86d13775d119edbb69af52e5f566fd65c6953b
+    commit: 65c1c27
     kind: git
 targets:
   yaml-cpp:
@@ -17,26 +16,9 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - BUILD_SHARED_LIBS=OFF
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
-      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
-      # - CMAKE_INSTALL_PREFIX=Release
-      # - CMAKE_INSTALL_LIBDIR=./lib/${env:PLATFORM}
-
-      # - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_INSTALL_FULL_LIBDIR=./lib
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
-  # test:
-  #   kind: script
-  #   file: test.sh
-  #   arguments:
-  #     - ${external:yaml-cpp}
-  # usbAdjust:
-  #   kind: script
-  #   file: yaml-cpp_folders.sh
-  #   arguments:
-  #     - ${external:yaml-cpp}
 
 distribution:
   yaml-cpp:
@@ -46,6 +28,3 @@ distribution:
       - ${external:${name}}/LICENSE**
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
-
-    # exclude: -${externalBuild:${name}}/install/lib/cmake
-    # -${externalBuild:${name}}/install/lib/pkgconfig
