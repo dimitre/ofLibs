@@ -103,6 +103,11 @@ jobs:
           packages: libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev  libegl1-mesa-dev libopengl-dev libglx-dev
           version: 1.0
 
+      - name: RPI - Apt Packages
+        if: matrix.platform == 'rpi-aarch64'
+        run: |
+          sudo apt install libgl1-mesa-dev:arm64 libglu1-mesa-dev:arm64 libglx-mesa-dev:arm64 libegl1-mesa-dev:arm64
+
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
