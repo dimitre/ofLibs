@@ -21,9 +21,12 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_INSTALL_PREFIX=install
-      - BUILD_STATIC_LIBS=ON
+      # - BUILD_STATIC_LIBS=ON
       - BUILD_SHARED_LIBS=OFF #not working in this repo
       - ENABLE_SHARED=OFF
+      - WITH_TOOLS=OFF
+      - WITH_TESTS=OFF
+
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
