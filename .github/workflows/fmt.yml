@@ -3,8 +3,8 @@ name: fmt
 on:
   push:
     paths:
-      - ${{ github.workflow }}/**
-      - .github/workflows/${{ github.workflow }}.yml
+      - fmt/**
+      - .github/workflows/fmt.yml
 
 # not needed really
 permissions:
