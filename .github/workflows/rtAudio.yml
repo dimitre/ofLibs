@@ -3,8 +3,8 @@ name: rtAudio
 on:
   push:
     paths:
-      - rtAudio/**
-      - .github/workflows/rtAudio.yml
+      - ${{ github.workflow }}/**
+      - .github/workflows/${{ github.workflow }}.yml
 
 # not needed really
 permissions:
