@@ -109,8 +109,10 @@ jobs:
           version: 1.0
 
       - name: RPI - Check Alsa
+        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         run: |
-          find raspbian -name version.h
+          find . -name version.h
+          find . -name raspbian
 
       # - name: RPI - apt complementary 🎺
       #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
