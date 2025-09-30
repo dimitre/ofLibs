@@ -117,11 +117,15 @@ jobs:
           extension: .zip
           prerelease: "false"
 
-      - name: Chalet Test and Configure
-        if: matrix.toolchain != ''
+      - name: Chalet Test
         run: |
           chalet --version
-          chalet configure --toolchain ${{ matrix.toolchain }} -a auto
+
+      - name: Chalet Configure
+        if: matrix.toolchain != ''
+        run: |
+          chalet configure --toolchain ${{ matrix.toolchain }}
+        # chalet configure --toolchain ${{ matrix.toolchain }} -a auto
 
       - name: Chalet Bundle
         run: |
