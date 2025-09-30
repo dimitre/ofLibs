@@ -13,8 +13,8 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
 
-env:
-  CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# env:
+#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   FreeImage_matrix:
@@ -23,7 +23,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
@@ -35,21 +35,39 @@ jobs:
               prefix: aarch64-linux-gnu,
               toolchain: aarch64-linux-gnu-gcc,
             }
-          # - {
-          #     platform: rpi-armv6l,
-          #     os: ubuntu-latest,
-          #     prefix: arm-linux-gnueabihf,
-          #     toolchain: arm-linux-gnueabihf-gcc,
-          #   }
+          - {
+              platform: rpi-armv6l,
+              os: ubuntu-latest,
+              prefix: arm-linux-gnueabihf,
+              toolchain: arm-linux-gnueabihf-gcc,
+            }
+          - {
+              platform: msys2,
+              os: ubuntu-latest,
+              prefix: mingw-w64,
+              toolchain: x86_64-w64-mingw32-gcc,
+              # params: -t gcc -a x86_64-w64-mingw32,
+              # shell: bash,
+            }
     runs-on: ${{ matrix.os }}
-    env:
-      PLATFORM: ${{ matrix.platform }}
+    # env:
+    # PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         shell: bash
         working-directory: ${{ github.workflow }}
     steps:
       - uses: actions/checkout@v5
+
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+
+      - name: MSYS2 Apt Cross Compile
+        if: matrix.platform == 'msys2' && runner.os == 'Linux'
+        run: |
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: macOS Checks
         if: runner.os == 'macOS'
@@ -91,11 +109,6 @@ jobs:
       #   packages: libudev-dev
       #   version: 1.0
 
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
-
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
@@ -120,7 +133,8 @@ jobs:
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
         run: |
-          chalet bundle --compiler-cache --show-commands
+          chalet bundle --show-commands
+        # chalet bundle --compiler-cache --show-commands
 
       - name: iOS
         if: matrix.platform == 'ios'
