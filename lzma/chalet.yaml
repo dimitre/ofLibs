@@ -32,6 +32,6 @@ distribution:
     format: zip
     include:
       - ${externalBuild:${name}}/install/lib
-      - ${externalBuild:${name}}/install/include
+      # - ${externalBuild:${name}}/install/include
       - ${external:${name}}/COPYING*
       # - ${external:${name}}/LICENSES
