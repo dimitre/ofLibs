@@ -28,6 +28,14 @@ jobs:
               prefix: aarch64-linux-gnu,
               toolchain: aarch64-linux-gnu-gcc,
             }
+
+          - {
+              platform: rpi-armv6l,
+              os: ubuntu-latest,
+              prefix: arm-linux-gnueabihf,
+              toolchain: arm-linux-gnueabihf-gcc,
+            }
+
           - {
               platform: msys2,
               os: ubuntu-latest,
@@ -36,12 +44,6 @@ jobs:
               # params: -t gcc -a x86_64-w64-mingw32,
               # shell: bash,
             }
-          # - {
-          #     platform: rpi-armv6l,
-          #     os: ubuntu-latest,
-          #     prefix: arm-linux-gnueabihf,
-          #     toolchain: arm-linux-gnueabihf-gcc,
-          #   }
 
     runs-on: ${{ matrix.os }}
     env:

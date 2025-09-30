@@ -19,7 +19,7 @@ jobs:
       # fail-fast: false
       matrix:
         include:
-          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
@@ -30,12 +30,12 @@ jobs:
               prefix: aarch64-linux-gnu,
               toolchain: aarch64-linux-gnu-gcc,
             }
-          # - {
-          #     platform: rpi-armv6l,
-          #     os: ubuntu-latest,
-          #     prefix: arm-linux-gnueabihf,
-          #     toolchain: gcc,
-          #   }
+          - {
+              platform: rpi-armv6l,
+              os: ubuntu-latest,
+              prefix: arm-linux-gnueabihf,
+              toolchain: gcc,
+            }
           - {
               platform: msys2,
               os: ubuntu-latest,
