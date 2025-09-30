@@ -106,6 +106,7 @@ jobs:
       - name: RPI - Apt Packages
         if: matrix.platform == 'rpi-aarch64'
         run: |
+          sudo dpkg --add-architecture arm64
           sudo apt install libgl1-mesa-dev:arm64 libglu1-mesa-dev:arm64 libglx-mesa-dev:arm64 libegl1-mesa-dev:arm64
 
       - name: Install Chalet
