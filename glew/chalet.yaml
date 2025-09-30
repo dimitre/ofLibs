@@ -24,6 +24,8 @@ targets:
     # FIXME: remove - only a test to see if it works as a parameter
     defines[toolchain:aarch64-linux-gnu-gcc]:
       - CMAKE_SYSROOT=raspbian
+      - CMAKE_LIBRARY_PATH=raspbian/usr/lib
+      - CMAKE_INCLUDE_PATH=raspbian/usr/include
 
 distribution:
   glew:
