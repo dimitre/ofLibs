@@ -3,8 +3,8 @@ name: brotli
 on:
   push:
     paths:
-      - brotli/**
-      - .github/workflows/brotli.yml
+      - ${{ github.workflow }}/**
+      - .github/workflows/${{ github.workflow }}.yml
 
 permissions:
   contents: write
