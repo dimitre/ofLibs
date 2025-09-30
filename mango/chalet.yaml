@@ -75,10 +75,10 @@ targets:
       # - LIBDEFLATE_ROOT=../../${externalBuild:deflate}/install
       # - LIBDEFLATE_INCLUDE_DIRS=${externalBuild:deflate}/ext.deflate/install/include
       # - LIBDEFLATE_LIBRARIES=${externalBuild:deflate}/ext.deflate/install/lib
-      # - FMT_ROOT=${externalBuild:fmt}/ext.fmt/install
+      - FMT_ROOT=${externalBuild:fmt}/ext.fmt/install
       # - FMT_INCLUDE_DIRS=${externalBuild:fmt}/ext.fmt/install/include
-      - FMT_INCLUDE_DIR=${externalBuild:fmt}/ext.fmt/install/include
-      - FMT_LIBRARIES=${externalBuild:fmt}/ext.fmt/install/lib
+      # - FMT_INCLUDE_DIR=${externalBuild:fmt}/ext.fmt/install/include
+      # - FMT_LIBRARIES=${externalBuild:fmt}/ext.fmt/install/lib
 
       # - CMAKE_INSTALL_PREFIX=install
       # - CMAKE_INSTALL_INCLUDEDIR=include
