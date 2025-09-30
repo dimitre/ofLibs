@@ -125,6 +125,7 @@ jobs:
       - name: RPI - Check Alsa
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         run: |
+          pwd
           find . -name version.h
           find . -name raspbian
           find raspbian -name version.h
