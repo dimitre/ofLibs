@@ -64,12 +64,19 @@ jobs:
         run: |
           sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
+      - name: Emscripten Setup cache
+        id: cache-system-libraries
+        uses: actions/cache@v4
+        with:
+          path: emsdk-cache
+          key: 4.0.15-${{ runner.os }}
+
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
         with:
           version: 4.0.15
-          actions-cache-folder: "emsdk-cache"
+          actions-cache-folder: emsdk-cache
 
       - name: Update emsdk
         if: matrix.platform == 'emscripten'
