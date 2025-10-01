@@ -14,6 +14,7 @@ env:
 jobs:
   glfw_matrix:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
