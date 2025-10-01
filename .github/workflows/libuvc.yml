@@ -16,7 +16,7 @@ env:
 jobs:
   libuvc_matrix:
     strategy:
-      # fail-fast: false
+      fail-fast: false
       matrix:
         include:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
