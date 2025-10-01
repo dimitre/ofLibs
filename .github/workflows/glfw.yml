@@ -112,7 +112,7 @@ jobs:
         if: matrix.platform == 'emscripten'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: xorg-dev libglu1-mesa-dev
+          packages: xorg-dev libglu1-mesa-dev libxrandr-dev
           version: 1.0
 
       - name: Install Chalet
