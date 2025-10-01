@@ -40,12 +40,23 @@ targets:
     defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
       - X11_X11_LIB=who_cares
       - GLFW_BUILD_WAYLAND=OFF
+      - CMAKE_SYSROOT=${cwd}/raspbian
+      - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
+      - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
+
     defines[toolchain:aarch64-linux-gnu-gcc]:
       - X11_X11_LIB=who_cares
       - GLFW_BUILD_WAYLAND=OFF
+      - CMAKE_SYSROOT=${cwd}/raspbian
+      - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
+      - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
+
     defines[toolchain:arm-linux-gnueabihf-gcc]:
       - X11_X11_LIB=who_cares
       - GLFW_BUILD_WAYLAND=OFF
+      - CMAKE_SYSROOT=${cwd}/raspbian
+      - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
+      - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
 
 distribution:
   glfw:
