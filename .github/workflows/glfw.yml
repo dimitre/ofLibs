@@ -101,6 +101,13 @@ jobs:
           packages: libwayland-dev libxkbcommon-dev libx11-dev xorg-dev libglu1-mesa-dev cmake extra-cmake-modules
           version: 1.0
 
+      - name: Apt Cache Packages Emscripten
+        if: matrix.platform == 'emscripten'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: xorg-dev libglu1-mesa-dev
+          version: 1.0
+
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
