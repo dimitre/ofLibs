@@ -20,7 +20,7 @@ targets:
       # - default_both_libraries=static
       # - prefer_static=true
 
-      - pixman=enabled
+      # - pixman=enabled
       - tests=disabled
 
       - xcb=disabled
