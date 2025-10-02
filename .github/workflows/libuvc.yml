@@ -132,7 +132,8 @@ jobs:
         if: matrix.toolchain != ''
         run: |
           chalet --version
-          chalet configure --toolchain ${{ matrix.toolchain }} -a auto
+          chalet configure --toolchain ${{ matrix.toolchain }}
+        # chalet configure --toolchain ${{ matrix.toolchain }} -a auto
 
       - name: Chalet Bundle
         if: matrix.platform != 'ios'
