@@ -75,6 +75,7 @@ targets:
       # - LIBUSB_ROOT=${cwd}/${externalBuild:libusb}/ext.libusb/install
       # - LIBUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib/libusb-1.0.lib
       # - LIBUSB_INCLUDE_DIRS=${cwd}/${externalBuild:libusb}/ext.libusb/install/include/libusb-1.0
+      - LIBUSB_ROOT=${cwd}/${externalBuild:libusb}/ext.libusb/install
       - LIBUSB_ROOT_DIR=${cwd}/${externalBuild:libusb}/ext.libusb/install
       - LIBUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib/libusb-1.0.lib
       - LIBUSB_INCLUDE_DIR=${cwd}/${externalBuild:libusb}/ext.libusb/install/include/libusb-1.0
