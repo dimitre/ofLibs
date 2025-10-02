@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cfg:
+        include:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
@@ -43,9 +43,9 @@ jobs:
               # shell: bash,
             }
 
-    runs-on: ${{ matrix.cfg.os }}
+    runs-on: ${{ matrix.os }}
     # env:
-    #   PLATFORM: ${{ matrix.cfg.platform }}
+    #   PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         shell: bash
@@ -56,7 +56,7 @@ jobs:
       # - name: ccache
       #   uses: hendrikmuhs/ccache-action@v1.2.19
       #   with:
-      #     key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
+      #     key: ${{ runner.os }}-${{ matrix.platform }}-ccache
 
       # - uses: git-for-windows/setup-git-for-windows-sdk@v1
       #   if: runner.os == 'Windows'
@@ -77,14 +77,14 @@ jobs:
           sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: Emscripten Install
-        if: matrix.cfg.platform == 'emscripten'
+        if: matrix.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
         with:
           version: 4.0.15
           actions-cache-folder: "emsdk-cache"
 
       - name: Verify emsdk
-        if: matrix.cfg.platform == 'emscripten'
+        if: matrix.platform == 'emscripten'
         run: |
           emcc -v
           emsdk update
@@ -93,22 +93,23 @@ jobs:
           emcc -v
 
       # - name: RPI - apt multistrap
-      #   if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+      #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
       #   uses: awalsh128/cache-apt-pkgs-action@latest
       #   with:
-      #     packages: multistrap gcc-${{matrix.cfg.prefix}} g++-${{matrix.cfg.prefix}}
+      #     packages: multistrap gcc-${{matrix.prefix}} g++-${{matrix.prefix}}
       #     version: 1.0
 
       # - name: RPI - multistrap
-      #   if: matrix.cfg.platform == 'rpi-aarch64' || matrix.cfg.platform == 'rpi-armv6l'
+      #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
       #   shell: bash
       #   run: |
       #     mkdir -p raspbian/etc/apt/apt.conf.d/
       #     echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
       #     multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
-      - name: Apt
-        if: runner.os == 'Linux'
+      - name: Apt Packages for Linux
+        # if: runner.os == 'Linux'
+        if: matrix.platform == 'linux64'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: libudev-dev
@@ -146,6 +147,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.cfg.platform }}.zip
+          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.1 *.zip --clobber
