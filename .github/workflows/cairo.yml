@@ -69,6 +69,11 @@ jobs:
         run: |
           sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
+      - name: Linux Apt
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt install -y libunwind-dev libpolkit-gobject-1-dev
+
       # - name: Test Meson
       #   if: Runner.os == 'Windows'
       #   run: |
