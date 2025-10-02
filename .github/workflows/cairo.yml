@@ -135,6 +135,11 @@ jobs:
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
+      - name: RPI - check tree
+        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
+        run: |
+          tree -d raspbian
+
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
         with:
