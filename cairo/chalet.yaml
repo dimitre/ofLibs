@@ -33,7 +33,6 @@ targets:
     # temporary, only to make it work on MSYS cross compile (hopefully) before Chalet fixes.
     # FIXME: Remove when this is closed https://github.com/chalet-org/chalet/issues/425
     defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
-      - skip_sanity_checks=true
       - prefix=${cwd}/raspbian
 
     defines[platform:macos]:

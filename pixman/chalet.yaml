@@ -26,12 +26,11 @@ targets:
       - cpp_args=-mmacos-version-min=11.6
 
     # FIXME: Remove when this is closed https://github.com/chalet-org/chalet/issues/425
-    defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
-      - skip_sanity_checks=true
-      # - prefix=./${externalBuild:${name}}
-      # - libdir=lib
-      # - default_both_libraries=static
-      # - prefer_static=true
+    # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
+    # - prefix=./${externalBuild:${name}}
+    # - libdir=lib
+    # - default_both_libraries=static
+    # - prefer_static=true
   # pixman-script:
   #   kind: script
   #   file: pixman.sh
