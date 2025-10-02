@@ -14,7 +14,6 @@ targets:
     location: ${external:${name}}
     install: true
     defines:
-      # - export MACOSX_DEPLOYMENT_TARGET=11.6
       - buildtype=release
       - default_library=static
       # if disabled meson fails with  ERROR: C prefer_static library 'gdi32' not found
@@ -55,15 +54,20 @@ distribution:
   cairo:
     kind: archive
     format: zip
+    include:
+      - ${external:${name}}/COPYING*
+
     include[platform:macos]:
       - ${externalBuild:${name}}/install/opt/homebrew/include
       - ${externalBuild:${name}}/install/opt/homebrew/lib
       - ${externalBuild:${name}}/install/usr/local/include
       - ${externalBuild:${name}}/install/usr/local/lib
-      - ${external:${name}}/COPYING*
     include[platform:windows]:
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
-      - ${external:${name}}/COPYING*
+    include[platform:linux]:
+      - ${externalBuild:${name}}/usr/local/include
+      - ${externalBuild:${name}}/usr/local/lib
+
       # - ${externalBuild:${name}}/src/*.a
       # - ${externalBuild:${name}}/src/*.h
