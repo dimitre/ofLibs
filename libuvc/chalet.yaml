@@ -65,11 +65,11 @@ targets:
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       # - CMAKE_BUILD_TARGET=Static
       #
-      # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libusb}/ext.libusb/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libusb}/ext.libusb/install
 
-      - LibUSB_ROOT=${cwd}/${externalBuild:libusb}/ext.libusb/install
-      - LibUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib
-      - LibUSB_INCLUDE_DIRS=${cwd}/${externalBuild:libusb}/ext.libusb/install/include/libusb-1.0
+      # - LibUSB_ROOT=${cwd}/${externalBuild:libusb}/ext.libusb/install
+      # - LibUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib
+      # - LibUSB_INCLUDE_DIRS=${cwd}/${externalBuild:libusb}/ext.libusb/install/include/libusb-1.0
 
     defines[platform:windows]:
       - LIBUSB_ROOT=${cwd}/${externalBuild:libusb}/ext.libusb/install
