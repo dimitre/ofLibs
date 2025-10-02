@@ -64,15 +64,27 @@ jobs:
       - name: Install Meson
         run: pip install meson ninja
 
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+
       - name: MSYS2 Apt Cross Compile
         if: matrix.platform == 'msys2' && runner.os == 'Linux'
         run: |
           sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
-      - name: Linux Apt
+      - name: Linux Apt Cache
         if: runner.os == 'Linux'
-        run: |
-          sudo apt install -y libunwind-dev libpolkit-gobject-1-dev
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: libunwind-dev libpolkit-gobject-1-dev
+          version: 1.0
+
+      # - name: Linux Apt
+      #   if: runner.os == 'Linux'
+      #   run: |
+      #     sudo apt install -y libunwind-dev libpolkit-gobject-1-dev
 
       # - name: Test Meson
       #   if: Runner.os == 'Windows'
@@ -81,15 +93,6 @@ jobs:
       #     cd cairo
       #     meson setup builddir --buildtype=release
       #     meson compile -C builddir
-      # - name: Brew Meson
-      #   uses: tecolicom/actions-use-homebrew-tools@v1
-      #   with:
-      #     tools: meson
-
-      # - name: ccache
-      #   uses: hendrikmuhs/ccache-action@v1.2.19
-      #   with:
-      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
 
       # - name: Cairo Build
       #   run: |

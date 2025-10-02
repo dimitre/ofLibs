@@ -27,6 +27,10 @@ targets:
       - xlib=disabled
       - lzo=disabled
 
+      - dwrite=disabled
+      - fontconfig=disabled
+      - freetype=disabled
+
     defines[platform:macos]:
       - c_args=-mmacos-version-min=11.6
       - cpp_args=-mmacos-version-min=11.6
@@ -36,10 +40,6 @@ targets:
       # - quartz=disabled
       # - zlib=disabled
       # - spectre=disabled
-
-      - dwrite=disabled
-      - fontconfig=disabled
-      - freetype=disabled
 
       # - tee=disabled
       # - xcb=disabled
