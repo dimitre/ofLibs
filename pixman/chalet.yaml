@@ -18,6 +18,7 @@ targets:
       - demos=disabled
       - tests=disabled
       # FIXME: only for platform RPI
+    defines[architecture:!x86_64]:
       - mmx=disabled
       - sse2=disabled
     defines[platform:macos]:
