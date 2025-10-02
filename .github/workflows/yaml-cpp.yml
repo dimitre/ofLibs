@@ -40,7 +40,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        # working-directory: ./${{ github.workflow }}
+        # working-directory: ${{ github.workflow }}
         working-directory: yaml-cpp
     steps:
       - uses: actions/checkout@v5

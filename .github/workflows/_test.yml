@@ -41,7 +41,7 @@ jobs:
     # defaults:
     # run:
     # working-directory: libusb
-    # working-directory: ./${{ github.workflow }}
+    # working-directory: ${{ github.workflow }}
     steps:
       - uses: actions/checkout@v5
 

@@ -15,8 +15,6 @@ targets:
     install: true
     defines:
       # - export MACOSX_DEPLOYMENT_TARGET=11.6
-      - c_args=-mmacos-version-min=11.6
-      - cpp_args=-mmacos-version-min=11.6
       - buildtype=release
       - default_library=static
       # if disabled meson fails with  ERROR: C prefer_static library 'gdi32' not found
@@ -28,6 +26,10 @@ targets:
       - xcb=disabled
       - xlib=disabled
       - lzo=disabled
+
+    defines[platform:macos]:
+      - c_args=-mmacos-version-min=11.6
+      - cpp_args=-mmacos-version-min=11.6
 
       # I had to reenable those 4 to make it work
       # - png=disabled
