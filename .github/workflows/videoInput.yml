@@ -92,8 +92,6 @@ jobs:
         run: chalet configure --toolchain ${{ matrix.toolchain }} -a auto
 
       - name: Chalet Bundle
-        # if: matrix.platform != 'ios'
-        # # chalet bundle --compiler-cache --show-commands
         run: |
           chalet bundle --show-commands
 

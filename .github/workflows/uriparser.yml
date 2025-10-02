@@ -14,8 +14,8 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
 
-env:
-  CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# env:
+#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   uriparser_matrix:
@@ -67,24 +67,24 @@ jobs:
           emsdk activate latest
           emcc -v
 
-      - name: RPI - apt multistrap
+      - name: RPI - Apt Cache Packages
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
           version: 1.0
 
-      - name: RPI - multistrap
-        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
-        run: |
-          mkdir -p raspbian/etc/apt/apt.conf.d/
-          echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
-          multistrap -a arm64 -d raspbian -f ../multistrap.conf
+      # - name: RPI - multistrap
+      #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
+      #   run: |
+      #     mkdir -p raspbian/etc/apt/apt.conf.d/
+      #     echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
+      #     multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
@@ -102,17 +102,10 @@ jobs:
         run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
-        if: matrix.platform != 'ios'
         run: |
-          chalet bundle --compiler-cache --show-commands
-
-      - name: iOS Bundle
-        if: matrix.platform == 'ios'
-        run: |
-          ./${{ github.workflow }}.sh
+          chalet bundle --show-commands # --compiler-cache
 
       - name: LS check built lib
-        if: matrix.platform != 'ios'
         run: |
           unzip dist/*.zip
           ls -alfR dist

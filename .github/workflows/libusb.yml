@@ -136,7 +136,6 @@ jobs:
       - name: Chalet Bundle
         run: |
           chalet bundle --show-commands
-        # chalet bundle --compiler-cache --show-commands
 
       - name: LS check built lib
         run: |

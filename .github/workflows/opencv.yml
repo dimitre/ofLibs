@@ -9,8 +9,8 @@ on:
 permissions:
   contents: write
 
-env:
-  CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# env:
+#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   opencv_matrix:
@@ -20,7 +20,6 @@ jobs:
           # TODO: make ios script
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
-          # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
@@ -29,12 +28,20 @@ jobs:
               prefix: aarch64-linux-gnu,
               toolchain: aarch64-linux-gnu-gcc,
             }
-          # - {
-          #     platform: rpi-armv6l,
-          #     os: ubuntu-latest,
-          #     prefix: arm-linux-gnueabihf,
-          #     toolchain: arm-linux-gnueabihf-gcc,
-          #   }
+          - {
+              platform: rpi-armv6l,
+              os: ubuntu-latest,
+              prefix: arm-linux-gnueabihf,
+              toolchain: arm-linux-gnueabihf-gcc,
+            }
+          - {
+              platform: msys2,
+              os: ubuntu-latest,
+              prefix: mingw-w64,
+              toolchain: x86_64-w64-mingw32-gcc,
+              # params: -t gcc -a x86_64-w64-mingw32,
+              # shell: bash,
+            }
 
     runs-on: ${{ matrix.os }}
     env:
@@ -46,6 +53,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+
+      - name: MSYS2 Apt Cross Compile
+        if: matrix.platform == 'msys2' && runner.os == 'Linux'
+        run: |
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
@@ -63,24 +75,24 @@ jobs:
           emsdk activate latest
           emcc -v
 
-      - name: RPI - apt multistrap
+      - name: RPI - Apt Cache Packages
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
           version: 1.0
 
-      - name: RPI - multistrap
-        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
-        run: |
-          mkdir -p raspbian/etc/apt/apt.conf.d/
-          echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
-          multistrap -a arm64 -d raspbian -f ../multistrap.conf
+      # - name: RPI - multistrap
+      #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
+      #   run: |
+      #     mkdir -p raspbian/etc/apt/apt.conf.d/
+      #     echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
+      #     multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
@@ -98,14 +110,8 @@ jobs:
         run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
-        if: matrix.platform != 'ios'
         run: |
-          chalet bundle --compiler-cache --show-commands
-
-      - name: iOS Bundle
-        if: matrix.platform == 'ios'
-        run: |
-          ./${{ github.workflow }}.sh
+          chalet bundle --show-commands # --compiler-cache
 
       - name: LS check built lib
         run: |

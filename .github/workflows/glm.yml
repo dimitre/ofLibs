@@ -68,7 +68,7 @@ jobs:
           version: 4.0.15
           actions-cache-folder: "emsdk-cache"
 
-      - name: RPI - apt multistrap
+      - name: RPI - Apt Cache Packages
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
@@ -107,7 +107,6 @@ jobs:
       - name: Chalet Bundle
         run: |
           chalet bundle --show-commands
-        # chalet bundle --compiler-cache --show-commands
 
       - name: LS check built lib
         shell: bash

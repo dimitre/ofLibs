@@ -25,7 +25,6 @@ jobs:
         include:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
-          # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
           # - { platform: macos, os: macos-14, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
@@ -122,27 +121,13 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        if: matrix.platform != 'ios'
         run: chalet configure --toolchain ${{ matrix.toolchain }}
 
-      - name: Chalet Configure IOS
-        if: matrix.platform == 'ios'
-        run: |
-          chalet configure
-
       - name: Chalet Bundle
-        if: matrix.platform != 'ios'
         run: |
           chalet bundle --show-commands
-        # chalet bundle --compiler-cache --show-commands
-
-      - name: iOS
-        if: matrix.platform == 'ios'
-        run: |
-          ./${{ github.workflow }}.sh
 
       - name: LS check built lib
-        if: matrix.platform != 'ios'
         run: |
           unzip dist/*.zip
           ls -alfR dist

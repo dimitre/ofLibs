@@ -9,8 +9,8 @@ on:
 permissions:
   contents: write
 
-env:
-  CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# env:
+#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   assimp_matrix:
@@ -19,7 +19,6 @@ jobs:
         include:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
-          # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
@@ -43,9 +42,10 @@ jobs:
               # params: -t gcc -a x86_64-w64-mingw32,
               # shell: bash,
             }
+
     runs-on: ${{ matrix.os }}
-    env:
-      PLATFORM: ${{ matrix.platform }}
+    # env:
+    #   PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         shell: bash
@@ -54,10 +54,10 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
@@ -110,17 +110,10 @@ jobs:
         run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
-        if: matrix.platform != 'ios'
         run: |
-          chalet bundle --compiler-cache --show-commands
-
-      - name: iOS Bundle
-        if: matrix.platform == 'ios'
-        run: |
-          ./${{ github.workflow }}.sh
+          chalet bundle --show-commands #--compiler-cache
 
       - name: LS check built lib
-        if: matrix.platform != 'ios'
         run: |
           unzip dist/*.zip
           ls -alfR dist

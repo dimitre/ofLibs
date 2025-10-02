@@ -14,15 +14,15 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
 
-env:
-  CMAKE_CXX_COMPILER_LAUNCHER: ccache
-  # Dmtr: true
-  # CMAKE_CXX_COMPILER_LAUNCHER: ccache
-  # MACOSX_DEPLOYMENT_TARGET: 11.6
-  # MACOS_DEPLOYMENT_TARGET: 11.6
-  # MIN_SUPPORTED_MACOSX_DEPLOYMENT_TARGET: 11.6
-  # SYSTEM_VERSION_COMPAT: 1
-  # CXXFLAGS: -mmacosx-version-min=11.6
+# env:
+# CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# Dmtr: true
+# CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# MACOSX_DEPLOYMENT_TARGET: 11.6
+# MACOS_DEPLOYMENT_TARGET: 11.6
+# MIN_SUPPORTED_MACOSX_DEPLOYMENT_TARGET: 11.6
+# SYSTEM_VERSION_COMPAT: 1
+# CXXFLAGS: -mmacosx-version-min=11.6
 
 jobs:
   pixman_matrix:
@@ -30,9 +30,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
-          # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
@@ -42,6 +41,12 @@ jobs:
               toolchain: aarch64-linux-gnu-gcc,
             }
           - {
+              platform: rpi-armv6l,
+              os: ubuntu-latest,
+              prefix: arm-linux-gnueabihf,
+              toolchain: arm-linux-gnueabihf-gcc,
+            }
+          - {
               platform: msys2,
               os: ubuntu-latest,
               prefix: mingw-w64,
@@ -49,12 +54,6 @@ jobs:
               # params: -t gcc -a x86_64-w64-mingw32,
               # shell: bash,
             }
-          # - {
-          #     platform: rpi-armv6l,
-          #     os: ubuntu-latest,
-          #     prefix: arm-linux-gnueabihf,
-          #     toolchain: arm-linux-gnueabihf-gcc,
-          #   }
 
     runs-on: ${{ matrix.os }}
     # env:
@@ -75,10 +74,10 @@ jobs:
       # - uses: actions/setup-python@v5.6.0
       #   with:
       #     python-version: "3.x"
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
@@ -111,19 +110,19 @@ jobs:
       #     packages: libpixman-1-dev libpng12-dev libfreetype-dev
       #     version: 1.0
 
-      - name: RPI - apt multistrap
+      - name: RPI - Apt Cache Packages
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
           version: 1.0
 
-      - name: RPI - multistrap
-        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
-        run: |
-          mkdir -p raspbian/etc/apt/apt.conf.d/
-          echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
-          multistrap -a arm64 -d raspbian -f ../multistrap.conf
+      # - name: RPI - multistrap
+      #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
+      #   run: |
+      #     mkdir -p raspbian/etc/apt/apt.conf.d/
+      #     echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
+      #     multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
@@ -144,13 +143,10 @@ jobs:
       #   run: export
 
       - name: Chalet Bundle
-        if: matrix.platform != 'ios'
         run: |
           chalet bundle --show-commands
-          # chalet bundle --compiler-cache --show-commands
 
       - name: LS check built lib
-        if: matrix.platform != 'ios'
         run: |
           unzip dist/*.zip
           ls -alfR dist
@@ -166,13 +162,7 @@ jobs:
       # - name: TREE build
       # run: tree -h pixman/build
 
-      - name: iOS Bundle
-        if: matrix.platform == 'ios'
-        run: |
-          ./${{ github.workflow }}.sh
-
       # - name: LS check built lib
-      #   if: matrix.platform != 'ios'
       #   run: |
       #     unzip dist/*.zip
       #     ls -alfR dist

@@ -26,7 +26,6 @@ jobs:
               # toolchain: llvm,
               shell: bash,
             }
-          # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
@@ -97,7 +96,7 @@ jobs:
           emsdk activate latest
           emcc -v
 
-      - name: RPI - apt multistrap
+      - name: RPI - Apt Cache Packages
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
@@ -132,7 +131,6 @@ jobs:
           chalet bundle --show-commands #--compiler-cache
 
       - name: LS check built lib
-        if: matrix.platform != 'ios'
         run: |
           unzip dist/*.zip
           ls -alfR dist

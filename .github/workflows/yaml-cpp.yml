@@ -9,8 +9,8 @@ on:
 permissions:
   contents: write
 
-env:
-  CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# env:
+#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   yaml-cpp_matrix:
@@ -19,7 +19,6 @@ jobs:
         include:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
-          # - { platform: ios, os: macos-26, toolchain: apple-llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
@@ -75,7 +74,7 @@ jobs:
           emsdk activate latest
           emcc -v
 
-      # - name: RPI - apt multistrap
+      # - name: RPI - Apt Cache Packages
       #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
       #   uses: awalsh128/cache-apt-pkgs-action@latest
       #   with:
@@ -96,10 +95,10 @@ jobs:
       #     packages: libudev-dev
       #     version: 1.0
 
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
@@ -118,14 +117,8 @@ jobs:
         run: chalet configure --toolchain emscripten
 
       - name: Chalet Bundle
-        if: matrix.platform != 'ios'
         run: |
-          chalet bundle --compiler-cache --show-commands
-
-      - name: iOS
-        if: matrix.platform == 'ios'
-        run: |
-          ./${{ github.workflow }}.sh
+          chalet bundle --show-commands # --compiler-cache
 
       - name: LS check built lib
         run: |
