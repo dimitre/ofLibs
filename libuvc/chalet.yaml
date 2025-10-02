@@ -56,9 +56,9 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_INSTALL_PREFIX=install
-      - CMAKE_PREFIX_PATH=${externalBuild:libusb}/ext.libusb/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libusb}/ext.libusb/install
       - CMAKE_BUILD_TARGET=Static
-      # - LIBUSB_ROOT=${externalBuild:libusb}/ext.libusb/install
+      - LibUSB_ROOT=${cwd}/${externalBuild:libusb}/ext.libusb/install
       - BUILD_EXAMPLE=OFF
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
       # - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
