@@ -71,6 +71,11 @@ jobs:
       - name: Install Meson
         run: pip install meson ninja
 
+      - name: MSYS2 Apt Cross Compile
+        if: matrix.platform == 'msys2' && runner.os == 'Linux'
+        run: |
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
+
       # - uses: actions/setup-python@v5.6.0
       #   with:
       #     python-version: "3.x"
