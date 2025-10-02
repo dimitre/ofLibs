@@ -5,7 +5,6 @@ externalDependencies:
     repository: https://gitlab.freedesktop.org/pixman/pixman.git
     # http://anongit.freedesktop.org/git/pixman.git
     tag: pixman-0.46.4
-    # commit: 106323bc15c7eb89a033cf8ff38f52bca8a4b53c
     kind: git
 
 targets:
@@ -21,7 +20,7 @@ targets:
       # FIXME: only for platform RPI
       - mmx=disabled
       - sse2=disabled
-      # defines[platform=macos]:
+    defines[platform=macos]:
       - c_args=-mmacos-version-min=11.6
       - cpp_args=-mmacos-version-min=11.6
 
