@@ -4,7 +4,7 @@ externalDependencies:
   libusb:
     repository: https://github.com/libusb/libusb-cmake
     # tag: v1.0.29-0
-    commit: 000e06eb241927db0f34e6867637d39b849ab989
+    commit: 000e06e
     kind: git
 targets:
   libusb:
@@ -33,14 +33,5 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/LICENSE**
-      # - ${external:${name}}/include
-      # - ${externalBuild:${name}}/gen_include
-      # - ${external:${name}}/include
-      # - ${externalBuild:${name}}/include
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
-      # - ${externalBuild:${name}}/${ar:usb}
-      # - ${externalBuild:${name}}/${ar:${name}}
-      # - ${externalBuild:${name}}/*.a
-      # - ${externalBuild:${name}}/*.lib
-      # - ${externalBuild:${name}}/*.pc

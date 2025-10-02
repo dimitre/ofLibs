@@ -9,56 +9,72 @@ on:
 permissions:
   contents: write
 
-env:
-  CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# env:
+#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   libusb_matrix:
     strategy:
+      fail-fast: false
       matrix:
         cfg:
-          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
-          # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
-          # - { platform: ios, os: macos-26, toolchain: apple-llvm }
+          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
-          # - {
-          #     platform: rpi-aarch64,
-          #     os: ubuntu-latest,
-          #     prefix: aarch64-linux-gnu,
-          #     toolchain: aarch64-linux-gnu-gcc,
-          #   }
-          # - {
-          #     platform: rpi-armv6l,
-          #     os: ubuntu-latest,
-          #     prefix: arm-linux-gnueabihf,
-          #     toolchain: arm-linux-gnueabihf-gcc,
-          #   }
+          - {
+              platform: rpi-aarch64,
+              os: ubuntu-latest,
+              prefix: aarch64-linux-gnu,
+              toolchain: aarch64-linux-gnu-gcc,
+            }
+          - {
+              platform: rpi-armv6l,
+              os: ubuntu-latest,
+              prefix: arm-linux-gnueabihf,
+              toolchain: arm-linux-gnueabihf-gcc,
+            }
+          - {
+              platform: msys2,
+              os: ubuntu-latest,
+              prefix: mingw-w64,
+              toolchain: x86_64-w64-mingw32-gcc,
+              # params: -t gcc -a x86_64-w64-mingw32,
+              # shell: bash,
+            }
 
     runs-on: ${{ matrix.cfg.os }}
-    env:
-      PLATFORM: ${{ matrix.cfg.platform }}
+    # env:
+    #   PLATFORM: ${{ matrix.cfg.platform }}
     defaults:
       run:
         shell: bash
-        # working-directory: ./${{ github.workflow }}
-        #
-        working-directory: libusb
+        working-directory: ${{ github.workflow }}
     steps:
       - uses: actions/checkout@v5
 
-      - uses: git-for-windows/setup-git-for-windows-sdk@v1
-        if: runner.os == 'Windows'
-        with:
-          flavor: minimal
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
 
-      - name: Test Shell
+      # - uses: git-for-windows/setup-git-for-windows-sdk@v1
+      #   if: runner.os == 'Windows'
+      #   with:
+      #     flavor: minimal
+
+      # - name: Test Shell
+      #   run: |
+      #     # ps -p $$
+      #     echo $SHELL
+      #     # ls -alF
+      #     ls
+      #     # tree -h
+
+      - name: MSYS2 Apt Cross Compile
+        if: matrix.platform == 'msys2' && runner.os == 'Linux'
         run: |
-          # ps -p $$
-          echo $SHELL
-          # ls -alF
-          ls
-          # tree -h
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: Emscripten Install
         if: matrix.cfg.platform == 'emscripten'
@@ -98,49 +114,35 @@ jobs:
       #     packages: libudev-dev
       #     version: 1.0
 
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.19
-        with:
-          key: ${{ runner.os }}-${{ matrix.cfg.platform }}-ccache
-
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
-        # uses: jaxxstorm/action-install-gh-release@v1.14.0
         with:
           repo: chalet-org/chalet
           cache: enable
           extension: .zip
           prerelease: "false"
 
-      - name: Chalet Test / Version
+      - name: Chalet Test
         run: |
           chalet --version
 
       - name: Chalet Configure
-        if: matrix.cfg.platform == 'emscripten'
-        shell: bash
-        run: chalet configure --toolchain emscripten
+        if: matrix.toolchain != ''
+        run: |
+          chalet configure --toolchain ${{ matrix.toolchain }}
+        # chalet configure --toolchain ${{ matrix.toolchain }} -a auto
 
       - name: Chalet Bundle
-        if: matrix.cfg.platform != 'ios'
-        # shell: bash
         run: |
-          chalet bundle --compiler-cache --show-commands
-
-      - name: iOS
-        if: matrix.cfg.platform == 'ios'
-        shell: bash
-        run: |
-          ./${{ github.workflow }}.sh
+          chalet bundle --show-commands
+        # chalet bundle --compiler-cache --show-commands
 
       - name: LS check built lib
-        shell: bash
         run: |
           unzip dist/*.zip
           ls -alfR dist
 
       - name: Rename and Publish Release
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
