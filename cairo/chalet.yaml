@@ -66,8 +66,8 @@ distribution:
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
     include[platform:linux]:
-      - ${externalBuild:${name}}/usr/local/include
-      - ${externalBuild:${name}}/usr/local/lib
+      - ${externalBuild:${name}}/install/usr/local/include
+      - ${externalBuild:${name}}/install/usr/local/lib
 
       # - ${externalBuild:${name}}/src/*.a
       # - ${externalBuild:${name}}/src/*.h
