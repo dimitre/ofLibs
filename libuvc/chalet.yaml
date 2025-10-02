@@ -80,6 +80,8 @@ targets:
       - LibUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib/libusb-1.0.lib
       # - LIBUSB_INCLUDE_DIR=${cwd}/${externalBuild:libusb}/ext.libusb/install/include/libusb-1.0
       - LibUSB_INCLUDE_DIR=${cwd}/${externalBuild:libusb}/ext.libusb/install/include/libusb-1.0
+      # Hack, kimi.com suggestion
+      - LibUSB_FOUND=TRUE
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
