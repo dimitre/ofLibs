@@ -30,6 +30,9 @@ targets:
       - fontconfig=disabled
       - freetype=disabled
 
+      # temporary, only to make it work on MSYS cross compile (hopefully) before Chalet fixes.
+      - skip_sanity_checks=true
+
     defines[platform:macos]:
       - c_args=-mmacos-version-min=11.6
       - cpp_args=-mmacos-version-min=11.6
