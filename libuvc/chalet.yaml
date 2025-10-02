@@ -71,13 +71,12 @@ targets:
       - LibUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib
       - LibUSB_INCLUDE_DIRS=${cwd}/${externalBuild:libusb}/ext.libusb/install/include/libusb-1.0
 
-      # - LIBUSB_ROOT=${cwd}/${externalBuild:libusb}/ext.libusb/install
-      # - LIBUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib
-      # - LIBUSB_INCLUDE_DIRS=${cwd}/${externalBuild:libusb}/ext.libusb/install/include/libusb-1.0
-
-    # defines[platform:windows]:
-    # - LibUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib/x64
-    # - LIBUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib/x64
+    defines[platform:windows]:
+      # - LibUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib/x64
+      # - LIBUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib/x64
+      - LIBUSB_ROOT=${cwd}/${externalBuild:libusb}/ext.libusb/install
+      - LIBUSB_LIBRARY=${cwd}/${externalBuild:libusb}/ext.libusb/install/lib
+      - LIBUSB_INCLUDE_DIRS=${cwd}/${externalBuild:libusb}/ext.libusb/install/include/libusb-1.0
 
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
