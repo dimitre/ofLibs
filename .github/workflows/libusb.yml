@@ -108,8 +108,8 @@ jobs:
       #     multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
       - name: Apt Packages for Linux
-        # if: runner.os == 'Linux'
-        if: matrix.platform == 'linux64'
+        if: runner.os == 'Linux'
+        # if: matrix.platform == 'linux64'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: libudev-dev
