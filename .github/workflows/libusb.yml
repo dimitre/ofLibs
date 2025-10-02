@@ -107,12 +107,12 @@ jobs:
       #     echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
       #     multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
-      # - name: Apt
-      #   if: runner.os == 'Linux'
-      #   uses: awalsh128/cache-apt-pkgs-action@latest
-      #   with:
-      #     packages: libudev-dev
-      #     version: 1.0
+      - name: Apt
+        if: runner.os == 'Linux'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: libudev-dev
+          version: 1.0
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
