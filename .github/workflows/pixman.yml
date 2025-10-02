@@ -14,16 +14,6 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
 
-# env:
-# CMAKE_CXX_COMPILER_LAUNCHER: ccache
-# Dmtr: true
-# CMAKE_CXX_COMPILER_LAUNCHER: ccache
-# MACOSX_DEPLOYMENT_TARGET: 11.6
-# MACOS_DEPLOYMENT_TARGET: 11.6
-# MIN_SUPPORTED_MACOSX_DEPLOYMENT_TARGET: 11.6
-# SYSTEM_VERSION_COMPAT: 1
-# CXXFLAGS: -mmacosx-version-min=11.6
-
 jobs:
   pixman_matrix:
     strategy:
