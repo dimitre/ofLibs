@@ -116,7 +116,8 @@ jobs:
         # if: matrix.platform == 'linux64'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: libudev-dev
+          packages: libudev-dev libusb-1.0-0-dev
+
           version: 1.0
 
       - name: Install Chalet
