@@ -58,7 +58,7 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_PREFIX_PATH=${externalBuild:deflate}/ext.deflate/install;${cwd}/${externalBuild:fmt}/ext.fmt/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/ext.deflate/install;${cwd}/${externalBuild:fmt}/ext.fmt/install
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
       # - CMAKE_INCLUDE_PATH=${externalBuild:deflate}/install/include
       # - CMAKE_SYSTEM_INCLUDE_PATH=${externalBuild:deflate}/install/include
