@@ -157,9 +157,13 @@ jobs:
       - name: Chalet Configure
         run: chalet configure --toolchain ${{ matrix.toolchain }}
 
+      # - name: Chalet Bundle
+      #   run: |
+      #     chalet bundle --show-commands
+
       - name: Chalet Bundle
         run: |
-          chalet bundle --show-commands
+          chalet bundle --show-commands --env PKG_CONFIG_SYSROOT_DIR=$PWD/raspbian --env PKG_CONFIG_LIBDIR=$PWD/raspbian/usr/lib/pkgconfig:$PWD/raspbian/usr/lib/aarch64-linux-gnu/pkgconfig:$PWD/raspbian/usr/share/pkgconfig
 
       - name: LS check built lib
         run: |

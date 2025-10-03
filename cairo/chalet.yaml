@@ -1,5 +1,6 @@
 name: oflibs
 version: "1.0"
+
 externalDependencies:
   cairo:
     repository: https://gitlab.freedesktop.org/cairo/cairo
@@ -11,12 +12,10 @@ targets:
     kind: mesonProject
     location: ${external:${name}}
     install: true
-    environment:
-      PKG_CONFIG_SYSROOT_DIR: ${workspaceRoot}/raspbian
-      PKG_CONFIG_LIBDIR: >-
-        ${workspaceRoot}/raspbian/usr/lib/pkgconfig:
-        ${workspaceRoot}/raspbian/usr/lib/aarch64-linux-gnu/pkgconfig:
-        ${workspaceRoot}/raspbian/usr/share/pkgconfig
+    # PKG_CONFIG_LIBDIR: >-
+    #   ${workspaceRoot}/raspbian/usr/lib/pkgconfig:
+    #   ${workspaceRoot}/raspbian/usr/lib/aarch64-linux-gnu/pkgconfig:
+    #   ${workspaceRoot}/raspbian/usr/share/pkgconfig
     defines:
       - buildtype=release
       - default_library=static
@@ -37,8 +36,8 @@ targets:
 
     # temporary, only to make it work on MSYS cross compile (hopefully) before Chalet fixes.
     # FIXME: Remove when this is closed https://github.com/chalet-org/chalet/issues/425
-    defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
-      - prefix=${cwd}/raspbian
+    # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
+    # - prefix=${cwd}/raspbian
 
     defines[platform:macos]:
       - c_args=-mmacos-version-min=11.6
