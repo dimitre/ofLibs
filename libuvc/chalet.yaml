@@ -31,15 +31,14 @@ targets:
   #     - BUILD_SHARED_LIBS=OFF
   #     - BUILD_STATIC_LIBS=ON
   #     - CMAKE_POSITION_INDEPENDENT_CODE=ON
-  #     # - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+  #     # - CMAKE_INSTALL_LIBDIR=lib
   #     # optional really
   #     - CMAKE_INSTALL_LIBDIR=lib
   #     - CMAKE_INSTALL_INCLUDEDIR=include
 
   #     # - CMAKE_INSTALL_PREFIX=Release
-  #     # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=libx/${env:PLATFORM}
   #     # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
-  #     # - CMAKE_INSTALL_FULL_LIBDIR=./lib
+  #     # - CMAKE_INSTALL_FULL_LIBDIR=lib
   #   defines[platform:macos]:
   #     - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
   #     - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
@@ -59,10 +58,10 @@ targets:
       - CMAKE_BUILD_TARGET=Static
       - BUILD_EXAMPLE=OFF
 
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
-      # - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
+      # - CMAKE_INSTALL_LIBDIR=lib
       # - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       # - CMAKE_BUILD_TARGET=Static
       #
 

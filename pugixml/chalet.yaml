@@ -14,7 +14,7 @@ targets:
     rebuild: false
     install: true
     defines:
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       # - PUGIXML_INSTALL=ON
       # - PUGIXML_INSTALL=OFF
       # - BUILD_SHARED_LIBS=OFF

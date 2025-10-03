@@ -20,7 +20,7 @@ targets:
       # - CMAKE_INSTALL_PREFIX=install
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INSTALL_LIBDIR=lib
-      # - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+      # - CMAKE_INSTALL_LIBDIR=lib
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64

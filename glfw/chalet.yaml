@@ -15,8 +15,8 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
       - BUILD_SHARED_LIBS=OFF

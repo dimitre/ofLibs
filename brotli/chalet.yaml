@@ -19,7 +19,7 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_INSTALL_PREFIX=Release
-      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       # avoid creating pkgconfig folder
       # - BROTLI_BUNDLED_MODE=ON
     defines[platform:macos]:

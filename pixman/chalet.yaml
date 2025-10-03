@@ -27,7 +27,7 @@ targets:
 
     # FIXME: Remove when this is closed https://github.com/chalet-org/chalet/issues/425
     # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
-    # - prefix=./${externalBuild:${name}}
+    # - prefix=${externalBuild:${name}}
     # - libdir=lib
     # - default_both_libraries=static
     # - prefer_static=true

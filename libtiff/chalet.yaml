@@ -53,7 +53,7 @@ targets:
       # - JPEG_INCLUDE_DIR= ${externalBuild:libjpeg}/ext.libjpeg/install/include
       # - JPEG_INCLUDE_DIRS=${externalBuild:libjpeg}/ext.libjpeg/install/include
       # - JPEG_LIBRARY=     ${externalBuild:libjpeg}/ext.libjpeg/install/lib
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       - tiff-tools=OFF
       - tiff-tests=OFF
       - tiff-contrib=OFF

@@ -18,7 +18,7 @@ targets:
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
       - CMAKE_INSTALL_PREFIX=Release
-      # - CMAKE_INSTALL_LIBDIR=lib/${env:PLATFORM}
+      # - CMAKE_INSTALL_LIBDIR=lib
       - CMAKE_INSTALL_LIBDIR=lib
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64

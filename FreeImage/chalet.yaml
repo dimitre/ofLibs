@@ -64,7 +64,7 @@ targets:
   #     - CMAKE_INSTALL_PREFIX=install
   #     - CMAKE_INSTALL_LIBDIR=lib
   #     - CMAKE_INSTALL_INCLUDEDIR=include
-  #     # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+  #     # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
   #     - tiff-tools=OFF
   #     - tiff-tests=OFF
   #     - tiff-contrib=OFF
@@ -91,7 +91,7 @@ targets:
   #     - ZLIB_BUILD_EXAMPLES=OFF
   #     # - CMAKE_INSTALL_LIBDIR=lib
   #     # - CMAKE_INSTALL_INCLUDEDIR=include
-  #     # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+  #     # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
   #   # defines[platform:web]:
   #   # - JS_ONLY=ON
   #   # - CMAKE_EXECUTABLE_SUFFIX=.js

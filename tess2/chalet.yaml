@@ -18,11 +18,11 @@ targets:
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_LIBDIR=lib
       - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include2
-      # - CMAKE_INSTALL_LIBDIR=./lib/${env:PLATFORM}
+      # - CMAKE_INSTALL_LIBDIR=lib
       # - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib/${env:PLATFORM}
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
     defines[platform:macos]:
