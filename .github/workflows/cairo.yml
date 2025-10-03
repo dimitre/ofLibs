@@ -139,6 +139,8 @@ jobs:
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         run: |
           tree -d raspbian
+          ls -alfR raspbian/usr/local/lib/aarch64-linux-gnu
+          ls -alfR raspbian/usr/local/lib
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
