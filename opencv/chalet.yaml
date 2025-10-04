@@ -89,9 +89,11 @@ targets:
 
     # "defines[platform:windows]":
     defines[platform:windows]:
-      - CPU_BASELINE=""
-      - CPU_DISPATCH=""
-      - CV_DISABLE_OPTIMIZATION=ON
+      # - CPU_BASELINE=""
+      # - CPU_DISPATCH=""
+      # - CV_DISABLE_OPTIMIZATION=ON
+      - OpenCV_ARCH=""
+      - OpenCV_RUNTIME=""
 
     # "defines[platform:macos]":
     defines[platform:macos]:
@@ -99,6 +101,8 @@ targets:
       - CPU_BASELINE=NATIVE
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+
+    # defines[arch:x86]:
 
 distribution:
   opencv:
