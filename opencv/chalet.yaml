@@ -8,6 +8,10 @@ externalDependencies:
     kind: git
 
 targets:
+  zlib:
+    kind: chaletProject
+    location: ../zlib
+    rebuild: false
   opencv:
     kind: cmakeProject
     location: ${external:${name}}
@@ -35,6 +39,7 @@ targets:
       - BUILD_JAVA=OFF
 
       - BUILD_OPENEXR=OFF
+      - WITH_EXR=OFF
 
       # test for ofxOpenCvDnnObjectDetection
       - BUILD_opencv_dnn=ON
@@ -52,11 +57,8 @@ targets:
       - BUILD_opencv_stitching=OFF
       - BUILD_opencv_superres=OFF
       - BUILD_opencv_ts=OFF
-      # - BUILD_opencv_videoio=OFF
-      # - BUILD_opencv_imgcodecs=OFF
-
-      # - BUILD_opencv_imgcodecs=ON
-      # - BUILD_opencv_videoio=ON # videoio needs imsgcodecs enabled.
+      - BUILD_opencv_videoio=OFF
+      - BUILD_opencv_imgcodecs=OFF
 
       - BUILD_opencv_videostab=OFF
       - BUILD_opencv_world=ON
@@ -67,8 +69,13 @@ targets:
       - WITH_OPENJPEG=OFF
       - WITH_TIFF=OFF
       - WITH_WEBP=OFF
+      - WITH_AVIF=OFF
+      - WITH_JPEG=OFF
       - BUILD_JPEG=OFF
       - BUILD_ZLIB=OFF
+
+      - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
+
       # disable orbbec libs
       - WITH_OBSENSOR=OFF
       - WITH_PROTOBUF=OFF
@@ -80,7 +87,9 @@ targets:
       # - WITH_OPENCLAMDBLAS=OFF
       # - WITH_OPENCLAMDFFT=OFF
 
-    # "defines[platform:web]":
+      # - BUILD_opencv_imgcodecs=ON
+      # - BUILD_opencv_videoio=ON # videoio needs imsgcodecs enabled.
+
     defines[platform:web]:
       - BUILD_IPP_IW=OFF
       - WITH_ITT=OFF
@@ -116,5 +125,5 @@ distribution:
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/share
     include[platform:windows]:
-      - ${externalBuild:${name}}/install/x86
+      - ${externalBuild:${name}}/install/x64
       - ${externalBuild:${name}}/lib
