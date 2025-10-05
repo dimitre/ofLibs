@@ -20,15 +20,17 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
 
-      - ZLIB_BUILD_TESTING=OFF
-      - ZLIB_BUILD_SHARED=OFF
-      - ZLIB_BUILD_EXAMPLES=OFF
+      - ZLIB_ENABLE_TESTS=OFF
+      - ZLIBNG_ENABLE_TESTS=OFF
+      - WITH_GTEST=OFF
+      # - WITH_NATIVE_INSTRUCTIONS=ON
+
       - ZLIB_COMPAT=ON
     defines[platform:web]:
       - JS_ONLY=ON
       - CMAKE_EXECUTABLE_SUFFIX=.js
     defines[platform:macos]:
-      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
 
 distribution:
