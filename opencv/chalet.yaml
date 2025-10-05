@@ -4,7 +4,7 @@ externalDependencies:
   opencv:
     repository: https://github.com/opencv/opencv
     # tag: 4.12.0
-    commit: 5c1c39afc18d9a9a0007c576e5e8411d29cbece0
+    commit: 4e94116
     kind: git
 
 targets:
@@ -112,3 +112,5 @@ distribution:
       - ${externalBuild:${name}}/install/lib
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/share
+    include[platform:windows]:
+      - ${externalBuild:${name}}/install/x86
