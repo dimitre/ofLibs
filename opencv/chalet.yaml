@@ -97,9 +97,9 @@ targets:
       # - CPU_BASELINE=""
       # - CPU_DISPATCH=""
       # - CV_DISABLE_OPTIMIZATION=ON
-      - OpenCV_ARCH=""
-      - OpenCV_RUNTIME=""
-      - OPENCV_LIB_INSTALL_PATH=lib
+      # - OpenCV_ARCH=""
+      # - OpenCV_RUNTIME=""
+      - OPENCV_LIB_INSTALL_PATH=install/lib
       - CMAKE_INSTALL_PREFIX=install
 
     # defines[arch:x86]:
@@ -114,3 +114,4 @@ distribution:
       - ${externalBuild:${name}}/install/share
     include[platform:windows]:
       - ${externalBuild:${name}}/install/x86
+      - ${externalBuild:${name}}/lib
