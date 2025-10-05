@@ -32,17 +32,30 @@ targets:
       - BUILD_TESTS=OFF
       - BUILD_PACKAGE=OFF
       - BUILD_PERF_TESTS=OFF
+
       - BUILD_PNG=OFF
+      - WITH_PNG=OFF
       - BUILD_TIFF=OFF
+      - WITH_TIFF=OFF
+      - BUILD_OPENEXR=OFF
+      - WITH_OPENEXR=OFF
       - BUILD_WEBP=OFF
+      - WITH_WEBP=OFF
+      - BUILD_OPENJPEG=OFF
+      - WITH_OPENJPEG=OFF
+      - BUILD_JPEG=OFF
+      - WITH_JPEG=OFF
+
+      - WITH_AVIF=OFF
+
+      - WITH_IMGCODEC_GIF=OFF
+      - WITH_IMGCODEC_HDR=OFF
+      - WITH_IMGCODEC_SUNRASTER=OFF
+      - WITH_IMGCODEC_PXM=OFF
+      - WITH_IMGCODEC_PFM=OFF
+
       - BUILD_JASPER=OFF
       - BUILD_JAVA=OFF
-
-      - BUILD_OPENEXR=OFF
-      - WITH_EXR=OFF
-
-      # test for ofxOpenCvDnnObjectDetection
-      - BUILD_opencv_dnn=ON
 
       - BUILD_opencv_apps=OFF
       - BUILD_opencv_calib3d=ON
@@ -57,8 +70,6 @@ targets:
       - BUILD_opencv_stitching=OFF
       - BUILD_opencv_superres=OFF
       - BUILD_opencv_ts=OFF
-      - BUILD_opencv_videoio=OFF
-      - BUILD_opencv_imgcodecs=OFF
 
       - BUILD_opencv_videostab=OFF
       - BUILD_opencv_world=ON
@@ -66,12 +77,6 @@ targets:
       # super complicated but once I've enabled BUILD_opencv_imgcodecs, I had to enable
       # WITH_JASPER=OFF and WITH_WEBP=OFF so it can avoid linker errors
       - WITH_JASPER=OFF
-      - WITH_OPENJPEG=OFF
-      - WITH_TIFF=OFF
-      - WITH_WEBP=OFF
-      - WITH_AVIF=OFF
-      - WITH_JPEG=OFF
-      - BUILD_JPEG=OFF
       - BUILD_ZLIB=OFF
 
       - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
@@ -84,11 +89,17 @@ targets:
       # - ZLIB_INCLUDE_DIRS=${external:zlib}
       # - CV_DISABLE_OPTIMIZATION=ON
       - WITH_OPENCL=OFF
+      - WITH_AVFOUNDATION=OFF
       # - WITH_OPENCLAMDBLAS=OFF
       # - WITH_OPENCLAMDFFT=OFF
-
+      #
+      - BUILD_opencv_videoio=OFF
+      - BUILD_opencv_imgcodecs=OFF
       # - BUILD_opencv_imgcodecs=ON
       # - BUILD_opencv_videoio=ON # videoio needs imsgcodecs enabled.
+      #
+      # test for ofxOpenCvDnnObjectDetection
+      - BUILD_opencv_dnn=ON
 
     defines[platform:web]:
       - BUILD_IPP_IW=OFF
