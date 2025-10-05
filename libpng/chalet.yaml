@@ -37,11 +37,12 @@ targets:
       # - CMAKE_PREFIX_PATH=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}
-      # - ZLIB_LIBRARY=${externalBuild:zlib}/ext.zlib/install/lib
-      # - ZLIB_INCLUDE_DIR=${externalBuild:zlib}/ext.zlib/install/include
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
+    defines[:web]:
+      - ZLIB_LIBRARY=${cwd}/${externalBuild:zlib}/ext.zlib/install/lib
+      - ZLIB_INCLUDE_DIR=${cwd}/${externalBuild:zlib}/ext.zlib/install/include
 
 distribution:
   libpng:
