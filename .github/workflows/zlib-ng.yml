@@ -1,0 +1,114 @@
+name: zlib-ng
+
+on:
+  push:
+    paths:
+      - zlib-ng/**
+      - .github/workflows/zlib-ng.yml
+
+permissions:
+  contents: write
+
+# env:
+#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
+
+jobs:
+  zlib-ng_matrix:
+    strategy:
+      matrix:
+        include:
+          # there is trouble to build in emscripten. ninja: error: build.ninja:394: multiple rules generate libz.a
+          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+          - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
+          - { platform: macos, os: macos-26, toolchain: apple-llvm }
+          - { platform: vs, os: windows-latest, toolchain: vs-stable }
+          - {
+              platform: rpi-aarch64,
+              os: ubuntu-latest,
+              prefix: aarch64-linux-gnu,
+              toolchain: aarch64-linux-gnu-gcc,
+            }
+          # - {
+          #     platform: rpi-armv6l,
+          #     os: ubuntu-latest,
+          #     prefix: arm-linux-gnueabihf,
+          #     toolchain: arm-linux-gnueabihf-gcc,
+          #   }
+
+    runs-on: ${{ matrix.os }}
+    env:
+      PLATFORM: ${{ matrix.platform }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ github.workflow }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Emscripten Install
+        if: matrix.platform == 'emscripten'
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 4.0.15
+          actions-cache-folder: "emsdk-cache"
+
+      - name: Verify emsdk
+        if: matrix.platform == 'emscripten'
+        run: |
+          emcc -v
+          emsdk update
+          emsdk install latest
+          emsdk activate latest
+          emcc -v
+
+      - name: RPI - Apt Cache Packages
+        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
+          version: 1.0
+
+      # - name: RPI - multistrap
+      #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
+      #   run: |
+      #     mkdir -p raspbian/etc/apt/apt.conf.d/
+      #     echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
+      #     multistrap -a arm64 -d raspbian -f ../multistrap.conf
+
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+
+      - name: Install Chalet
+        uses: jaxxstorm/action-install-gh-release@v2.1.0
+        with:
+          repo: chalet-org/chalet
+          cache: enable
+          extension: .zip
+          prerelease: "false"
+
+      - name: Chalet Test / Version
+        run: |
+          chalet --version
+
+      - name: Chalet Configure
+        run: chalet configure --toolchain ${{ matrix.toolchain }}
+
+      - name: Chalet Bundle
+        run: |
+          chalet bundle --show-commands # --compiler-cache
+
+      - name: LS check built lib
+        run: |
+          unzip dist/*.zip
+          ls -alfR dist
+
+      - name: Rename and Publish Release
+        env:
+          GITHUB_TOKEN: ${{ github.TOKEN }}
+        run: |
+          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
+          ls -alF *.zip
+          gh release upload v0.12.1 *.zip --clobber
