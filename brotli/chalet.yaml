@@ -15,7 +15,8 @@ targets:
     rebuild: false
     install: true
     defines:
-      # - BUILD_SHARED_LIBS=OFF
+      - BUILD_SHARED_LIBS=OFF
+      - BUILD_STATIC_LIBS=ON
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_INSTALL_PREFIX=Release
