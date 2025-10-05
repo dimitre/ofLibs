@@ -55,8 +55,9 @@ targets:
       # - BUILD_opencv_videoio=OFF
       # - BUILD_opencv_imgcodecs=OFF
 
-      - BUILD_opencv_imgcodecs=OM
-      - BUILD_opencv_videoio=ON # videoio needs imsgcodecs enabled.
+      # - BUILD_opencv_imgcodecs=ON
+      # - BUILD_opencv_videoio=ON # videoio needs imsgcodecs enabled.
+
       - BUILD_opencv_videostab=OFF
       - BUILD_opencv_world=ON
       - WITH_ADE=OFF
