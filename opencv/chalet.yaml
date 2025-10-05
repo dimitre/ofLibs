@@ -87,20 +87,20 @@ targets:
       - BUILD_PERF_TESTS=OFF
       - BUILD_TESTS=OFF
 
-    # "defines[platform:windows]":
+    defines[platform:macos]:
+      - APPLE_FRAMEWORK=ON
+      - CPU_BASELINE=NATIVE
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+
     defines[platform:windows]:
       # - CPU_BASELINE=""
       # - CPU_DISPATCH=""
       # - CV_DISABLE_OPTIMIZATION=ON
       - OpenCV_ARCH=""
       - OpenCV_RUNTIME=""
-
-    # "defines[platform:macos]":
-    defines[platform:macos]:
-      - APPLE_FRAMEWORK=ON
-      - CPU_BASELINE=NATIVE
-      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
-      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - OPENCV_LIB_INSTALL_PATH=lib
+      - CMAKE_INSTALL_PREFIX=install
 
     # defines[arch:x86]:
 
