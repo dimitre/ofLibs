@@ -7,7 +7,7 @@ externalDependencies:
     kind: git
 
 targets:
-  zlib:
+  zlib-ng:
     kind: chaletProject
     location: ../zlib-ng
     rebuild: false
@@ -33,7 +33,7 @@ targets:
       - SKIP_INSTALL_EXPORT=ON
       - SKIP_INSTALL_FILES=ON
       # defines[platform:!web+platform:!windows]:
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:zlib}/ext.zlib/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
       # - CMAKE_PREFIX_PATH=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}
