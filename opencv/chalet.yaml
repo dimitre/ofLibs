@@ -34,6 +34,8 @@ targets:
       - BUILD_JASPER=OFF
       - BUILD_JAVA=OFF
 
+      - BUILD_OPENEXR=OFF
+
       # test for ofxOpenCvDnnObjectDetection
       - BUILD_opencv_dnn=ON
 
