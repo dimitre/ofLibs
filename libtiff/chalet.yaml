@@ -59,6 +59,7 @@ targets:
       - tiff-contrib=OFF
       - tiff-docs=OFF
       - tiff-install=ON
+      - zstd=OFF
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
