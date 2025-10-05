@@ -10,7 +10,7 @@ externalDependencies:
 targets:
   zlib:
     kind: chaletProject
-    location: ../zlib
+    location: ../zlib-ng
     rebuild: false
   opencv:
     kind: cmakeProject

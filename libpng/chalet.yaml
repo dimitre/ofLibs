@@ -9,7 +9,7 @@ externalDependencies:
 targets:
   zlib:
     kind: chaletProject
-    location: ../zlib
+    location: ../zlib-ng
     rebuild: false
   libpng:
     kind: cmakeProject
