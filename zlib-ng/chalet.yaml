@@ -1,14 +1,14 @@
 name: oflibs
 version: "1.0"
 externalDependencies:
-  zlib:
+  zlib-ng:
     repository: https://github.com/zlib-ng/zlib-ng
     tag: 2.2.5
     # commit: 7d7db7a
     kind: git
 
 targets:
-  zlib:
+  zlib-ng:
     kind: cmakeProject
     location: ${external:${name}}
     recheck: false
@@ -32,7 +32,7 @@ targets:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
 
 distribution:
-  zlib:
+  zlib-ng:
     kind: archive
     format: zip
     include:
