@@ -46,6 +46,9 @@ targets:
       - BUILD_JPEG=OFF
       - WITH_JPEG=OFF
 
+      - BUILD_IPP_IW=OFF
+      - WITH_IPP=OFF
+
       - WITH_AVIF=OFF
 
       - WITH_IMGCODEC_GIF=OFF
@@ -102,7 +105,6 @@ targets:
       - BUILD_opencv_dnn=ON
 
     defines[platform:web]:
-      - BUILD_IPP_IW=OFF
       - WITH_ITT=OFF
       - WASM=ON
       - CV_ENABLE_INTRINSICS=OFF
