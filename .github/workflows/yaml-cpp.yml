@@ -15,6 +15,7 @@ permissions:
 jobs:
   yaml-cpp_matrix:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
@@ -27,36 +28,54 @@ jobs:
               prefix: aarch64-linux-gnu,
               toolchain: aarch64-linux-gnu-gcc,
             }
-          # - {
-          #     platform: rpi-armv6l,
-          #     os: ubuntu-latest,
-          #     prefix: arm-linux-gnueabihf,
-          #     toolchain: arm-linux-gnueabihf-gcc,
-          #   }
+          - {
+              platform: rpi-armv6l,
+              os: ubuntu-latest,
+              prefix: arm-linux-gnueabihf,
+              toolchain: arm-linux-gnueabihf-gcc,
+            }
+          - {
+              platform: msys2,
+              os: ubuntu-latest,
+              prefix: mingw-w64,
+              toolchain: x86_64-w64-mingw32-gcc,
+              # params: -t gcc -a x86_64-w64-mingw32,
+              # shell: bash,
+            }
 
     runs-on: ${{ matrix.os }}
-    env:
-      PLATFORM: ${{ matrix.platform }}
+    # env:
+    # PLATFORM: ${{ matrix.platform }}
     defaults:
       run:
         shell: bash
-        # working-directory: ${{ github.workflow }}
-        working-directory: yaml-cpp
+        working-directory: ${{ github.workflow }}
+        # working-directory: yaml-cpp
     steps:
       - uses: actions/checkout@v5
 
-      - uses: git-for-windows/setup-git-for-windows-sdk@v1
-        if: runner.os == 'Windows'
-        with:
-          flavor: minimal
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ github.workflow }}-${{ runner.os }}-${{ matrix.platform }}-ccache
 
-      - name: Test Shell
+      - name: MSYS2 Apt Cross Compile
+        if: matrix.platform == 'msys2' && runner.os == 'Linux'
         run: |
-          # ps -p $$
-          echo $SHELL
-          # ls -alF
-          ls
-          # tree -h
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
+
+      # - uses: git-for-windows/setup-git-for-windows-sdk@v1
+      #   if: runner.os == 'Windows'
+      #   with:
+      #     flavor: minimal
+
+      # - name: Test Shell
+      #   run: |
+      #     # ps -p $$
+      #     echo $SHELL
+      #     # ls -alF
+      #     ls
+      #     # tree -h
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
@@ -74,19 +93,12 @@ jobs:
           emsdk activate latest
           emcc -v
 
-      # - name: RPI - Apt Cache Packages
-      #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
-      #   uses: awalsh128/cache-apt-pkgs-action@latest
-      #   with:
-      #     packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
-      #     version: 1.0
-
-      # - name: RPI - multistrap
-      #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
-      #   run: |
-      #     mkdir -p raspbian/etc/apt/apt.conf.d/
-      #     echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
-      #     multistrap -a arm64 -d raspbian -f ../multistrap.conf
+      - name: RPI - Apt Cache Packages
+        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
+          version: 1.0
 
       # - name: Apt Cache Packages
       #   if: runner.os == 'Linux'
@@ -113,8 +125,9 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        if: matrix.platform == 'emscripten'
-        run: chalet configure --toolchain emscripten
+        if: matrix.toolchain != ''
+        run: |
+          chalet configure --toolchain ${{ matrix.toolchain }} -a auto
 
       - name: Chalet Bundle
         run: |
