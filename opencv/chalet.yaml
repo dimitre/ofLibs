@@ -18,6 +18,9 @@ targets:
     recheck: false
     rebuild: false
     install: true
+    defines[architecture:arm64]:
+      - ENABLE_NEON=ON
+
     defines:
       - CMAKE_CXX_STANDARD=17
       - CMAKE_INSTALL_LIBDIR=lib
@@ -26,7 +29,6 @@ targets:
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
 
       - CV_ENABLE_INTRINSICS=ON
-      # - ENABLE_NEON=ON
       - BUILD_DOCS=OFF
       - BUILD_EXAMPLES=OFF
       - BUILD_TESTS=OFF
