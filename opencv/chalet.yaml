@@ -18,9 +18,6 @@ targets:
     recheck: false
     rebuild: false
     install: true
-    # defines[architecture:arm64]:
-    #   - CPU_BASELINE=NATIVE
-    #   - CPU_DISPATCH=""
 
     defines:
       - CMAKE_CXX_STANDARD=17
@@ -116,8 +113,8 @@ targets:
       - BUILD_TESTS=OFF
 
     defines[platform:macos]:
-      - APPLE_FRAMEWORK=ON
       - CPU_BASELINE=NATIVE
+      - APPLE_FRAMEWORK=ON
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
@@ -129,6 +126,10 @@ targets:
       # - OpenCV_RUNTIME=""
       - OPENCV_LIB_INSTALL_PATH=install/lib
       - CMAKE_INSTALL_PREFIX=install
+
+    defines[architecture:arm64]:
+      - CPU_BASELINE=NATIVE
+    #   - CPU_DISPATCH=""
 
     # defines[arch:x86]:
 
