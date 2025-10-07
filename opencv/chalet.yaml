@@ -19,7 +19,9 @@ targets:
     rebuild: false
     install: true
     defines[architecture:arm64]:
-      - ENABLE_NEON=ON
+      # - ENABLE_NEON=ON
+      - CPU_BASELINE=NEON
+      - CPU_DISPATCH=""
 
     defines:
       - CMAKE_CXX_STANDARD=17
