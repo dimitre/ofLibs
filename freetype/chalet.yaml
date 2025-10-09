@@ -48,6 +48,8 @@ targets:
       - FT_REQUIRE_HARFBUZZ=OFF
       - FT_DISABLE_HARFBUZZ=ON
 
+      - FT_REQUIRE_ZLIB=ON
+
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
       - ZLIB_ROOT=${cwd}/${externalBuild:libpng}/ext.zlib-ng/ext.zlib-ng/install
       - ZLIB_LIBRARY=${cwd}/${externalBuild:libpng}/ext.zlib-ng/ext.zlib-ng/install/lib
