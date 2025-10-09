@@ -4,7 +4,7 @@ externalDependencies:
   tess2:
     repository: https://github.com/dimitre/libtess2
     # tag: v1.0.2
-    # commit: 672cadc
+    commit: f895767
     kind: git
 targets:
   tess2:
