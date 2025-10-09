@@ -25,6 +25,7 @@ targets:
       - URIPARSER_BUILD_TESTS=OFF
       - URIPARSER_BUILD_TOOLS=OFF
       - URIPARSER_ENABLE_INSTALL=ON
+      - URIPARSER_SHARED_LIBS=OFF
 
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
