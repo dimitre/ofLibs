@@ -17,7 +17,6 @@ You are welcome to jump in and help building and testing more libraries.
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libtiff.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libpng.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libusb.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/libxml2.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/lzma.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/opencv.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/pixman.yml/badge.svg)
