@@ -60,6 +60,8 @@ targets:
       - tiff-docs=OFF
       - tiff-install=ON
       - zstd=OFF
+      # test of stopping msvc duplicated symbols with FreeImage : _TIFFcalloc
+      - TIFF_USE_WIN32_FILEIO=OFF
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
