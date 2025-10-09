@@ -39,7 +39,7 @@ targets:
   #     - BUILD_SHARED_LIBS=OFF # not working on zlib
   #     - CMAKE_BUILD_TYPE=Release
   #     - CMAKE_POSITION_INDEPENDENT_CODE=ON
-  #     - CMAKE_INSTALL_PREFIX=Release
+  #     - CMAKE_INSTALL_PREFIX=install
   #   defines[platform:web]:
   #     - JS_ONLY=ON
   #     - CMAKE_EXECUTABLE_SUFFIX=.js
@@ -59,6 +59,8 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
       - FT_DISABLE_BZIP2=ON
       - FT_REQUIRE_HARFBUZZ=OFF
       - FT_DISABLE_HARFBUZZ=ON

@@ -58,7 +58,7 @@ targets:
     recheck: false
     rebuild: false
     defines:
-      - CMAKE_INSTALL_PREFIX=Release
+      - CMAKE_INSTALL_PREFIX=install
       - BUILD_SHARED_LIBS=OFF
       - ZLIB_BUILD_EXAMPLES=OFF
       - SKIP_EXAMPLE=ON
@@ -198,7 +198,7 @@ targets:
       - CMAKE_CXX_EXTENSIONS=OFF
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
-      - CMAKE_INSTALL_PREFIX=Release
+      - CMAKE_INSTALL_PREFIX=install
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - ENABLE_ARC=OFF
       - ENABLE_BITCODE=OFF

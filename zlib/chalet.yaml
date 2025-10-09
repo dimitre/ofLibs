@@ -16,13 +16,14 @@ targets:
     install: true
     defines:
       - CMAKE_INSTALL_PREFIX=install
-      # - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - BUILD_SHARED_LIBS=OFF # not working on zlib
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
       - ZLIB_BUILD_TESTING=OFF
       - ZLIB_BUILD_SHARED=OFF
       - ZLIB_BUILD_EXAMPLES=OFF
-      - BUILD_SHARED_LIBS=OFF # not working on zlib
-      - CMAKE_BUILD_TYPE=Release
-      - CMAKE_POSITION_INDEPENDENT_CODE=ON
     defines[platform:web]:
       - JS_ONLY=ON
       - CMAKE_EXECUTABLE_SUFFIX=.js

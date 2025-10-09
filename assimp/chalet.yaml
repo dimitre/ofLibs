@@ -1,12 +1,6 @@
 name: oflibs
 version: "1.0"
 externalDependencies:
-  # zlib:
-  #   repository: https://github.com/madler/zlib
-  #   # tag: v1.3.1
-  #   commit: 5a82f71
-  #   kind: git
-
   assimp:
     repository: https://github.com/assimp/assimp
     # tag: v6.0.2
@@ -19,25 +13,6 @@ targets:
     kind: chaletProject
     location: ../zlib-ng
     rebuild: false
-  # zlib:
-  #   kind: cmakeProject
-  #   location: ${external:${name}}
-  #   recheck: false
-  #   rebuild: false
-  #   defines:
-  #     - ZLIB_BUILD_TESTING=OFF
-  #     - ZLIB_BUILD_SHARED=OFF
-  #     - ZLIB_BUILD_EXAMPLES=OFF
-  #     - BUILD_SHARED_LIBS=OFF # not working on zlib
-  #     - CMAKE_BUILD_TYPE=Release
-  #     - CMAKE_POSITION_INDEPENDENT_CODE=ON
-  #     - CMAKE_INSTALL_PREFIX=Release
-  #   defines[platform:web]:
-  #     - JS_ONLY=ON
-  #     - CMAKE_EXECUTABLE_SUFFIX=.js
-  #   defines[platform:macos]:
-  #     - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-  #     - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
 
   assimp:
     kind: cmakeProject
@@ -50,15 +25,16 @@ targets:
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+      - BUILD_SHARED_LIBS=OFF
 
       - ASSIMP_BUILD_USD_IMPORTER=on
       - ASSIMP_BUILD_USD_VERBOSE_LOGS=on
       - CMAKE_THREAD_PREFER_PTHREAD=ON
       - ENABLE_BITCODE=OFF
       - ENABLE_ARC=OFF
-      - BUILD_SHARED_LIBS=OFF
-      - CMAKE_BUILD_TYPE=Release
-      - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - ASSIMP_WARNINGS_AS_ERRORS=OFF
       - ASSIMP_NO_EXPORT=ON
       - ASSIMP_BUILD_TESTS=OFF

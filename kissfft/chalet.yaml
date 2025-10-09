@@ -21,6 +21,8 @@ targets:
       - CMAKE_INSTALL_LIBDIR=lib
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
       - KISSFFT_PKGCONFIG=OFF
       - KISSFFT_STATIC=ON
       - KISSFFT_TOOLS=OFF

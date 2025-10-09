@@ -21,6 +21,8 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
       # - BUILD_STATIC_LIBS=ON
       - BUILD_SHARED_LIBS=OFF #not working in this repo
       - ENABLE_SHARED=OFF

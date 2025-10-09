@@ -48,6 +48,7 @@ targets:
       # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:deflate}/install
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
@@ -69,6 +70,8 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
       # - CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES=${externalBuild:deflate}/install/include
       # - TARGET_SPECIFIC_INCLUDES=${externalBuild:deflate}/install/include
       #

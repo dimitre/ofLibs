@@ -18,6 +18,8 @@ targets:
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_LIBDIR=lib
       - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include2
       # - CMAKE_INSTALL_LIBDIR=lib

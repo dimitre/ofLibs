@@ -16,6 +16,7 @@ targets:
     install: true
     defines:
       # - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
       - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON

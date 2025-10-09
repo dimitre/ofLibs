@@ -19,8 +19,10 @@ targets:
       - BUILD_STATIC_LIBS=ON
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
-      - CMAKE_INSTALL_PREFIX=Release
+      - CMAKE_INSTALL_PREFIX=install
       - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
       # avoid creating pkgconfig folder
       # - BROTLI_BUNDLED_MODE=ON
     defines[platform:macos]:

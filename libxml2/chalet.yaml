@@ -14,7 +14,7 @@ targets:
     rebuild: false
     defines:
       # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib
-      - CMAKE_INSTALL_PREFIX=Release
+      - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=atsenaru
 

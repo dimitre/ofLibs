@@ -18,6 +18,8 @@ targets:
       - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
