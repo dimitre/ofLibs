@@ -9,7 +9,7 @@ externalDependencies:
     kind: git
 
 targets:
-  zlib:
+  zlib-ng:
     kind: chaletProject
     location: ../zlib-ng
     rebuild: false
@@ -43,9 +43,9 @@ targets:
       - ASSIMP_INSTALL=ON
 
       - ASSIMP_BUILD_ZLIB=OFF
-      - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
-      - ZLIB_LIBRARY=${externalBuild:zlib}/ext.zlib/lib
-      - ZLIB_INCLUDE_DIRS=${externalBuild:zlib}/ext.zlib/include
+      - ZLIB_ROOT=${externalBuild:zlib-ng}/ext.zlib-ng/install
+      - ZLIB_LIBRARY=${externalBuild:zlib-ng}/ext.zlib-ng/lib
+      - ZLIB_INCLUDE_DIRS=${externalBuild:zlib-ng}/ext.zlib-ng/include
 
       # - ASSIMP_BUILD_USD_IMPORTER=ON
       # - CMAKE_COMPILE_WARNING_AS_ERROR=OFF
