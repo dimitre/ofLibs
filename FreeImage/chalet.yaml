@@ -149,6 +149,7 @@ targets:
       - BUILD_LIBTIFF=OFF
       # - LIBTIFF_ROOT=../../${externalBuild:libtiff}/install
       - LIBTIFF_ROOT=${externalBuild:libtiff}/ext.libtiff/install
+      - FREEIMAGE_LIB=ON
       # - LIBTIFF_LIBRARY=../../${externalBuild:libtiff}/libtiff
       # - LIBTIFF_INCLUDE_DIRS=../../${externalBuild:libtiff}/libtiff
 
