@@ -49,8 +49,8 @@ targets:
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 
       - CMAKE_INSTALL_PREFIX=install
-      - CMAKE_INSTALL_LIBDIR=lib
       - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INSTALL_LIBDIR=lib
 
       - CMAKE_PREFIX_PATH=${externalBuild:libjpeg}/ext.libjpeg/install
       # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libjpeg}/install
