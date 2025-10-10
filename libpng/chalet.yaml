@@ -67,7 +67,9 @@ targets:
       - SKIP_INSTALL_EXPORT=ON
       - SKIP_INSTALL_FILES=ON
       # defines[platform:!web+platform:!windows]:
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
+      # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:zlib-ng}/install
+
       # - CMAKE_PREFIX_PATH=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}
@@ -75,8 +77,10 @@ targets:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
     defines[:web]:
-      - ZLIB_LIBRARY=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install/lib
-      - ZLIB_INCLUDE_DIR=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install/include
+      # - ZLIB_LIBRARY=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install/lib
+      # - ZLIB_INCLUDE_DIR=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install/include
+      - ZLIB_LIBRARY=${cwd}/${externalBuild:zlib-ng}/install/lib
+      - ZLIB_INCLUDE_DIR=${cwd}/${externalBuild:zlib-ng}/install/include
 
 distribution:
   libpng:
