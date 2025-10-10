@@ -72,7 +72,6 @@ targets:
       - BUILD_LIBTIFF=OFF
       # - LIBTIFF_ROOT=../../${externalBuild:libtiff}/install
       - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
-      - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/tiff.lib
       - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
       - FREEIMAGE_LIB=ON
       # - LIBTIFF_LIBRARY=../../${externalBuild:libtiff}/libtiff
@@ -82,12 +81,14 @@ targets:
       # - LIBJPEG_ROOT=${externalBuild:libjpeg}/ext.libjpeg/install
 
       # - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/install
+    defines[toolchain:msvc]:
+      - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/tiff.lib
 
     defines[platform:macos]:
       # - DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      - LIBTIFF_LIBRARY=${externalBuild:libtiff}/ext.libtiff/install/lib/libtiff.a
+      - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/libtiff.a
 
     # defines[platform:{web,windows}]:
     #   - BUILD_ZLIB=ON
