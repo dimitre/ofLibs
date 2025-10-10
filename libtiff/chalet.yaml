@@ -43,14 +43,17 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_PREFIX_PATH=${externalBuild:libjpeg}/ext.libjpeg/install
-      # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libjpeg}/install
       - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_LIBDIR=lib
       - CMAKE_INSTALL_INCLUDEDIR=include
+
+      - CMAKE_PREFIX_PATH=${externalBuild:libjpeg}/ext.libjpeg/install
+      # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libjpeg}/install
       # - JPEG_ROOT=        ${externalBuild:libjpeg}/ext.libjpeg/install
       # - JPEG_INCLUDE_DIR= ${externalBuild:libjpeg}/ext.libjpeg/install/include
       # - JPEG_INCLUDE_DIRS=${externalBuild:libjpeg}/ext.libjpeg/install/include
