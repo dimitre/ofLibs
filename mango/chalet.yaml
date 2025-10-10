@@ -44,8 +44,11 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
       - LIBDEFLATE_BUILD_SHARED_LIB=OFF
+      - LIBDEFLATE_BUILD_STATIC_LIB=ON
+
       - LIBDEFLATE_BUILD_GZIP=OFF
-      - CMAKE_SYSTEM_PREFIX_PATH=install
+      # - CMAKE_SYSTEM_PREFIX_PATH=install
+      - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_INSTALL_LIBDIR=lib
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
@@ -60,7 +63,7 @@ targets:
     rebuild: false
     install: true
     defines:
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:fmt}/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
       # - CMAKE_INCLUDE_PATH=${externalBuild:deflate}/install/include
       # - CMAKE_SYSTEM_INCLUDE_PATH=${externalBuild:deflate}/install/include
