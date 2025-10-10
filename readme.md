@@ -2,10 +2,8 @@
 As a proof of concept it is building libraries for multiple platforms.
 You are welcome to jump in and help building and testing more libraries.
 
-![title](https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg)
+## Core
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/cairo.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/fmt.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/freetype.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glew.yml/badge.svg)
@@ -18,19 +16,27 @@ You are welcome to jump in and help building and testing more libraries.
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libpng.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libusb.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/lzma.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/opencv.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/pixman.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/pugixml.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/rtAudio.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/tess2.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/uriparser.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/utfcpp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/videoInput.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/yaml-cpp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/zlib.yml/badge.svg)
+
+## Addons
+![title](https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/cairo.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/opencv.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/pixman.yml/badge.svg)
 
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/openssl-curl.yml/badge.svg)
 
+## Modern
+![title](https://github.com/dimitre/ofLibs/actions/workflows/fmt.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/yaml-cpp.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/mango.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/OpenImageIO.yml/badge.svg)
 
 
 You can use the following script to test OFVision fork (macOS only now).
