@@ -47,9 +47,6 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
-      # workaround suggested by Kimi K2 if backend is ninja.
-      - CMAKE_C_FLAGS=/MT
-      - CMAKE_CXX_FLAGS=/MT
 
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_LIBDIR=lib
@@ -70,6 +67,13 @@ targets:
       - zstd=OFF
       # test of stopping msvc duplicated symbols with FreeImage : _TIFFcalloc
       - TIFF_USE_WIN32_FILEIO=OFF
+
+    # workaround suggested by Kimi K2 if backend is ninja.
+    # CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+    defines[toolchain:msvc]:
+      - CMAKE_C_FLAGS=/MT
+      - CMAKE_CXX_FLAGS=/MT
+
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
