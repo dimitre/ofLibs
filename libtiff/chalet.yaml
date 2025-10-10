@@ -39,14 +39,21 @@ targets:
   libtiff:
     kind: cmakeProject
     location: ${external:${name}}
+    settings:CMake: #  <-- CMake-specific block
+      generator: "Visual Studio 17 2022"
+    # generator: "Visual Studio 17 2022"
     recheck: false
     rebuild: false
     install: true
     defines:
-      - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
+      - BUILD_STATIC_LIBS=ON
+      - BUILD_SHARED_LIBS=OFF
+      - TIFF_STATIC_LIBS_DEFAULT=ON
+      - tiff_static=ON
 
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_INCLUDEDIR=include
