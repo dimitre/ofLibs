@@ -47,6 +47,9 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+      # workaround suggested by Kimi K2 if backend is ninja.
+      - CMAKE_C_FLAGS=/MT
+      - CMAKE_CXX_FLAGS=/MT
 
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_LIBDIR=lib
