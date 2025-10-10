@@ -71,9 +71,9 @@ targets:
       # new tests in dimitre repo
       - BUILD_LIBTIFF=OFF
       # - LIBTIFF_ROOT=../../${externalBuild:libtiff}/install
-      - LIBTIFF_ROOT=${externalBuild:libtiff}/ext.libtiff/install
-      - LIBTIFF_LIBRARY=${externalBuild:libtiff}/ext.libtiff/install/lib/tiff.lib
-      - LIBTIFF_INCLUDE_DIRS=${externalBuild:libtiff}/ext.libtiff/install/include
+      - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
+      - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/tiff.lib
+      - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
       - FREEIMAGE_LIB=ON
       # - LIBTIFF_LIBRARY=../../${externalBuild:libtiff}/libtiff
       # - LIBTIFF_INCLUDE_DIRS=../../${externalBuild:libtiff}/libtiff
