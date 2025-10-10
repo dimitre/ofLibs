@@ -39,8 +39,8 @@ targets:
   libtiff:
     kind: cmakeProject
     location: ${external:${name}}
-    settings:CMake: #  <-- CMake-specific block
-      generator: "Visual Studio 17 2022"
+    # settings:CMake: #  <-- CMake-specific block
+    # generator: "Visual Studio 17 2022"
     # generator: "Visual Studio 17 2022"
     recheck: false
     rebuild: false
