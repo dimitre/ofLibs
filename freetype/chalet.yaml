@@ -24,10 +24,10 @@ targets:
     location: ../libpng
     rebuild: false
   # this is already added in libpng
-  zlib-ng:
-    kind: chaletProject
-    location: ../zlib-ng
-    rebuild: false
+  # zlib-ng:
+  #   kind: chaletProject
+  #   location: ../zlib-ng
+  #   rebuild: false
 
   freetype:
     kind: cmakeProject
@@ -35,6 +35,9 @@ targets:
     recheck: false
     rebuild: false
     install: true
+    # depends: [libjpeg, brotli, libpng, zlib-ng]
+    # depends: [libjpeg, brotli, libpng]
+
     defines:
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
       # FIXME: Temporary
