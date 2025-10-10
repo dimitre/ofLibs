@@ -1,16 +1,48 @@
 name: OF altpothecary GLFW
 version: "0.0.4"
 externalDependencies:
+  zlib-ng:
+    repository: https://github.com/zlib-ng/zlib-ng
+    # tag: 2.2.5
+    commit: a9ef3eb
+    kind: git
+
   libpng:
     repository: https://github.com/pnggroup/libpng
     tag: "v1.6.50"
     kind: git
 
 targets:
+  # zlib-ng:
+  #   kind: chaletProject
+  #   location: ../zlib-ng
+  #   rebuild: false
   zlib-ng:
-    kind: chaletProject
-    location: ../zlib-ng
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
     rebuild: false
+    install: true
+    defines:
+      # - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+      - BUILD_SHARED_LIBS=OFF # not working on zlib
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+
+      - ZLIB_ENABLE_TESTS=OFF
+      - ZLIBNG_ENABLE_TESTS=OFF
+      - WITH_GTEST=OFF
+      # - WITH_NATIVE_INSTRUCTIONS=ON
+
+      - ZLIB_COMPAT=ON
+    defines[platform:web]:
+      - JS_ONLY=ON
+      - CMAKE_EXECUTABLE_SUFFIX=.js
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+
   libpng:
     kind: cmakeProject
     location: ${external:${name}}
