@@ -73,6 +73,8 @@ targets:
     defines[toolchain:msvc]:
       - CMAKE_C_FLAGS=/MT
       - CMAKE_CXX_FLAGS=/MT
+      - CMAKE_C_FLAGS_INIT=/MT # *** force-append for Ninja
+      - CMAKE_CXX_FLAGS_INIT=/MT
 
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
