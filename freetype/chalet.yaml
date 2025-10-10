@@ -47,7 +47,6 @@ targets:
       - FT_DISABLE_BZIP2=ON
       - FT_REQUIRE_HARFBUZZ=OFF
       - FT_DISABLE_HARFBUZZ=ON
-
       - FT_REQUIRE_ZLIB=ON
 
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libpng}/ext.zlib-ng/ext.zlib-ng/install
