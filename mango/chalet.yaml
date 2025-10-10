@@ -56,6 +56,7 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+
   mango:
     kind: cmakeProject
     location: ${external:${name}}
@@ -63,6 +64,13 @@ targets:
     rebuild: false
     install: true
     defines:
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_BUILD_TYPE=Release
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
       - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
       # - CMAKE_INCLUDE_PATH=${externalBuild:deflate}/install/include
@@ -70,15 +78,9 @@ targets:
       # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:deflate}/install;${externalBuild:lcms2}/install/opt/homebrew/lib;../../${externalBuild:lcms2}/install/opt/homebrew/
       # - CMAKE_PREFIX_PATH=${externalBuild:deflate}/install;${externalBuild:lcms2}/install/opt/homebrew/lib
       # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:deflate}/install;${externalBuild:lcms2}/install/opt/homebrew/lib;../../${externalBuild:lcms2}/install/opt/homebrew/
-      - CMAKE_BUILD_TYPE=Release
-      - BUILD_SHARED_LIBS=OFF
-      - CMAKE_INSTALL_PREFIX=install
-      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 
       # - CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES=${externalBuild:deflate}/install/include
       # - TARGET_SPECIFIC_INCLUDES=${externalBuild:deflate}/install/include
-      #
-
       # - LIBDEFLATE_ROOT=${cwd}/${externalBuild:deflate}/install
       # - LIBDEFLATE_INCLUDE_DIRS=${externalBuild:deflate}/ext.deflate/install/include
       # - LIBDEFLATE_LIBRARIES=${externalBuild:deflate}/ext.deflate/install/lib
@@ -86,10 +88,6 @@ targets:
       # - FMT_INCLUDE_DIRS=${externalBuild:fmt}/ext.fmt/install/include
       # - FMT_INCLUDE_DIR=${externalBuild:fmt}/ext.fmt/install/include
       # - FMT_LIBRARIES=${externalBuild:fmt}/ext.fmt/install/lib
-
-      # - CMAKE_INSTALL_PREFIX=install
-      # - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_INSTALL_LIBDIR=lib
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64

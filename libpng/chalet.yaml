@@ -9,7 +9,8 @@ externalDependencies:
 
   libpng:
     repository: https://github.com/pnggroup/libpng
-    tag: "v1.6.50"
+    # tag: "v1.6.50"
+    commit: 2acf7da
     kind: git
 
 targets:
@@ -56,6 +57,7 @@ targets:
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 
+      - SKIP_INSTALL_EXECUTABLES=ON
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
       - PNG_SHARED=OFF
       - PNG_TESTS=OFF
