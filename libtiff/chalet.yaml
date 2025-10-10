@@ -78,12 +78,12 @@ targets:
     # workaround suggested by Kimi K2 if backend is ninja.
     # CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
     defines[toolchain:msvc]:
-      - CMAKE_C_FLAGS=/MT
-      - CMAKE_CXX_FLAGS=/MT
-      - CMAKE_C_FLAGS_INIT=/MT # *** force-append for Ninja
-      - CMAKE_CXX_FLAGS_INIT=/MT
-      - CMAKE_C_COMPILER_CL="/MT"
-      - CMAKE_CXX_COMPILER_CL="/MT"
+      - CMAKE_C_FLAGS=/MT /DTIFF_STATIC
+      - CMAKE_CXX_FLAGS=/MT /DTIFF_STATIC
+      - CMAKE_C_FLAGS_INIT=/MT /DTIFF_STATIC # *** force-append for Ninja
+      - CMAKE_CXX_FLAGS_INIT=/MT /DTIFF_STATIC
+      - CMAKE_C_COMPILER_CL="/MT /DTIFF_STATIC"
+      - CMAKE_CXX_COMPILER_CL="/MT /DTIFF_STATIC"
 
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
