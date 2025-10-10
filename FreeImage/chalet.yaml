@@ -87,6 +87,7 @@ targets:
       # - DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - LIBTIFF_LIBRARY=${externalBuild:libtiff}/ext.libtiff/install/lib/libtiff.a
 
     # defines[platform:{web,windows}]:
     #   - BUILD_ZLIB=ON
