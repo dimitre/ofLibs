@@ -65,10 +65,12 @@ targets:
       - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
       # - ZLIB_LIBRARY=${externalBuild:zlib}
       # - ZLIB_INCLUDE_DIRS=${external:zlib}
-      # - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/install;${externalBuild:libjpeg}/install
       # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libtiff}/install;${externalBuild:libjpeg}/install
 
       # new tests in dimitre repo
+
+      - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/ext.libtiff/install
+
       - BUILD_LIBTIFF=OFF
       # - LIBTIFF_ROOT=../../${externalBuild:libtiff}/install
       - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
