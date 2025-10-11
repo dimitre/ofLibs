@@ -8,7 +8,7 @@ externalDependencies:
     # tag: 3.19.10
 
 targets:
-  zlib:
+  zlib-ng:
     kind: chaletProject
     location: ../zlib-ng
     rebuild: false
@@ -16,10 +16,10 @@ targets:
     kind: chaletProject
     location: ../libjpeg
     rebuild: false
-  libtiff:
-    kind: chaletProject
-    location: ../libtiff
-    rebuild: false
+  # libtiff:
+  #   kind: chaletProject
+  #   location: ../libtiff
+  #   rebuild: false
 
   FreeImage:
     kind: cmakeProject
@@ -43,13 +43,6 @@ targets:
 
       - BUILD_TESTS=OFF
 
-      # - BUILD_ZLIB=ON
-
-      # - ZLIB_ROOT=${externalBuild:zlib}
-      # - ZLIB_LIBRARY=${externalBuild:zlib}
-      # - ZLIB_INCLUDE_DIRS=${external:zlib}
-      # - BUILD_ZLIB=OFF
-
       - BUILD_LIBPNG=OFF
       - BUILD_JXR=OFF
       - BUILD_LIBRAWLITE=OFF
@@ -61,26 +54,30 @@ targets:
       # - ENABLE_VISIBILITY=OFF
       # - USE_PTHREADS=1
       # defines[platform:!web+platform:!windows]:
-      - BUILD_ZLIB=OFF
-      - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
+      #
+      #       # - BUILD_LIBJPEG=OFF
+      # - LIBJPEG_ROOT=${externalBuild:libjpeg}/ext.libjpeg/install
+
+      # - BUILD_ZLIB=ON
+
+      # - ZLIB_ROOT=${externalBuild:zlib}
       # - ZLIB_LIBRARY=${externalBuild:zlib}
       # - ZLIB_INCLUDE_DIRS=${external:zlib}
-      # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libtiff}/install;${externalBuild:libjpeg}/install
+
+      - BUILD_ZLIB=OFF
+      - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
+      # - ZLIB_LIBRARY=${externalBuild:zlib}
+      - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install/include
 
       # new tests in dimitre repo
 
-      - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/ext.libtiff/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
 
       - BUILD_LIBTIFF=OFF
       # - LIBTIFF_ROOT=../../${externalBuild:libtiff}/install
       - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
       - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
       - FREEIMAGE_LIB=ON
-      # - LIBTIFF_LIBRARY=../../${externalBuild:libtiff}/libtiff
-      # - LIBTIFF_INCLUDE_DIRS=../../${externalBuild:libtiff}/libtiff
-
-      # - BUILD_LIBJPEG=OFF
-      # - LIBJPEG_ROOT=${externalBuild:libjpeg}/ext.libjpeg/install
 
       # - CMAKE_PREFIX_PATH=${externalBuild:libtiff}/install
     defines[toolchain:msvc]:
