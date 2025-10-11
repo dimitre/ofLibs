@@ -16,10 +16,10 @@ targets:
     kind: chaletProject
     location: ../libjpeg
     rebuild: false
-  # libtiff:
-  #   kind: chaletProject
-  #   location: ../libtiff
-  #   rebuild: false
+  libtiff:
+    kind: chaletProject
+    location: ../libtiff
+    rebuild: false
 
   FreeImage:
     kind: cmakeProject
