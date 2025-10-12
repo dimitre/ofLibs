@@ -67,13 +67,13 @@ jobs:
           xcode-select --install || true # Installs if not already present
           sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
-      - name: Install build-essential
-        if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y build-essential
-
       - name: Mango deps on Linux (bzip2)
         if: runner.os == 'Linux'
         run: sudo apt-get install -y bzip2
+
+      - name: Install build-essential
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y build-essential
 
       # - name: ccache
       #   uses: hendrikmuhs/ccache-action@v1.2.19
