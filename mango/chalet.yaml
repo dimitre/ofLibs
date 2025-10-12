@@ -18,6 +18,10 @@ externalDependencies:
     kind: git
 
 targets:
+  zlib-ng:
+    kind: chaletProject
+    location: ../zlib-ng
+    rebuild: false
   fmt:
     kind: chaletProject
     location: ../fmt/
@@ -72,7 +76,7 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
       # - CMAKE_INCLUDE_PATH=${externalBuild:deflate}/install/include
       # - CMAKE_SYSTEM_INCLUDE_PATH=${externalBuild:deflate}/install/include
