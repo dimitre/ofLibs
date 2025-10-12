@@ -12,14 +12,14 @@ targets:
     kind: chaletProject
     location: ../zlib-ng
     rebuild: false
-  libjpeg:
-    kind: chaletProject
-    location: ../libjpeg
-    rebuild: false
-  # libtiff:
+  # libjpeg:
   #   kind: chaletProject
-  #   location: ../libtiff
+  #   location: ../libjpeg
   #   rebuild: false
+  libtiff:
+    kind: chaletProject
+    location: ../libtiff
+    rebuild: false
 
   FreeImage:
     kind: cmakeProject
@@ -36,10 +36,6 @@ targets:
       - CMAKE_INSTALL_PREFIX=install
       # - CMAKE_INSTALL_LIBDIR=lib
       # - CMAKE_INSTALL_INCLUDEDIR=include
-      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
-      # - CMAKE_LIBRARY_OUTPUT_DIRECTORY=lib/y
-      # - CMAKE_CURRENT_BINARY_DIR=XXX
-      # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
 
       - BUILD_TESTS=OFF
 
@@ -66,14 +62,12 @@ targets:
 
       - BUILD_ZLIB=OFF
       - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
-      # - ZLIB_LIBRARY=${externalBuild:zlib}
       - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install/include
-
-      # new tests in dimitre repo
-
-      - FREEIMAGE_LIB=ON
+      # - ZLIB_LIBRARY=${externalBuild:zlib}
 
       - BUILD_LIBTIFF=OFF
+
+      - FREEIMAGE_LIB=ON
 
     #   - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
     #   - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
@@ -83,13 +77,14 @@ targets:
     #   - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/tiff.lib
 
     defines[platform:macos]:
-      # - DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
-      # - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/libtiff.a
 
-    # defines[platform:{web,windows}]:
-    #   - BUILD_ZLIB=ON
+      # Add these for external libtiff:
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
+      - TIFF_INCLUDE_DIR=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
+      - TIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/libtiff.a
+      - TIFF_STATIC=ON
 
 distribution:
   FreeImage:
