@@ -74,7 +74,13 @@ targets:
       - CMAKE_INSTALL_LIBDIR=lib
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
+      - BUILD_STATIC_LIBS=ON
+
+      - BUILD_OPENGL=ON
+
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
+      - LIBRARY_DISABLE=ON
 
       - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake

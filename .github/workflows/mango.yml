@@ -69,7 +69,8 @@ jobs:
 
       - name: Mango deps on Linux (bzip2)
         if: runner.os == 'Linux'
-        run: sudo apt-get install -y bzip2
+        # bzip2?
+        run: sudo apt-get install libfmt-dev zlib1g-dev libdeflate-dev libzstd-dev liblz4-dev libbz2-dev liblcms2-dev
 
       - name: Install build-essential
         if: runner.os == 'Linux'
