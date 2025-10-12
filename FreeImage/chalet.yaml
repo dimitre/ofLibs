@@ -8,25 +8,36 @@ externalDependencies:
     # tag: 3.19.10
 
 targets:
-  zlib-ng:
-    kind: chaletProject
-    location: ../zlib-ng
-    rebuild: false
+  # zlib-ng:
+  #   kind: chaletProject
+  #   location: ../zlib-ng
+  #   rebuild: false
+  # libpng:
+  #   kind: chaletProject
+  #   location: ../libpng
+  #   rebuild: false
   # libjpeg:
   #   kind: chaletProject
   #   location: ../libjpeg
   #   rebuild: false
-  libtiff:
-    kind: chaletProject
-    location: ../libtiff
-    rebuild: false
+  # libtiff:
+  #   kind: chaletProject
+  #   location: ../libtiff
+  #   rebuild: false
 
   FreeImage:
     kind: cmakeProject
     install: true
     location: ${external:${name}}
+    # links:
+    #   - zlib-ng
+    #   - libpng
+    #   - libjpeg
+    #   - libtiff
     recheck: false
     rebuild: false
+    # variables:
+    #   asdf: asdf
     defines:
       - BUILD_SHARED_LIBS=OFF
       - CMAKE_BUILD_TYPE=Release
@@ -53,25 +64,43 @@ targets:
       #
       #       # - BUILD_LIBJPEG=OFF
       # - LIBJPEG_ROOT=${externalBuild:libjpeg}/ext.libjpeg/install
-
       # - BUILD_ZLIB=ON
-
       # - ZLIB_ROOT=${externalBuild:zlib}
       # - ZLIB_LIBRARY=${externalBuild:zlib}
       # - ZLIB_INCLUDE_DIRS=${external:zlib}
-
       - BUILD_ZLIB=OFF
-      - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
-      - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install/include
+        # /Users/z/src/ofLibs/zlib-ng/build/arm64-apple-darwin_Release/ext.zlib-ng/install
+
+      # - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
+      # - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install/include
+
+      # - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/install
+      # - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/install/include
+
+      - ZLIB_ROOT=/Users/z/src/ofLibs/zlib-ng/build/arm64-apple-darwin_Release/ext.zlib-ng/install
+      - ZLIB_INCLUDE_DIRS=/Users/z/src/ofLibs/zlib-ng/build/arm64-apple-darwin_Release/ext.zlib-ng/install/include
+
       # - ZLIB_LIBRARY=${externalBuild:zlib}
 
       - BUILD_LIBTIFF=OFF
 
       - FREEIMAGE_LIB=ON
 
-    #   - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
-    #   - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
-    #   - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
+      # - PNG_LIBRARY=${cwd}/${externalBuild:libpng}/ext.libpng/install/lib/${ar:libpng}
+      # - FreeImage_LIBPNG_SRCS=${cwd}/${externalBuild:libpng}
+      - PNG_LIBRARY=/Users/z/src/ofLibs/libpng/build/arm64-apple-darwin_Release/ext.libpng/install/lib/libpng.a
+      - FreeImage_LIBPNG_SRCS=/Users/z/src/ofLibs/libpng/chalet_external/libpng
+
+      # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
+      # - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
+      # - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
+
+      - CMAKE_PREFIX_PATH=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/
+      - LIBTIFF_ROOT=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/
+      - LibTIFF_ROOT=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/
+      - LibTIFF_INCLUDE_DIRS=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/include
+      - LibTIFF_INCLUDE=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/include
+      - LibTIFF_INCLUDES=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/include
 
     # defines[toolchain:msvc]:
     #   - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/tiff.lib
@@ -81,10 +110,10 @@ targets:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
       # Add these for external libtiff:
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
-      - TIFF_INCLUDE_DIR=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
-      - TIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/libtiff.a
-      - TIFF_STATIC=ON
+      # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
+      # - TIFF_INCLUDE_DIR=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
+      # - TIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/libtiff.a
+      # - TIFF_STATIC=ON
 
 distribution:
   FreeImage:
