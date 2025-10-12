@@ -1,6 +1,11 @@
 name: oflibs
 version: "1.0"
 externalDependencies:
+  zstd:
+    repository: https://github.com/facebook/zstd/
+    commit: f94a01d
+    kind: git
+
   lcms2:
     repository: https://github.com/mm2/Little-CMS
     commit: 8e8a8c4
@@ -37,6 +42,25 @@ targets:
     defines[platform:macos]:
       - c_args=-mmacos-version-min=11.6
       - cpp_args=-mmacos-version-min=11.6
+
+  zstd:
+    kind: cmakeProject
+    location: ${external:${name}}/build/cmake
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - CMAKE_BUILD_TYPE=Release
+      - BUILD_SHARED_LIBS=OFF
+
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
+    defines[platform:macos]:
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
   deflate:
     kind: cmakeProject
@@ -82,7 +106,7 @@ targets:
 
       - LIBRARY_DISABLE=ON
 
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
       # - CMAKE_INCLUDE_PATH=${externalBuild:deflate}/install/include
       # - CMAKE_SYSTEM_INCLUDE_PATH=${externalBuild:deflate}/install/include
