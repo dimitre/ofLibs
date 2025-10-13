@@ -188,6 +188,11 @@ targets:
       # - LIBDEFLATE_ROOT=${cwd}/${externalBuild:deflate}/install
       # - LIBDEFLATE_INCLUDE_DIRS=${externalBuild:deflate}/ext.deflate/install/include
       # - LIBDEFLATE_LIBRARIES=${externalBuild:deflate}/ext.deflate/install/lib
+
+      - BZIP2_ROOT=${cwd}/${externalBuild:bzip2}/install
+      - BZIP2_INCLUDE_DIRS=${externalBuild:bzip2}/install/include
+      - BZIP2_LIBRARIES=${externalBuild:bzip2}/install/lib/{ar:bzip2}
+
       # - FMT_ROOT=${externalBuild:fmt}/ext.fmt/install
       # - FMT_INCLUDE_DIRS=${externalBuild:fmt}/ext.fmt/install/include
       # - FMT_INCLUDE_DIR=${externalBuild:fmt}/ext.fmt/install/include
