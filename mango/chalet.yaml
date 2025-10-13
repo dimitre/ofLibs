@@ -42,16 +42,6 @@ targets:
     location: ../fmt/
     rebuild: false
     # clean: false
-  lcms2:
-    kind: mesonProject
-    location: ${external:${name}}
-    install: true
-    defines:
-      - buildtype=release
-      - default_library=static
-    defines[platform:macos]:
-      - c_args=-mmacos-version-min=11.6
-      - cpp_args=-mmacos-version-min=11.6
 
   zstd:
     kind: cmakeProject
@@ -62,6 +52,9 @@ targets:
     defines:
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
+      - ZSTD_BUILD_SHARED=OFF
+      - BUILD_STATIC_LIBS=ON
+      - ZSTD_BUILD_STATIC=ON
 
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_INCLUDEDIR=include
@@ -98,6 +91,10 @@ targets:
     defines:
       - CMAKE_BUILD_TYPE=Release
       - BUILD_SHARED_LIBS=OFF
+      - BUILD_STATIC_LIBS=ON
+      - ENABLE_STATIC_LIB=ON
+      - ENABLE_SHARED_LIB=OFF
+
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_INSTALL_LIBDIR=lib
@@ -130,6 +127,22 @@ targets:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
+  lcms2:
+    kind: mesonProject
+    location: ${external:${name}}
+    install: true
+    defines:
+      - buildtype=release
+      - default_library=static
+
+      # - prefix=${cwd}/${externalBuild:${name}}/install
+      # - prefix=${cwd}
+      # - prefix=${cwd}/${externalBuild:${name}}/install
+
+    defines[platform:macos]:
+      - c_args=-mmacos-version-min=11.6
+      - cpp_args=-mmacos-version-min=11.6
+
   mango:
     kind: cmakeProject
     location: ${external:${name}}
@@ -150,14 +163,15 @@ targets:
 
       - LIBRARY_DISABLE=ON
 
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
-      - LCMS2_ROOT=${cwd}/${externalBuild:lcms2}/install
-      - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
-      - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install/opt/homebrew;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
 
-      - lcms2_ROOT=${cwd}/${externalBuild:lcms2}/install
-      - lcms2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
-      - lcms2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib
+      # - LCMS2_ROOT=${cwd}/${externalBuild:lcms2}/install/opt/homebrew/
+      # - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
+      # - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib
+
+      # - lcms2_ROOT=${cwd}/${externalBuild:lcms2}/install
+      # - lcms2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
+      # - lcms2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib
 
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
       # - CMAKE_INCLUDE_PATH=${externalBuild:deflate}/install/include
@@ -184,7 +198,17 @@ distribution:
     kind: archive
     format: zip
     include:
+      - ${externalBuild:lcms2}/install/opt/homebrew/lib
+      - ${externalBuild:lcms2}/install/opt/homebrew/include
+      - ${externalBuild:zstd}/install/lib
+      - ${externalBuild:zstd}/install/include
+      - ${externalBuild:bzip2}/install/lib
+      - ${externalBuild:bzip2}/install/include
+      - ${externalBuild:lz4}/install/lib
+      - ${externalBuild:lz4}/install/include
+      - ${externalBuild:deflate}/install/lib
+      - ${externalBuild:deflate}/install/include
+
       - ${externalBuild:${name}}/install/lib
       - ${externalBuild:${name}}/install/include
-      - ${external:${name}}/COPYING
-      - ${external:${name}}/LICENSES
+      - ${external:${name}}/license
