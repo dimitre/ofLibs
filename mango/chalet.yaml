@@ -205,8 +205,8 @@ targets:
       # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
     defines[platform:windows]:
       - LCMS2_ROOT=${cwd}/${externalBuild:lcms2}/install
-      - LCMS2_INCLUDE_DIRS=${externalBuild:lcms2}/install/include
-      - LCMS2_LIBRARIES=${externalBuild:lcms2}/install/lib/{ar:lcms2}
+      - LCMS2_INCLUDE_DIR=${externalBuild:lcms2}/install/include
+      - LCMS2_LIBRARY=${externalBuild:lcms2}/install/lib/${ar:lcms2}
 
 distribution:
   mango:
