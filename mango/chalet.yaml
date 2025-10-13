@@ -155,6 +155,10 @@ targets:
       - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
       - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib
 
+      - lcms2_ROOT=${cwd}/${externalBuild:lcms2}/install
+      - lcms2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
+      - lcms2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib
+
       # - CMAKE_LIBRARY_PATH=${externalBuild:deflate}/install/lib/cmake
       # - CMAKE_INCLUDE_PATH=${externalBuild:deflate}/install/include
       # - CMAKE_SYSTEM_INCLUDE_PATH=${externalBuild:deflate}/install/include
