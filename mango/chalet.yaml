@@ -166,8 +166,6 @@ targets:
 
       - LIBRARY_DISABLE=ON
 
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:lcms2}/install/opt/homebrew;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
-
       # - LCMS2_ROOT=${cwd}/${externalBuild:lcms2}/install/opt/homebrew/
       # - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
       # - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib
@@ -197,7 +195,11 @@ targets:
       # - FMT_INCLUDE_DIRS=${externalBuild:fmt}/ext.fmt/install/include
       # - FMT_INCLUDE_DIR=${externalBuild:fmt}/ext.fmt/install/include
       # - FMT_LIBRARIES=${externalBuild:fmt}/ext.fmt/install/lib
+      #
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
     defines[platform:macos]:
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install/opt/homebrew;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
+
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
