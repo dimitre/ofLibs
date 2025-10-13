@@ -94,6 +94,9 @@ targets:
       - BUILD_STATIC_LIBS=ON
       - ENABLE_STATIC_LIB=ON
       - ENABLE_SHARED_LIB=OFF
+      - ENABLE_APP_DEFAULT=OFF
+      - ENABLE_DOCS_DEFAULT=OFF
+      - ENABLE_EXAMPLES_DEFAULT=OFF
 
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_INCLUDEDIR=include
@@ -208,8 +211,8 @@ distribution:
       - ${externalBuild:lz4}/install/include
       - ${externalBuild:deflate}/install/lib
       - ${externalBuild:deflate}/install/include
-      - ${externalBuild:fmt}/install/lib
-      - ${externalBuild:fmt}/install/include
+      - ${externalBuild:fmt}/ext.fmt/install/lib
+      - ${externalBuild:fmt}/ext.fmt/install/include
 
       - ${externalBuild:${name}}/install/lib
       - ${externalBuild:${name}}/install/include
