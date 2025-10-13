@@ -187,7 +187,8 @@ targets:
       # - LIBDEFLATE_INCLUDE_DIRS=${externalBuild:deflate}/ext.deflate/install/include
       # - LIBDEFLATE_LIBRARIES=${externalBuild:deflate}/ext.deflate/install/lib
 
-      - BZIP2_ROOT=${cwd}/${externalBuild:bzip2}/install
+      # - BZIP2_ROOT=${cwd}/${externalBuild:bzip2}/install
+      - BZip2_ROOT=${cwd}/${externalBuild:bzip2}/install
       # - BZIP2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
       # - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/{ar:bzip2}
 
