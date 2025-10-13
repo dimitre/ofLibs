@@ -206,7 +206,7 @@ targets:
     defines[platform:windows]:
       - LCMS2_ROOT=${cwd}/${externalBuild:lcms2}/install
       - LCMS2_INCLUDE_DIR=${cwd}/${externalBuild:lcms2}/install/include
-      - LCMS2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/${ar:lcms2}
+      - LCMS2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
 
 distribution:
   mango:
