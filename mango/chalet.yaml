@@ -208,6 +208,8 @@ distribution:
       - ${externalBuild:lz4}/install/include
       - ${externalBuild:deflate}/install/lib
       - ${externalBuild:deflate}/install/include
+      - ${externalBuild:fmt}/install/lib
+      - ${externalBuild:fmt}/install/include
 
       - ${externalBuild:${name}}/install/lib
       - ${externalBuild:${name}}/install/include
