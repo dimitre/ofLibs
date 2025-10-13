@@ -91,7 +91,7 @@ targets:
 
   bzip2:
     kind: cmakeProject
-    location: ${external:${name}}/build/cmake
+    location: ${external:${name}}
     recheck: false
     rebuild: false
     install: true
