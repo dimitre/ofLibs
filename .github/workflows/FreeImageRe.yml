@@ -1,10 +1,10 @@
-name: FreeImage
+name: FreeImageRe
 
 on:
   push:
     paths:
-      - FreeImage/**
-      - .github/workflows/FreeImage.yml
+      - FreeImageRe/**
+      - .github/workflows/FreeImageRe.yml
 
 permissions:
   contents: write
@@ -17,7 +17,7 @@ concurrency:
 #   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
-  FreeImage_matrix:
+  FreeImageRe_matrix:
     strategy:
       # this way macos completes if windows fails
       fail-fast: false
