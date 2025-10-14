@@ -120,7 +120,6 @@ targets:
 
       - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/ext-zlib-ng/install
       - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/ext-zlib-ng/install/include
-
       # - ZLIB_LIBRARY=${externalBuild:zlib}
 
       - BUILD_LIBTIFF=OFF
