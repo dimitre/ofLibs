@@ -1,6 +1,10 @@
 name: ofLibs
 version: "1.0"
 externalDependencies:
+  libtiff:
+    repository: https://gitlab.com/libtiff/libtiff
+    tag: v4.7.1
+    kind: git
   FreeImage:
     # repository: https://github.com/danoli3/FreeImage
     repository: https://github.com/dimitre/FreeImage
@@ -8,22 +12,60 @@ externalDependencies:
     # tag: 3.19.10
 
 targets:
-  # zlib-ng:
-  #   kind: chaletProject
-  #   location: ../zlib-ng
-  #   rebuild: false
+  zlib-ng:
+    kind: chaletProject
+    location: ../zlib-ng
+    rebuild: false
   # libpng:
   #   kind: chaletProject
   #   location: ../libpng
   #   rebuild: false
-  # libjpeg:
-  #   kind: chaletProject
-  #   location: ../libjpeg
-  #   rebuild: false
+  libjpeg:
+    kind: chaletProject
+    location: ../libjpeg
+    rebuild: false
   # libtiff:
   #   kind: chaletProject
   #   location: ../libtiff
   #   rebuild: false
+  libtiff:
+    kind: cmakeProject
+    location: ${external:${name}}
+    # settings:CMake: #  <-- CMake-specific block
+    # generator: "Visual Studio 17 2022"
+    # generator: "Visual Studio 17 2022"
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
+      - BUILD_STATIC_LIBS=ON
+      - BUILD_SHARED_LIBS=OFF
+      - TIFF_STATIC_LIBS_DEFAULT=ON
+      - tiff_static=ON
+
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INSTALL_LIBDIR=lib
+
+      - CMAKE_PREFIX_PATH=${externalBuild:libjpeg}/ext.libjpeg/install
+      # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libjpeg}/install
+      # - JPEG_ROOT=        ${externalBuild:libjpeg}/ext.libjpeg/install
+      # - JPEG_INCLUDE_DIR= ${externalBuild:libjpeg}/ext.libjpeg/install/include
+      # - JPEG_INCLUDE_DIRS=${externalBuild:libjpeg}/ext.libjpeg/install/include
+      # - JPEG_LIBRARY=     ${externalBuild:libjpeg}/ext.libjpeg/install/lib
+      # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
+      - tiff-tools=OFF
+      - tiff-tests=OFF
+      - tiff-contrib=OFF
+      - tiff-docs=OFF
+      - tiff-install=ON
+      - zstd=OFF
+      # test of stopping msvc duplicated symbols with FreeImage : _TIFFcalloc
+      - TIFF_USE_WIN32_FILEIO=OFF
 
   FreeImage:
     kind: cmakeProject
@@ -63,7 +105,6 @@ targets:
       # defines[platform:!web+platform:!windows]:
       #
       #       # - BUILD_LIBJPEG=OFF
-      # - LIBJPEG_ROOT=${externalBuild:libjpeg}/ext.libjpeg/install
       # - BUILD_ZLIB=ON
       # - ZLIB_ROOT=${externalBuild:zlib}
       # - ZLIB_LIBRARY=${externalBuild:zlib}
@@ -77,12 +118,33 @@ targets:
       # - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/install
       # - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/install/include
 
-      - ZLIB_ROOT=/Users/z/src/ofLibs/zlib-ng/build/arm64-apple-darwin_Release/ext.zlib-ng/install
-      - ZLIB_INCLUDE_DIRS=/Users/z/src/ofLibs/zlib-ng/build/arm64-apple-darwin_Release/ext.zlib-ng/install/include
+      - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/ext-zlib-ng/install
+      - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/ext-zlib-ng/install/include
 
       # - ZLIB_LIBRARY=${externalBuild:zlib}
 
       - BUILD_LIBTIFF=OFF
+      - LIBJPEG_ROOT=${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
+
+      - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/install/
+      - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/install/lib/${ar:libtiff}
+      - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/install/include
+      - LIBTIFF_SOURCE_DIR=${cwd}/${external:libtiff}/libtiff
+      - LIBTIFF_CONFIG_DIR=${cwd}/${externalBuild:libtiff}/libtiff
+
+      # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
+
+      # - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/
+      # - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/${ar:libtiff}
+      # - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
+      # - LIBTIFF_SOURCE_DIR=${cwd}/${external:libtiff}/libtiff
+
+      # - LibTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/
+      # - LibTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
+      # - LibTIFF_INCLUDE=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
+      # - LibTIFF_INCLUDES=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
+      # - LibTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/${ar:libtiff}
 
       - FREEIMAGE_LIB=ON
 
@@ -94,13 +156,6 @@ targets:
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
       # - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
       # - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
-
-      - CMAKE_PREFIX_PATH=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/
-      - LIBTIFF_ROOT=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/
-      - LibTIFF_ROOT=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/
-      - LibTIFF_INCLUDE_DIRS=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/include
-      - LibTIFF_INCLUDE=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/include
-      - LibTIFF_INCLUDES=/Users/z/src/ofLibs/FreeImage/build/arm64-apple-darwin_Release/ext.libtiff/ext.libtiff/install/include
 
     # defines[toolchain:msvc]:
     #   - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/tiff.lib
