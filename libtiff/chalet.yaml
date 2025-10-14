@@ -26,12 +26,20 @@ targets:
       # - BUILD_STATIC_LIBS=ON
       - BUILD_SHARED_LIBS=OFF #not working in this repo
       - ENABLE_SHARED=OFF
+      - ENABLE_STATIC=TRUE
       - WITH_TOOLS=OFF
       - WITH_TESTS=OFF
 
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+
+    defines[toolchain:msvc]:
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+      - CMAKE_C_FLAGS=/MT
+      - CMAKE_CXX_FLAGS=/MT
+      - CMAKE_C_FLAGS_RELEASE=/MT /O2 /Ob2 /DNDEBUG
+      - CMAKE_CXX_FLAGS_RELEASE=/MT /O2 /Ob2 /DNDEBUG
   # libjpeg:
   #   kind: chaletProject
   #   location: ../libjpeg
@@ -87,6 +95,10 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      - CMAKE_C_VISIBILITY_PRESET=hidden
+      - CMAKE_CXX_VISIBILITY_PRESET=hidden
+      - CMAKE_VISIBILITY_INLINES_HIDDEN=ON
+      - TIFF_STATIC=ON
 
 distribution:
   libtiff:
