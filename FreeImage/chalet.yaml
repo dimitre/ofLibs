@@ -67,6 +67,23 @@ targets:
       # test of stopping msvc duplicated symbols with FreeImage : _TIFFcalloc
       - TIFF_USE_WIN32_FILEIO=OFF
 
+    # workaround suggested by Kimi K2 if backend is ninja.
+    # CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+    defines[toolchain:msvc]:
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+      - CMAKE_C_FLAGS=/MT /DTIFF_STATIC
+      - CMAKE_CXX_FLAGS=/MT /DTIFF_STATIC
+      - CMAKE_C_FLAGS_RELEASE=/MT /O2 /Ob2 /DNDEBUG /DTIFF_STATIC
+      - CMAKE_CXX_FLAGS_RELEASE=/MT /O2 /Ob2 /DNDEBUG /DTIFF_STATIC
+
+    defines[platform:macos]:
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      - CMAKE_C_VISIBILITY_PRESET=hidden
+      - CMAKE_CXX_VISIBILITY_PRESET=hidden
+      - CMAKE_VISIBILITY_INLINES_HIDDEN=ON
+      - TIFF_STATIC=ON
+
   FreeImage:
     kind: cmakeProject
     install: true
