@@ -168,8 +168,9 @@ targets:
       # - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
       # - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
 
-    # defines[toolchain:msvc]:
-    #   - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/tiff.lib
+      # defines[toolchain:msvc]:
+      #   - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/tiff.lib
+      - ZLIB_LIBRARY=${cwd}/${externalBuild:libpng}/ext-zlib-ng/install/lib/libz.a
 
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
