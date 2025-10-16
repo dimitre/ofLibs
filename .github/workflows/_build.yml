@@ -89,13 +89,19 @@ jobs:
         if: inputs.meson
         run: pip install meson ninja
 
-      - name: Apt Packages
-        if: runner.os == 'Linux' && inputs.linux_apt != ''
-        # if: matrix.platform == 'linux64' && inputs.linux_apt != ''
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y ${{ inputs.linux_apt }}
-        # sudo apt install libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev libegl1-mesa-dev libopengl-dev libglx-dev libglvnd-dev
+      # - name: Linux Apt Packages
+      #   if: runner.os == 'Linux' && inputs.linux_apt != ''
+      #   # if: matrix.platform == 'linux64' && inputs.linux_apt != ''
+      #   run: |
+      #     sudo apt-get update -qq
+      #     sudo apt-get install -y ${{ inputs.linux_apt }}
+
+      - name: Linux Apt Cache Packages
+        if: runner.os == 'Linux'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: ${{ inputs.linux_apt }}
+          version: 1.0
 
       - name: macOS Checks
         if: runner.os == 'macOS'
@@ -150,12 +156,29 @@ jobs:
           packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
           version: 1.0
 
+      # FIXME: Test if it works OK
+      - name: RPI - Cache Multistrap
+        uses: actions/cache@v4
+        with:
+          path: raspbian
+          # key: ${{ matrix.prefix }}-rpicache
+          # I'll now keep just one key, so all actions benefits to the same cache package
+          key: rpi-multistrap-cache
+
       - name: RPI - multistrap
-        if: (matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l') && inputs.multistrap
+        if: inputs.multistrap && (matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
         run: |
           mkdir -p raspbian/etc/apt/apt.conf.d/
           echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
           multistrap -a arm64 -d raspbian -f ../multistrap.conf
+
+      # FIXME: check if one path can have all needed paths for the two kinds of RPI, if not split into two steps here
+      - name: RPI - Cross-compile Meson env vars
+        if: inputs.meson && ( matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
+        run: |
+          ROOT=$PWD/raspbian
+          echo "PKG_CONFIG_SYSROOT_DIR=$ROOT" >> $GITHUB_ENV
+          echo "PKG_CONFIG_LIBDIR=$ROOT/usr/lib/pkgconfig:$ROOT/usr/lib/aarch64-linux-gnu/pkgconfig:$ROOT/usr/lib/armv6l-linux-gnu/pkgconfig:$ROOT/usr/share/pkgconfig" >> $GITHUB_ENV
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
