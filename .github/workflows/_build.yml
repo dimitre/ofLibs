@@ -89,19 +89,19 @@ jobs:
         if: inputs.meson
         run: pip install meson ninja
 
-      # - name: Linux Apt Packages
-      #   if: runner.os == 'Linux' && inputs.linux_apt != ''
-      #   # if: matrix.platform == 'linux64' && inputs.linux_apt != ''
-      #   run: |
-      #     sudo apt-get update -qq
-      #     sudo apt-get install -y ${{ inputs.linux_apt }}
+      - name: Linux Apt Packages
+        if: runner.os == 'Linux' && inputs.linux_apt != ''
+        # if: matrix.platform == 'linux64' && inputs.linux_apt != ''
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ${{ inputs.linux_apt }}
 
-      - name: Linux Apt Cache Packages
-        if: runner.os == 'Linux'
-        uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: ${{ inputs.linux_apt }}
-          version: 1.0
+      # - name: Linux Apt Cache Packages
+      #   if: runner.os == 'Linux'
+      #   uses: awalsh128/cache-apt-pkgs-action@latest
+      #   with:
+      #     packages: ${{ inputs.linux_apt }}
+      #     version: 1.0
 
       - name: macOS Checks
         if: runner.os == 'macOS'
