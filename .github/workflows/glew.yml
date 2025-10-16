@@ -22,8 +22,8 @@ jobs:
   # permissions:
   #   contents: write
 
-  # env:
-  #   CMAKE_CXX_COMPILER_LAUNCHER: ccache
+  env:
+    CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
   glew_matrix:
     if: false

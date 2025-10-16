@@ -75,8 +75,8 @@ jobs:
       #   with:
       #     key: ${{ inputs.lib }}-${{ runner.os }}-${{ matrix.platform }}-ccache
       - name: Apt Packages
-        # if: runner.os == 'Linux'
-        if: matrix.platform == 'linux64' && inputs.linux_apt != ''
+        if: runner.os == 'Linux' && inputs.linux_apt != ''
+        # if: matrix.platform == 'linux64' && inputs.linux_apt != ''
         run: |
           sudo apt install ${{ inputs.linux_apt }}
         # sudo apt install libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev libegl1-mesa-dev libopengl-dev libglx-dev libglvnd-dev
