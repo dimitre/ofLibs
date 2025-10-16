@@ -6,19 +6,20 @@ on:
       - pugixml/**
       - .github/workflows/pugixml.yml
 
-permissions:
-  contents: write
-
-concurrency:
-  # group: ${{ github.workflow }}-${{ github.ref }}
-  group: ${{ github.workflow }}
-  cancel-in-progress: false
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with:
+      {
+        lib: pugixml,
+        version: v0.12.1,
+        multistrap: true,
+        linux_apt: libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev libegl1-mesa-dev libopengl-dev libglx-dev libglvnd-dev,
+      }
+    secrets: inherit
+
   pugixml_matrix:
+    if: false
     strategy:
       matrix:
         include:
