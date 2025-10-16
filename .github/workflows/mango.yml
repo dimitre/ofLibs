@@ -8,14 +8,15 @@ on:
       - mango/**
       - .github/workflows/mango.yml
 
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# jobs:
+#   ci:
+#     uses: ./.github/workflows/_build.yml
+#     with: { lib: mango, version: v0.12.1 }
+#     secrets: inherit
 
 jobs:
   mango_matrix:
+    # if: false
     strategy:
       # FIXME: remove - temporary, only to debug meson troubles
       fail-fast: false
