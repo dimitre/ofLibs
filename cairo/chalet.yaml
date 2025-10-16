@@ -65,18 +65,20 @@ distribution:
     format: zip
     include:
       - ${external:${name}}/COPYING*
-
-    include[platform:macos]:
-      - ${externalBuild:${name}}/install/opt/homebrew/include
-      - ${externalBuild:${name}}/install/opt/homebrew/lib
-      - ${externalBuild:${name}}/install/usr/local/include
-      - ${externalBuild:${name}}/install/usr/local/lib
-    include[platform:windows]:
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
-    include[platform:linux]:
-      - ${externalBuild:${name}}/install/usr/local/include
-      - ${externalBuild:${name}}/install/usr/local/lib
 
-      # - ${externalBuild:${name}}/src/*.a
-      # - ${externalBuild:${name}}/src/*.h
+    # include[platform:macos]:
+    #   - ${externalBuild:${name}}/install/opt/homebrew/include
+    #   - ${externalBuild:${name}}/install/opt/homebrew/lib
+    #   - ${externalBuild:${name}}/install/usr/local/include
+    #   - ${externalBuild:${name}}/install/usr/local/lib
+    # include[platform:windows]:
+    #   - ${externalBuild:${name}}/install/include
+    #   - ${externalBuild:${name}}/install/lib
+    # include[platform:linux]:
+    #   - ${externalBuild:${name}}/install/usr/local/include
+    #   - ${externalBuild:${name}}/install/usr/local/lib
+
+    # - ${externalBuild:${name}}/src/*.a
+    # - ${externalBuild:${name}}/src/*.h
