@@ -6,15 +6,13 @@ on:
       - freetype/**
       - .github/workflows/freetype.yml
 
-# not needed really
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: freetype, version: v0.12.1 }
+    secrets: inherit
   freetype_matrix:
+    if: false
     strategy:
       fail-fast: false
       matrix:
