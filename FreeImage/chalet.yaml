@@ -16,10 +16,10 @@ targets:
     kind: chaletProject
     location: ../zlib-ng
     rebuild: false
-  # libpng:
-  #   kind: chaletProject
-  #   location: ../libpng
-  #   rebuild: false
+  libpng:
+    kind: chaletProject
+    location: ../libpng
+    rebuild: false
   libjpeg:
     kind: chaletProject
     location: ../libjpeg
@@ -88,11 +88,7 @@ targets:
     kind: cmakeProject
     install: true
     location: ${external:${name}}
-    # links:
-    #   - zlib-ng
-    #   - libpng
-    #   - libjpeg
-    #   - libtiff
+
     recheck: false
     rebuild: false
     # variables:
@@ -140,8 +136,7 @@ targets:
       # - ZLIB_LIBRARY=${externalBuild:zlib}
 
       - BUILD_LIBTIFF=OFF
-      - LIBJPEG_ROOT=${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install;${cwd}/${externalBuild:libpng}/ext.libpng/install/
 
       - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/install/
       - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/install/lib/${ar:libtiff}
@@ -149,6 +144,17 @@ targets:
       - LIBTIFF_CONFIG_DIR=${cwd}/${externalBuild:libtiff}/libtiff
       - LIBTIFF_SOURCE_DIR=${cwd}/${external:libtiff}/libtiff
 
+      - FREEIMAGE_LIB=ON
+
+      - PNG_ROOT=${cwd}/${externalBuild:libpng}/ext.libpng/install/
+      - PNG_INCLUDE_DIR=${cwd}/${externalBuild:libpng}/ext.libpng/install/include
+      - PNG_LIBRARY=${cwd}/${externalBuild:libpng}/ext.libpng/install/lib/${ar:libpng}
+
+      - LIBJPEG_ROOT=${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
+
+      # - FreeImage_LIBPNG_SRCS=${cwd}/${externalBuild:libpng}
+
+      # FIXME: REMOVE
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
 
       # - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/
@@ -161,13 +167,6 @@ targets:
       # - LibTIFF_INCLUDE=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
       # - LibTIFF_INCLUDES=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/include
       # - LibTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/ext.libtiff/install/lib/${ar:libtiff}
-
-      - FREEIMAGE_LIB=ON
-
-      # - PNG_LIBRARY=${cwd}/${externalBuild:libpng}/ext.libpng/install/lib/${ar:libpng}
-      # - FreeImage_LIBPNG_SRCS=${cwd}/${externalBuild:libpng}
-      - PNG_LIBRARY=/Users/z/src/ofLibs/libpng/build/arm64-apple-darwin_Release/ext.libpng/install/lib/libpng.a
-      - FreeImage_LIBPNG_SRCS=/Users/z/src/ofLibs/libpng/chalet_external/libpng
 
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/ext.libtiff/install
       # - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/ext.libtiff/install

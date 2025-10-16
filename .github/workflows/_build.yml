@@ -15,6 +15,10 @@ on:
 permissions:
   contents: write
 
+# concurrency:
+#   group: ${{ github.workflow }}
+#   cancel-in-progress: false
+#
 # env:
 #   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
@@ -76,6 +80,15 @@ jobs:
         run: |
           sudo apt install ${{ inputs.linux_apt }}
         # sudo apt install libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev libegl1-mesa-dev libopengl-dev libglx-dev libglvnd-dev
+
+      - name: macOS Checks
+        if: runner.os == 'macOS'
+        run: |
+          whereis cmake
+          cmake --version
+          brew install cmake
+          whereis cmake
+          cmake --version
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'

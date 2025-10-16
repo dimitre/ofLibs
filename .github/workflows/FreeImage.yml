@@ -6,18 +6,15 @@ on:
       - FreeImage/**
       - .github/workflows/FreeImage.yml
 
-permissions:
-  contents: write
-
-concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: false
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: FreeImage, version: v0.12.1 }
+    secrets: inherit
+    # passes GITHUB_TOKEN automatically
+
   FreeImage_matrix:
+    if: false
     strategy:
       # this way macos completes if windows fails
       fail-fast: false
