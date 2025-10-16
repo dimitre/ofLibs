@@ -12,10 +12,10 @@ externalDependencies:
     # tag: 3.19.10
 
 targets:
-  zlib-ng:
-    kind: chaletProject
-    location: ../zlib-ng
-    rebuild: false
+  # zlib-ng:
+  #   kind: chaletProject
+  #   location: ../zlib-ng
+  #   rebuild: false
   libpng:
     kind: chaletProject
     location: ../libpng
@@ -125,18 +125,11 @@ targets:
       - BUILD_ZLIB=OFF
         # /Users/z/src/ofLibs/zlib-ng/build/arm64-apple-darwin_Release/ext.zlib-ng/install
 
-      # - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
-      # - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install/include
-
-      # - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/install
-      # - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/install/include
-
-      - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/ext-zlib-ng/install
-      - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/ext-zlib-ng/install/include
-      # - ZLIB_LIBRARY=${externalBuild:zlib}
+      # - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/ext-zlib-ng/install
+      # - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/ext-zlib-ng/install/include
 
       - BUILD_LIBTIFF=OFF
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install;${cwd}/${externalBuild:libpng}/ext.libpng/install/
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install;${cwd}/${externalBuild:libpng}/ext.libpng/install/;${cwd}/${externalBuild:libpng}/ext.zlib-ng/install/
 
       - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/install/
       - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/install/lib/${ar:libtiff}
