@@ -33,6 +33,8 @@ targets:
       - GLFW_BUILD_WAYLAND=OFF
       - X11_X11_LIB=who_cares
       - GLFW_BUILD_X11=OFF
+      - _POSIX_TIMERS=1
+      - _GNU_SOURCE
 
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
