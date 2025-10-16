@@ -217,6 +217,10 @@ targets:
       - LCMS2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
       - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
 
+      - BZIP2_ROOT=${cwd}/${externalBuild:bzip2}/install
+      - BZIP2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
+      - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/bz2_static.lib
+
       # - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/libbz2_static.lib
 
 distribution:
