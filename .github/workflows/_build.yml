@@ -205,7 +205,7 @@ jobs:
           ls -alfR dist
 
       - name: Check Static Lib minos / MACOSX_DEPLOYMENT_TARGET
-        if: runner.os == 'macOS'
+        if: inpus.meson && runner.os == 'macOS'
         run: |
           otool -l **/*.a | grep minos
 
