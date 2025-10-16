@@ -6,14 +6,20 @@ on:
       - zlib/**
       - .github/workflows/zlib.yml
 
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: zlib, version: v0.12.1 }
+    secrets: inherit
+
+  # permissions:
+  #   contents: write
+
+  # env:
+  #   CMAKE_CXX_COMPILER_LAUNCHER: ccache
+
   zlib_matrix:
+    if: false
     strategy:
       fail-fast: false
       matrix:

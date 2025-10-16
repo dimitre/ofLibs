@@ -6,14 +6,14 @@ on:
       - yaml-cpp/**
       - .github/workflows/yaml-cpp.yml
 
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: yaml-cpp, version: v0.12.1 }
+    secrets: inherit
+
   yaml-cpp_matrix:
+    if: false
     strategy:
       fail-fast: false
       matrix:

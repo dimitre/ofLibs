@@ -6,14 +6,14 @@ on:
       - zlib-ng/**
       - .github/workflows/zlib-ng.yml
 
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: zlib-ng, version: v0.12.1 }
+    secrets: inherit
+
   zlib-ng_matrix:
+    if: false
     strategy:
       fail-fast: false
       matrix:

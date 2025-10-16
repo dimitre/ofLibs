@@ -6,19 +6,17 @@ on:
       - uriparser/**
       - .github/workflows/uriparser.yml
 
-permissions:
-  contents: write
-
-concurrency:
-  # group: ${{ github.workflow }}-${{ github.ref }}
-  group: ${{ github.workflow }}
-  cancel-in-progress: false
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: uriparser, version: v0.12.1 }
+    secrets: inherit
+
+  # env:
+  #   CMAKE_CXX_COMPILER_LAUNCHER: ccache
+
   uriparser_matrix:
+    if: false
     strategy:
       matrix:
         include:
