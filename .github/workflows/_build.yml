@@ -118,7 +118,7 @@ jobs:
           chalet --version
 
       - name: Chalet Configure
-        run: chalet configure --toolchain ${{ matrix.toolchain }}
+        run: chalet configure --toolchain ${{ matrix.toolchain }} #-a auto
 
       - name: Chalet Bundle
         run: |
