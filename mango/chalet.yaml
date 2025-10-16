@@ -32,7 +32,8 @@ externalDependencies:
     # repository: https://github.com/dimitre/mango
 
     repository: https://github.com/t0rakka/mango
-    commit: 18e56fa
+    # commit: 18e56fa
+    branch: static-lib
     kind: git
 
 targets:
