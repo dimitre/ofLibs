@@ -18,7 +18,7 @@ externalDependencies:
 
   lcms2:
     repository: https://github.com/mm2/Little-CMS
-    commit: 8e8a8c4
+    commit: 5cdf304
     kind: git
 
   deflate:
@@ -171,7 +171,7 @@ targets:
       - LIBRARY_DISABLE=ON
 
       # - LCMS2_ROOT=${cwd}/${externalBuild:lcms2}/install/opt/homebrew/
-      # - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
+      - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
       # - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib
 
       # - lcms2_ROOT=${cwd}/${externalBuild:lcms2}/install
