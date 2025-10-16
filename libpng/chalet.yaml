@@ -4,13 +4,13 @@ externalDependencies:
   zlib-ng:
     repository: https://github.com/zlib-ng/zlib-ng
     # tag: 2.2.5
-    commit: a9ef3eb
+    commit: db3f23f
     kind: git
 
   libpng:
     repository: https://github.com/pnggroup/libpng
     # tag: "v1.6.50"
-    commit: 2acf7da
+    commit: fdc54a7
     kind: git
 
 targets:
@@ -71,6 +71,7 @@ targets:
       # defines[platform:!web+platform:!windows]:
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install
       - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:zlib-ng}/install
+      - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/install
 
       # - CMAKE_PREFIX_PATH=${externalBuild:zlib}/install
       # - ZLIB_ROOT=${externalBuild:zlib}/install
