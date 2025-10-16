@@ -223,13 +223,13 @@ targets:
       - lcms2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
       - lcms2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
 
-      # - BZIP2_ROOT=${cwd}/${externalBuild:bzip2}/install
-      # - BZIP2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
-      # - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/bz2_static.lib
+      - BZIP2_ROOT=${cwd}/${externalBuild:bzip2}/install
+      - BZIP2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
+      - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/bz2_static.lib
 
-      - BZip2_ROOT=${cwd}/${externalBuild:bzip2}/install
-      - BZip2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
-      - BZip2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/bz2_static.lib
+      # - BZip2_ROOT=${cwd}/${externalBuild:bzip2}/install
+      # - BZip2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
+      # - BZip2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/bz2_static.lib
 
       # - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/libbz2_static.lib
 
