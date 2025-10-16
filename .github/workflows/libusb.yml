@@ -13,8 +13,8 @@ jobs:
       {
         lib: libusb,
         version: v0.12.1,
-        multistrap: true,
         linux_apt: libudev-dev,
+        multistrap: true,
       }
     secrets: inherit
   libusb_matrix:
