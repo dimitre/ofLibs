@@ -164,7 +164,7 @@ targets:
       - BUILD_SHARED_LIBS=OFF
       - BUILD_STATIC_LIBS=ON
 
-      - BUILD_OPENGL=ON
+      # - BUILD_OPENGL=OFF
 
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 
