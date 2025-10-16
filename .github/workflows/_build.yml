@@ -58,17 +58,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-        with:
-          # checkout the library sub-folder
-          sparse-checkout: ${{ inputs.lib }}
+        # with:
+        #   sparse-checkout: ${{ inputs.lib }}
+
       # - name: ccache
       #   uses: hendrikmuhs/ccache-action@v1.2.19
       #   with:
       #     key: ${{ inputs.lib }}-${{ runner.os }}-${{ matrix.platform }}-ccache
 
-      - name: Verify sparse checkout
-        working-directory: .
-        run: test -d ${{ inputs.lib }}
+      # - name: Verify sparse checkout
+      #   working-directory: .
+      #   run: test -d ${{ inputs.lib }}
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
