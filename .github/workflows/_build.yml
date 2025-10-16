@@ -5,6 +5,8 @@ on:
     inputs:
       lib: { required: true, type: string }
       version: { required: true, type: string } # git tag to publish under
+      multistrap: { required: false, type: boolean } # git tag to publish under
+      linux_apt: { required: false, type: string } # git tag to publish under
   # push:
   #   paths:
   #     - assimp/**
@@ -64,11 +66,16 @@ jobs:
       # - name: Verify sparse checkout
       #   working-directory: .
       #   run: test -d ${{ inputs.lib }}
-
       # - name: ccache
       #   uses: hendrikmuhs/ccache-action@v1.2.19
       #   with:
       #     key: ${{ inputs.lib }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+      - name: Apt Packages
+        # if: runner.os == 'Linux'
+        if: matrix.platform == 'linux64' && inputs.linux_apt != ''
+        run: |
+          sudo apt install ${{ inputs.linux_apt }}
+        # sudo apt install libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev libegl1-mesa-dev libopengl-dev libglx-dev libglvnd-dev
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
@@ -98,12 +105,12 @@ jobs:
           packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
           version: 1.0
 
-      # - name: RPI - multistrap
-      #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
-      #   run: |
-      #     mkdir -p raspbian/etc/apt/apt.conf.d/
-      #     echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
-      #     multistrap -a arm64 -d raspbian -f ../multistrap.conf
+      - name: RPI - multistrap
+        if: (matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l') && inputs.multistrap
+        run: |
+          mkdir -p raspbian/etc/apt/apt.conf.d/
+          echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
+          multistrap -a arm64 -d raspbian -f ../multistrap.conf
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0

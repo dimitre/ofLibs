@@ -6,14 +6,26 @@ on:
       - glew/**
       - .github/workflows/glew.yml
 
-permissions:
-  contents: write
+jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: glew, version: v0.12.1 }
+    secrets: inherit
+    # passes GITHUB_TOKEN automatically
+
+
+
+# permissions:
+#   contents: write
 
 # env:
 #   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
+
+
 jobs:
   glew_matrix:
+    if: false
     strategy:
       fail-fast: false
       matrix:
