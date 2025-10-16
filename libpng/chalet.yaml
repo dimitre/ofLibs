@@ -85,6 +85,10 @@ targets:
       - ZLIB_LIBRARY=${cwd}/${externalBuild:zlib-ng}/install/lib
       - ZLIB_INCLUDE_DIR=${cwd}/${externalBuild:zlib-ng}/install/include
 
+    # defines[toolchain:msvc]:
+    # - ZLIB_LIBRARY=${cwd}/${externalBuild:zlib-ng}/install/lib/
+    # - ZLIB_INCLUDE_DIR=${cwd}/${externalBuild:zlib-ng}/install/include
+
 distribution:
   libpng:
     kind: archive
