@@ -17,7 +17,7 @@ jobs:
         version: v0.12.1,
         meson: true,
         multistrap: true,
-        linux_apt: libpixman-1-dev libpng18-dev libfreetype-dev,
+        linux_apt: libpixman-1-dev libpng-dev libfreetype-dev,
       }
     secrets: inherit
 
