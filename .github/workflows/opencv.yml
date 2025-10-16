@@ -6,14 +6,14 @@ on:
       - opencv/**
       - .github/workflows/opencv.yml
 
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: opencv, version: v0.12.1 }
+    secrets: inherit
+
   opencv_matrix:
+    if: false
     strategy:
       matrix:
         include:
