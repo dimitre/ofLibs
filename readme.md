@@ -3,8 +3,9 @@ As a proof of concept it is building libraries for multiple platforms.
 You are welcome to jump in and help building and testing more libraries.
 
 ## Core
-![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg)
+
+[![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml)
+[![title](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg)](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/freetype.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glew.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glfw.yml/badge.svg)
