@@ -61,14 +61,14 @@ jobs:
         # with:
         #   sparse-checkout: ${{ inputs.lib }}
 
+      # - name: Verify sparse checkout
+      #   working-directory: .
+      #   run: test -d ${{ inputs.lib }}
+
       # - name: ccache
       #   uses: hendrikmuhs/ccache-action@v1.2.19
       #   with:
       #     key: ${{ inputs.lib }}-${{ runner.os }}-${{ matrix.platform }}-ccache
-
-      # - name: Verify sparse checkout
-      #   working-directory: .
-      #   run: test -d ${{ inputs.lib }}
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
@@ -91,7 +91,7 @@ jobs:
         run: |
           sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
-      - name: RPI - Cross compiling tools
+      - name: RPI - Apt Cache Cross Compile
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
