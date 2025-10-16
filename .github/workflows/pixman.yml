@@ -6,16 +6,14 @@ on:
       - pixman/**
       - .github/workflows/pixman.yml
 
-permissions:
-  contents: write
-
-concurrency:
-  # group: ${{ github.workflow }}-${{ github.ref }}
-  group: ${{ github.workflow }}
-  cancel-in-progress: false
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: glew, version: v0.12.1, meson: true }
+    secrets: inherit
+
   pixman_matrix:
+    if: false
     strategy:
       fail-fast: false
       matrix:

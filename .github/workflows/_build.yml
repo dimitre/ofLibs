@@ -7,6 +7,7 @@ on:
       version: { required: true, type: string } # git tag to publish under
       multistrap: { required: false, type: boolean } # git tag to publish under
       linux_apt: { required: false, type: string } # git tag to publish under
+      meson: { required: false, type: boolean } # git tag to publish under
   # push:
   #   paths:
   #     - assimp/**
@@ -82,6 +83,12 @@ jobs:
       #   uses: hendrikmuhs/ccache-action@v1.2.19
       #   with:
       #     key: ${{ inputs.lib }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+      #
+      #
+      - name: Install Meson
+        if: inputs.meson
+        run: pip install meson ninja
+
       - name: Apt Packages
         if: runner.os == 'Linux' && inputs.linux_apt != ''
         # if: matrix.platform == 'linux64' && inputs.linux_apt != ''
@@ -172,6 +179,11 @@ jobs:
         run: |
           unzip dist/*.zip
           ls -alfR dist
+
+      - name: Check Static Lib minos / MACOSX_DEPLOYMENT_TARGET
+        if: runner.os == 'macOS'
+        run: |
+          otool -l **/*.a | grep minos
 
       - name: Rename and Publish Release
         env:
