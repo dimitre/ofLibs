@@ -7,26 +7,20 @@ on:
       - .github/workflows/glew.yml
 
 jobs:
-  ci:
-    uses: ./.github/workflows/_build.yml
-    with:
-      {
-        lib: glew,
-        version: v0.12.1,
-        multistrap: true,
-        linux_apt: libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev libegl1-mesa-dev libopengl-dev libglx-dev libglvnd-dev,
-      }
-    secrets: inherit
-    # passes GITHUB_TOKEN automatically
-
-  # permissions:
-  #   contents: write
-
-  # env:
-  # CMAKE_CXX_COMPILER_LAUNCHER: ccache
+  # ci:
+  #   uses: ./.github/workflows/_build.yml
+  #   with:
+  #     {
+  #       lib: glew,
+  #       version: v0.12.1,
+  #       multistrap: true,
+  #       linux_apt: libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev libegl1-mesa-dev libopengl-dev libglx-dev libglvnd-dev,
+  #     }
+  #   secrets: inherit
+  # passes GITHUB_TOKEN automatically
 
   glew_matrix:
-    if: false
+    # if: false
     strategy:
       fail-fast: false
       matrix:
