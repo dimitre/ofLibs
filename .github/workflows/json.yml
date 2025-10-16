@@ -1,5 +1,7 @@
 name: json
 
+# retrigger 003
+
 on:
   push:
     paths:
@@ -11,4 +13,3 @@ jobs:
     uses: ./.github/workflows/_build.yml
     with: { lib: json, version: v0.12.1 }
     secrets: inherit
-# 002
