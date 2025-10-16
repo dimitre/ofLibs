@@ -8,8 +8,8 @@ externalDependencies:
   FreeImage:
     # repository: https://github.com/danoli3/FreeImage
     repository: https://github.com/dimitre/FreeImage
-    kind: git
     # tag: 3.19.10
+    kind: git
 
 targets:
   # zlib-ng:
