@@ -13,17 +13,12 @@ jobs:
     secrets: inherit
     # passes GITHUB_TOKEN automatically
 
+  # permissions:
+  #   contents: write
 
+  # env:
+  #   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
-# permissions:
-#   contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
-
-
-jobs:
   glew_matrix:
     if: false
     strategy:
