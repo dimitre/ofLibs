@@ -6,15 +6,14 @@ on:
       - lzma/**
       - .github/workflows/lzma.yml
 
-# not needed really
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: lzma, version: v0.12.1 }
+    secrets: inherit
+
   lzma_matrix:
+    if: false
     strategy:
       # fail-fast: false
       matrix:

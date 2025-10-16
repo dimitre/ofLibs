@@ -5,15 +5,20 @@ on:
     paths:
       - glfw/**
       - .github/workflows/glfw.yml
-
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with:
+      {
+        lib: glfw,
+        version: v0.12.1,
+        multistrap: true,
+        linux_apt: libwayland-dev libxkbcommon-dev libx11-dev xorg-dev libglu1-mesa-dev cmake extra-cmake-modules,
+      }
+    secrets: inherit
+
   glfw_matrix:
+    if: false
     strategy:
       fail-fast: false
       matrix:
