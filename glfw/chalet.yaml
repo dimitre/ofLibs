@@ -33,15 +33,8 @@ targets:
       - GLFW_BUILD_WAYLAND=OFF
       - X11_X11_LIB=who_cares
       - GLFW_BUILD_X11=OFF
-      # - _POSIX_TIMERS=1
-      # - _GNU_SOURCE
-    cFlags[:web]: # ← new section
-      - -D_POSIX_TIMERS=1
-      - -D_GNU_SOURCE
-
-    cxxFlags[:web]: # same for C++ sources
-      - -D_POSIX_TIMERS=1
-      - -D_GNU_SOURCE
+      - CMAKE_C_FLAGS=-D_POSIX_TIMERS=1 -D_GNU_SOURCE
+      - CMAKE_CXX_FLAGS=-D_POSIX_TIMERS=1 -D_GNU_SOURCE
 
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
