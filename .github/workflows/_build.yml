@@ -17,7 +17,7 @@ permissions:
 #   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
-  build_matrix:
+  build:
     strategy:
       fail-fast: false
       matrix:

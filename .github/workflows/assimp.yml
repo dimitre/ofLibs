@@ -10,4 +10,5 @@ jobs:
   ci:
     uses: ./.github/workflows/_build.yml
     with: { lib: assimp, version: v0.12.1 }
-    secrets: inherit # passes GITHUB_TOKEN automatically
+    secrets: inherit
+    # passes GITHUB_TOKEN automatically
