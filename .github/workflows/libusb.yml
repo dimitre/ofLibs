@@ -6,14 +6,14 @@ on:
       - libusb/**
       - .github/workflows/libusb.yml
 
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with:
+      { lib: glew, version: v0.12.1, multistrap: true, linux_apt: libudev-dev }
+    secrets: inherit
   libusb_matrix:
+    if: false
     strategy:
       fail-fast: false
       matrix:

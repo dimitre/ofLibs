@@ -6,15 +6,13 @@ on:
       - libtiff/**
       - .github/workflows/libtiff.yml
 
-# not needed really
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: libtiff, version: v0.12.1 }
+    secrets: inherit
   libtiff_matrix:
+    if: false;
     strategy:
       # fail-fast: false
       matrix:
