@@ -12,7 +12,7 @@ jobs:
     with: { lib: libtiff, version: v0.12.1 }
     secrets: inherit
   libtiff_matrix:
-    if: false;
+    if: false
     strategy:
       # fail-fast: false
       matrix:
