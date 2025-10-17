@@ -57,7 +57,6 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
-      - CMAKE_C_FLAGS="-fno-ptrauth-calls -fno-ptrauth-auth-traps"
       - BUILD_STATIC_LIBS=ON
       - BUILD_SHARED_LIBS=OFF
       - TIFF_STATIC_LIBS_DEFAULT=ON
@@ -99,6 +98,7 @@ targets:
       - CMAKE_CXX_VISIBILITY_PRESET=hidden
       - CMAKE_VISIBILITY_INLINES_HIDDEN=ON
       - TIFF_STATIC=ON
+      - CMAKE_C_FLAGS="-fno-ptrauth-calls -fno-ptrauth-auth-traps"
 
 distribution:
   libtiff:

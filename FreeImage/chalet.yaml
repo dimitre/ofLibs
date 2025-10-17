@@ -126,6 +126,8 @@ targets:
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 
+      - ENABLE_VISIBILITY=OFF
+
       - BUILD_STATIC_LIBS=ON
       - TIFF_STATIC_LIBS_DEFAULT=ON
       - tiff_static=ON
@@ -133,7 +135,6 @@ targets:
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_INCLUDEDIR=include
       - CMAKE_INSTALL_LIBDIR=lib
-      - CMAKE_C_FLAGS="-fno-ptrauth-calls -fno-ptrauth-auth-traps"
       - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
       # - CMAKE_SYSTEM_PREFIX_PATH=${externalBuild:libjpeg}/install
       # - JPEG_ROOT=        ${externalBuild:libjpeg}/ext.libjpeg/install
@@ -166,6 +167,7 @@ targets:
       - CMAKE_CXX_VISIBILITY_PRESET=hidden
       - CMAKE_VISIBILITY_INLINES_HIDDEN=ON
       - TIFF_STATIC=ON
+      - CMAKE_C_FLAGS="-fno-ptrauth-calls -fno-ptrauth-auth-traps"
 
   FreeImage:
     kind: cmakeProject
