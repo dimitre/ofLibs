@@ -224,19 +224,21 @@ targets:
 
       - FREEIMAGE_LIB=ON
 
-      - BUILD_LIBPNG=OFF
       # - PNG_ROOT=${cwd}/${externalBuild:libpng}/ext.libpng/install/
       # - PNG_INCLUDE_DIR=${cwd}/${externalBuild:libpng}/ext.libpng/install/include
       # - PNG_LIBRARY=${cwd}/${externalBuild:libpng}/ext.libpng/install/lib/${ar:libpng}
 
+      - BUILD_LIBPNG=OFF
       - PNG_ROOT=${cwd}/${externalBuild:libpng}/install/
       - PNG_INCLUDE_DIR=${cwd}/${externalBuild:libpng}/install/include
       - PNG_LIBRARY=${cwd}/${externalBuild:libpng}/install/lib/${ar:libpng}
+      - FreeImage_LIBPNG_SRCS=${cwd}/${external:libpng};${cwd}/${externalBuild:libpng}/install/include;
 
       - BUILD_LIBJPEG=OFF
       - LIBJPEG_ROOT=${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
-
-      - FreeImage_LIBPNG_SRCS=${cwd}/${external:libpng};${cwd}/${externalBuild:libpng}/install/include;
+      - LIBJPEG_INCLUDE_DIR=${cwd}/${externalBuild:libjpeg}/install/include
+      - LIBJPEG_LIBRARY=${cwd}/${externalBuild:libjpeg}/install/lib/${ar:libjpeg}
+      - FreeImage_LIBJPEG_SRCS=${cwd}/${externalBuild:libjpeg}/install/include;
 
       # FIXME: REMOVE
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
