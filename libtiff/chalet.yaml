@@ -57,7 +57,7 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
-
+      - CMAKE_C_FLAGS="-fno-ptrauth-calls -fno-ptrauth-auth-traps"
       - BUILD_STATIC_LIBS=ON
       - BUILD_SHARED_LIBS=OFF
       - TIFF_STATIC_LIBS_DEFAULT=ON
