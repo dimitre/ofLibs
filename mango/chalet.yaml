@@ -205,6 +205,11 @@ targets:
       #
       - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
 
+      - LIBRARY_BZIP2=OFF
+      # - LIBRARY_LZ4=OFF
+      # - LIBRARY_LZMA=OFF
+      # - LIBRARY_LZFSE=OFF
+
     defines[platform:macos]:
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install/opt/homebrew;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
 
