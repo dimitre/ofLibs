@@ -23,7 +23,7 @@ jobs:
       matrix:
         include:
           - { platform: linux64, os: ubuntu-latest }
-          - { platform: macos, os: macos-26, toolchain: apple-llvm }
+          # - { platform: macos, os: macos-26, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
           # - {
           #     platform: rpi-aarch64,
@@ -68,10 +68,10 @@ jobs:
           xcode-select --install || true # Installs if not already present
           sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
-      - name: Mango deps on Linux (bzip2)
-        if: runner.os == 'Linux'
-        # bzip2?
-        run: sudo apt-get install libfmt-dev zlib1g-dev libdeflate-dev libzstd-dev liblz4-dev libbz2-dev liblcms2-dev
+      # - name: Mango deps on Linux (bzip2)
+      #   if: runner.os == 'Linux'
+      #   # bzip2?
+      #   run: sudo apt-get install libfmt-dev zlib1g-dev libdeflate-dev libzstd-dev liblz4-dev libbz2-dev liblcms2-dev
 
       - name: Install build-essential
         if: runner.os == 'Linux'

@@ -8,7 +8,7 @@ externalDependencies:
     kind: git
 
 targets:
-  zlib:
+  zlib-ng-external:
     kind: chaletProject
     location: ../zlib-ng
     # rebuild: false
@@ -84,7 +84,7 @@ targets:
       - WITH_JASPER=OFF
       - BUILD_ZLIB=OFF
 
-      - ZLIB_ROOT=${externalBuild:zlib}/ext.zlib/install
+      - ZLIB_ROOT=${externalBuild:zlib-ng-external}/ext.zlib-ng/install
 
       # disable orbbec libs
       - WITH_OBSENSOR=OFF
