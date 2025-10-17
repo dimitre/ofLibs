@@ -20,8 +20,8 @@ externalDependencies:
 
   FreeImage:
     # repository: https://github.com/danoli3/FreeImage
-    repository: https://github.com/dimitre/FreeImage
     # tag: 3.19.10
+    repository: https://github.com/dimitre/FreeImage
     kind: git
 
 targets:
@@ -46,12 +46,12 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
 
+      - ZLIB_COMPAT=ON
       - ZLIB_ENABLE_TESTS=OFF
       - ZLIBNG_ENABLE_TESTS=OFF
       - WITH_GTEST=OFF
       # - WITH_NATIVE_INSTRUCTIONS=ON
 
-      - ZLIB_COMPAT=ON
     defines[platform:web]:
       - JS_ONLY=ON
       - CMAKE_EXECUTABLE_SUFFIX=.js
@@ -173,6 +173,7 @@ targets:
     kind: cmakeProject
     install: true
     location: ${external:${name}}
+    # location: ../../FreeImage
 
     recheck: false
     rebuild: false
@@ -190,7 +191,6 @@ targets:
 
       - BUILD_TESTS=OFF
 
-      - BUILD_LIBPNG=OFF
       - BUILD_JXR=OFF
       - BUILD_LIBRAWLITE=OFF
       - BUILD_OPENEXR=OFF
@@ -213,24 +213,30 @@ targets:
       # - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/ext-zlib-ng/install/include
 
       - BUILD_LIBTIFF=OFF
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install;${cwd}/${externalBuild:libpng}/ext.libpng/install/;${cwd}/${externalBuild:libpng}/ext.zlib-ng/install/
+      # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install;${cwd}/${externalBuild:libpng}/ext.libpng/install/;${cwd}/${externalBuild:libpng}/ext.zlib-ng/install/
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install;${cwd}/${externalBuild:libpng}/install/;${cwd}/${externalBuild:libpng}/ext.zlib-ng/install/
 
-      - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/install/
-      - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/install/lib/${ar:libtiff}
-      - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/install/include
-      - LIBTIFF_CONFIG_DIR=${cwd}/${externalBuild:libtiff}/libtiff
+      # - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/install/
+      # - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/install/lib/${ar:libtiff}
+      # - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/install/include
+      # - LIBTIFF_CONFIG_DIR=${cwd}/${externalBuild:libtiff}/libtiff
       - LIBTIFF_SOURCE_DIR=${cwd}/${external:libtiff}/libtiff
 
       - FREEIMAGE_LIB=ON
 
-      - PNG_ROOT=${cwd}/${externalBuild:libpng}/ext.libpng/install/
-      - PNG_INCLUDE_DIR=${cwd}/${externalBuild:libpng}/ext.libpng/install/include
-      - PNG_LIBRARY=${cwd}/${externalBuild:libpng}/ext.libpng/install/lib/${ar:libpng}
+      - BUILD_LIBPNG=OFF
+      # - PNG_ROOT=${cwd}/${externalBuild:libpng}/ext.libpng/install/
+      # - PNG_INCLUDE_DIR=${cwd}/${externalBuild:libpng}/ext.libpng/install/include
+      # - PNG_LIBRARY=${cwd}/${externalBuild:libpng}/ext.libpng/install/lib/${ar:libpng}
+
+      - PNG_ROOT=${cwd}/${externalBuild:libpng}/install/
+      - PNG_INCLUDE_DIR=${cwd}/${externalBuild:libpng}/install/include
+      - PNG_LIBRARY=${cwd}/${externalBuild:libpng}/install/lib/${ar:libpng}
 
       - BUILD_LIBJPEG=OFF
       - LIBJPEG_ROOT=${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
 
-      # - FreeImage_LIBPNG_SRCS=${cwd}/${externalBuild:libpng}
+      - FreeImage_LIBPNG_SRCS=${cwd}/${external:libpng};${cwd}/${externalBuild:libpng}/install/include;
 
       # FIXME: REMOVE
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install
@@ -271,6 +277,10 @@ distribution:
     kind: archive
     format: zip
     include:
-      - ${external:${name}}/license**
+      # - ${external:${name}}/license**
+      # - ${externalBuild:${name}}/install/include
+      # - ${externalBuild:${name}}/install/lib
+
+      # - ${external:${name}}/license**
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
