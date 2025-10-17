@@ -205,7 +205,7 @@ targets:
       #
       - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
 
-      defines[platform:macos]:
+    defines[platform:macos]:
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install/opt/homebrew;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
 
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
@@ -228,7 +228,6 @@ targets:
       - BZIP2_ROOT=${cwd}/${externalBuild:bzip2}/install
       - BZIP2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
       - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/bz2_static.lib
-
 
       # - BZip2_ROOT=${cwd}/${externalBuild:bzip2}/install
       # - BZip2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
