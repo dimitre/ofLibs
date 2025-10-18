@@ -234,7 +234,7 @@ targets:
       - ZLIB_INCLUDE_DIRS=${externalBuild:zlib-ng}/ext.zlib-ng/install/include
       - ZLIB_INCLUDE_DIR=${externalBuild:zlib-ng}/ext.zlib-ng/install/include
       - ZLIB_LIBRARIES=${externalBuild:zlib-ng}/ext.zlib-ng/install/lib/${ar:zlib-ng}
-      - ZLIB_LIBRARIES=${externalBuild:zlib-ng}/ext.zlib-ng/install/lib/${ar:zlib-ng}
+      - ZLIB_LIBRARY=${externalBuild:zlib-ng}/ext.zlib-ng/install/lib/${ar:zlib-ng}
 
       - BZIP2_ROOT=${cwd}/${externalBuild:bzip2}/install
       - BZIP2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
