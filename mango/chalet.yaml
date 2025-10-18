@@ -1,10 +1,10 @@
 name: oflibs
 version: "1.0"
 externalDependencies:
-  # zlib-ng-archive:
-  #   kind: archive
-  #   url: https://github.com/dimitre/ofLibs/releases/download/v0.12.1/oflib_zlib-ng_macos.zip
-  #   # subdirectory: foo-main
+  zlib-ng-archive:
+    kind: archive
+    url: https://github.com/dimitre/ofLibs/releases/download/v0.12.1/oflib_zlib-ng_macos.zip
+    subdirectory: .
   zstd:
     # repository: https://github.com/facebook/zstd/
     # commit: f94a01d
@@ -41,10 +41,10 @@ externalDependencies:
     kind: git
 
 targets:
-  zlib-ng:
-    kind: chaletProject
-    location: ../zlib-ng
-    rebuild: false
+  # zlib-ng:
+  #   kind: chaletProject
+  #   location: ../zlib-ng
+  #   rebuild: false
   fmt:
     kind: chaletProject
     location: ../fmt/
@@ -207,7 +207,8 @@ targets:
       # - FMT_INCLUDE_DIR=${externalBuild:fmt}/ext.fmt/install/include
       # - FMT_LIBRARIES=${externalBuild:fmt}/ext.fmt/install/lib
       #
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install;${cwd}/${external:zlib-ng-archive}
+      # ${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;
 
       - LIBRARY_BZIP2=OFF
       # - LIBRARY_LZ4=OFF
@@ -229,21 +230,21 @@ targets:
       # - LCMS2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
       # - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
 
-      - lcms2_ROOT=${cwd}/${externalBuild:lcms2}/install
-      - lcms2_INCLUDE_DIR=${cwd}/${externalBuild:lcms2}/install/include
-      - lcms2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
-      - lcms2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
-      - lcms2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
+      # - lcms2_ROOT=${cwd}/${externalBuild:lcms2}/install
+      # - lcms2_INCLUDE_DIR=${cwd}/${externalBuild:lcms2}/install/include
+      # - lcms2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
+      # - lcms2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
+      # - lcms2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
 
       - ZLIB_ROOT=${externalBuild:zlib-ng}/ext.zlib-ng/install
-      - ZLIB_INCLUDE_DIRS=${externalBuild:zlib-ng}/ext.zlib-ng/install/include
-      - ZLIB_INCLUDE_DIR=${externalBuild:zlib-ng}/ext.zlib-ng/install/include
-      - ZLIB_LIBRARIES=${externalBuild:zlib-ng}/ext.zlib-ng/install/lib/${ar:zlib-ng}
-      - ZLIB_LIBRARY=${externalBuild:zlib-ng}/ext.zlib-ng/install/lib/${ar:zlib-ng}
+      # - ZLIB_INCLUDE_DIRS=${externalBuild:zlib-ng}/ext.zlib-ng/install/include
+      # - ZLIB_INCLUDE_DIR=${externalBuild:zlib-ng}/ext.zlib-ng/install/include
+      # - ZLIB_LIBRARIES=${externalBuild:zlib-ng}/ext.zlib-ng/install/lib/${ar:zlib-ng}
+      # - ZLIB_LIBRARY=${externalBuild:zlib-ng}/ext.zlib-ng/install/lib/${ar:zlib-ng}
 
       - BZIP2_ROOT=${cwd}/${externalBuild:bzip2}/install
-      - BZIP2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
-      - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/bz2_static.lib
+      # - BZIP2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
+      # - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/bz2_static.lib
 
       # - BZip2_ROOT=${cwd}/${externalBuild:bzip2}/install
       # - BZip2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
