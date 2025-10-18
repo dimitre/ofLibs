@@ -73,9 +73,9 @@ jobs:
       #   # bzip2?
       #   run: sudo apt-get install libfmt-dev zlib1g-dev libdeflate-dev libzstd-dev liblz4-dev libbz2-dev liblcms2-dev
 
-      - name: Install build-essential
-        if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y build-essential
+      # - name: Install build-essential
+      #   if: runner.os == 'Linux'
+      #   run: sudo apt-get update && sudo apt-get install -y build-essential
 
       # - name: ccache
       #   uses: hendrikmuhs/ccache-action@v1.2.19
