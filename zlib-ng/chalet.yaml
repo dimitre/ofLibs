@@ -3,7 +3,7 @@ version: "1.0"
 externalDependencies:
   zlib-ng:
     repository: https://github.com/zlib-ng/zlib-ng
-    commit: db3f23f
+    commit: aa544c0181d01ce7d47deac2ebf9bb674687e6ff
     # tag: 2.2.5
     kind: git
 
@@ -27,13 +27,12 @@ targets:
       - WITH_GTEST=OFF
       # - WITH_NATIVE_INSTRUCTIONS=ON
 
-      # - ZLIB_COMPAT=ON
+      - ZLIB_COMPAT=ON
     defines[platform:web]:
       - JS_ONLY=ON
       - CMAKE_EXECUTABLE_SUFFIX=.js
     defines[platform:macos]:
-      - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
-      # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      # - CMAKE_OSX_ARCHITECTURES=arm64;x86_64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
 
 distribution:

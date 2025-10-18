@@ -230,6 +230,12 @@ targets:
       - lcms2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
       - lcms2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
 
+      - ZLIB_ROOT=${externalBuild:zlib-ng}/ext.zlib-ng/install
+      - ZLIB_INCLUDE_DIRS=${externalBuild:zlib-ng}/ext.zlib-ng/install/include
+      - ZLIB_INCLUDE_DIR=${externalBuild:zlib-ng}/ext.zlib-ng/install/include
+      - ZLIB_LIBRARIES=${externalBuild:zlib-ng}/ext.zlib-ng/install/lib/${ar:zlib-ng}
+      - ZLIB_LIBRARIES=${externalBuild:zlib-ng}/ext.zlib-ng/install/lib/${ar:zlib-ng}
+
       - BZIP2_ROOT=${cwd}/${externalBuild:bzip2}/install
       - BZIP2_INCLUDE_DIRS=${cwd}/${externalBuild:bzip2}/install/include
       - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/bz2_static.lib
