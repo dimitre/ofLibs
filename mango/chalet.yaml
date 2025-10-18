@@ -1,10 +1,14 @@
 name: oflibs
 version: "1.0"
 externalDependencies:
-  zlib-ng-archive:
-    kind: archive
-    url: https://github.com/dimitre/ofLibs/releases/download/v0.12.1/oflib_zlib-ng_macos.zip
-    subdirectory: .
+  # zlib-ng-archive:
+  #   kind: archive
+  #   url: https://github.com/dimitre/ofLibs/releases/download/v0.12.1/oflib_zlib-ng_macos.zip
+
+  # fmt-archive:
+  #   kind: archive
+  #   url: https://github.com/dimitre/ofLibs/releases/download/v0.12.1/oflib_fmt_macos.zip
+
   zstd:
     # repository: https://github.com/facebook/zstd/
     # commit: f94a01d
@@ -41,15 +45,18 @@ externalDependencies:
     kind: git
 
 targets:
-  # zlib-ng:
-  #   kind: chaletProject
+  #
   #   location: ../zlib-ng
   #   rebuild: false
+  zlib-ng:
+    kind: chaletProject
+    location: ../zlib-ng
+    rebuild: false
   fmt:
     kind: chaletProject
     location: ../fmt/
     rebuild: false
-    # clean: false
+    clean: false
 
   zstd:
     kind: cmakeProject
@@ -207,7 +214,8 @@ targets:
       # - FMT_INCLUDE_DIR=${externalBuild:fmt}/ext.fmt/install/include
       # - FMT_LIBRARIES=${externalBuild:fmt}/ext.fmt/install/lib
       #
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install;${cwd}/${external:zlib-ng-archive}
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/{fmt};${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install;${cwd}/{zlib-ng-archive}
+      # ${cwd}/${external:zlib-ng-archive}
       # ${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;
 
       - LIBRARY_BZIP2=OFF
@@ -259,18 +267,19 @@ distribution:
     include:
       # - ${externalBuild:lcms2}/install/opt/homebrew/lib
       # - ${externalBuild:lcms2}/install/opt/homebrew/include
-      - ${externalBuild:lcms2}/install/lib
-      - ${externalBuild:lcms2}/install/include
-      - ${externalBuild:zstd}/install/lib
-      - ${externalBuild:zstd}/install/include
-      - ${externalBuild:bzip2}/install/lib
-      - ${externalBuild:bzip2}/install/include
-      - ${externalBuild:lz4}/install/lib
-      - ${externalBuild:lz4}/install/include
-      - ${externalBuild:deflate}/install/lib
-      - ${externalBuild:deflate}/install/include
-      - ${externalBuild:fmt}/ext.fmt/install/lib
-      - ${externalBuild:fmt}/ext.fmt/install/include
+
+      # - ${externalBuild:lcms2}/install/lib
+      # - ${externalBuild:lcms2}/install/include
+      # - ${externalBuild:zstd}/install/lib
+      # - ${externalBuild:zstd}/install/include
+      # - ${externalBuild:bzip2}/install/lib
+      # - ${externalBuild:bzip2}/install/include
+      # - ${externalBuild:lz4}/install/lib
+      # - ${externalBuild:lz4}/install/include
+      # - ${externalBuild:deflate}/install/lib
+      # - ${externalBuild:deflate}/install/include
+      # - ${externalBuild:fmt}/ext.fmt/install/lib
+      # - ${externalBuild:fmt}/ext.fmt/install/include
 
       - ${externalBuild:${name}}/install/lib
       - ${externalBuild:${name}}/install/include
