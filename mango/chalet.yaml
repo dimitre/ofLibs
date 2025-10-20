@@ -237,6 +237,8 @@ targets:
 
       - LIBRARY_DISABLE=ON
 
+      - PKG_CONFIG_PATH=${cwd}/${externalBuild:lcms2}/install/lib/pkgconfig
+
       # - LCMS2_ROOT=${cwd}/${externalBuild:lcms2}/install/opt/homebrew/
       # - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
       # - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib
