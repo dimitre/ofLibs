@@ -221,6 +221,7 @@ targets:
       # - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/install/include
       # - LIBTIFF_CONFIG_DIR=${cwd}/${externalBuild:libtiff}/libtiff
       - LIBTIFF_SOURCE_DIR=${cwd}/${external:libtiff}/libtiff
+      - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/libtiff
 
       - FREEIMAGE_LIB=ON
 
@@ -267,7 +268,7 @@ targets:
 
     defines[toolchain:msvc]:
       - ZLIB_LIBRARY=${cwd}/${externalBuild:libpng}/ext-zlib-ng/install/lib/zlibstatic.lib
-      - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/libtiff
+      # - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/libtiff
 
       # Add these for external libtiff:
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/ext.libtiff/install

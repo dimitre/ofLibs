@@ -211,10 +211,10 @@ targets:
 
       - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/{fmt};${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install;${cwd}/{zlib-ng-archive}
 
-      - FMT_ROOT=${externalBuild:fmt}/ext.fmt/install
-      - FMT_INCLUDE_DIRS=${externalBuild:fmt}/ext.fmt/install/include
-      - FMT_INCLUDE_DIR=${externalBuild:fmt}/ext.fmt/install/include
-      - FMT_LIBRARY_DIRS=${externalBuild:fmt}/ext.fmt/install/lib
+      - FMT_ROOT=${cwd}/${externalBuild:fmt}/ext.fmt/install
+      - FMT_INCLUDE_DIRS=${cwd}/${externalBuild:fmt}/ext.fmt/install/include
+      - FMT_INCLUDE_DIR=${cwd}/${externalBuild:fmt}/ext.fmt/install/include
+      - FMT_LIBRARY_DIRS=${cwd}/${externalBuild:fmt}/ext.fmt/install/lib
       # ${cwd}/${external:zlib-ng-archive}
       # ${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;
 
