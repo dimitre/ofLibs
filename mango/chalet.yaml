@@ -290,11 +290,15 @@ targets:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
     defines[toolchain:msvc]:
+      # temporary, only to have a verbose output.
+      - CMAKE_FIND_DEBUG_MODE=ON
+
       - CMAKE_FIND_LIBRARY_SUFFIXES=.lib;.a
 
-      # - LCMS2_ROOT=${cwd}/${externalBuild:lcms2}/install
-      # - LCMS2_INCLUDE_DIR=${cwd}/${externalBuild:lcms2}/install/include
-      # - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
+      - LCMS2_ROOT=${cwd}/${externalBuild:lcms2}/install
+      - LCMS2_INCLUDE_DIR=${cwd}/${externalBuild:lcms2}/install/include
+      - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
+      - LCMS2_LIBRARY_DIRS=${cwd}/${externalBuild:lcms2}/install/lib/
       - LCMS2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
       # - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
 
