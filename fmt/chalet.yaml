@@ -3,8 +3,8 @@ version: "1.0"
 externalDependencies:
   fmt:
     repository: https://github.com/fmtlib/fmt
-    # commit: 9feadb98a9b03604479e94fe9b57afad9c9641d7
-    tag: 12.0.0
+    commit: d6bdb69
+    # tag: 12.0.0
     kind: git
 
 targets:

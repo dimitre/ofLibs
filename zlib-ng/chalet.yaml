@@ -3,7 +3,7 @@ version: "1.0"
 externalDependencies:
   zlib-ng:
     repository: https://github.com/zlib-ng/zlib-ng
-    commit: aa544c0181d01ce7d47deac2ebf9bb674687e6ff
+    commit: db3f23f
     # tag: 2.2.5
     kind: git
 
@@ -19,14 +19,11 @@ targets:
       - BUILD_SHARED_LIBS=OFF # not working on zlib
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
-
       # - CMAKE_INSTALL_PREFIX=install
-
       - ZLIB_ENABLE_TESTS=OFF
       - ZLIBNG_ENABLE_TESTS=OFF
       - WITH_GTEST=OFF
       # - WITH_NATIVE_INSTRUCTIONS=ON
-
       - ZLIB_COMPAT=ON
     defines[platform:web]:
       - JS_ONLY=ON
