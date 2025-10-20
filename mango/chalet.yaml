@@ -265,8 +265,10 @@ targets:
       # - BZip2_ROOT=${cwd}/${externalBuild:bzip2}/install
       # - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/${ar:bzip2}
 
-      #${cwd}/{fmt};
-      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:fmt}/install;${cwd}/${externalBuild:zlib-ng}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install;${cwd}/{zlib-ng-archive}
+      #${cwd}/{fmt};${cwd}/{zlib-ng-archive}
+      - CMAKE_LIBRARY_PATH=${cwd}/${externalBuild:lcms2}/install/lib
+      - CMAKE_INCLUDE_PATH=${cwd}/${externalBuild:lcms2}/install/include
+      - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:fmt}/install;${cwd}/${externalBuild:zlib-ng}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
 
       # - FMT_ROOT=${cwd}/${externalBuild:fmt}/install
       # - FMT_INCLUDE_DIRS=${cwd}/${externalBuild:fmt}/install/include
