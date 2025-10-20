@@ -219,6 +219,7 @@ targets:
       # - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/install/
       # - LIBTIFF_LIBRARY=${cwd}/${externalBuild:libtiff}/install/lib/${ar:libtiff}
       # - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/install/include
+      - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/libtiff
       # - LIBTIFF_CONFIG_DIR=${cwd}/${externalBuild:libtiff}/libtiff
       - LIBTIFF_SOURCE_DIR=${cwd}/${external:libtiff}/libtiff
 
