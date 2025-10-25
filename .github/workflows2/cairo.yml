@@ -194,7 +194,7 @@ jobs:
           # rm -rf pkgconfig
           # rm -rf cairo
           # cd ..
-          # zip -r ofLibs_${{ matrix.platform }}_${{ github.workflow }}.zip cairo/*
+          # zip -r ofLibs_${{ github.workflow }}_${{ matrix.platform }}.zip cairo/*
 
       - name: Check Static Lib minos / MACOSX_DEPLOYMENT_TARGET
         if: runner.os == 'macOS'
@@ -205,6 +205,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip ofLibs_${{ matrix.platform }}_${{ github.workflow }}.zip
+          mv dist/${{ github.workflow }}.zip ofLibs_${{ github.workflow }}_${{ matrix.platform }}.zip
           ls -alF *.zip
           gh release upload v0.12.3 *.zip --clobber
