@@ -9,7 +9,7 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: FreeImage, version: v0.12.1 }
+    with: { lib: FreeImage, version: v0.12.2 }
     secrets: inherit
     # passes GITHUB_TOKEN automatically
 
@@ -133,6 +133,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
+          mv dist/${{ github.workflow }}.zip ofLibs_${{ matrix.platform }}_${{ github.workflow }}.zip
           ls -alF *.zip
-          gh release upload v0.12.1 *.zip --clobber
+          gh release upload v0.12.2 *.zip --clobber

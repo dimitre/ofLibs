@@ -12,7 +12,7 @@ jobs:
     with:
       {
         lib: libusb,
-        version: v0.12.1,
+        version: v0.12.2,
         linux_apt: libudev-dev,
         multistrap: true,
       }
@@ -151,6 +151,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
+          mv dist/${{ github.workflow }}.zip ofLibs_${{ matrix.platform }}_${{ github.workflow }}.zip
           ls -alF *.zip
-          gh release upload v0.12.1 *.zip --clobber
+          gh release upload v0.12.2 *.zip --clobber

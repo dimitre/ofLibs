@@ -12,7 +12,7 @@ jobs:
     with:
       {
         lib: pugixml,
-        version: v0.12.1,
+        version: v0.12.2,
         multistrap: true,
         linux_apt: libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev libegl1-mesa-dev libopengl-dev libglx-dev libglvnd-dev,
       }
@@ -114,6 +114,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
+          mv dist/${{ github.workflow }}.zip ofLibs_${{ matrix.platform }}_${{ github.workflow }}.zip
           ls -alF *.zip
-          gh release upload v0.12.1 *.zip --clobber
+          gh release upload v0.12.2 *.zip --clobber
