@@ -52,7 +52,7 @@ externalDependencies:
 
     repository: https://github.com/t0rakka/mango
     # repository: https://github.com/dimitre/mango
-    branch: static-lib
+    # branch: static-lib
     kind: git
 
 targets:
