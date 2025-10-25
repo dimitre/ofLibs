@@ -28,7 +28,7 @@ mkdir -p include/cairo
 cp -R ./intel/src/*.h include/cairo
 cp -R cairo/src/*.h include/cairo
 
-zip -r oflib_cairo_${PLATFORM}.zip lib include
+zip -r ofLibs_cairo_${PLATFORM}.zip lib include
 
 # --buildtype=release
 

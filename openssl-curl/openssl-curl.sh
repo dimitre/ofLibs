@@ -20,7 +20,7 @@ cp -r ../Build-OpenSSL-cURL/curl/lib .
 cp ../Build-OpenSSL-cURL/curl/curl*/COPYING .
 mkdir -p lib/${PLATFORM}
 mv lib/*.a lib/${PLATFORM}
-zip -r ../oflib_curl_${PLATFORM}.zip lib include
+zip -r ../ofLibs_curl_${PLATFORM}.zip lib include
 cd ..
 
 mkdir -p openssl
@@ -37,5 +37,5 @@ cp -r ../Build-OpenSSL-cURL/openssl/Mac/lib .
 mkdir -p lib/${PLATFORM}
 mv lib/*.a lib/${PLATFORM}
 
-zip -r ../oflib_openssl_${PLATFORM}.zip lib include
+zip -r ../ofLibs_openssl_${PLATFORM}.zip lib include
 cd ..

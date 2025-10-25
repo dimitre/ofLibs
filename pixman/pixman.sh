@@ -23,7 +23,7 @@ mkdir -p lib/${PLATFORM}
 cp build/pixman/*.a lib/${PLATFORM}
 mkdir -p include/pixman
 cp -R build/pixman/*.h include/pixman
-zip -r oflib_pixman_${PLATFORM}.zip lib include
+zip -r ofLibs_pixman_${PLATFORM}.zip lib include
 mv *.zip ..
 
 # cd ..
@@ -33,4 +33,5 @@ mv *.zip ..
 # cp -R cairo/src/*.h include/cairo
 # cp -R cairo/build/src/*.h include/cairo
 
-# zip -r oflib_cairo_${PLATFORM}.zip lib include
+# zip -r ofL
+# ibs_cairo_${PLATFORM}.zip lib include
