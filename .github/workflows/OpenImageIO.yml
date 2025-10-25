@@ -93,10 +93,6 @@ jobs:
         if: matrix.platform == 'emscripten'
         run: |
           emcc -v
-          emsdk update
-          emsdk install latest
-          emsdk activate latest
-          emcc -v
 
       # - name: RPI - Apt Cache Packages
       #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
