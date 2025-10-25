@@ -10,7 +10,7 @@ externalDependencies:
   #   url: https://github.com/dimitre/ofLibs/releases/download/v0.12.3/ofLibs_fmt_macos.zip
   fmt:
     repository: https://github.com/fmtlib/fmt
-    commit: d6bdb69
+    commit: f781d2b
     # tag: 12.0.0
     kind: git
 
