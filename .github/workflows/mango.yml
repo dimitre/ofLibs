@@ -93,8 +93,7 @@ jobs:
       - name: MSYS2 Apt Cross Compile
         if: matrix.platform == 'msys2' && runner.os == 'Linux'
         run: |
-          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
-
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }} ${{ matrix.prefix }}-tools ${{ matrix.prefix }}-common ${{ matrix.prefix }}-x86-64-dev
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
