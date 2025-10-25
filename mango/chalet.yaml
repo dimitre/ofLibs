@@ -272,7 +272,6 @@ targets:
       - CMAKE_INCLUDE_PATH=${cwd}/${externalBuild:lcms2}/install/include
       - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:fmt}/install;${cwd}/${externalBuild:zlib-ng}/install;${cwd}/${externalBuild:lcms2}/install;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
 
-      # - FMT_ROOT=${cwd}/${externalBuild:fmt}/install
       # - FMT_INCLUDE_DIRS=${cwd}/${externalBuild:fmt}/install/include
       # - FMT_INCLUDE_DIR=${cwd}/${externalBuild:fmt}/install/include
       # - FMT_LIBRARY_DIRS=${cwd}/${externalBuild:fmt}/install/lib
@@ -287,6 +286,9 @@ targets:
       - LCMS2_LIBRARY_DIRS=${cwd}/${externalBuild:lcms2}/install/lib
       - LCMS2_INCLUDE_DIR=${cwd}/${externalBuild:lcms2}/install/include
       - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
+
+    defines[platform:web]:
+      - FMT_ROOT=${cwd}/${externalBuild:fmt}/install
 
     defines[platform:macos]:
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install/opt/homebrew;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
