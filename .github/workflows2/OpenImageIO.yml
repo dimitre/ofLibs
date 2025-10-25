@@ -139,4 +139,4 @@ jobs:
         run: |
           mv dist/${{ github.workflow }}.zip ofLibs_${{ matrix.platform }}_${{ github.workflow }}.zip
           ls -alF *.zip
-          gh release upload v0.12.2 *.zip --clobber
+          gh release upload v0.12.3 *.zip --clobber
