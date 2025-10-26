@@ -78,33 +78,33 @@ jobs:
         working-directory: ${{ inputs.lib }}
 
     steps:
-      - name: Check if platform should run
-        id: should_run
-        shell: bash
-        run: |
-          SHOULD_RUN=true
+      #   - name: Check if platform should run
+      #     id: should_run
+      #     shell: bash
+      #     run: |
+      #       SHOULD_RUN=true
 
-          if [[ "${{ matrix.platform }}" == "emscripten" && "${{ inputs.skip_emscripten }}" == "true" ]]; then
-            SHOULD_RUN=false
-          elif [[ "${{ matrix.platform }}" == "linux64" && "${{ inputs.skip_linux64 }}" == "true" ]]; then
-            SHOULD_RUN=false
-          elif [[ "${{ matrix.platform }}" == "macos" && "${{ inputs.skip_macos }}" == "true" ]]; then
-            SHOULD_RUN=false
-          elif [[ "${{ matrix.platform }}" == "vs" && "${{ inputs.skip_vs }}" == "true" ]]; then
-            SHOULD_RUN=false
-          elif [[ "${{ matrix.platform }}" == "msys2" && "${{ inputs.skip_msys2 }}" == "true" ]]; then
-            SHOULD_RUN=false
-          elif [[ ("${{ matrix.platform }}" == "rpi-aarch64" || "${{ matrix.platform }}" == "rpi-armv6l") && "${{ inputs.skip_rpi }}" == "true" ]]; then
-            SHOULD_RUN=false
-          fi
+      #       if [[ "${{ matrix.platform }}" == "emscripten" && "${{ inputs.skip_emscripten }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       elif [[ "${{ matrix.platform }}" == "linux64" && "${{ inputs.skip_linux64 }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       elif [[ "${{ matrix.platform }}" == "macos" && "${{ inputs.skip_macos }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       elif [[ "${{ matrix.platform }}" == "vs" && "${{ inputs.skip_vs }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       elif [[ "${{ matrix.platform }}" == "msys2" && "${{ inputs.skip_msys2 }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       elif [[ ("${{ matrix.platform }}" == "rpi-aarch64" || "${{ matrix.platform }}" == "rpi-armv6l") && "${{ inputs.skip_rpi }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       fi
 
-          echo "should_run=$SHOULD_RUN" >> $GITHUB_OUTPUT
+      #       echo "should_run=$SHOULD_RUN" >> $GITHUB_OUTPUT
 
-          if [[ "$SHOULD_RUN" == "false" ]]; then
-            echo "⏭️ Skipping ${{ matrix.platform }} build (skip flag enabled)"
-          else
-            echo "✅ Running ${{ matrix.platform }} build"
-          fi
+      #       if [[ "$SHOULD_RUN" == "false" ]]; then
+      #         echo "⏭️ Skipping ${{ matrix.platform }} build (skip flag enabled)"
+      #       else
+      #         echo "✅ Running ${{ matrix.platform }} build"
+      #       fi
 
       - uses: actions/checkout@v5
         # with:
