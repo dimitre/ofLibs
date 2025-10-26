@@ -4,24 +4,21 @@ on:
   workflow_call:
     inputs:
       lib: { required: true, type: string }
-      version: { required: true, type: string } # git tag to publish under
-      multistrap: { required: false, type: boolean } # git tag to publish under
-      linux_apt: { required: false, type: string } # git tag to publish under
-      meson: { required: false, type: boolean } # git tag to publish under
-  # push:
-  #   paths:
-  #     - assimp/**
-  #     - .github/workflows/assimp.yml
+      version: { required: true, type: string }
+      multistrap: { required: false, type: boolean }
+      linux_apt: { required: false, type: string }
+      meson: { required: false, type: boolean }
+
+      # New inputs to exclude platforms
+      skip_emscripten: { required: false, type: boolean, default: false }
+      skip_linux64: { required: false, type: boolean, default: false }
+      skip_macos: { required: false, type: boolean, default: false }
+      skip_vs: { required: false, type: boolean, default: false }
+      skip_rpi: { required: false, type: boolean, default: false }
+      skip_msys2: { required: false, type: boolean, default: false }
 
 permissions:
   contents: write
-
-# concurrency:
-#   group: ${{ github.workflow }}
-#   cancel-in-progress: false
-#
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   build:
@@ -64,6 +61,15 @@ jobs:
           #   }
 
     runs-on: ${{ matrix.os }}
+    # Conditional execution based on platform
+    if: |
+      (matrix.platform != 'emscripten' || !inputs.skip_emscripten) &&
+      (matrix.platform != 'linux64' || !inputs.skip_linux64) &&
+      (matrix.platform != 'macos' || !inputs.skip_macos) &&
+      (matrix.platform != 'vs' || !inputs.skip_vs) &&
+      (matrix.platform != 'msys2' || !inputs.skip_msys2) &&
+      ((matrix.platform != 'rpi-aarch64' && matrix.platform != 'rpi-armv6l') || !inputs.skip_rpi)
+
     # env:
     #   PLATFORM: ${{ matrix.platform }}
     defaults:
@@ -85,6 +91,12 @@ jobs:
       #     key: ${{ inputs.lib }}-${{ runner.os }}-${{ matrix.platform }}-ccache
       #
       #
+      - name: Windows Setup MSVC
+        if: matrix.platform == 'vs'
+        uses: TheMrMilchmann/setup-msvc-dev@v4
+        with:
+          arch: x64
+      #
       - name: Install Meson
         if: inputs.meson
         run: pip install meson ninja
@@ -103,20 +115,20 @@ jobs:
       #     packages: ${{ inputs.linux_apt }}
       #     version: 1.0
 
-      - name: macOS Checks
-        if: runner.os == 'macOS'
-        run: |
-          whereis cmake
-          cmake --version
-          brew install cmake
-          whereis cmake
-          cmake --version
+      # - name: macOS Checks
+      #   if: runner.os == 'macOS'
+      #   run: |
+      #     whereis cmake
+      #     cmake --version
+      #     brew install cmake
+      #     whereis cmake
+      #     cmake --version
 
       - name: Emscripten Install
         if: matrix.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
         with:
-          version: 4.0.15
+          version: 4.0.18
           actions-cache-folder: "emsdk-cache"
 
       - name: Verify emsdk
