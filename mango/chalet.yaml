@@ -302,8 +302,7 @@ targets:
       - CMAKE_FIND_LIBRARY_SUFFIXES=.lib;.a
 
       - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
-      # FIXME: commented out agora
-      # - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
+      - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.lib
 
       # - LCMS2_FOUND=TRUE
       # - LCMS2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
