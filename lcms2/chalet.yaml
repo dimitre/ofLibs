@@ -15,7 +15,7 @@ targets:
     defines:
       - buildtype=release
       - default_library=static
-      - tests=false
+      - tests=disabled
 
       # - prefix=${cwd}/${externalBuild:${name}}/install
       # - prefix=${cwd}
