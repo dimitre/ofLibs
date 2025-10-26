@@ -25,8 +25,8 @@ targets:
       - c_args=-mmacos-version-min=11.6
       - cpp_args=-mmacos-version-min=11.6
 
-    # defines[toolchain:msvc]:
-    # - b_vscrt=static_from_buildtype
+    defines[toolchain:msvc]:
+      - b_vscrt=static_from_buildtype
 
 distribution:
   mango:
