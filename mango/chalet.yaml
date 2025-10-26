@@ -47,12 +47,7 @@ externalDependencies:
 
   mango:
     # repository: https://github.com/t0rakka/mango
-    # commit: 977b257
-    # repository: https://github.com/dimitre/mango
-
-    repository: https://github.com/t0rakka/mango
-    # repository: https://github.com/dimitre/mango
-    # branch: static-lib
+    repository: https://github.com/dimitre/mango
     kind: git
 
 targets:
