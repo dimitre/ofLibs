@@ -9,13 +9,13 @@ on:
       linux_apt: { required: false, type: string }
       meson: { required: false, type: boolean }
 
-      # New inputs to exclude platforms
-      skip_emscripten: { required: false, type: boolean, default: false }
-      skip_linux64: { required: false, type: boolean, default: false }
-      skip_macos: { required: false, type: boolean, default: false }
-      skip_vs: { required: false, type: boolean, default: false }
-      skip_rpi: { required: false, type: boolean, default: false }
-      skip_msys2: { required: false, type: boolean, default: false }
+      # New inputs to enable/disable platforms
+      use_emscripten: { required: false, type: boolean, default: true }
+      use_linux64: { required: false, type: boolean, default: true }
+      use_macos: { required: false, type: boolean, default: true }
+      use_vs: { required: false, type: boolean, default: true }
+      use_rpi: { required: false, type: boolean, default: true }
+      use_msys2: { required: false, type: boolean, default: true }
 
 permissions:
   contents: write
@@ -29,12 +29,18 @@ jobs:
           - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
           - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
-          - { platform: vs, os: windows-latest, toolchain: vs-stable }
+          - {
+              platform: vs,
+              os: windows-latest,
+              toolchain: vs-stable,
+              if: inputs.use_vs,
+            }
           - {
               platform: rpi-aarch64,
               os: ubuntu-latest,
               prefix: aarch64-linux-gnu,
               toolchain: aarch64-linux-gnu-gcc,
+              if: inputs.use_rpi,
             }
 
           - {
