@@ -11,3 +11,4 @@ jobs:
     uses: ./.github/workflows/_build.yml
     with: { lib: mango, version: v0.12.3, meson: true }
     secrets: inherit
+# OK
