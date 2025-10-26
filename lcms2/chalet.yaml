@@ -29,7 +29,7 @@ targets:
       - b_vscrt=static_from_buildtype
 
 distribution:
-  mango:
+  lcms2:
     kind: archive
     format: zip
     include:
