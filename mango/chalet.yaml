@@ -205,6 +205,7 @@ targets:
       - buildtype=release
       - default_library=static
       - tests=disabled
+      - b_ndebug=if-release # This disables assertions in release builds
       # - prefix=${cwd}/${externalBuild:${name}}/install
       # - prefix=${cwd}
       # - prefix=${cwd}/${externalBuild:${name}}/install
@@ -213,8 +214,8 @@ targets:
       - c_args=-mmacos-version-min=11.6
       - cpp_args=-mmacos-version-min=11.6
 
-    # defines[toolchain:msvc]:
-    #   - b_vscrt=static_from_buildtype
+    defines[toolchain:msvc]:
+      - b_vscrt=static_from_buildtype
 
   mango:
     kind: cmakeProject
