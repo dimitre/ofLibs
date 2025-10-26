@@ -239,13 +239,13 @@ targets:
 
       - BUILD_LIBTIFF=OFF
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install;${cwd}/${externalBuild:libpng}/ext.libpng/install/;${cwd}/${externalBuild:libpng}/ext.zlib-ng/install/
+      - CMAKE_INCLUDE_PATH=${cwd}/${externalBuild:deflate}/install/include
       - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:libtiff}/install/;${cwd}/${externalBuild:libjpeg}/ext.libjpeg/install;${cwd}/${externalBuild:libpng}/install/;${cwd}/${externalBuild:libpng}/ext.zlib-ng/install/
 
       - LIBDEFLATE_ROOT=${cwd}/${externalBuild:deflate}/install/
       - LIBDEFLATE_INCLUDE_DIRS=${cwd}/${externalBuild:deflate}/install/include
       - LIBDEFLATE_INCLUDE_DIR=${cwd}/${externalBuild:deflate}/install/include
-      - CMAKE_LIBRARY_PATH=${cwd}/${externalBuild:deflate}/install/lib
-      - CMAKE_INCLUDE_PATH=${cwd}/${externalBuild:deflate}/install/include
+      # - CMAKE_LIBRARY_PATH=${cwd}/${externalBuild:deflate}/install/lib
       # - LIBDEFLATE_LIBRARIES=${externalBuild:deflate}/ext.deflate/install/lib
       #
       # - LIBTIFF_ROOT=${cwd}/${externalBuild:libtiff}/install/
@@ -254,6 +254,9 @@ targets:
       # - LIBTIFF_CONFIG_DIR=${cwd}/${externalBuild:libtiff}/libtiff
       - LIBTIFF_SOURCE_DIR=${cwd}/${external:libtiff}/libtiff
       - LIBTIFF_INCLUDE_DIRS=${cwd}/${externalBuild:libtiff}/libtiff
+
+      - ZLIB_SOURCE_DIR=${cwd}/${external:zlib-ng}
+      - ZLIB_INCLUDE_DIRS=${cwd}/${externalBuild:zlib-ng}/install/include
 
       - FREEIMAGE_LIB=ON
 

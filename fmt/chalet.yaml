@@ -19,7 +19,7 @@ targets:
       - CMAKE_BUILD_TYPE=Release
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
       - FMT_MASTER_PROJECT=OFF
-      # - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_PREFIX=install
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INSTALL_LIBDIR=lib
       # - CMAKE_INSTALL_LIBDIR=lib
