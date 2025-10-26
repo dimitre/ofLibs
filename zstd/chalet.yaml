@@ -1,0 +1,40 @@
+name: oflibs
+version: "1.0"
+externalDependencies:
+  zstd:
+    repository: https://github.com/facebook/zstd/
+    commit: 4944d2c
+    # repository: https://github.com/dimitre/zstd/
+    # commit: f2b3256
+    kind: git
+
+targets:
+  zstd:
+    kind: cmakeProject
+    location: ${external:${name}}/build/cmake
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - CMAKE_BUILD_TYPE=Release
+      - BUILD_SHARED_LIBS=OFF
+      - ZSTD_BUILD_SHARED=OFF
+      - BUILD_STATIC_LIBS=ON
+      - ZSTD_BUILD_STATIC=ON
+
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
+    defines[platform:macos]:
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+
+distribution:
+  zstd:
+    kind: archive
+    format: zip
+    include:
+      - ${externalBuild:${name}}/install/lib
+      - ${externalBuild:${name}}/install/include

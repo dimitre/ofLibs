@@ -9,6 +9,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with:
-      { lib: mango, version: v0.12.3, skip_emscripten: true, skip_msys2: true }
+    with: { lib: mango, version: v0.12.3, meson: true }
     secrets: inherit
