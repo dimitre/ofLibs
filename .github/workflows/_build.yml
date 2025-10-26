@@ -63,13 +63,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     # Conditional execution based on platform
     if: |
-      !((matrix.platform == 'emscripten' && inputs.skip_emscripten) ||
-        (matrix.platform == 'linux64' && inputs.skip_linux64) ||
-        (matrix.platform == 'macos' && inputs.skip_macos) ||
-        (matrix.platform == 'vs' && inputs.skip_vs) ||
-        (matrix.platform == 'msys2' && inputs.skip_msys2) ||
-        ((matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l') && inputs.skip_rpi))
-
+      (matrix.platform == 'emscripten' && !inputs.skip_emscripten) ||
+        (matrix.platform == 'linux64' && !inputs.skip_linux64) ||
+        (matrix.platform == 'macos' && !inputs.skip_macos) ||
+        (matrix.platform == 'vs' && !inputs.skip_vs) ||
+        (matrix.platform == 'msys2' && !inputs.skip_msys2) ||
+        ((matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l') && !inputs.skip_rpi)
     # env:
     #   PLATFORM: ${{ matrix.platform }}
     defaults:
