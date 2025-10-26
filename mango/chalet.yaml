@@ -344,18 +344,18 @@ distribution:
       # - ${externalBuild:lcms2}/install/opt/homebrew/lib
       # - ${externalBuild:lcms2}/install/opt/homebrew/include
 
-      # - ${externalBuild:lcms2}/install/lib
-      # - ${externalBuild:lcms2}/install/include
-      # - ${externalBuild:zstd}/install/lib
-      # - ${externalBuild:zstd}/install/include
-      # - ${externalBuild:bzip2}/install/lib
-      # - ${externalBuild:bzip2}/install/include
-      # - ${externalBuild:lz4}/install/lib
-      # - ${externalBuild:lz4}/install/include
-      # - ${externalBuild:deflate}/install/lib
-      # - ${externalBuild:deflate}/install/include
-      # - ${externalBuild:fmt}/ext.fmt/install/lib
-      # - ${externalBuild:fmt}/ext.fmt/install/include
+      - ${externalBuild:lcms2}/install/lib
+      - ${externalBuild:lcms2}/install/include
+      - ${externalBuild:zstd}/install/lib
+      - ${externalBuild:zstd}/install/include
+      - ${externalBuild:bzip2}/install/lib
+      - ${externalBuild:bzip2}/install/include
+      - ${externalBuild:lz4}/install/lib
+      - ${externalBuild:lz4}/install/include
+      - ${externalBuild:deflate}/install/lib
+      - ${externalBuild:deflate}/install/include
+      - ${externalBuild:fmt}/ext.fmt/install/lib
+      - ${externalBuild:fmt}/ext.fmt/install/include
 
       - ${externalBuild:${name}}/install/lib
       - ${externalBuild:${name}}/install/include
