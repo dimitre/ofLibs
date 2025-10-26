@@ -68,9 +68,9 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     # Conditional execution based on platform
-    if: |
-      ( platform == 'emscripten' && !inputs.skip_emscripten) ||
-      ( platform == 'linux64' && !inputs.skip_linux64)
+    # if: |
+    #   ( platform == 'emscripten' && !inputs.skip_emscripten) ||
+    #   ( platform == 'linux64' && !inputs.skip_linux64)
     # ||
     # (matrix.platform == 'macos' && !inputs.skip_macos) ||
     # (matrix.platform == 'vs' && !inputs.skip_vs) ||
