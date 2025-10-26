@@ -36,8 +36,9 @@ externalDependencies:
     kind: git
 
   lcms2:
-    repository: https://github.com/mm2/Little-CMS
-    commit: 5cdf304
+    # repository: https://github.com/mm2/Little-CMS
+    # commit: 5cdf304
+    repository: https://github.com/dimitre/Little-CMS
     kind: git
 
   deflate:
@@ -203,7 +204,7 @@ targets:
     defines:
       - buildtype=release
       - default_library=static
-
+      - tests=disabled
       # - prefix=${cwd}/${externalBuild:${name}}/install
       # - prefix=${cwd}
       # - prefix=${cwd}/${externalBuild:${name}}/install
@@ -211,6 +212,9 @@ targets:
     defines[platform:macos]:
       - c_args=-mmacos-version-min=11.6
       - cpp_args=-mmacos-version-min=11.6
+
+    # defines[toolchain:msvc]:
+    #   - b_vscrt=static_from_buildtype
 
   mango:
     kind: cmakeProject
@@ -297,10 +301,13 @@ targets:
 
       - CMAKE_FIND_LIBRARY_SUFFIXES=.lib;.a
 
+      - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
+      # FIXME: commented out agora
+      # - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
+
       # - LCMS2_FOUND=TRUE
       # - LCMS2_LIBRARY=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
-      - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
-      - LCMS2_LIBRARIES=${cwd}/${externalBuild:lcms2}/install/lib/liblcms2.a
+
       # - LCMS2_INCLUDE_DIR=${cwd}/${externalBuild:lcms2}/install/include
       # - LCMS2_LIBRARY_DIRS=${cwd}/${externalBuild:lcms2}/install/lib/
 
