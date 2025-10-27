@@ -47,8 +47,9 @@ externalDependencies:
     kind: git
 
   mango:
-    # repository: https://github.com/t0rakka/mango
-    repository: https://github.com/dimitre/mango
+    repository: https://github.com/t0rakka/mango
+    # repository: https://github.com/dimitre/mango
+    commit: 580f01c
     kind: git
 
 targets:
