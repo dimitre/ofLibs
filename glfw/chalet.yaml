@@ -29,40 +29,39 @@ targets:
       - GLFW_BUILD_DOCS=OFF
       - GLFW_BUILD_TESTS=OFF
       - GLFW_BUILD_EXAMPLES=OFF
-    defines[:web]:
+
       - GLFW_BUILD_WAYLAND=OFF
-      - X11_X11_LIB=who_cares
-      - GLFW_BUILD_X11=OFF
-      - CMAKE_C_FLAGS=-D_POSIX_TIMERS=1 -D_GNU_SOURCE
-      - CMAKE_CXX_FLAGS=-D_POSIX_TIMERS=1 -D_GNU_SOURCE
 
     defines[platform:macos]:
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+
+    defines[:web]:
+      - X11_X11_LIB=who_cares
+      - GLFW_BUILD_X11=OFF
+      - CMAKE_C_FLAGS=-D_POSIX_TIMERS=1 -D_GNU_SOURCE
+      - CMAKE_CXX_FLAGS=-D_POSIX_TIMERS=1 -D_GNU_SOURCE
     # teste workaround...
     # https://github.com/glfw/glfw/issues/1957#issuecomment-1891056066
     # defines[toolchain:aarch64-linux-gnu-gcc]:
     defines[platform:linux]:
-      - GLFW_BUILD_WAYLAND=ON
+      # - GLFW_BUILD_WAYLAND=ON
       - GLFW_BUILD_X11=ON
       - X11_X11_LIB=who_cares
     defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
       - X11_X11_LIB=who_cares
-      - GLFW_BUILD_WAYLAND=OFF
       - CMAKE_SYSROOT=${cwd}/raspbian
       - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
       - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
 
     defines[toolchain:aarch64-linux-gnu-gcc]:
       - X11_X11_LIB=who_cares
-      - GLFW_BUILD_WAYLAND=OFF
       - CMAKE_SYSROOT=${cwd}/raspbian
       - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
       - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
 
     defines[toolchain:arm-linux-gnueabihf-gcc]:
       - X11_X11_LIB=who_cares
-      - GLFW_BUILD_WAYLAND=OFF
       - CMAKE_SYSROOT=${cwd}/raspbian
       - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
       - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
