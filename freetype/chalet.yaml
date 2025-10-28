@@ -8,7 +8,8 @@ externalDependencies:
   #   kind: git
   freetype:
     repository: https://gitlab.freedesktop.org/freetype/freetype
-    tag: VER-2-14-1
+    # tag: VER-2-14-1
+    commit: ae63cc0d
     kind: git
 targets:
   # libjpeg:
