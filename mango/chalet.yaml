@@ -43,13 +43,14 @@ externalDependencies:
 
   deflate:
     repository: https://github.com/ebiggers/libdeflate
-    commit: 095bcab
+    # commit: 095bcab
+    tag: v1.25
     kind: git
 
   mango:
     repository: https://github.com/t0rakka/mango
     # repository: https://github.com/dimitre/mango
-    commit: 580f01c
+    commit: 159ee48
     kind: git
 
 targets:
