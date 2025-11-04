@@ -71,6 +71,7 @@ targets:
       # - BROTLIDEC_LIBRARIES=${cwd}/${externalBuild:brotli}/ext.brotli/install/lib
 
       - FT_REQUIRE_PNG=OFF
+      - FT_DISABLE_PNG=ON
       # - PNG_ROOT=${cwd}/${externalBuild:libpng}/ext.libpng/install
       # - PNG_LIBRARY=${cwd}/${externalBuild:libpng}/ext.libpng/install/lib
       # - PNG_PNG_INCLUDE_DIR=${cwd}/${externalBuild:libpng}/ext.libpng/install/include
