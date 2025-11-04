@@ -65,6 +65,8 @@ targets:
 
       # disabling brotli, only required for woff2 compressed fonts
       - FT_REQUIRE_BROTLI=OFF
+      - FT_DISABLE_BROTLI=ON
+
       # - BROTLI_ROOT=${cwd}/${externalBuild:brotli}/ext.brotli/install
       # - BROTLI_LIBRARY=${cwd}/${externalBuild:brotli}/ext.brotli/install/lib
       # - BROTLIDEC_INCLUDE_DIRS=${cwd}/${externalBuild:brotli}/ext.brotli/install/include
