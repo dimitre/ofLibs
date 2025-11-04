@@ -3,7 +3,7 @@ version: 0.1.7
 externalDependencies:
   opencv:
     repository: https://github.com/opencv/opencv
-    commit: cb8f398
+    commit: 01f9bda
     # tag: 4.12.0
     kind: git
 
@@ -105,6 +105,7 @@ targets:
       #
       # test for ofxOpenCvDnnObjectDetection
       - BUILD_opencv_dnn=ON
+      - OPENCV_DNN_OPENCL=OFF
 
     defines[platform:web]:
       - WITH_ITT=OFF
@@ -130,11 +131,16 @@ targets:
       - OPENCV_LIB_INSTALL_PATH=install/lib
       - CMAKE_INSTALL_PREFIX=install
 
+    # defines[architecture:arm64]:
+    #   - CPU_BASELINE=NEON
+    #   - CPU_DISPATCH=NEON
+    #   - CPU_DISPATCH=""
     defines[architecture:arm64]:
       - CPU_BASELINE=NEON
-      - CPU_DISPATCH=NEON
-    #   - CPU_DISPATCH=""
-
+      - CPU_DISPATCH=""
+      - ENABLE_NEON=ON
+      - CV_NEON=ON
+      - WITH_NEON=ON
     # defines[arch:x86]:
 
 distribution:
