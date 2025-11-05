@@ -47,7 +47,7 @@ externalDependencies:
     tag: v1.25
     kind: git
 
-  mango:
+  mango2:
     repository: https://github.com/t0rakka/mango
     # repository: https://github.com/dimitre/mango
     commit: 159ee48
@@ -222,7 +222,7 @@ targets:
     defines[toolchain:msvc]:
       - b_vscrt=static_from_buildtype
 
-  mango:
+  mango2:
     kind: cmakeProject
     location: ${external:${name}}
     recheck: false
@@ -344,7 +344,7 @@ targets:
       # - BZIP2_LIBRARIES=${cwd}/${externalBuild:bzip2}/install/lib/libbz2_static.lib
 
 distribution:
-  mango:
+  mango2:
     kind: archive
     format: zip
     include:
