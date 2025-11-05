@@ -36,9 +36,10 @@ externalDependencies:
     kind: git
 
   lcms2:
-    # repository: https://github.com/mm2/Little-CMS
+    repository: https://github.com/mm2/Little-CMS
     # commit: 5cdf304
-    repository: https://github.com/dimitre/Little-CMS
+    commit: 8888d84
+    # repository: https://github.com/dimitre/Little-CMS
     kind: git
 
   deflate:
