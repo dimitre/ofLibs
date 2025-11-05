@@ -39,7 +39,7 @@ externalDependencies:
     repository: https://github.com/mm2/Little-CMS
     commit: 5cdf304
     # repository: https://github.com/dimitre/Little-CMS
-    # kind: git
+    kind: git
 
   deflate:
     repository: https://github.com/ebiggers/libdeflate
