@@ -9,5 +9,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: libtiff, version: v0.12.3 }
+    with: { lib: libtiff, version: v0.12.4 }
     secrets: inherit

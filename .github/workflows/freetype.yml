@@ -1,9 +1,9 @@
 name: freetype
 
-# retrigger 001
-
 on:
   push:
+    tags:
+      - "v*"
     paths:
       - freetype/**
       - .github/workflows/freetype.yml
@@ -11,5 +11,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: freetype, version: v0.12.3 }
+    with: { lib: freetype, version: v0.12.4 }
     secrets: inherit

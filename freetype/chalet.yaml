@@ -1,15 +1,10 @@
 name: oflibs
 version: "1.0"
 externalDependencies:
-  # zlib:
-  #   repository: https://github.com/madler/zlib
-  #   commit: 5a82f71
-  #   # tag: v1.3.1
-  #   kind: git
   freetype:
     repository: https://gitlab.freedesktop.org/freetype/freetype
     # tag: VER-2-14-1
-    commit: ae63cc0d
+    commit: c97efd28ca59d306f63fb2bad247af96b1063130
     kind: git
 targets:
   # libjpeg:

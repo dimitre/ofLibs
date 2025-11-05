@@ -3,7 +3,8 @@ version: "1.0"
 externalDependencies:
   pugixml:
     repository: https://github.com/zeux/pugixml
-    tag: v1.14
+    # tag: v1.14
+    commit: 61c9448
     kind: git
 
 targets:

@@ -3,7 +3,8 @@ version: "1.0"
 externalDependencies:
   json:
     repository: https://github.com/nlohmann/json
-    tag: v3.12.0
+    # tag: v3.12.0
+    commit: af524ab
     kind: git
 
 targets:

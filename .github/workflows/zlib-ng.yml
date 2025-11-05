@@ -2,6 +2,8 @@ name: zlib-ng
 
 on:
   push:
+    tags:
+      - "v*"
     paths:
       - zlib-ng/**
       - .github/workflows/zlib-ng.yml
@@ -9,5 +11,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: zlib-ng, version: v0.12.3 }
+    with: { lib: zlib-ng, version: v0.12.4 }
     secrets: inherit

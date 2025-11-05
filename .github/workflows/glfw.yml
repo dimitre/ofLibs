@@ -2,6 +2,8 @@ name: glfw
 
 on:
   push:
+    tags:
+      - "v*"
     paths:
       - glfw/**
       - .github/workflows/glfw.yml
@@ -10,10 +12,9 @@ jobs:
     uses: ./.github/workflows/_build.yml
     with: {
         lib: glfw,
-        version: v0.12.3,
+        version: v0.12.4,
         multistrap: true,
         # those are needed for emscripten. only the libxrandr-dev , doesnt hurt add to all linux plats (xorg-dev libglu1-mesa-dev libxrandr-dev)
         linux_apt: libwayland-dev libxkbcommon-dev libx11-dev xorg-dev libglu1-mesa-dev cmake extra-cmake-modules libxrandr-dev,
       }
     secrets: inherit
-  # 002

@@ -9,7 +9,7 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: glew, version: v0.12.3, meson: true }
+    with: { lib: glew, version: v0.12.4, meson: true }
     secrets: inherit
 
   pixman_matrix:

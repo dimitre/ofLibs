@@ -2,6 +2,8 @@ name: pugixml
 
 on:
   push:
+    tags:
+      - "v*"
     paths:
       - pugixml/**
       - .github/workflows/pugixml.yml
@@ -12,7 +14,7 @@ jobs:
     with:
       {
         lib: pugixml,
-        version: v0.12.3,
+        version: v0.12.4,
         multistrap: true,
         linux_apt: libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev libegl1-mesa-dev libopengl-dev libglx-dev libglvnd-dev,
       }

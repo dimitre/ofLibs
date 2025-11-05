@@ -2,18 +2,14 @@ name: videoInput
 
 on:
   push:
+    tags:
+      - "v*"
     paths:
       - videoInput/**
       - .github/workflows/videoInput.yml
 
-permissions:
-  contents: write
-
-# env:
-# CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
   ci:
     uses: ./.github/workflows/_buildwin.yml
-    with: { lib: videoInput, version: v0.12.3, meson: true }
+    with: { lib: videoInput, version: v0.12.4, meson: true }
     secrets: inherit

@@ -2,6 +2,8 @@ name: fmt
 
 on:
   push:
+    tags:
+      - "v*"
     paths:
       - fmt/**
       - .github/workflows/fmt.yml
@@ -9,6 +11,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: fmt, version: v0.12.3 }
+    with: { lib: fmt, version: v0.12.4 }
     secrets: inherit
-    # passes GITHUB_TOKEN automatically

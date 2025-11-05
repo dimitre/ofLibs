@@ -3,8 +3,8 @@ version: "1.0"
 externalDependencies:
   utfcpp:
     repository: https://github.com/nemtrif/utfcpp
-    tag: v4.0.6
-    # commit: 961e7a3
+    # tag: v4.0.8
+    commit: 961e7a3
     kind: git
 
 targets:

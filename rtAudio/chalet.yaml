@@ -4,7 +4,7 @@ externalDependencies:
   rtAudio:
     repository: https://github.com/thestk/rtaudio
     # tag: 6.0.1
-    commit: 2b00d1a
+    commit: ab7daaa
     kind: git
 targets:
   rtAudio:

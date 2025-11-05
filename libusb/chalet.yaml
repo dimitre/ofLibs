@@ -4,7 +4,7 @@ externalDependencies:
   libusb:
     repository: https://github.com/libusb/libusb-cmake
     # tag: v1.0.29-0
-    commit: 000e06e
+    commit: 0c424f7
     kind: git
 targets:
   libusb:

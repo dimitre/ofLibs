@@ -2,6 +2,8 @@ name: kissfft
 
 on:
   push:
+    tags:
+      - "v*"
     paths:
       - kissfft/**
       - .github/workflows/kissfft.yml
@@ -9,5 +11,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: kissfft, version: v0.12.3 }
+    with: { lib: kissfft, version: v0.12.4 }
     secrets: inherit

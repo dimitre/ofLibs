@@ -2,6 +2,8 @@ name: libusb
 
 on:
   push:
+    tags:
+      - "v*"
     paths:
       - libusb/**
       - .github/workflows/libusb.yml
@@ -12,7 +14,7 @@ jobs:
     with:
       {
         lib: libusb,
-        version: v0.12.3,
+        version: v0.12.4,
         linux_apt: libudev-dev,
         multistrap: true,
       }

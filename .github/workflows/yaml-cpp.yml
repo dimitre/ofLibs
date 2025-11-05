@@ -2,6 +2,8 @@ name: yaml-cpp
 
 on:
   push:
+    tags:
+      - "v*"
     paths:
       - yaml-cpp/**
       - .github/workflows/yaml-cpp.yml
@@ -9,5 +11,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: yaml-cpp, version: v0.12.3 }
+    with: { lib: yaml-cpp, version: v0.12.4 }
     secrets: inherit
