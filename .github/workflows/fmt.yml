@@ -2,8 +2,6 @@ name: fmt
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - fmt/**
       - .github/workflows/fmt.yml

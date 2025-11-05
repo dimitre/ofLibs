@@ -2,8 +2,6 @@ name: kissfft
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - kissfft/**
       - .github/workflows/kissfft.yml

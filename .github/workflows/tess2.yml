@@ -2,8 +2,6 @@ name: tess2
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - tess2/**
       - .github/workflows/tess2.yml

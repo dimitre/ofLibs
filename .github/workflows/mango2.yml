@@ -2,8 +2,6 @@ name: mango2
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - mango2/**
       - .github/workflows/mango2.yml

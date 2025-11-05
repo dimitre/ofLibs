@@ -2,8 +2,6 @@ name: uriparser
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - uriparser/**
       - .github/workflows/uriparser.yml

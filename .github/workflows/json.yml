@@ -2,8 +2,6 @@ name: json
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - json/**
       - .github/workflows/json.yml

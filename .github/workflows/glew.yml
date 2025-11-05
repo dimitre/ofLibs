@@ -2,8 +2,6 @@ name: glew
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - glew/**
       - .github/workflows/glew.yml

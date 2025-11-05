@@ -2,8 +2,6 @@ name: opencv
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - opencv/**
       - .github/workflows/opencv.yml

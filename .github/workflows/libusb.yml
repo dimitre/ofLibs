@@ -2,8 +2,6 @@ name: libusb
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - libusb/**
       - .github/workflows/libusb.yml

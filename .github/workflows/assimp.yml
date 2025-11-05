@@ -2,8 +2,6 @@ name: assimp
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - assimp/**
       - .github/workflows/assimp.yml

@@ -2,8 +2,6 @@ name: glm
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - glm/**
       - .github/workflows/glm.yml

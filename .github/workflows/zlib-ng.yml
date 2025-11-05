@@ -2,8 +2,6 @@ name: zlib-ng
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - zlib-ng/**
       - .github/workflows/zlib-ng.yml

@@ -2,8 +2,6 @@ name: freetype
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - freetype/**
       - .github/workflows/freetype.yml

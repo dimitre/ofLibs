@@ -2,8 +2,6 @@ name: glfw
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - glfw/**
       - .github/workflows/glfw.yml

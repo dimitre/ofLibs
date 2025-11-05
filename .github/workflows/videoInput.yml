@@ -2,8 +2,6 @@ name: videoInput
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - videoInput/**
       - .github/workflows/videoInput.yml

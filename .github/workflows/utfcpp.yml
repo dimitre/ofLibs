@@ -2,8 +2,6 @@ name: utfcpp
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - utfcpp/**
       - .github/workflows/utfcpp.yml

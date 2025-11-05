@@ -2,8 +2,6 @@ name: pugixml
 
 on:
   push:
-    tags:
-      - "v*"
     paths:
       - pugixml/**
       - .github/workflows/pugixml.yml
