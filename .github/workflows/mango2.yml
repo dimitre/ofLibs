@@ -1,0 +1,13 @@
+name: mango2
+
+on:
+  push:
+    paths:
+      - mango2/**
+      - .github/workflows/mango2.yml
+
+jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: mango2, version: v0.12.3, meson: true }
+    secrets: inherit
