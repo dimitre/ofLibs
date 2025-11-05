@@ -1,0 +1,262 @@
+name: Build ofLibs
+
+on:
+  workflow_call:
+    inputs:
+      lib: { required: true, type: string }
+      version: { required: true, type: string }
+      multistrap: { required: false, type: boolean }
+      linux_apt: { required: false, type: string }
+      meson: { required: false, type: boolean }
+
+      # # New inputs to enable/disable platforms
+      # use_emscripten: { required: false, type: boolean, default: true }
+      # use_linux64: { required: false, type: boolean, default: true }
+      # use_macos: { required: false, type: boolean, default: true }
+      # use_vs: { required: false, type: boolean, default: true }
+      # use_rpi: { required: false, type: boolean, default: true }
+      # use_msys2: { required: false, type: boolean, default: true }
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
+          - { platform: macos, os: macos-26, toolchain: apple-llvm }
+          - { platform: vs, os: windows-latest, toolchain: vs-stable }
+          - {
+              platform: rpi-aarch64,
+              os: ubuntu-latest,
+              prefix: aarch64-linux-gnu,
+              toolchain: aarch64-linux-gnu-gcc,
+            }
+
+          # - {
+          #     platform: rpi-armv6l,
+          #     os: ubuntu-latest,
+          #     prefix: arm-linux-gnueabihf,
+          #     toolchain: arm-linux-gnueabihf-gcc,
+          #   }
+
+          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
+
+          # - {
+          #     platform: msys2,
+          #     os: ubuntu-latest,
+          #     prefix: mingw-w64,
+          #     toolchain: x86_64-w64-mingw32-gcc,
+          #     # params: -t gcc -a x86_64-w64-mingw32,
+          #   }
+
+          # - {
+          #     platform: msys2,
+          #     os: windows-latest,
+          #     toolchain: gcc,
+          #     shell: msys2 -c 'export PATH=$PATH:/c/hostedtoolcache/windows/chalet-org/chalet/latest/windows-x64',
+          #     # shell: msys2 -c 'source $GITHUB_ENV; export $(cut -d= -f1 $GITHUB_ENV); {0}'
+          #   }
+
+    runs-on: ${{ matrix.os }}
+    # Conditional execution based on platform
+    # if: |
+    #   ( platform == 'emscripten' && !inputs.skip_emscripten) ||
+    #   ( platform == 'linux64' && !inputs.skip_linux64)
+    # ||
+    # (matrix.platform == 'macos' && !inputs.skip_macos) ||
+    # (matrix.platform == 'vs' && !inputs.skip_vs) ||
+    # (matrix.platform == 'msys2' && !inputs.skip_msys2) ||
+    # ((matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l') && !inputs.skip_rpi)
+    # env:
+    #   PLATFORM: ${{ matrix.platform }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ inputs.lib }}
+
+    steps:
+      #   - name: Check if platform should run
+      #     id: should_run
+      #     shell: bash
+      #     run: |
+      #       SHOULD_RUN=true
+
+      #       if [[ "${{ matrix.platform }}" == "emscripten" && "${{ inputs.skip_emscripten }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       elif [[ "${{ matrix.platform }}" == "linux64" && "${{ inputs.skip_linux64 }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       elif [[ "${{ matrix.platform }}" == "macos" && "${{ inputs.skip_macos }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       elif [[ "${{ matrix.platform }}" == "vs" && "${{ inputs.skip_vs }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       elif [[ "${{ matrix.platform }}" == "msys2" && "${{ inputs.skip_msys2 }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       elif [[ ("${{ matrix.platform }}" == "rpi-aarch64" || "${{ matrix.platform }}" == "rpi-armv6l") && "${{ inputs.skip_rpi }}" == "true" ]]; then
+      #         SHOULD_RUN=false
+      #       fi
+
+      #       echo "should_run=$SHOULD_RUN" >> $GITHUB_OUTPUT
+
+      #       if [[ "$SHOULD_RUN" == "false" ]]; then
+      #         echo "⏭️ Skipping ${{ matrix.platform }} build (skip flag enabled)"
+      #       else
+      #         echo "✅ Running ${{ matrix.platform }} build"
+      #       fi
+
+      - uses: actions/checkout@v5
+        # with:
+        #   sparse-checkout: ${{ inputs.lib }}
+
+      # - name: Verify sparse checkout
+      #   working-directory: .
+      #   run: test -d ${{ inputs.lib }}
+      # - name: ccache
+      #   uses: hendrikmuhs/ccache-action@v1.2.19
+      #   with:
+      #     key: ${{ inputs.lib }}-${{ runner.os }}-${{ matrix.platform }}-ccache
+      #
+      #
+      - name: Windows Setup MSVC
+        if: matrix.platform == 'vs'
+        uses: TheMrMilchmann/setup-msvc-dev@v4
+        with:
+          arch: x64
+      #
+      - name: Install Meson
+        if: inputs.meson
+        run: pip install meson ninja
+
+      - name: Linux Apt Packages
+        if: runner.os == 'Linux' && inputs.linux_apt != ''
+        # if: matrix.platform == 'linux64' && inputs.linux_apt != ''
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ${{ inputs.linux_apt }}
+
+      # - name: Linux Apt Cache Packages
+      #   if: runner.os == 'Linux'
+      #   uses: awalsh128/cache-apt-pkgs-action@latest
+      #   with:
+      #     packages: ${{ inputs.linux_apt }}
+      #     version: 1.0
+
+      # - name: macOS Checks
+      #   if: runner.os == 'macOS'
+      #   run: |
+      #     whereis cmake
+      #     cmake --version
+      #     brew install cmake
+      #     whereis cmake
+      #     cmake --version
+
+      - name: Emscripten Install
+        if: matrix.platform == 'emscripten'
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 4.0.18
+          actions-cache-folder: "emsdk-cache"
+
+      - name: Verify emsdk
+        if: matrix.platform == 'emscripten'
+        run: |
+          emcc -v
+          emsdk update
+          emsdk install latest
+          emsdk activate latest
+          emcc -v
+
+      - name: MSYS2 Apt Cross Compile
+        if: matrix.platform == 'msys2' && runner.os == 'Linux'
+        run: |
+          sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
+
+      # - name: MSYS2 Windows
+      #   if: matrix.platform == 'msys2' && runner.os == 'Windows'
+      #   uses: msys2/setup-msys2@v2.28.0
+      #   with:
+      #     pacboy: gcc:p cmake:p
+      #     # pacboy: wget2:p yaml-cpp:p pugixml:p nlohmann-json:p fmt:p toolchain:p openssl:p python:p assimp:p cairo:p curl:p freeglut:p FreeImage:p glew:p glfw:p glm:p libsndfile:p libusb:p libxml2:p mpg123:p openal:p opencv:p rtaudio:p uriparser:p utf8cpp:p
+      #     update: true
+      #     install: >-
+      #       base-devel
+      #
+      # - name: Add Chalet to Path in Msys2
+      #   if: matrix.platform == 'msys2' && runner.os == 'Windows'
+      #   run: |
+      #     export PATH=$PATH:/c/hostedtoolcache/windows/chalet-org/chalet/latest/windows-x64
+      #     chalet --version
+
+      - name: RPI - Apt Cache Cross Compile
+        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
+          version: 1.0
+
+      # FIXME: Test if it works OK
+      - name: RPI - Cache Multistrap
+        if: inputs.multistrap && (matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
+        uses: actions/cache@v4
+        with:
+          path: raspbian
+          # key: ${{ matrix.prefix }}-rpicache
+          # I'll now keep just one key, so all actions benefits to the same cache package
+          key: rpi-multistrap-cache
+
+      - name: RPI - multistrap
+        if: inputs.multistrap && (matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
+        run: |
+          mkdir -p raspbian/etc/apt/apt.conf.d/
+          echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
+          multistrap -a arm64 -d raspbian -f ../multistrap.conf
+
+      # FIXME: check if one path can have all needed paths for the two kinds of RPI, if not split into two steps here
+      - name: RPI - Cross-compile Meson env vars
+        if: inputs.meson && ( matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
+        run: |
+          ROOT=$PWD/raspbian
+          echo "PKG_CONFIG_SYSROOT_DIR=$ROOT" >> $GITHUB_ENV
+          echo "PKG_CONFIG_LIBDIR=$ROOT/usr/lib/pkgconfig:$ROOT/usr/lib/aarch64-linux-gnu/pkgconfig:$ROOT/usr/lib/armv6l-linux-gnu/pkgconfig:$ROOT/usr/share/pkgconfig" >> $GITHUB_ENV
+
+      - name: Install Chalet
+        uses: jaxxstorm/action-install-gh-release@v2.1.0
+        with:
+          repo: chalet-org/chalet
+          cache: enable
+          extension: .zip
+          prerelease: "false"
+
+      - name: Chalet Test / Version
+        run: |
+          chalet --version
+
+      - name: Chalet Configure
+        run: chalet configure --toolchain ${{ matrix.toolchain }} #-a auto
+
+      - name: Chalet Bundle
+        run: |
+          chalet bundle --show-commands #--compiler-cache
+
+      - name: LS check built lib
+        run: |
+          unzip dist/*.zip
+          ls -alfR dist
+
+      - name: Check Static Lib minos / MACOSX_DEPLOYMENT_TARGET
+        if: inputs.meson && runner.os == 'macOS'
+        run: |
+          otool -l **/*.a | grep minos
+
+      - name: Rename and Publish Release
+        env:
+          # GITHUB_TOKEN: ${{ github.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # mv dist/${{ inputs.lib }}.zip ofLibs_${{ matrix.platform }}_${{ inputs.lib }}.zip
+          mv dist/${{ inputs.lib }}.zip ofLibs_${{ inputs.lib }}_${{ matrix.platform }}.zip
+          ls -alF *.zip
+          gh release upload ${{ inputs.version }} *.zip --clobber
