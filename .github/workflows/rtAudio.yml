@@ -6,15 +6,24 @@ on:
       - rtAudio/**
       - .github/workflows/rtAudio.yml
 
-# not needed really
-permissions:
-  contents: write
-
 # env:
 #   CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
+  ci:
+    uses: ./.github/workflows/_buildnoemscripten.yml
+    with:
+      {
+        lib: rtAudio,
+        version: v0.12.3,
+        multistrap: true,
+        linux_apt: jackd libpulse-dev libasound2-dev,
+      }
+    secrets: inherit
+
+  # jobs:
   rtAudio_matrix:
+    if: false
     strategy:
       fail-fast: false
       matrix:
