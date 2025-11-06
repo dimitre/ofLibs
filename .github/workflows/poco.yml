@@ -1,0 +1,13 @@
+name: poco
+
+on:
+  push:
+    paths:
+      - poco/**
+      - .github/workflows/poco.yml
+
+jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: poco, version: add }
+    secrets: inherit
