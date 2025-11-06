@@ -20,7 +20,14 @@ targets:
 
       - YAML_BUILD_SHARED_LIBS=OFF
       - YAML_CPP_INSTALL=ON
-      # - YAML_CPP_STATIC_DEFINE=ON
+      - YAML_BUILD_SHARED_LIBS=OFF
+
+      - CMAKE_C_STANDARD=20
+      - CMAKE_CXX_STANDARD=20
+      - YAML_CPP_STATIC_DEFINE=ON
+
+      #
+      #
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
