@@ -9,14 +9,6 @@ on:
       linux_apt: { required: false, type: string }
       meson: { required: false, type: boolean }
 
-      # # New inputs to enable/disable platforms
-      # use_emscripten: { required: false, type: boolean, default: true }
-      # use_linux64: { required: false, type: boolean, default: true }
-      # use_macos: { required: false, type: boolean, default: true }
-      # use_vs: { required: false, type: boolean, default: true }
-      # use_rpi: { required: false, type: boolean, default: true }
-      # use_msys2: { required: false, type: boolean, default: true }
-
 permissions:
   contents: write
 
@@ -62,51 +54,13 @@ jobs:
           #   }
 
     runs-on: ${{ matrix.os }}
-    # Conditional execution based on platform
-    # if: |
-    #   ( platform == 'emscripten' && !inputs.skip_emscripten) ||
-    #   ( platform == 'linux64' && !inputs.skip_linux64)
-    # ||
-    # (matrix.platform == 'macos' && !inputs.skip_macos) ||
-    # (matrix.platform == 'vs' && !inputs.skip_vs) ||
-    # (matrix.platform == 'msys2' && !inputs.skip_msys2) ||
-    # ((matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l') && !inputs.skip_rpi)
-    # env:
-    #   PLATFORM: ${{ matrix.platform }}
+
     defaults:
       run:
         shell: bash
         working-directory: ${{ inputs.lib }}
 
     steps:
-      #   - name: Check if platform should run
-      #     id: should_run
-      #     shell: bash
-      #     run: |
-      #       SHOULD_RUN=true
-
-      #       if [[ "${{ matrix.platform }}" == "emscripten" && "${{ inputs.skip_emscripten }}" == "true" ]]; then
-      #         SHOULD_RUN=false
-      #       elif [[ "${{ matrix.platform }}" == "linux64" && "${{ inputs.skip_linux64 }}" == "true" ]]; then
-      #         SHOULD_RUN=false
-      #       elif [[ "${{ matrix.platform }}" == "macos" && "${{ inputs.skip_macos }}" == "true" ]]; then
-      #         SHOULD_RUN=false
-      #       elif [[ "${{ matrix.platform }}" == "vs" && "${{ inputs.skip_vs }}" == "true" ]]; then
-      #         SHOULD_RUN=false
-      #       elif [[ "${{ matrix.platform }}" == "msys2" && "${{ inputs.skip_msys2 }}" == "true" ]]; then
-      #         SHOULD_RUN=false
-      #       elif [[ ("${{ matrix.platform }}" == "rpi-aarch64" || "${{ matrix.platform }}" == "rpi-armv6l") && "${{ inputs.skip_rpi }}" == "true" ]]; then
-      #         SHOULD_RUN=false
-      #       fi
-
-      #       echo "should_run=$SHOULD_RUN" >> $GITHUB_OUTPUT
-
-      #       if [[ "$SHOULD_RUN" == "false" ]]; then
-      #         echo "⏭️ Skipping ${{ matrix.platform }} build (skip flag enabled)"
-      #       else
-      #         echo "✅ Running ${{ matrix.platform }} build"
-      #       fi
-
       - uses: actions/checkout@v5
         # with:
         #   sparse-checkout: ${{ inputs.lib }}
@@ -157,17 +111,17 @@ jobs:
         if: matrix.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
         with:
-          version: 4.0.18
+          version: 4.0.19
           actions-cache-folder: "emsdk-cache"
 
-      - name: Verify emsdk
-        if: matrix.platform == 'emscripten'
-        run: |
-          emcc -v
-          emsdk update
-          emsdk install latest
-          emsdk activate latest
-          emcc -v
+      # - name: Verify emsdk
+      #   if: matrix.platform == 'emscripten'
+      #   run: |
+      #     emcc -v
+      #     emsdk update
+      #     emsdk install latest
+      #     emsdk activate latest
+      #     emcc -v
 
       - name: MSYS2 Apt Cross Compile
         if: matrix.platform == 'msys2' && runner.os == 'Linux'
@@ -256,7 +210,6 @@ jobs:
           # GITHUB_TOKEN: ${{ github.TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # mv dist/${{ inputs.lib }}.zip ofLibs_${{ matrix.platform }}_${{ inputs.lib }}.zip
           mv dist/${{ inputs.lib }}.zip ofLibs_${{ inputs.lib }}_${{ matrix.platform }}.zip
           ls -alF *.zip
           gh release upload ${{ inputs.version }} *.zip --clobber

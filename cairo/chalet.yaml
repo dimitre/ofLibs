@@ -19,6 +19,9 @@ targets:
     defines:
       - buildtype=release
       - default_library=static
+
+      - pixman:mmx=disabled
+      - pixman:default_library=static
       # if disabled meson fails with  ERROR: C prefer_static library 'gdi32' not found
       # - default_both_libraries=static
       # - prefer_static=true
