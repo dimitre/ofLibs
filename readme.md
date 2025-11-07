@@ -1,8 +1,6 @@
-# ofLibs / Librares for ofWorks (openFrameworks fork)
+# ofLibs / Librares for [ofWorks (openFrameworks fork)](https://github.com/dimitre/ofworks)
 Building libraries for multiple platforms.<br>
 You are welcome to jump in and help building and testing more libraries.<br>
-
-## [ofWorks Fork](https://github.com/dimitre/ofworks)
 
 ## ofCore
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/freetype.yml/badge.svg)
