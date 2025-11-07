@@ -48,7 +48,7 @@ targets:
       - pixman:sse2=disabled
       - pixman:ssse3=disabled
       - pixman:vmx=disabled
-      - pixman:arm-simd=enabled
+      # - pixman:arm-simd=enabled
       - pixman:neon=enabled
 
     defines[platform:macos]:
