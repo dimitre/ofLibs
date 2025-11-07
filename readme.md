@@ -34,15 +34,18 @@ Still missing ofxURL related libs, openssl, libcrypto
 
 ## Additional / Test (published with tag add)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/blend2d.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/OpenImageIO.yml/badge.svg)
+<!--![title](https://github.com/dimitre/ofLibs/actions/workflows/OpenImageIO.yml/badge.svg)-->
+![title](https://github.com/dimitre/ofLibs/actions/workflows/poco.yml/badge.svg)
 
 ## Legacy Core
-[![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml)
+Brotli, libjpeg, libtiff, libpng, lzma builds correctly but moved aside from CI.
+FreeImage have some issues. Poco now builds again and it was moved to "Additional"
+<!--[![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml)
 [![title](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg)](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libjpeg.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libtiff.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libpng.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/lzma.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/lzma.yml/badge.svg)-->
 
 You can use the following script to test OFVision fork (macOS only now).
 This script will bootstrap installation, clone this fork and install libs, install ofgen tool (projectGenerator substitute here) to your path.
