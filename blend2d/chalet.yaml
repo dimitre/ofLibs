@@ -1,0 +1,41 @@
+name: oflibs
+version: "1.0"
+externalDependencies:
+  asmjit:
+    repository: https://github.com/asmjit/asmjit
+    kind: git
+  blend2d:
+    repository: https://github.com/blend2d/blend2d
+    # commit: d6bdb69
+    # tag: 12.1.0
+    kind: git
+
+targets:
+  blend2d:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INSTALL_LIBDIR=lib
+      - BLEND2D_STATIC=ON
+      - ASMJIT_DIR=${cwd}/${external:asmjit}
+    defines[platform:macos]:
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+
+distribution:
+  blend2d:
+    kind: archive
+    format: zip
+    include:
+      - ${externalBuild:${name}}/install/lib
+      - ${externalBuild:${name}}/install/include
+      - ${external:${name}}/README.md
+      - ${external:${name}}/LICENSE

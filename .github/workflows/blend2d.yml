@@ -1,0 +1,13 @@
+name: blend2d
+
+on:
+  push:
+    paths:
+      - blend2d/**
+      - .github/workflows/blend2d.yml
+
+jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: blend2d, version: add }
+    secrets: inherit
