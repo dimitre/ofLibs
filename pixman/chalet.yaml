@@ -45,4 +45,7 @@ distribution:
       - ${externalBuild:${name}}/install/usr/local/include
       - ${externalBuild:${name}}/install/usr/local/lib
 
+      - ${externalBuild:${name}}/install/lib
+      - ${externalBuild:${name}}/install/include
+
       - ${external:${name}}/COPYING
