@@ -20,8 +20,8 @@ targets:
       - buildtype=release
       - default_library=static
 
-      - pixman:mmx=disabled
       - pixman:default_library=static
+
       # if disabled meson fails with  ERROR: C prefer_static library 'gdi32' not found
       # - default_both_libraries=static
       # - prefer_static=true
@@ -41,6 +41,15 @@ targets:
     # FIXME: Remove when this is closed https://github.com/chalet-org/chalet/issues/425
     # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
     # - prefix=${cwd}/raspbian
+
+    # defines[toolchain:aarch64-linux-gnu-gcc]:
+    defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
+      - pixman:mmx=disabled
+      - pixman:sse2=disabled
+      - pixman:ssse3=disabled
+      - pixman:vmx=disabled
+      - pixman:arm-simd=enabled
+      - pixman:neon=enable
 
     defines[platform:macos]:
       - c_args=-mmacos-version-min=11.6
