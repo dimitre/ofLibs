@@ -8,15 +8,15 @@ on:
       - OpenImageIO/**
       - .github/workflows/OpenImageIO.yml
 
-permissions:
-  contents: write
-
-# env:
-#   CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: OpenImageIO, version: add, brew: libtiff }
+    secrets: inherit
+
   OpenImageIO_matrix:
     strategy:
+      if: false
       matrix:
         include:
           # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
