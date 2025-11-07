@@ -9,5 +9,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: poco, version: add }
+    with: { lib: poco, version: add, linux_apt: libssl-dev }
     secrets: inherit

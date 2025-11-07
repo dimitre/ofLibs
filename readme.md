@@ -3,20 +3,13 @@ As a proof of concept it is building libraries for multiple platforms.
 You are welcome to jump in and help building and testing more libraries.
 
 ## Core
-
-[![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml)
-[![title](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg)](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/freetype.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glew.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glfw.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glm.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/json.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/kissfft.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/libjpeg.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/libtiff.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/libpng.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libusb.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/lzma.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/pugixml.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/rtAudio.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/tess2.yml/badge.svg)
@@ -37,8 +30,18 @@ You are welcome to jump in and help building and testing more libraries.
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/fmt.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/yaml-cpp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/mango.yml/badge.svg)
+
+## Additional / Test (published with tag add)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/blend2d.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/OpenImageIO.yml/badge.svg)
 
+## Legacy Core
+[![title](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml/badge.svg)](https://github.com/dimitre/ofLibs/actions/workflows/brotli.yml)
+[![title](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml/badge.svg)](https://github.com/dimitre/ofLibs/actions/workflows/FreeImage.yml)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/libjpeg.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/libtiff.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/libpng.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/lzma.yml/badge.svg)
 
 You can use the following script to test OFVision fork (macOS only now).
 This script will bootstrap installation, clone this fork and install libs, install ofgen tool (projectGenerator substitute here) to your path.
