@@ -3,8 +3,8 @@ name: OpenImageIO
 on:
   push:
     paths:
-      - OpenImageIO/**
       - .github/workflows/OpenImageIO.yml
+      - OpenImageIO/**
 
 jobs:
   ci:
