@@ -7,6 +7,7 @@ on:
       version: { required: true, type: string }
       multistrap: { required: false, type: boolean }
       linux_apt: { required: false, type: string }
+      brew: { required: false, type: string }
       meson: { required: false, type: boolean }
 
 permissions:
