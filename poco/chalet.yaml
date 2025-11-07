@@ -3,7 +3,8 @@ version: "0.0.1"
 externalDependencies:
   poco:
     repository: https://github.com/pocoproject/poco
-    tag: poco-1.14.2-release
+    # tag: poco-1.14.2-release
+    commit: "1284103"
     kind: git
 targets:
   poco:
@@ -22,6 +23,12 @@ targets:
       # - CMAKE_INCLUDE_OUTPUT_DIRECTORY=include
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_LIBDIR=lib
+
+      # Disable SSL/Crypto components for cross-compilation
+      - ENABLE_NETSSL=OFF
+      - ENABLE_CRYPTO=OFF
+      - ENABLE_NETSSL_WIN=OFF
+      - ENABLE_APACHECONNECTOR=OFF
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INSTALL_FULL_LIBDIR=lib
     # defines[platform:macos]:
