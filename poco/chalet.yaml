@@ -24,11 +24,32 @@ targets:
       - CMAKE_INSTALL_PREFIX=install
       - CMAKE_INSTALL_LIBDIR=lib
 
-      # Disable SSL/Crypto components for cross-compilation
+      # Only enable core components needed for openFrameworks
+      - ENABLE_FOUNDATION=ON
+      - ENABLE_XML=ON
+      - ENABLE_JSON=ON
+      - ENABLE_UTIL=ON
+      - ENABLE_NET=ON
+      - ENABLE_ZIP=ON
+
+      # Disable everything that requires OpenSSL or is not needed
       - ENABLE_NETSSL=OFF
       - ENABLE_CRYPTO=OFF
-      - ENABLE_NETSSL_WIN=OFF
+      - ENABLE_JWT=OFF
+      - ENABLE_DATA=OFF
+      - ENABLE_REDIS=OFF
+      - ENABLE_MONGODB=OFF
+      - ENABLE_PDF=OFF
+      - ENABLE_PAGECOMPILER=OFF
+      - ENABLE_PAGECOMPILER_FILE2PAGE=OFF
       - ENABLE_APACHECONNECTOR=OFF
+      - ENABLE_CPPPARSER=OFF
+      - ENABLE_POCODOC=OFF
+      - ENABLE_SEVENZIP=OFF
+      - ENABLE_ENCODINGS=OFF
+      - ENABLE_ACTIVERECORD=OFF
+      - ENABLE_PROMETHEUS=OFF
+
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INSTALL_FULL_LIBDIR=lib
     # defines[platform:macos]:
