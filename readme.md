@@ -16,7 +16,7 @@ You are welcome to jump in and help building and testing more libraries.
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/uriparser.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/utfcpp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/videoInput.yml/badge.svg)
-![title](https://github.com/dimitre/ofLibs/actions/workflows/zlib.yml/badge.svg)
+![title](https://github.com/dimitre/ofLibs/actions/workflows/zlib-ng.yml/badge.svg)
 
 ## Addons
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg)

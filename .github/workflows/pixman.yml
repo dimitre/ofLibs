@@ -1,0 +1,13 @@
+name: pixman
+
+on:
+  push:
+    paths:
+      - pixman/**
+      - .github/workflows/pixman.yml
+
+jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with: { lib: pixman, version: v0.12.4, meson: true }
+    secrets: inherit
