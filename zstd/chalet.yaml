@@ -22,6 +22,7 @@ targets:
       - BUILD_STATIC_LIBS=ON
       - ZSTD_BUILD_STATIC=ON
       - CMAKE_CXX_STANDARD=17
+      - ZSTD_BUILD_PROGRAMS=OFF
 
       - CMAKE_INSTALL_PREFIX=${cwd}/install
       - CMAKE_INSTALL_INCLUDEDIR=include
