@@ -8,7 +8,7 @@ on:
 
 jobs:
   ci:
-    uses: ./.github/workflows/_buildwin.yml
+    uses: ./.github/workflows/_build.yml
     with: { lib: zstd, version: v0.12.4, meson: true }
     # passes GITHUB_TOKEN automatically
     secrets: inherit

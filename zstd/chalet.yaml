@@ -3,7 +3,7 @@ version: "1.0"
 externalDependencies:
   zstd:
     repository: https://github.com/facebook/zstd/
-    commit: 4944d2c
+    # commit: 4944d2c
     # repository: https://github.com/dimitre/zstd/
     # commit: f2b3256
     kind: git
