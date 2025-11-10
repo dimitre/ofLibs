@@ -1,5 +1,5 @@
 name: oflibs
-version: "1.0"
+version: "1.1"
 externalDependencies:
   yaml-cpp:
     repository: https://github.com/jbeder/yaml-cpp/
