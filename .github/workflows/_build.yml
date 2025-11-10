@@ -24,11 +24,12 @@ jobs:
           # - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
               platform: rpi-aarch64,
-              os: ubuntu-latest,
-              container: debian:bookworm,
+              os: ubuntu-22.04,
+              # os: ubuntu-latest,
+              # container: debian:bookworm,
               prefix: aarch64-linux-gnu,
-              # toolchain: aarch64-linux-gnu-gcc-12,
-              toolchain: aarch64-linux-gnu-gcc,
+              toolchain: aarch64-linux-gnu-gcc-12,
+              # toolchain: aarch64-linux-gnu-gcc,
             }
 
           # - {
@@ -158,7 +159,7 @@ jobs:
         if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
+          packages: gcc-12-${{ matrix.prefix }} g++-12-${{ matrix.prefix }}
           version: 1.0
 
       # - name: RPI - Apt Cache Cross Compile
