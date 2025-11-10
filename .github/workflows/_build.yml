@@ -25,6 +25,7 @@ jobs:
           - {
               platform: rpi-aarch64,
               os: ubuntu-latest,
+              container: debian:bookworm,
               prefix: aarch64-linux-gnu,
               toolchain: aarch64-linux-gnu-gcc-12,
             }
@@ -152,38 +153,33 @@ jobs:
       #     export PATH=$PATH:/c/hostedtoolcache/windows/chalet-org/chalet/latest/windows-x64
       #     chalet --version
 
-      - name: RPI - Apt Cache Cross Compile
-        if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
-        uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: multistrap gcc-12-${{ matrix.prefix }} g++-12-${{ matrix.prefix }}
-          # packages: multistrap gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }}
-          version: 1.0
+      # - name: RPI - Apt Cache Cross Compile
+      #   if: matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l'
+      #   uses: awalsh128/cache-apt-pkgs-action@latest
+      #   with:
+      #     packages: multistrap gcc-12-${{ matrix.prefix }} g++-12-${{ matrix.prefix }}
+      #     version: 1.0
 
-      # FIXME: Test if it works OK
-      - name: RPI - Cache Multistrap
-        if: inputs.multistrap && (matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
-        uses: actions/cache@v4
-        with:
-          path: raspbian
-          # key: ${{ matrix.prefix }}-rpicache
-          # I'll now keep just one key, so all actions benefits to the same cache package
-          key: rpi-multistrap-cache
+      # - name: RPI - Cache Multistrap
+      #   if: inputs.multistrap && (matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: raspbian
+      #     key: rpi-multistrap-cache
 
-      - name: RPI - multistrap
-        if: inputs.multistrap && (matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
-        run: |
-          mkdir -p raspbian/etc/apt/apt.conf.d/
-          echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
-          multistrap -a arm64 -d raspbian -f ../_multistrap.conf
+      # - name: RPI - multistrap
+      #   if: inputs.multistrap && (matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
+      #   run: |
+      #     mkdir -p raspbian/etc/apt/apt.conf.d/
+      #     echo 'Acquire::AllowInsecureRepositories "true";' | sudo tee raspbian/etc/apt/apt.conf.d/90insecure
+      #     multistrap -a arm64 -d raspbian -f ../_multistrap.conf
 
-      # FIXME: check if one path can have all needed paths for the two kinds of RPI, if not split into two steps here
-      - name: RPI - Cross-compile Meson env vars
-        if: inputs.meson && ( matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
-        run: |
-          ROOT=$PWD/raspbian
-          echo "PKG_CONFIG_SYSROOT_DIR=$ROOT" >> $GITHUB_ENV
-          echo "PKG_CONFIG_LIBDIR=$ROOT/usr/lib/pkgconfig:$ROOT/usr/lib/aarch64-linux-gnu/pkgconfig:$ROOT/usr/lib/armv6l-linux-gnu/pkgconfig:$ROOT/usr/share/pkgconfig" >> $GITHUB_ENV
+      # - name: RPI - Cross-compile Meson env vars
+      #   if: inputs.meson && ( matrix.platform == 'rpi-aarch64' || matrix.platform == 'rpi-armv6l')
+      #   run: |
+      #     ROOT=$PWD/raspbian
+      #     echo "PKG_CONFIG_SYSROOT_DIR=$ROOT" >> $GITHUB_ENV
+      #     echo "PKG_CONFIG_LIBDIR=$ROOT/usr/lib/pkgconfig:$ROOT/usr/lib/aarch64-linux-gnu/pkgconfig:$ROOT/usr/lib/armv6l-linux-gnu/pkgconfig:$ROOT/usr/share/pkgconfig" >> $GITHUB_ENV
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
@@ -214,7 +210,7 @@ jobs:
         run: |
           otool -l **/*.a | grep minos
 
-      - name: Verify Library Compatibility
+      - name: RPI Verify Library Compatibility
         if: matrix.platform == 'rpi-aarch64'
         run: |
           aarch64-linux-gnu-readelf -d **/*.a 2>/dev/null | grep -E "GLIBC|CXXABI" || true
