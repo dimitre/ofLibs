@@ -2,6 +2,38 @@
 Building libraries for multiple platforms.<br>
 You are welcome to jump in and help building and testing more libraries.<br>
 
+## Core Libraries
+
+| Library | vs | macos | linux64 | rpi-aarch64 | rpi-armv6l |
+|---------|:--:|:-----:|:-------:|:-----------:|:----------:|
+| freetype | ✓ | ✓ | ✓ | ✓ | ✓ |
+| glew | ✓ | ✓ | ✓ | ✓ | ✓ |
+| glfw | ✓ | ✓ | ✓ | ✓ | ✓ |
+| glm | ✓ | ✓ | ✓ | ✓ | ✓ |
+| json | ✓ | ✓ | ✓ | ✓ | ✓ |
+| kissfft | — | — | ✓ | ✓ | ✓ |
+| mango | ✓ | ✓ | ✓ | ✓ | ✓ |
+| pugixml | ✓ | ✓ | ✓ | ✓ | ✓ |
+| rtAudio | ✓ | ✓ | ✓ | ✓ | ✓ |
+| tess2 | ✓ | ✓ | ✓ | ✓ | ✓ |
+| uriparser | ✓ | ✓ | ✓ | ✓ | ✓ |
+| utfcpp | ✓ | ✓ | ✓ | ✓ | ✓ |
+| videoInput | ✓ | — | — | — | — |
+| yaml-cpp | ✓ | ✓ | ✓ | ✓ | ✓ |
+| zlib-ng | ✓ | ✓ | ✓ | ✓ | ✓ |
+
+## Addon Libraries
+
+| Library | vs | macos | linux64 | rpi-aarch64 | rpi-armv6l | Associated Addon |
+|---------|:--:|:-----:|:-------:|:-----------:|:----------:|------------------|
+| assimp | ✓ | ✓ | ✓ | ✓ | ✓ | ofxAssimp |
+| cairo | ✓ | ✓ | ✓ | ✓ | ✓ | ofxCairo |
+| libusb | ✓ | ✓ | ✓ | ✓ | ✓ | ofxKinect |
+| opencv | ✓ | ✓ | ✓ | ✓ | ✓ | ofxOpenCv |
+| pixman | ✓ | ✓ | ✓ | ✓ | ✓ | ofxCairo |
+
+
+
 ## ofCore
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/freetype.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/glew.yml/badge.svg)
