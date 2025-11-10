@@ -26,7 +26,7 @@ jobs:
               platform: rpi-aarch64,
               os: ubuntu-latest,
               prefix: aarch64-linux-gnu,
-              toolchain: aarch64-linux-gnu-gcc,
+              toolchain: aarch64-linux-gnu-gcc-12,
             }
 
           # - {
