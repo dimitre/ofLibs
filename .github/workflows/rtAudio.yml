@@ -10,11 +10,10 @@ jobs:
   ci:
     # uses: ./.github/workflows/_buildnoemscripten.yml
     uses: ./.github/workflows/_build.yml
-    with:
-      {
+    with: {
         lib: rtAudio,
         version: v0.12.5,
-        multistrap: true,
+        # multistrap: true,
         linux_apt: jackd libpulse-dev libasound2-dev,
       }
     secrets: inherit

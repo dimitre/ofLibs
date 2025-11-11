@@ -11,12 +11,11 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with:
-      {
+    with: {
         lib: cairo,
         version: v0.12.5,
         meson: true,
-        multistrap: true,
+        # multistrap: true,
         linux_apt: libpixman-1-dev libpng-dev libfreetype-dev,
       }
     secrets: inherit

@@ -3,8 +3,8 @@ name: json
 on:
   push:
     paths:
-      - json/**
       - .github/workflows/json.yml
+      - json/**
 
 jobs:
   ci:

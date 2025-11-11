@@ -3,8 +3,8 @@ name: videoInput
 on:
   push:
     paths:
-      - videoInput/**
       - .github/workflows/videoInput.yml
+      - videoInput/**
 
 jobs:
   ci:

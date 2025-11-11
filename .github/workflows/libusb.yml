@@ -9,11 +9,10 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with:
-      {
+    with: {
         lib: libusb,
         version: v0.12.5,
         linux_apt: libudev-dev,
-        multistrap: true,
+        # multistrap: true,
       }
     secrets: inherit

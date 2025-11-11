@@ -3,8 +3,8 @@ name: opencv
 on:
   push:
     paths:
-      - opencv/**
       - .github/workflows/opencv.yml
+      - opencv/**
 
 jobs:
   ci:

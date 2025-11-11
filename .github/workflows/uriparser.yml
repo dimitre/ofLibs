@@ -3,8 +3,8 @@ name: uriparser
 on:
   push:
     paths:
-      - uriparser/**
       - .github/workflows/uriparser.yml
+      - uriparser/**
 
 jobs:
   ci:

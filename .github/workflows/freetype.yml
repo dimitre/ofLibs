@@ -3,8 +3,8 @@ name: freetype
 on:
   push:
     paths:
-      - freetype/**
       - .github/workflows/freetype.yml
+      - freetype/**
 
 jobs:
   ci:

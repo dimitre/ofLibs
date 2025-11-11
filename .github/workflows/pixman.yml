@@ -3,8 +3,8 @@ name: pixman
 on:
   push:
     paths:
-      - pixman/**
       - .github/workflows/pixman.yml
+      - pixman/**
 
 jobs:
   ci:

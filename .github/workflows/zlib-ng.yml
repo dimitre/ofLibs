@@ -3,8 +3,8 @@ name: zlib-ng
 on:
   push:
     paths:
-      - zlib-ng/**
       - .github/workflows/zlib-ng.yml
+      - zlib-ng/**
 
 jobs:
   ci:

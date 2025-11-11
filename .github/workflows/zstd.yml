@@ -3,12 +3,12 @@ name: zstd
 on:
   push:
     paths:
-      - zstd/**
       - .github/workflows/zstd.yml
+      - zstd/**
 
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: zstd, version: v0.12.5, meson: true }
+    with: { lib: zstd, version: add, meson: true }
     # passes GITHUB_TOKEN automatically
     secrets: inherit

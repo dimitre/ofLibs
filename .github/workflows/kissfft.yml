@@ -3,8 +3,8 @@ name: kissfft
 on:
   push:
     paths:
-      - kissfft/**
       - .github/workflows/kissfft.yml
+      - kissfft/**
 
 jobs:
   ci:

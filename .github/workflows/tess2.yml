@@ -3,8 +3,8 @@ name: tess2
 on:
   push:
     paths:
-      - tess2/**
       - .github/workflows/tess2.yml
+      - tess2/**
 
 jobs:
   ci:

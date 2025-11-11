@@ -3,8 +3,8 @@ name: fmt
 on:
   push:
     paths:
-      - fmt/**
       - .github/workflows/fmt.yml
+      - fmt/**
 
 jobs:
   ci:

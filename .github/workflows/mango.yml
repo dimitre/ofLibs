@@ -3,8 +3,8 @@ name: mango
 on:
   push:
     paths:
-      - mango/**
       - .github/workflows/mango.yml
+      - mango/**
 
 jobs:
   ci:

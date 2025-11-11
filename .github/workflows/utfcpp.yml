@@ -3,8 +3,8 @@ name: utfcpp
 on:
   push:
     paths:
-      - utfcpp/**
       - .github/workflows/utfcpp.yml
+      - utfcpp/**
 
 jobs:
   ci:

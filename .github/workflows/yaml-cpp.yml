@@ -4,8 +4,8 @@ name: yaml-cpp
 on:
   push:
     paths:
-      - yaml-cpp/**
       - .github/workflows/yaml-cpp.yml
+      - yaml-cpp/**
 
 jobs:
   ci:
