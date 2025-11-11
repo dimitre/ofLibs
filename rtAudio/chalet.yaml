@@ -27,10 +27,10 @@ targets:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
     # defines[toolchain:aarch64-linux-gnu-gcc]:
-    defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
-      - CMAKE_SYSROOT=${cwd}/raspbian
-      - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
-      - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
+    # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
+    # - CMAKE_SYSROOT=${cwd}/raspbian
+    # - CMAKE_LIBRARY_PATH=${cwd}/raspbian/usr/lib
+    # - CMAKE_INCLUDE_PATH=${cwd}/raspbian/usr/include
 
 distribution:
   rtAudio:
