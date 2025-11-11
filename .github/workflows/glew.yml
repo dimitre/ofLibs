@@ -9,6 +9,7 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
+    # uses: ./.github/workflows/_buildnoemscripten.yml
     with:
       {
         lib: glew,
