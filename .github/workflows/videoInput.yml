@@ -9,5 +9,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_buildwin.yml
-    with: { lib: videoInput, version: v0.12.4, meson: true }
+    with: { lib: videoInput, version: v0.12.5, meson: true }
     secrets: inherit

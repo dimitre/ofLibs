@@ -14,7 +14,7 @@ jobs:
     with:
       {
         lib: cairo,
-        version: v0.12.4,
+        version: v0.12.5,
         meson: true,
         multistrap: true,
         linux_apt: libpixman-1-dev libpng-dev libfreetype-dev,

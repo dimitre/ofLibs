@@ -12,7 +12,7 @@ jobs:
     with:
       {
         lib: libusb,
-        version: v0.12.4,
+        version: v0.12.5,
         linux_apt: libudev-dev,
         multistrap: true,
       }

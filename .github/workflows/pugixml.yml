@@ -13,7 +13,7 @@ jobs:
     with:
       {
         lib: pugixml,
-        version: v0.12.4,
+        version: v0.12.5,
         multistrap: true,
         linux_apt: libx11-dev libglu1-mesa-dev libgl1-mesa-dev libwayland-dev libxkbcommon-dev xorg-dev libegl1-mesa-dev libopengl-dev libglx-dev libglvnd-dev,
       }

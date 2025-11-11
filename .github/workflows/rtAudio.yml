@@ -12,7 +12,7 @@ jobs:
     with:
       {
         lib: rtAudio,
-        version: v0.12.4,
+        version: v0.12.5,
         multistrap: true,
         linux_apt: jackd libpulse-dev libasound2-dev,
       }

@@ -9,5 +9,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: freetype, version: v0.12.4 }
+    with: { lib: freetype, version: v0.12.5 }
     secrets: inherit
