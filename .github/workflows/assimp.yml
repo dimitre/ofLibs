@@ -3,8 +3,8 @@ name: assimp
 on:
   push:
     paths:
-      - assimp/**
       - .github/workflows/assimp.yml
+      - assimp/**
 
 jobs:
   ci:
