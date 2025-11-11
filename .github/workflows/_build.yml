@@ -28,6 +28,7 @@ jobs:
               # os: ubuntu-latest,
               # container: debian:bookworm,
               prefix: aarch64-linux-gnu,
+              # toolchain: aarch64-linux-gnu-gcc-12,
               toolchain: aarch64-linux-gnu-gcc-12,
               # toolchain: aarch64-linux-gnu-gcc,
             }

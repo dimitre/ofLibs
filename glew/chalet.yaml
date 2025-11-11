@@ -19,6 +19,8 @@ targets:
       - glew-cmake_BUILD_SHARED=OFF
       - ONLY_LIBS=ON
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_EXPORT_COMPILE_COMMANDS=ON
 
       # - CMAKE_ARCHIVE_OUTPUT_DIRECTORY=lib
 
