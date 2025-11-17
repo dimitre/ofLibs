@@ -25,13 +25,11 @@ jobs:
           - {
               platform: rpi-aarch64,
               os: ubuntu-22.04-arm,
-              # os: ubuntu-latest,
-              # container: debian:bookworm,
               prefix: aarch64-linux-gnu,
-              # toolchain: aarch64-linux-gnu-gcc-12,
               toolchain: aarch64-linux-gnu-gcc-12,
-              # toolchain: aarch64-linux-gnu-gcc,
             }
+
+          - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
 
           # - {
           #     platform: rpi-armv6l,
@@ -39,8 +37,6 @@ jobs:
           #     prefix: arm-linux-gnueabihf,
           #     toolchain: arm-linux-gnueabihf-gcc,
           #   }
-
-          # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
 
           # - {
           #     platform: msys2,

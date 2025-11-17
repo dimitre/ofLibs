@@ -9,5 +9,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: lzma, version: v0.12.5 }
+    with: { lib: lzma, version: v0.12.6 }
     secrets: inherit

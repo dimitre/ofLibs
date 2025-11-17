@@ -9,6 +9,6 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: FreeImageRe, version: v0.12.5 }
+    with: { lib: FreeImageRe, version: v0.12.6 }
     secrets: inherit
     # passes GITHUB_TOKEN automatically
