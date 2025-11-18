@@ -119,7 +119,7 @@ jobs:
         if: matrix.platform == 'emscripten'
         uses: mymindstorm/setup-emsdk@v14
         with:
-          version: 4.0.19
+          version: 4.0.20
           actions-cache-folder: "emsdk-cache"
 
       # - name: Verify emsdk
