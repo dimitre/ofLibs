@@ -26,6 +26,15 @@ targets:
     defines[platform:macos]:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+    defines[:web]:
+      - RTAUDIO_API_ALSA=OFF
+      - RTAUDIO_API_PULSE=OFF
+      - RTAUDIO_API_OSS=OFF
+      - RTAUDIO_API_JACK=OFF
+      - RTAUDIO_API_CORE=OFF
+      - RTAUDIO_API_WASAPI=OFF
+      - RTAUDIO_API_ASIO=OFF
+      - RTAUDIO_API_DS=OFF
     # defines[toolchain:aarch64-linux-gnu-gcc]:
     # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
     # - CMAKE_SYSROOT=${cwd}/raspbian
