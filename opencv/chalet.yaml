@@ -50,8 +50,16 @@ targets:
       - WITH_IPP=OFF
 
       - WITH_CAROTENE=OFF
-
       - WITH_AVIF=OFF
+      - WITH_ADE=OFF
+      # super complicated but once I've enabled BUILD_opencv_imgcodecs, I had to enable
+      # WITH_JASPER=OFF and WITH_WEBP=OFF so it can avoid linker errors
+      - WITH_JASPER=OFF
+      # disable orbbec libs
+      - WITH_OBSENSOR=OFF
+      - WITH_PROTOBUF=OFF
+      - WITH_OPENCL=OFF
+      - WITH_AVFOUNDATION=OFF
 
       - WITH_IMGCODEC_GIF=OFF
       - WITH_IMGCODEC_HDR=OFF
@@ -63,10 +71,6 @@ targets:
       - BUILD_JAVA=OFF
 
       - BUILD_opencv_apps=OFF
-      - BUILD_opencv_calib3d=ON
-      - BUILD_opencv_highgui=ON
-      # changed today because of CopperTag cv::imwrite
-      # - BUILD_opencv_imgcodecs=ON
       - BUILD_opencv_java=OFF
       - BUILD_opencv_python2=OFF
       - BUILD_opencv_python3=OFF
@@ -75,37 +79,34 @@ targets:
       - BUILD_opencv_stitching=OFF
       - BUILD_opencv_superres=OFF
       - BUILD_opencv_ts=OFF
-
       - BUILD_opencv_videostab=OFF
-      - BUILD_opencv_world=ON
-      - WITH_ADE=OFF
-      # super complicated but once I've enabled BUILD_opencv_imgcodecs, I had to enable
-      # WITH_JASPER=OFF and WITH_WEBP=OFF so it can avoid linker errors
-      - WITH_JASPER=OFF
-      - BUILD_ZLIB=OFF
 
+      - BUILD_opencv_world=ON
+      - BUILD_opencv_calib3d=ON
+      - BUILD_opencv_highgui=ON
+
+      # - BUILD_opencv_imgcodecs=ON # CopperTag cv::imwrite
+      # - BUILD_opencv_videoio=ON # videoio needs imsgcodecs enabled.
+
+      - BUILD_opencv_videoio=OFF
+      - BUILD_opencv_imgcodecs=OFF
+
+      # test for ofxOpenCvDnnObjectDetection
+      # - BUILD_opencv_dnn=ON
+      # - OPENCV_DNN_OPENCL=OFF
+      - BUILD_opencv_dnn=OFF
+
+      - BUILD_ZLIB=OFF
       - ZLIB_ROOT=${externalBuild:zlib-ng-external}/ext.zlib-ng/install
 
-      # disable orbbec libs
-      - WITH_OBSENSOR=OFF
-      - WITH_PROTOBUF=OFF
       # - ZLIB_ROOT=${externalBuild:zlib}
       # - ZLIB_LIBRARY=${externalBuild:zlib}
       # - ZLIB_INCLUDE_DIRS=${external:zlib}
       # - CV_DISABLE_OPTIMIZATION=ON
-      - WITH_OPENCL=OFF
-      - WITH_AVFOUNDATION=OFF
       # - WITH_OPENCLAMDBLAS=OFF
       # - WITH_OPENCLAMDFFT=OFF
       #
-      - BUILD_opencv_videoio=OFF
-      - BUILD_opencv_imgcodecs=OFF
-      # - BUILD_opencv_imgcodecs=ON
-      # - BUILD_opencv_videoio=ON # videoio needs imsgcodecs enabled.
       #
-      # test for ofxOpenCvDnnObjectDetection
-      - BUILD_opencv_dnn=ON
-      - OPENCV_DNN_OPENCL=OFF
 
     defines[platform:web]:
       - WITH_ITT=OFF
