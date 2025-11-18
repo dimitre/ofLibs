@@ -6,7 +6,7 @@ externalDependencies:
     # tag: v6.0.2
     # This fixes Anisor bug https://github.com/assimp/assimp/issues/5635#
     # commit: 0996221
-    commit: "0996221"
+    commit: "c4812fc"
     kind: git
 
 targets:
@@ -31,8 +31,8 @@ targets:
       - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
       - BUILD_SHARED_LIBS=OFF
 
-      - ASSIMP_BUILD_USD_IMPORTER=on
-      - ASSIMP_BUILD_USD_VERBOSE_LOGS=on
+      # - ASSIMP_BUILD_USD_IMPORTER=on
+      # - ASSIMP_BUILD_USD_VERBOSE_LOGS=on
       - CMAKE_THREAD_PREFER_PTHREAD=ON
       - ENABLE_BITCODE=OFF
       - ENABLE_ARC=OFF
