@@ -8,8 +8,8 @@ on:
 
 jobs:
   ci:
-    # uses: ./.github/workflows/_build.yml
     uses: ./.github/workflows/_buildnoemscripten.yml
+    # uses: ./.github/workflows/_build.yml
     with: {
         lib: glew,
         version: v0.12.6,
