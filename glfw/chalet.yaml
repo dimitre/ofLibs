@@ -42,6 +42,8 @@ targets:
       - GLFW_BUILD_X11=OFF
       - CMAKE_C_FLAGS=-D_POSIX_TIMERS=1 -D_GNU_SOURCE
       - CMAKE_CXX_FLAGS=-D_POSIX_TIMERS=1 -D_GNU_SOURCE
+      - GLFW_BUILD_WAYLAND=OFF
+
     # teste workaround...
     # https://github.com/glfw/glfw/issues/1957#issuecomment-1891056066
     # defines[toolchain:aarch64-linux-gnu-gcc]:
