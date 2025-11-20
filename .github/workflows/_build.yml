@@ -19,7 +19,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
+          # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
+          - { platform: linux64, os: ubuntu-22.04, toolchain: llvm }
           - { platform: macos, os: macos-26, toolchain: apple-llvm }
           - { platform: vs, os: windows-latest, toolchain: vs-stable }
           - {
