@@ -1,0 +1,36 @@
+name: oflibs
+version: "1.0"
+externalDependencies:
+  cpp-httplib:
+    repository: https://github.com/yhirose/cpp-httplib
+    commit: 27ee115
+    # tag: 12.1.0
+    kind: git
+
+targets:
+  cpp-httplib:
+    kind: cmakeProject
+    location: ${external:${name}}
+    recheck: false
+    rebuild: false
+    install: true
+    defines:
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_BUILD_TYPE=Release
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INSTALL_LIBDIR=lib
+    defines[platform:macos]:
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+
+distribution:
+  cpp-httplib:
+    kind: archive
+    format: zip
+    include:
+      - ${externalBuild:${name}}/install/lib
+      - ${externalBuild:${name}}/install/include
+      - ${external:${name}}/README.md
+      - ${external:${name}}/LICENSE
