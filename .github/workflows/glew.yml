@@ -8,6 +8,8 @@ on:
 
 jobs:
   ci:
+    permissions:
+      contents: write
     uses: ./.github/workflows/_buildnoemscripten.yml
     # uses: ./.github/workflows/_build.yml
     with: {

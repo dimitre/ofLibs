@@ -8,6 +8,8 @@ on:
 
 jobs:
   ci:
+    permissions:
+      contents: write
     uses: ./.github/workflows/_build.yml
     with: { lib: fmt, version: v1.0 }
     secrets: inherit
