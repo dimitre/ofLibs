@@ -292,6 +292,7 @@ targets:
     defines[platform:web]:
       - fmt_DIR=${cwd}/${externalBuild:fmt}/install/lib/cmake/fmt
 
+      - CMAKE_CXX_FLAGS="-I${cwd}/${externalBuild:zlib-ng}/install/include -I${cwd}/${externalBuild:zstd}/install/include -I${cwd}/${externalBuild:lz4}/install/include -I${cwd}/${externalBuild:bzip2}/install/include -I${cwd}/${externalBuild:deflate}/install/include"
         # - FMT_ROOT=${cwd}/${externalBuild:fmt}/install
         # - fmt_ROOT=${cwd}/${externalBuild:fmt}/install
         # - FMT_INCLUDE_DIRS=${cwd}/${externalBuild:fmt}/install/include
