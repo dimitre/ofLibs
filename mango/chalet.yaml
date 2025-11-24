@@ -288,6 +288,7 @@ targets:
       - LCMS2_LIBRARY_DIRS=${cwd}/${externalBuild:lcms2}/install/lib
       - LCMS2_INCLUDE_DIR=${cwd}/${externalBuild:lcms2}/install/include
       - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
+      - ZLIB_ROOT=${cwd}/${externalBuild:zlib-ng}/install
 
     defines[platform:web]:
       - fmt_DIR=${cwd}/${externalBuild:fmt}/install/lib/cmake/fmt
