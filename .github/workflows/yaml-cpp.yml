@@ -9,6 +9,9 @@ on:
 
 jobs:
   ci:
+    permissions:
+      contents: write
+
     uses: ./.github/workflows/_build.yml
     with: { lib: yaml-cpp, version: v1.0 }
     secrets: inherit

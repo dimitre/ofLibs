@@ -10,6 +10,9 @@ on:
 
 jobs:
   ci:
+    permissions:
+      contents: write
+
     uses: ./.github/workflows/_build.yml
     with: {
         lib: cairo,

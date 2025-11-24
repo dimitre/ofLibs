@@ -32,8 +32,6 @@ jobs:
           # - { platform: emscripten, os: ubuntu-latest, toolchain: emscripten }
 
     runs-on: ${{ matrix.os }}
-    permissions:
-      contents: write
 
     defaults:
       run:
