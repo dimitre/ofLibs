@@ -290,11 +290,13 @@ targets:
       - LCMS2_INCLUDE_DIRS=${cwd}/${externalBuild:lcms2}/install/include
 
     defines[platform:web]:
-      - FMT_ROOT=${cwd}/${externalBuild:fmt}/install
-      - fmt_ROOT=${cwd}/${externalBuild:fmt}/install
-      - FMT_INCLUDE_DIRS=${cwd}/${externalBuild:fmt}/install/include
-      - FMT_INCLUDE_DIR=${cwd}/${externalBuild:fmt}/install/include
-      - FMT_LIBRARY_DIRS=${cwd}/${externalBuild:fmt}/install/lib
+      - fmt_DIR=${cwd}/${externalBuild:fmt}/install/lib/cmake/fmt
+
+        # - FMT_ROOT=${cwd}/${externalBuild:fmt}/install
+        # - fmt_ROOT=${cwd}/${externalBuild:fmt}/install
+        # - FMT_INCLUDE_DIRS=${cwd}/${externalBuild:fmt}/install/include
+        # - FMT_INCLUDE_DIR=${cwd}/${externalBuild:fmt}/install/include
+        # - FMT_LIBRARY_DIRS=${cwd}/${externalBuild:fmt}/install/lib
 
     defines[platform:macos]:
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install/opt/homebrew;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
