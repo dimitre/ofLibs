@@ -8,6 +8,8 @@ on:
 
 jobs:
   ci:
+    permissions:
+      contents: write
     uses: ./.github/workflows/_build.yml
-    with: { lib: mango, version: v0.12.6, meson: true }
+    with: { lib: mango, version: v1.0, meson: true }
     secrets: inherit

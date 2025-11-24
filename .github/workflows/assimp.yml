@@ -8,6 +8,8 @@ on:
 
 jobs:
   ci:
+    permissions:
+      contents: write
     uses: ./.github/workflows/_build.yml
-    with: { lib: assimp, version: v0.12.6 }
+    with: { lib: assimp, version: v1.0 }
     secrets: inherit

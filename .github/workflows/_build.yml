@@ -56,8 +56,8 @@ jobs:
           #   }
 
     runs-on: ${{ matrix.os }}
-    permissions:
-      contents: write
+    # permissions:
+    #   contents: write
 
     defaults:
       run:

@@ -9,5 +9,5 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/_build.yml
-    with: { lib: tess2, version: v0.12.6 }
+    with: { lib: tess2, version: v1.0 }
     secrets: inherit

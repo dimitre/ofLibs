@@ -11,7 +11,7 @@ jobs:
     uses: ./.github/workflows/_build.yml
     with: {
         lib: libusb,
-        version: v0.12.6,
+        version: v1.0,
         linux_apt: libudev-dev,
         # multistrap: true,
       }
