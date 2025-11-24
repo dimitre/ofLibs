@@ -300,7 +300,7 @@ targets:
       # - CMAKE_PREFIX_PATH=${cwd}/${externalBuild:lcms2}/install/opt/homebrew;${cwd}/${externalBuild:deflate}/install;${cwd}/${externalBuild:fmt}/ext.fmt/install;${cwd}/${externalBuild:zlib-ng}/ext.zlib-ng/install;${cwd}/${externalBuild:zstd}/install;${cwd}/${externalBuild:lz4}/install;${cwd}/${externalBuild:bzip2}/install
 
       - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
-      # - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
     defines[toolchain:msvc]:
       # temporary, only to have a verbose output.
       - CMAKE_FIND_DEBUG_MODE=ON
