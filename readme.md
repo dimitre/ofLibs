@@ -79,3 +79,10 @@ FreeImage have some issues. Poco now builds again and it was moved to "Additiona
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libtiff.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/libpng.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/lzma.yml/badge.svg)-->
+
+
+![Xcode 26](img.shields.io)
+
+![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
