@@ -39,7 +39,7 @@ jobs:
         working-directory: ${{ inputs.lib }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         # with:
         #   sparse-checkout: ${{ inputs.lib }}
 

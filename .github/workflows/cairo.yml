@@ -63,7 +63,7 @@ jobs:
         working-directory: ${{ github.workflow }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install Meson
         run: pip install meson ninja

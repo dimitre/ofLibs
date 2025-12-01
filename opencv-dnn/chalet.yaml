@@ -145,7 +145,7 @@ targets:
     # defines[arch:x86]:
 
 distribution:
-  opencv:
+  opencv-dnn:
     kind: archive
     format: zip
     include:
