@@ -88,14 +88,6 @@ targets:
       # - BUILD_opencv_imgcodecs=ON # CopperTag cv::imwrite
       # - BUILD_opencv_videoio=ON # videoio needs imsgcodecs enabled.
 
-      - BUILD_opencv_videoio=OFF
-      - BUILD_opencv_imgcodecs=OFF
-
-      # test for ofxOpenCvDnnObjectDetection
-      # - BUILD_opencv_dnn=ON
-      # - OPENCV_DNN_OPENCL=OFF
-      - BUILD_opencv_dnn=OFF
-
       - BUILD_ZLIB=OFF
       - ZLIB_ROOT=${externalBuild:zlib-ng-external}/ext.zlib-ng/install
 
@@ -106,6 +98,14 @@ targets:
       # - WITH_OPENCLAMDBLAS=OFF
       # - WITH_OPENCLAMDFFT=OFF
       #
+      #
+      - BUILD_opencv_videoio=OFF
+      - BUILD_opencv_imgcodecs=OFF
+      # - BUILD_opencv_dnn=OFF
+
+      # test for ofxOpenCvDnnObjectDetection
+      - BUILD_opencv_dnn=ON
+      - OPENCV_DNN_OPENCL=OFF
       #
 
     defines[platform:web]:

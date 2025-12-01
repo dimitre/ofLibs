@@ -1,0 +1,16 @@
+name: opencv
+
+on:
+  push:
+    paths:
+      - .github/workflows/opencv-dnn.yml
+      - opencv-dnn/**
+
+jobs:
+  ci:
+    permissions:
+      contents: write
+
+    uses: ./.github/workflows/_build.yml
+    with: { lib: opencv-dnn, version: add }
+    secrets: inherit
