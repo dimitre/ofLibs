@@ -4,7 +4,7 @@ externalDependencies:
   glew:
     repository: https://github.com/Perlmint/glew-cmake
     # commit: d06782b910213d675925e6e51a69ad0fd1fe1f23
-    commit: 7e8300fa13ff568aa87ed45407c83f8cbe1b2de9
+    commit: 7e8300f
     #e399b15
     kind: git
 targets:

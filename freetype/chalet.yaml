@@ -4,7 +4,7 @@ externalDependencies:
   freetype:
     repository: https://gitlab.freedesktop.org/freetype/freetype
     # tag: VER-2-14-1
-    commit: c97efd28ca59d306f63fb2bad247af96b1063130
+    commit: 23b6cd27ff19b70cbf98e058cd2cf0647d5284ff
     kind: git
 targets:
   # libjpeg:

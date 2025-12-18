@@ -10,13 +10,13 @@ externalDependencies:
   #   url: https://github.com/dimitre/ofLibs/releases/download/v0.12.3/ofLibs_fmt_macos.zip
   fmt:
     repository: https://github.com/fmtlib/fmt
-    # commit: f781d2b
-    tag: 12.1.0
+    commit: 7bce225
+    # tag: 12.1.0
     kind: git
 
   zlib-ng:
     repository: https://github.com/zlib-ng/zlib-ng
-    commit: db3f23f
+    commit: a5e965b
     # tag: 2.2.5
     kind: git
 

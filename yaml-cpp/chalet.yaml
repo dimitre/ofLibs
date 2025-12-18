@@ -3,7 +3,7 @@ version: "1.3"
 externalDependencies:
   yaml-cpp:
     repository: https://github.com/jbeder/yaml-cpp/
-    commit: a83cd31
+    commit: bbf8bdb
     kind: git
 targets:
   yaml-cpp:
