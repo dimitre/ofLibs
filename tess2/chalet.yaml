@@ -2,7 +2,7 @@ name: oflibs
 version: "1.0"
 externalDependencies:
   tess2:
-    repository: https://github.com/dimitre/libtess2
+    repository: https://github.com/ofworks/libtess2
     # tag: v1.0.2
     commit: 09a3d99
     kind: git

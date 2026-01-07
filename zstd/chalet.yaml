@@ -2,9 +2,9 @@ name: oflibs
 version: "1.0"
 externalDependencies:
   zstd:
-    repository: https://github.com/facebook/zstd/
+    repository: https://github.com/ofworks/zstd/
     # commit: 4944d2c
-    commit: 5b51447
+    # commit: 5b51447
     # repository: https://github.com/dimitre/zstd/
     kind: git
 
