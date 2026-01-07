@@ -10,36 +10,37 @@ externalDependencies:
   #   url: https://github.com/dimitre/ofLibs/releases/download/v0.12.3/ofLibs_fmt_macos.zip
   fmt:
     repository: https://github.com/fmtlib/fmt
-    commit: 7bce225
-    # tag: 12.1.0
+    commit: 0e078f6
     kind: git
 
   zlib-ng:
     repository: https://github.com/zlib-ng/zlib-ng
-    commit: a5e965b
-    # tag: 2.2.5
+    commit: 6bb27e3
     kind: git
 
   zstd:
     # repository: https://github.com/facebook/zstd/
     # commit: f94a01d
-    repository: https://github.com/dimitre/zstd/
-    commit: f2b3256
+    repository: https://github.com/ofworks/zstd/
+    commit: cfb7fdc
     kind: git
 
   bzip2:
     repository: https://github.com/libarchive/bzip2
+    # development stalled. latest 4 years ago
+    commit: 1ea1ac1
     kind: git
 
   lz4:
     repository: https://github.com/lz4/lz4
     kind: git
+    commit: a018abc
 
   lcms2:
     # repository: https://github.com/mm2/Little-CMS
     # commit: 8888d84
-    repository: https://github.com/dimitre/Little-CMS
-    commit: 41ee27b
+    repository: https://github.com/ofworks/Little-CMS
+    commit: e2cfc4b
     kind: git
 
   deflate:
@@ -50,7 +51,7 @@ externalDependencies:
 
   mango:
     repository: https://github.com/t0rakka/mango
-    # commit: 6b66f8c
+    commit: 98f28fd
     kind: git
 
 targets:

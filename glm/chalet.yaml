@@ -4,7 +4,7 @@ externalDependencies:
   glm:
     repository: https://github.com/g-truc/glm
     # tag: "1.0.2"
-    commit: 8f6213d
+    commit: b1fed40
     kind: git
 targets:
   glm:
