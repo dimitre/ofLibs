@@ -50,10 +50,13 @@ You are welcome to jump in and help building and testing more libraries.<br>
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/videoInput.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/zlib-ng.yml/badge.svg)
 
-## ofCore Modern
+## ofCore ofWorks
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/fmt.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/yaml-cpp.yml/badge.svg)
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/mango.yml/badge.svg)
+
+## Addons Modern
+![title](https://github.com/dimitre/ofLibs/actions/workflows/blend2d.yml/badge.svg)
 
 ## Addons
 ![title](https://github.com/dimitre/ofLibs/actions/workflows/assimp.yml/badge.svg)
