@@ -3,6 +3,7 @@ version: "1.0"
 externalDependencies:
   asmjit:
     repository: https://github.com/asmjit/asmjit
+    commit: f64c908
     kind: git
   blend2d:
     repository: https://github.com/blend2d/blend2d
