@@ -49,6 +49,9 @@ targets:
       - ENABLE_ACTIVERECORD=OFF
       - ENABLE_PROMETHEUS=OFF
 
+    defines[platform:web]:
+      - POCO_NO_INOTIFY=1
+
       # - CMAKE_INSTALL_INCLUDEDIR=include
       # - CMAKE_INSTALL_FULL_LIBDIR=lib
     # defines[platform:macos]:
