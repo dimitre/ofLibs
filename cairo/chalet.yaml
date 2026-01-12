@@ -27,7 +27,7 @@ targets:
 
       # Disable compression
       - lzo=disabled
-      - zlib=disabled
+      # zlib is required for PDF support
 
       # Disable font/text backends
       - dwrite=disabled
@@ -66,9 +66,11 @@ distribution:
       - ${external:${name}}/COPYING*
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
-      # Only include cairo and pixman libraries
+      # # Only include cairo, pixman, and zlib libraries
       # - ${externalBuild:${name}}/install/lib/libcairo.a
       # - ${externalBuild:${name}}/install/lib/libpixman-1.a
-      # Include pkgconfig files for cairo and pixman only
+      # - ${externalBuild:${name}}/install/lib/libz.a
+      # # Include pkgconfig files for cairo and pixman only
       # - ${externalBuild:${name}}/install/lib/pkgconfig/cairo.pc
+      # - ${externalBuild:${name}}/install/lib/pkgconfig/cairo-pdf.pc
       # - ${externalBuild:${name}}/install/lib/pkgconfig/pixman-1.pc
