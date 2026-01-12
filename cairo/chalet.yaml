@@ -12,64 +12,51 @@ targets:
     kind: mesonProject
     location: ${external:${name}}
     install: true
-    # PKG_CONFIG_LIBDIR: >-
-    #   ${workspaceRoot}/raspbian/usr/lib/pkgconfig:
-    #   ${workspaceRoot}/raspbian/usr/lib/aarch64-linux-gnu/pkgconfig:
-    #   ${workspaceRoot}/raspbian/usr/share/pkgconfig
     defines:
       - buildtype=release
       - default_library=static
 
       - pixman:default_library=static
 
-      # if disabled meson fails with  ERROR: C prefer_static library 'gdi32' not found
-      # - default_both_libraries=static
-      # - prefer_static=true
-
-      # - pixman=enabled
+      # Disable tests
       - tests=disabled
 
+      # Disable X11 backends
       - xcb=disabled
       - xlib=disabled
-      - lzo=disabled
 
+      # Disable compression
+      - lzo=disabled
+      - zlib=disabled
+
+      # Disable font/text backends
       - dwrite=disabled
       - fontconfig=disabled
       - freetype=disabled
 
-    # temporary, only to make it work on MSYS cross compile (hopefully) before Chalet fixes.
-    # FIXME: Remove when this is closed https://github.com/chalet-org/chalet/issues/425
-    # defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
-    # - prefix=${cwd}/raspbian
+      # Disable GObject introspection and bindings
+      - glib=disabled
 
-    # defines[toolchain:aarch64-linux-gnu-gcc]:
+      # Disable utilities
+      - gtk2-utils=disabled
+      - symbol-lookup=disabled
+
+      # Disable image formats you don't need (keep png if you need it)
+      - png=disabled
+
+      # Disable additional features
+      - tee=disabled
+      - spectre=disabled
+
     defines[toolchain:{aarch64-linux-gnu-gcc,arm-linux-gnueabihf-gcc}]:
       - pixman:mmx=disabled
       - pixman:sse2=disabled
       - pixman:ssse3=disabled
       - pixman:vmx=disabled
-      # - pixman:arm-simd=enabled
-      # - pixman:neon=enabled
 
     defines[platform:macos]:
       - c_args=-mmacos-version-min=11.6
       - cpp_args=-mmacos-version-min=11.6
-
-      # I had to reenable those 4 to make it work
-      # - png=disabled
-      # - quartz=disabled
-      # - zlib=disabled
-      # - spectre=disabled
-
-      # - tee=disabled
-      # - xcb=disabled
-      # - xlib=disabled
-      # - xlib-xcb=disabled
-
-      # - lzo=disabled
-      # - gtk2-utils=disabled
-      # - glib=disabled
-      # - symbol-lookup=disabled
 
 distribution:
   cairo:
@@ -79,18 +66,9 @@ distribution:
       - ${external:${name}}/COPYING*
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
-
-    # include[platform:macos]:
-    #   - ${externalBuild:${name}}/install/opt/homebrew/include
-    #   - ${externalBuild:${name}}/install/opt/homebrew/lib
-    #   - ${externalBuild:${name}}/install/usr/local/include
-    #   - ${externalBuild:${name}}/install/usr/local/lib
-    # include[platform:windows]:
-    #   - ${externalBuild:${name}}/install/include
-    #   - ${externalBuild:${name}}/install/lib
-    # include[platform:linux]:
-    #   - ${externalBuild:${name}}/install/usr/local/include
-    #   - ${externalBuild:${name}}/install/usr/local/lib
-
-    # - ${externalBuild:${name}}/src/*.a
-    # - ${externalBuild:${name}}/src/*.h
+      # Only include cairo and pixman libraries
+      # - ${externalBuild:${name}}/install/lib/libcairo.a
+      # - ${externalBuild:${name}}/install/lib/libpixman-1.a
+      # Include pkgconfig files for cairo and pixman only
+      # - ${externalBuild:${name}}/install/lib/pkgconfig/cairo.pc
+      # - ${externalBuild:${name}}/install/lib/pkgconfig/pixman-1.pc
