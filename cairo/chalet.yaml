@@ -41,8 +41,8 @@ targets:
       - gtk2-utils=disabled
       - symbol-lookup=disabled
 
-      # Disable image formats you don't need (keep png if you need it)
-      - png=disabled
+      # Disable image formats you don't need
+      # png is required for SVG support
 
       # Disable additional features
       - tee=disabled
@@ -66,11 +66,3 @@ distribution:
       - ${external:${name}}/COPYING*
       - ${externalBuild:${name}}/install/include
       - ${externalBuild:${name}}/install/lib
-      # # Only include cairo, pixman, and zlib libraries
-      # - ${externalBuild:${name}}/install/lib/libcairo.a
-      # - ${externalBuild:${name}}/install/lib/libpixman-1.a
-      # - ${externalBuild:${name}}/install/lib/libz.a
-      # # Include pkgconfig files for cairo and pixman only
-      # - ${externalBuild:${name}}/install/lib/pkgconfig/cairo.pc
-      # - ${externalBuild:${name}}/install/lib/pkgconfig/cairo-pdf.pc
-      # - ${externalBuild:${name}}/install/lib/pkgconfig/pixman-1.pc
