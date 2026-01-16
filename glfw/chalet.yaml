@@ -3,8 +3,7 @@ version: "0.0.4"
 externalDependencies:
   glfw:
     repository: https://github.com/glfw/glfw
-    # tag: "3.4"
-    commit: dbadda2
+    commit: 9352d8f
     kind: git
 
 targets:
