@@ -10,6 +10,14 @@ on:
       brew: { required: false, type: string }
       meson: { required: false, type: boolean }
 
+  workflow_dispatch:
+    inputs:
+      chosen-os:
+        required: true
+        type: choice
+        options:
+        - macOS
+
 permissions:
   contents: write
 
@@ -21,7 +29,7 @@ jobs:
         include:
           # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: linux64, os: ubuntu-22.04, toolchain: llvm }
-          - { platform: macos, os: macos-15, toolchain: apple-llvm }
+          - { platform: macos, os: macos-latest, toolchain: apple-llvm }
           # - { platform: vs, os: windows-latest, toolchain: vs-stable }
           # - {
           #     platform: rpi-aarch64,
