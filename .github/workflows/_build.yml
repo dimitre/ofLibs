@@ -1,22 +1,26 @@
 name: Build ofLibs
 
 on:
-  workflow_call:
-    inputs:
-      lib: { required: true, type: string }
-      version: { required: true, type: string }
-      multistrap: { required: false, type: boolean }
-      linux_apt: { required: false, type: string }
-      brew: { required: false, type: string }
-      meson: { required: false, type: boolean }
-
+  push:
+    branches: ["osx10-15-intel"]
   workflow_dispatch:
-    inputs:
-      chosen-os:
-        required: true
-        type: choice
-        options:
-          - macOS
+
+  # workflow_call:
+  #   inputs:
+  #     lib: { required: true, type: string }
+  #     version: { required: true, type: string }
+  #     multistrap: { required: false, type: boolean }
+  #     linux_apt: { required: false, type: string }
+  #     brew: { required: false, type: string }
+  #     meson: { required: false, type: boolean }
+
+  # workflow_dispatch:
+  #   # inputs:
+  #   #   chosen-os:
+  #   #     required: true
+  #   #     type: choice
+  #   #     options:
+  #   #       - macOS
 
 permissions:
   contents: write
@@ -66,7 +70,7 @@ jobs:
 
     # runs-on: ${{ matrix.os }}
     # runs-on: [ ${{ matrix.os }}, self-hosted, ${{ inputs.chosen-os }}"]
-    runs-on: macos-latest
+    runs-on: self-hosted
 
     defaults:
       run:
