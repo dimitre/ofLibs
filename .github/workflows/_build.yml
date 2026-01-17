@@ -16,7 +16,7 @@ on:
         required: true
         type: choice
         options:
-        - macOS
+          - macOS
 
 permissions:
   contents: write
