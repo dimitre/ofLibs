@@ -30,6 +30,7 @@ jobs:
           # - { platform: linux64, os: ubuntu-latest, toolchain: llvm }
           # - { platform: linux64, os: ubuntu-22.04, toolchain: llvm }
           - { platform: macos, os: macos-latest, toolchain: apple-llvm }
+          # - { platform: macos, os: macos-13, toolchain: apple-llvm }
           # - { platform: vs, os: windows-latest, toolchain: vs-stable }
           # - {
           #     platform: rpi-aarch64,
@@ -63,7 +64,9 @@ jobs:
           #     # shell: msys2 -c 'source $GITHUB_ENV; export $(cut -d= -f1 $GITHUB_ENV); {0}'
           #   }
 
-    runs-on: ${{ matrix.os }}
+    # runs-on: ${{ matrix.os }}
+    # runs-on: [ ${{ matrix.os }}, self-hosted, ${{ inputs.chosen-os }}"]
+    runs-on: macos-latest
 
     defaults:
       run:
