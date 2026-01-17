@@ -1,5 +1,7 @@
 name: oflibs
 version: "1.3"
+# ofWorks versions are not pinned since they are manually pulled in forked repos
+
 externalDependencies:
   # zlib-ng-archive:
   #   kind: archive
@@ -22,7 +24,7 @@ externalDependencies:
     # repository: https://github.com/facebook/zstd/
     # commit: f94a01d
     repository: https://github.com/ofworks/zstd/
-    commit: cfb7fdc
+    # commit: cfb7fdc
     kind: git
 
   bzip2:
@@ -40,7 +42,7 @@ externalDependencies:
     # repository: https://github.com/mm2/Little-CMS
     # commit: 8888d84
     repository: https://github.com/ofworks/Little-CMS
-    commit: e2cfc4b
+    # commit: e2cfc4b
     kind: git
 
   deflate:
@@ -204,24 +206,43 @@ targets:
       - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
   lcms2:
-    kind: mesonProject
+    kind: cmakeProject
     location: ${external:${name}}
     install: true
     defines:
-      - buildtype=release
-      - default_library=static
-      - tests=disabled
-      - b_ndebug=if-release # This disables assertions in release builds
-      # - prefix=${cwd}/${externalBuild:${name}}/install
-      # - prefix=${cwd}
-      # - prefix=${cwd}/${externalBuild:${name}}/install
-
+      - CMAKE_BUILD_TYPE=Release
+      - BUILD_SHARED_LIBS=OFF
+      - CMAKE_INSTALL_PREFIX=install
+      - CMAKE_INSTALL_INCLUDEDIR=include
+      - CMAKE_INSTALL_LIBDIR=lib
+      - CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+      - BUILD_TESTS=OFF
     defines[platform:macos]:
-      - c_args=-mmacos-version-min=11.6
-      - cpp_args=-mmacos-version-min=11.6
+      - CMAKE_OSX_DEPLOYMENT_TARGET=11.6
+      - CMAKE_OSX_ARCHITECTURES=x86_64;arm64
 
     defines[toolchain:msvc]:
       - b_vscrt=static_from_buildtype
+
+  # lcms2:
+  #   kind: mesonProject
+  #   location: ${external:${name}}
+  #   install: true
+  #   defines:
+  #     - buildtype=release
+  #     - default_library=static
+  #     - tests=disabled
+  #     - b_ndebug=if-release # This disables assertions in release builds
+  #     # - prefix=${cwd}/${externalBuild:${name}}/install
+  #     # - prefix=${cwd}
+  #     # - prefix=${cwd}/${externalBuild:${name}}/install
+
+  #   defines[platform:macos]:
+  #     - c_args=-mmacos-version-min=11.6
+  #     - cpp_args=-mmacos-version-min=11.6
+
+  #   defines[toolchain:msvc]:
+  #     - b_vscrt=static_from_buildtype
 
   mango:
     kind: cmakeProject
