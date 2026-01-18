@@ -12,5 +12,5 @@ jobs:
       contents: write
 
     uses: ./.github/workflows/_build.yml
-    with: { lib: pixman, version: v1.0, meson: true }
+    with: { lib: pixman, version: add, meson: true }
     secrets: inherit

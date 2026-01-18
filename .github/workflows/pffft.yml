@@ -12,5 +12,6 @@ jobs:
       contents: write
 
     uses: ./.github/workflows/_build.yml
-    with: { lib: pffft, version: v1.0 }
+    # with: { lib: pffft, version: v1.0 }
+    with: { lib: pffft, version: add }
     secrets: inherit
