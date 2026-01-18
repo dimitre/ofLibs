@@ -1,0 +1,16 @@
+name: pffft
+
+on:
+  push:
+    paths:
+      - .github/workflows/pffft.yml
+      - pffft/**
+
+jobs:
+  ci:
+    permissions:
+      contents: write
+
+    uses: ./.github/workflows/_build.yml
+    with: { lib: pffft, version: v1.0 }
+    secrets: inherit
