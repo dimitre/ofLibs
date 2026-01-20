@@ -1,0 +1,16 @@
+name: libremidi
+
+on:
+  push:
+    paths:
+      - libremidi/**
+      - .github/workflows/libremidi.yml
+
+jobs:
+  ci:
+    permissions:
+      contents: write
+
+    uses: ./.github/workflows/_build.yml
+    with: { lib: libremidi, version: add }
+    secrets: inherit
